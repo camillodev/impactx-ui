@@ -1,0 +1,5 @@
+/* @impactx/ds — full styles entry */
+@import "./tokens/base.css";
+@import "./tokens/themes/education.css";
+@import "./tokens/themes/kumon.css";
+@import "./tokens/themes/impactx.css";

@@ -1,0 +1,95 @@
+/* Impact X DS theme — verde IX brand
+ * Tokens semânticos completos por papel × estado.
+ * Trocar este import = trocar o DS inteiro.
+ *
+ * Convenção: --color-{role}-{variant?}-{state?}
+ *   role: primary, secondary, tertiary, danger, neutral
+ *   variant (danger): primary, secondary, tertiary
+ *   state: default (omit), hover, active, disabled
+ *   fg: foreground (texto/icone)
+ *   bd: border
+ */
+
+.theme-impactx {
+  /* ========== Primary (filled) ========== */
+  --color-primary:           #11C76F;
+  --color-primary-hover:     #0A7942;
+  --color-primary-active:    #064D2A;
+  --color-primary-disabled:  #C9CCCF;
+  --color-primary-fg:        #FFFFFF;
+  --color-primary-soft:      #D1FAE5;
+
+  /* ========== Secondary (outline) ========== */
+  --color-secondary:           #FFFFFF;
+  --color-secondary-hover:     #DCFAEA;
+  --color-secondary-active:    #A7F3CC;
+  --color-secondary-disabled:  #FFFFFF;
+  --color-secondary-fg:        #1E2124;
+  --color-secondary-fg-disabled: #999EA3;
+  --color-secondary-bd:          #11C76F;
+  --color-secondary-bd-active:   #064D2A;
+
+  /* ========== Tertiary (Impact X brand secondary — yellow) ==========
+   * Override semântico: no theme Impact X, tertiary = amarelo brand
+   * (acentos, CTAs secundários). Em outros themes, tertiary continua ghost.
+   */
+  --color-tertiary:           #F5C400;
+  --color-tertiary-hover:     #C99F00;
+  --color-tertiary-active:    #997900;
+  --color-tertiary-disabled:  #FFF5C2;
+  --color-tertiary-fg:           #1E1E1E;
+  --color-tertiary-fg-hover:     #1E1E1E;
+  --color-tertiary-fg-active:    #FFFFFF;
+  --color-tertiary-fg-disabled:  #999EA3;
+
+  /* ========== Tertiary Dark (ghost on dark bg) ========== */
+  --color-tertiary-dark:           transparent;
+  --color-tertiary-dark-hover:     #FFFFFF;
+  --color-tertiary-dark-active:    #FFFFFF;
+  --color-tertiary-dark-disabled:  transparent;
+  --color-tertiary-dark-fg:           #FFFFFF;
+  --color-tertiary-dark-fg-hover:     #000000;
+  --color-tertiary-dark-fg-active:    #000000;
+  --color-tertiary-dark-fg-disabled:  #666666;
+
+  /* ========== Danger Primary (filled red) ========== */
+  --color-danger-primary:           #EB0000;
+  --color-danger-primary-hover:     #BF3434;
+  --color-danger-primary-active:    #802323;
+  --color-danger-primary-disabled:  #C9CCCF;
+  --color-danger-primary-fg:        #FFFFFF;
+
+  /* ========== Danger Secondary (outline red text) ========== */
+  --color-danger-secondary:           #FFFFFF;
+  --color-danger-secondary-hover:     #F7F7F7;
+  --color-danger-secondary-active:    #C9CCCF;
+  --color-danger-secondary-disabled:  #FFFFFF;
+  --color-danger-secondary-fg:           #EB0000;
+  --color-danger-secondary-fg-disabled:  #999EA3;
+  --color-danger-secondary-bd:          #EB0000;
+  --color-danger-secondary-bd-active:   #802323;
+
+  /* ========== Danger Tertiary (ghost red text) ========== */
+  --color-danger-tertiary:           transparent;
+  --color-danger-tertiary-hover:     #000000;
+  --color-danger-tertiary-active:    #000000;
+  --color-danger-tertiary-disabled:  transparent;
+  --color-danger-tertiary-fg:           #EB0000;
+  --color-danger-tertiary-fg-hover:     #FFFFFF;
+  --color-danger-tertiary-fg-active:    #FFFFFF;
+  --color-danger-tertiary-fg-disabled:  #C9CCCF;
+
+  /* ========== Hero / banner gradient (Impact X green) ========== */
+  --color-hero-from: #0E9854;
+  --color-hero-to:   #11C76F;
+
+  /* ========== Brand secondary — amarelo Impact X ==========
+   * Para acentos, highlights, badges destacados.
+   * NÃO confundir com --color-secondary (papel "outline button").
+   */
+  --color-brand-secondary:        #F5C400;
+  --color-brand-secondary-hover:  #C99F00;
+  --color-brand-secondary-active: #997900;
+  --color-brand-secondary-soft:   #FFF5C2;
+  --color-brand-secondary-fg:     #1E1E1E;
+}

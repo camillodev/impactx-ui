@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+@import "@fontsource/roboto/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+
+@import "../lib/tokens/base.css";
+@import "../lib/tokens/themes/education.css";
+@import "../lib/tokens/themes/impactx.css";
+@import "../lib/tokens/themes/kumon.css";
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Ellipsis padrão em elementos inline de uma linha que normalmente
+ * vivem dentro de containers de largura controlada (cards, nav items,
+ * table cells, badges). Multi-line ainda precisa de .line-clamp-* explícito.
+ */
+nav a > span,
+[data-card-title],
+[data-card-desc],
+[role="cell"],
+[cmdk-item] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

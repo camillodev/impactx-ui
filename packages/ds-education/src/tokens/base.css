@@ -1,0 +1,121 @@
+/* Base tokens — fixos entre verticals
+ * NÃO trocar entre temas. Cinzas, semantics, spacing, radius.
+ */
+
+@theme {
+  /* Neutrals (light mode default) */
+  --color-bg: #FFFFFF;
+  --color-surface: #F5F5F7;
+  --color-surface-muted: #FAFAFA;
+  --color-border: #E5E7EB;
+  --color-border-muted: #F3F4F6;
+  --color-border-strong: #9CA3AF;
+
+  /* Text */
+  --color-text: #1F2937;
+  --color-text-muted-strong: #4B5563;
+  --color-text-muted: #6B7280;
+  --color-text-subtle: #9CA3AF;
+  --color-text-on-primary: #FFFFFF;
+
+  /* Badge pastels (Alfabeto verbatim — distintos dos semantics genéricos) */
+  --badge-success-bg: #C5F0DE;
+  --badge-success-fg: #1D6B4F;
+  --badge-warning-bg: #FFF4D0;
+  --badge-warning-fg: #8A6D1C;
+  --badge-danger-bg:  #FFD1D1;
+  --badge-danger-fg:  #8A1818;
+
+  /* Toast colors (Alfabeto verbatim) */
+  --color-toast-success: #00B54A;
+  --color-toast-warning: #F5A623;
+
+  /* Toast tinted backgrounds (light pastels matching the accent) */
+  --color-toast-success-bg: #E6F7EE;
+  --color-toast-warning-bg: #FFF4DC;
+  --color-toast-error-bg:   #FCE8E8;
+  --color-toast-info-bg:    #E6F0FB;
+
+  /* Semantic — fixos */
+  --color-success: #10B981;
+  --color-success-bg: #A7F3D0;
+  --color-warning: #F59E0B;
+  --color-warning-bg: #FEF3C7;
+  --color-danger:  #EF4444;
+  --color-danger-bg: #FEE2E2;
+  --color-info:    #3B82F6;
+  --color-info-bg: #DBEAFE;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Typography */
+  --font-sans: "Roboto", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+/* ==========================================================================
+ * Dark mode overrides
+ * Activate by setting `data-mode="dark"` on <html>.
+ * Brand colors (primary/secondary/danger) ficam IGUAIS — só os neutrals trocam.
+ * ========================================================================== */
+
+[data-mode="dark"] {
+  --color-bg:           #0F172A;
+  --color-surface:      #1E293B;
+  --color-surface-muted:#172033;
+  --color-border:       #334155;
+  --color-border-muted: #1E293B;
+  --color-border-strong:#64748B;
+
+  --color-text:              #F8FAFC;
+  --color-text-muted-strong: #CBD5E1;
+  --color-text-muted:        #94A3B8;
+  --color-text-subtle:       #64748B;
+
+  /* Toast tinted bg ficam mais escuros mas mantêm tinta */
+  --color-toast-success-bg: #0E3A22;
+  --color-toast-warning-bg: #3B2A0A;
+  --color-toast-error-bg:   #3B1414;
+  --color-toast-info-bg:    #0E2A4A;
+
+  /* Secondary (outline) — bg deixa de ser branco, vira surface escura */
+  --color-secondary:           #1E293B;
+  --color-secondary-hover:     #334155;
+  --color-secondary-active:    #475569;
+  --color-secondary-disabled:  #1E293B;
+  --color-secondary-fg:        #F8FAFC;
+  --color-secondary-fg-disabled: #64748B;
+
+  /* Danger secondary outline também */
+  --color-danger-secondary:           #1E293B;
+  --color-danger-secondary-hover:     #334155;
+  --color-danger-secondary-active:    #475569;
+  --color-danger-secondary-disabled:  #1E293B;
+  --color-danger-secondary-fg-disabled: #64748B;
+
+  /* Tertiary (ghost) hover passa a ser branco com low opacity */
+  --color-tertiary-hover:     rgba(255,255,255,0.10);
+  --color-tertiary-active:    rgba(255,255,255,0.20);
+  --color-tertiary-fg:           #F8FAFC;
+  --color-tertiary-fg-hover:     #F8FAFC;
+  --color-tertiary-fg-active:    #F8FAFC;
+  --color-tertiary-fg-disabled:  #475569;
+
+  /* Badges escuros — pastels invertidos */
+  --badge-success-bg: #0E3A22;
+  --badge-success-fg: #6EE7B7;
+  --badge-warning-bg: #3B2A0A;
+  --badge-warning-fg: #FCD34D;
+  --badge-danger-bg:  #3B1414;
+  --badge-danger-fg:  #FCA5A5;
+}

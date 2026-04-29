@@ -1,0 +1,61 @@
+# Impact X UI
+
+> Multi-DS, multi-theme React component library distributed via CLI shadcn-style.
+
+## Setup
+
+- CLI interativo: `npx @impactx/ui`
+- Instalar DS completo: `npx @impactx/ui add education`
+- Instalar componente especifico: `npx @impactx/ui add education button`
+- Instalar com theme: `npx @impactx/ui add education --alfabeto`
+- Update: `npx @impactx/ui update education [<component>]`
+- Listar: `npx @impactx/ui list`
+- Diff local vs remoto: `npx @impactx/ui diff education button`
+- Source canonico: github.com/impactx/impactx-ui
+- Docs: ui.impactx.com.br
+
+## Design Systems
+
+- **education** — 22 atoms/molecules + 10 organisms domain-specific (gestao educacional)
+
+## Themes (ortogonais ao DS)
+
+- **alfabeto** — primary `#0467DB`
+- **kumon** — primary `#00A9E3`
+- **impactx** — primary `#11C76F` + tertiary `#F5C400`
+
+## Convencoes
+
+- Tokens via CSS vars (`var(--color-primary)`), nunca hex hardcoded
+- Theme: `<html className="theme-alfabeto">` (ou `theme-kumon` / `theme-impactx`)
+- Mode: `<html data-mode="dark">` (light eh default sem `data-mode`)
+- Componentes consomem so tokens — DS eh agnostico ao theme
+- ESM only, TypeScript strict
+- DataTable headless — Pagination compoem externo
+
+## Decisoes de design fechadas
+
+- Outline buttons usam `border-2` da intent color (nao cinza)
+- Helper text de Input usa primary color (nao muted)
+- Toast bg eh tinted da intent (nao branco/preto puro)
+- Tertiary buttons no theme `impactx` = amarelo `#F5C400`
+- Theme switching via classe HTML, mode via atributo HTML
+- Schema do registry estende `https://ui.shadcn.com/schema/registry-item.json` com `meta.impactx`
+
+## Stack
+
+- pnpm workspaces + turbo
+- Next 16 + React 19 + Tailwind v4
+- @clack/prompts (CLI), picocolors (cores)
+- Vitest (testes)
+
+## Estrutura
+
+- `apps/web/` — showcase + docs Next
+- `packages/cli/` — `@impactx/ui` CLI
+- `packages/ds-education/` — DS canonico
+- `scripts/` — build-registry, check-cohesion
+
+## Owner
+
+Rafael Camillo — Impact X.
