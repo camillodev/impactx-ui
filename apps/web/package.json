@@ -7,7 +7,10 @@
     "dev": "next dev -p 3002",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "start-server-and-test dev http://localhost:3002 cypress:run"
   },
   "dependencies": {
     "@impactx/ds-education": "workspace:*",
@@ -23,8 +26,10 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^13.16.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "start-server-and-test": "^2.0.10",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
