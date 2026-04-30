@@ -10,6 +10,7 @@ export * from "./components/button";
 export * from "./components/card";
 export * from "./components/chart";
 export * from "./components/chip";
+export * from "./components/code-block";
 export * from "./components/command-palette";
 export * from "./components/data-table";
 export * from "./components/help-fab";

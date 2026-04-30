@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Input } from "@impactx/ds-education"
+import { Input, CodeBlock } from "@impactx/ds-education"
 import { Search, Mail, Lock, Eye } from "lucide-react"
 
 export default function InputPage() {
@@ -68,12 +68,50 @@ export default function InputPage() {
         </div>
       </section>
 
-      <section className="max-w-md">
+      <section className="mb-10 max-w-md">
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
           Sem label (inline em forms)
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
           <Input placeholder="Buscar…" leadingIcon={<Search />} />
+        </div>
+      </section>
+
+      <section className="max-w-3xl">
+        <h2 className="text-xl font-medium text-[var(--color-text)] mb-4">Uso</h2>
+        <div className="flex flex-col gap-4">
+          <div>
+            <p className="text-xs text-[var(--color-text-muted)] mb-2">Básico</p>
+            <CodeBlock language="tsx">{`import { Input } from "@impactx/ds-education"
+
+<Input label="Nome" placeholder="Digite seu nome" />`}</CodeBlock>
+          </div>
+          <div>
+            <p className="text-xs text-[var(--color-text-muted)] mb-2">Com helper + erro</p>
+            <CodeBlock language="tsx">{`<Input
+  label="E-mail"
+  type="email"
+  placeholder="email@empresa.com"
+  helperText="Usaremos pra notificar atualizações"
+/>
+
+<Input
+  label="Senha"
+  type="password"
+  error="Senha precisa ter pelo menos 8 caracteres"
+/>`}</CodeBlock>
+          </div>
+          <div>
+            <p className="text-xs text-[var(--color-text-muted)] mb-2">Com ícones + onChange</p>
+            <CodeBlock language="tsx">{`import { Search } from "lucide-react"
+
+<Input
+  label="Buscar"
+  placeholder="Buscar relatórios…"
+  leadingIcon={<Search />}
+  onChange={(e) => setQuery(e.target.value)}
+/>`}</CodeBlock>
+          </div>
         </div>
       </section>
     </main>

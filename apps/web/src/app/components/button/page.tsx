@@ -1,4 +1,4 @@
-import { Button } from "@impactx/ds-education"
+import { Button, CodeBlock } from "@impactx/ds-education"
 import { ArrowRight, Plus } from "lucide-react"
 
 const variants = [
@@ -95,6 +95,32 @@ export default function ButtonPage() {
             <span className="text-xs font-mono text-[#999ea3]">ghost</span>
             <span className="text-xs text-[#1e2124]">tertiary</span>
             <Button variant="ghost" size="md">ghost alias</Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-12 max-w-3xl">
+        <h2 className="text-xl font-medium text-[#1e2124] mb-4">Uso</h2>
+        <div className="flex flex-col gap-4">
+          <div>
+            <p className="text-xs text-[#999ea3] mb-2">Básico</p>
+            <CodeBlock language="tsx">{`import { Button } from "@impactx/ds-education"
+
+<Button variant="primary" size="md">Click me</Button>`}</CodeBlock>
+          </div>
+          <div>
+            <p className="text-xs text-[#999ea3] mb-2">Com variant + size</p>
+            <CodeBlock language="tsx">{`<Button variant="secondary" size="lg">Salvar</Button>
+<Button variant="danger-primary" size="sm">Excluir</Button>`}</CodeBlock>
+          </div>
+          <div>
+            <p className="text-xs text-[#999ea3] mb-2">Com ícone + onClick</p>
+            <CodeBlock language="tsx">{`import { ArrowRight } from "lucide-react"
+
+<Button variant="primary" size="md" onClick={() => console.log("ok")}>
+  Avançar
+  <ArrowRight />
+</Button>`}</CodeBlock>
           </div>
         </div>
       </section>
