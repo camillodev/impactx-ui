@@ -2,88 +2,116 @@
 
 import { useState } from "react"
 import {
-  AssessmentHeader,
+  HeroBanner,
   Tabs,
+  TabsList,
+  TabsTrigger,
   TabsContent,
   Card,
   CardHeader,
   CardTitle,
   CardContent,
-  QuestionRow,
   Badge,
   Stat,
+  DataTable,
+  type Column,
   Pagination,
 } from "@impactx/ds-education"
-import { ListChecks } from "lucide-react"
 
-const questoes = [
-  { numero: "01", campoAtuacao: "Leitura · Localizar informação", acertosEscola: "78%", acertosNacional: "71%" },
-  { numero: "02", campoAtuacao: "Leitura · Inferir sentido", acertosEscola: "64%", acertosNacional: "58%" },
-  { numero: "03", campoAtuacao: "Leitura · Identificar tese", acertosEscola: "52%", acertosNacional: "55%", isFragilidade: true },
-  { numero: "04", campoAtuacao: "Gramática · Concordância", acertosEscola: "71%", acertosNacional: "66%" },
-  { numero: "05", campoAtuacao: "Gramática · Pontuação", acertosEscola: "44%", acertosNacional: "49%", isFragilidade: true },
-  { numero: "06", campoAtuacao: "Matemática · Operações", acertosEscola: "68%", acertosNacional: "61%" },
-  { numero: "07", campoAtuacao: "Matemática · Frações", acertosEscola: "39%", acertosNacional: "47%", isFragilidade: true },
-  { numero: "08", campoAtuacao: "Matemática · Geometria", acertosEscola: "62%", acertosNacional: "58%" },
-  { numero: "09", campoAtuacao: "Matemática · Estatística", acertosEscola: "55%", acertosNacional: "52%" },
-  { numero: "10", campoAtuacao: "Ciências · Sistema solar", acertosEscola: "73%", acertosNacional: "65%" },
-  { numero: "11", campoAtuacao: "Ciências · Ecossistemas", acertosEscola: "48%", acertosNacional: "54%", isFragilidade: true },
-  { numero: "12", campoAtuacao: "Ciências · Corpo humano", acertosEscola: "67%", acertosNacional: "60%" },
+type FolhaRow = {
+  numero: string
+  level: string
+  disciplina: "matematica" | "portugues" | "ingles"
+  taxaAcerto: number
+  tempoMedio: string
+  status: "boa" | "media" | "fraca"
+}
+
+const folhas: FolhaRow[] = [
+  { numero: "5A-21", level: "5A", disciplina: "matematica", taxaAcerto: 92, tempoMedio: "4m 12s", status: "boa" },
+  { numero: "4A-08", level: "4A", disciplina: "matematica", taxaAcerto: 78, tempoMedio: "5m 30s", status: "media" },
+  { numero: "3A-15", level: "3A", disciplina: "matematica", taxaAcerto: 54, tempoMedio: "8m 02s", status: "fraca" },
+  { numero: "B-12", level: "B", disciplina: "portugues", taxaAcerto: 88, tempoMedio: "6m 45s", status: "boa" },
+  { numero: "C-04", level: "C", disciplina: "portugues", taxaAcerto: 62, tempoMedio: "9m 18s", status: "media" },
+  { numero: "D-22", level: "D", disciplina: "portugues", taxaAcerto: 41, tempoMedio: "12m 05s", status: "fraca" },
+  { numero: "5A-09", level: "5A", disciplina: "ingles", taxaAcerto: 81, tempoMedio: "5m 50s", status: "boa" },
+  { numero: "4A-17", level: "4A", disciplina: "ingles", taxaAcerto: 67, tempoMedio: "7m 22s", status: "media" },
 ]
 
+const disciplinaLabel: Record<FolhaRow["disciplina"], string> = {
+  matematica: "Matemática",
+  portugues: "Português",
+  ingles: "Inglês",
+}
+
+const columns: Column<FolhaRow>[] = [
+  { key: "numero", header: "Folha", cell: (r) => <span className="font-mono font-medium">{r.numero}</span> },
+  { key: "level", header: "Level", cell: (r) => <Badge variant="ink">{r.level}</Badge> },
+  { key: "disciplina", header: "Disciplina", cell: (r) => disciplinaLabel[r.disciplina] },
+  { key: "taxaAcerto", header: "Taxa de acerto", align: "right", cell: (r) => `${r.taxaAcerto}%` },
+  { key: "tempoMedio", header: "Tempo médio", align: "right", cell: (r) => r.tempoMedio },
+  {
+    key: "status",
+    header: "Posição",
+    cell: (r) =>
+      r.status === "boa" ? (
+        <Badge variant="success">Acima da média</Badge>
+      ) : r.status === "fraca" ? (
+        <Badge variant="warning">Abaixo da média</Badge>
+      ) : (
+        <Badge variant="ink">Na média</Badge>
+      ),
+  },
+]
+
+const filtros = ["todas", "matematica", "portugues", "ingles"] as const
+
 export default function RelatorioQuestoesTemplate() {
-  const [tab, setTab] = useState("questoes")
+  const [filtro, setFiltro] = useState<(typeof filtros)[number]>("todas")
   const [page, setPage] = useState(1)
-  const fragilidades = questoes.filter((q) => q.isFragilidade).length
+  const data = filtro === "todas" ? folhas : folhas.filter((f) => f.disciplina === filtro)
+  const fragilidades = data.filter((f) => f.status === "fraca").length
 
   return (
     <div className="mx-auto max-w-6xl space-y-6 p-8">
-      <AssessmentHeader
-        breadcrumbs={[
-          { label: "Avaliações", href: "/templates/education/avaliacoes" },
-          { label: "Relatórios", href: "/templates/education/catalogo" },
-          { label: "Questões" },
-        ]}
-        subtitle="Diagnóstica · 5º EF · 2026"
-        title="Relatório · Análise por questão"
-        icon={<ListChecks className="size-6" />}
-        tabs={[
-          { value: "visao-geral", label: "Visão geral" },
-          { value: "questoes", label: "Questões" },
-          { value: "alunos", label: "Alunos" },
-        ]}
-        activeTab={tab}
+      <HeroBanner
+        eyebrow="Relatório"
+        title="Folhas & taxa de acerto"
+        description="Análise por folha — taxa de acerto, tempo médio e posição relativa por disciplina."
       />
 
-      <Tabs value={tab} onValueChange={setTab}>
-        <TabsContent value="questoes" className="space-y-6">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Stat asCard label="Total de questões" value={questoes.length} />
-            <Stat asCard label="Fragilidades" value={fragilidades} delta="+1" deltaTrend="up" />
-            <Stat asCard label="Acima da média" value={questoes.length - fragilidades} delta="+2" deltaTrend="up" />
-          </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <Stat asCard label="Total de folhas" value={data.length} />
+        <Stat asCard label="Fragilidades" value={fragilidades} delta="+1" deltaTrend="up" />
+        <Stat asCard label="Acima da média" value={data.filter((f) => f.status === "boa").length} delta="+2" deltaTrend="up" />
+      </div>
 
+      <Tabs value={filtro} onValueChange={(v) => setFiltro(v as typeof filtro)}>
+        <TabsList>
+          <TabsTrigger value="todas">Todas</TabsTrigger>
+          <TabsTrigger value="matematica">Matemática</TabsTrigger>
+          <TabsTrigger value="portugues">Português</TabsTrigger>
+          <TabsTrigger value="ingles">Inglês</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value={filtro} className="mt-6">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle>Desempenho item a item</CardTitle>
+              <CardTitle>Desempenho por folha</CardTitle>
               <Badge variant="warning">{fragilidades} fragilidades</Badge>
             </CardHeader>
-            <CardContent className="p-0">
-              <div className="grid grid-cols-12 border-b border-border bg-muted/30 px-4 py-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                <div className="col-span-1">#</div>
-                <div className="col-span-7">Campo de atuação</div>
-                <div className="col-span-2 text-right">Sua escola</div>
-                <div className="col-span-2 text-right">Nacional</div>
-              </div>
-              {questoes.map((q, i) => (
-                <QuestionRow key={q.numero} {...q} isEven={i % 2 === 0} />
-              ))}
+            <CardContent>
+              <DataTable
+                columns={columns}
+                data={data}
+                defaultSort={{ key: "taxaAcerto", direction: "desc" }}
+              />
             </CardContent>
           </Card>
-
-          <Pagination total={48} pageSize={12} value={page} onChange={setPage} />
         </TabsContent>
       </Tabs>
+
+      <Pagination total={48} pageSize={8} value={page} onChange={setPage} />
     </div>
   )
 }

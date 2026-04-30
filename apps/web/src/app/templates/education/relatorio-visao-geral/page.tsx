@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import {
-  AssessmentHeader,
+  HeroBanner,
   Tabs,
   TabsContent,
   Card,
@@ -10,125 +10,88 @@ import {
   CardTitle,
   CardContent,
   DonutScore,
-  CampoCard,
-  DataTable,
-  type Column,
+  BigCard,
+  CtaBanner,
   Badge,
   Stat,
+  Avatar,
 } from "@impactx/ds-education"
-import { ClipboardList } from "lucide-react"
-
-type EscolaRow = {
-  escola: string
-  alunos: number
-  acertos: number
-  nacional: number
-  status: "acima" | "media" | "abaixo"
-}
-
-const escolas: EscolaRow[] = [
-  { escola: "EM Camargos", alunos: 312, acertos: 71, nacional: 58, status: "acima" },
-  { escola: "EM Padre Eustáquio", alunos: 284, acertos: 64, nacional: 58, status: "acima" },
-  { escola: "EM Cristiano Machado", alunos: 256, acertos: 59, nacional: 58, status: "media" },
-  { escola: "EM São Bernardo", alunos: 198, acertos: 52, nacional: 58, status: "abaixo" },
-  { escola: "EM Independência", alunos: 174, acertos: 47, nacional: 58, status: "abaixo" },
-  { escola: "EM Dom Bosco", alunos: 221, acertos: 66, nacional: 58, status: "acima" },
-]
-
-const columns: Column<EscolaRow>[] = [
-  { key: "escola", header: "Escola", cell: (r) => <span className="font-medium">{r.escola}</span> },
-  { key: "alunos", header: "Alunos", align: "right", cell: (r) => r.alunos.toLocaleString("pt-BR") },
-  { key: "acertos", header: "Acertos", align: "right", cell: (r) => `${r.acertos}%` },
-  { key: "nacional", header: "Nacional", align: "right", cell: (r) => `${r.nacional}%` },
-  {
-    key: "status",
-    header: "Posição",
-    cell: (r) =>
-      r.status === "acima" ? (
-        <Badge variant="success">Acima da média</Badge>
-      ) : r.status === "abaixo" ? (
-        <Badge variant="warning">Abaixo da média</Badge>
-      ) : (
-        <Badge variant="ink">Na média</Badge>
-      ),
-  },
-]
+import { Users, BookOpen, CalendarCheck, TrendingUp, Award } from "lucide-react"
 
 export default function RelatorioVisaoGeralTemplate() {
-  const [tab, setTab] = useState("visao-geral")
+  const [tab] = useState("visao-geral")
 
   return (
     <div className="mx-auto max-w-6xl space-y-6 p-8">
-      <AssessmentHeader
-        breadcrumbs={[
-          { label: "Avaliações", href: "/templates/education/avaliacoes" },
-          { label: "Relatórios", href: "/templates/education/catalogo" },
-          { label: "Visão geral" },
-        ]}
-        subtitle="Diagnóstica · 5º EF · 2026"
-        title="Relatório · Visão geral"
-        icon={<ClipboardList className="size-6" />}
-        tabs={[
-          { value: "visao-geral", label: "Visão geral" },
-          { value: "questoes", label: "Questões" },
-          { value: "alunos", label: "Alunos" },
-        ]}
-        activeTab={tab}
+      <HeroBanner
+        eyebrow="Relatório · Kumon Camargos"
+        title="Visão geral"
+        description="Resumo da operação da unidade — alunos, sessões, folhas e levels avançados."
       />
 
-      <Tabs value={tab} onValueChange={setTab}>
+      <Tabs value={tab}>
         <TabsContent value="visao-geral" className="space-y-6">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Stat asCard label="Alunos" value="1.445" />
-            <Stat asCard label="Acertos médios" value="61%" delta="+4 p.p." deltaTrend="up" />
-            <Stat asCard label="Habilidades em fragilidade" value="9" delta="-2" deltaTrend="down" />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+            <Stat asCard label="Alunos ativos" value="124" icon={<Users className="size-5" />} delta="+6" deltaTrend="up" />
+            <Stat asCard label="Sessões na semana" value="248" icon={<CalendarCheck className="size-5" />} />
+            <Stat asCard label="Folhas concluídas" value="3.142" icon={<BookOpen className="size-5" />} delta="+8%" deltaTrend="up" />
+            <Stat asCard label="Levels avançados (mês)" value="18" icon={<TrendingUp className="size-5" />} delta="+4" deltaTrend="up" />
           </div>
 
           <Card>
             <CardHeader>
-              <CardTitle>Acertos por área de conhecimento</CardTitle>
+              <CardTitle>Aproveitamento médio por disciplina</CardTitle>
             </CardHeader>
             <CardContent className="grid grid-cols-1 items-center gap-6 md:grid-cols-3">
               <div className="flex flex-col items-center gap-2">
-                <DonutScore value={68} label="Língua Portuguesa" />
+                <DonutScore value={82} label="Matemática" />
               </div>
               <div className="flex flex-col items-center gap-2">
-                <DonutScore value={54} label="Matemática" warning />
+                <DonutScore value={68} label="Português" warning />
               </div>
               <div className="flex flex-col items-center gap-2">
-                <DonutScore value={71} label="Ciências" />
+                <DonutScore value={74} label="Inglês" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
+              <CardTitle>Aluno destaque do mês</CardTitle>
+              <Badge variant="success">+3 levels em 30 dias</Badge>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center gap-4">
+                <Avatar name="Mariana Silva" size="lg" />
+                <div className="flex flex-col">
+                  <span className="text-lg font-semibold">Mariana Silva</span>
+                  <span className="text-sm text-muted-foreground">
+                    Matemática · Level 4A → 3A · 92% acerto · SRS 4.2
+                  </span>
+                  <span className="text-xs text-muted-foreground">Última sessão: 28/04/2026</span>
+                </div>
               </div>
             </CardContent>
           </Card>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <CampoCard
-              title="Leitura e interpretação"
-              questoes={12}
-              acertosEscola={68}
-              acertosNacional={62}
+            <BigCard
+              title="Próximas sessões"
+              description="48 alunos agendados pra essa semana — 12 com folhas planejadas pra avanço de level."
+              icon={CalendarCheck}
             />
-            <CampoCard
-              title="Operações com frações"
-              questoes={8}
-              acertosEscola={42}
-              acertosNacional={51}
-              isFragilidade
+            <BigCard
+              title="Top performers do mês"
+              description="6 alunos com avanço de 2+ levels e SRS acima de 4.0."
+              icon={Award}
             />
           </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Desempenho por escola</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <DataTable
-                columns={columns}
-                data={escolas}
-                defaultSort={{ key: "acertos", direction: "desc" }}
-              />
-            </CardContent>
-          </Card>
+          <CtaBanner
+            heading="Pronta pra próxima sessão?"
+            description="Abra a agenda da semana, revise folhas e prepare diagnósticas pendentes."
+            buttonLabel="Agendar próxima sessão"
+          />
         </TabsContent>
       </Tabs>
     </div>

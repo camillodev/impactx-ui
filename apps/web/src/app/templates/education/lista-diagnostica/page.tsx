@@ -18,44 +18,44 @@ import {
 } from "@impactx/ds-education"
 
 const allAssessments = [
-  { id: 1, ano: "5", title: "Diagnóstica · Língua Portuguesa · 5º EF", applicationPeriod: "10/02 a 17/02/2026", status: "concluded" as const },
-  { id: 2, ano: "5", title: "Diagnóstica · Matemática · 5º EF", applicationPeriod: "18/02 a 25/02/2026", status: "concluded" as const },
-  { id: 3, ano: "9", title: "Diagnóstica · Língua Portuguesa · 9º EF", applicationPeriod: "01/03 a 08/03/2026", status: "in-progress" as const },
-  { id: 4, ano: "9", title: "Diagnóstica · Matemática · 9º EF", applicationPeriod: "09/03 a 16/03/2026", status: "in-progress" as const },
-  { id: 5, ano: "3", title: "Diagnóstica · Língua Portuguesa · 3º EM", applicationPeriod: "20/03 a 27/03/2026", status: "pending" as const },
-  { id: 6, ano: "3", title: "Diagnóstica · Matemática · 3º EM", applicationPeriod: "28/03 a 04/04/2026", status: "pending" as const },
-  { id: 7, ano: "5", title: "Diagnóstica · Ciências · 5º EF", applicationPeriod: "10/04 a 17/04/2026", status: "pending" as const },
+  { id: 1, disciplina: "matematica", title: "Mariana Silva · Matemática · Level atual 4A · suspeita 3A", applicationPeriod: "Diagnóstica agendada para 02/05/2026", status: "pending" as const },
+  { id: 2, disciplina: "matematica", title: "Pedro Oliveira · Matemática · Level atual D · suspeita E", applicationPeriod: "Diagnóstica em 04/05/2026", status: "pending" as const },
+  { id: 3, disciplina: "portugues", title: "Ricardo Tavares · Português · Level atual B · suspeita C", applicationPeriod: "Aplicada em 22/04/2026", status: "in-progress" as const },
+  { id: 4, disciplina: "portugues", title: "Beatriz Mendes · Português · Level atual A · suspeita B", applicationPeriod: "Aplicada em 24/04/2026", status: "in-progress" as const },
+  { id: 5, disciplina: "ingles", title: "Camila Ferreira · Inglês · Level atual 5A · suspeita 4A", applicationPeriod: "Concluída em 18/04/2026", status: "concluded" as const },
+  { id: 6, disciplina: "ingles", title: "João Pedro Lima · Inglês · Level atual 6A · suspeita 5A", applicationPeriod: "Concluída em 16/04/2026", status: "concluded" as const },
+  { id: 7, disciplina: "matematica", title: "Larissa Costa · Matemática · Level atual 2A · suspeita A", applicationPeriod: "Agendada para 06/05/2026", status: "pending" as const },
 ]
 
-const filtros = ["todos", "5", "9", "3"] as const
+const filtros = ["todos", "matematica", "portugues", "ingles"] as const
 
 export default function ListaDiagnosticaTemplate() {
   const [filtro, setFiltro] = useState<(typeof filtros)[number]>("todos")
   const [page, setPage] = useState(1)
-  const list = filtro === "todos" ? allAssessments : allAssessments.filter((a) => a.ano === filtro)
+  const list = filtro === "todos" ? allAssessments : allAssessments.filter((a) => a.disciplina === filtro)
 
   return (
     <div className="mx-auto max-w-6xl space-y-6 p-8">
       <HeroBanner
         eyebrow="Avaliações"
-        title="Diagnósticas"
-        description="Aplicações usadas para mapear fragilidades antes do início de cada bimestre."
+        title="Lista Diagnóstica"
+        description="Alunos pendentes de diagnóstica — usadas para confirmar ou ajustar o level antes da próxima sessão."
       />
 
       <Tabs value={filtro} onValueChange={(v) => setFiltro(v as typeof filtro)}>
         <TabsList>
-          <TabsTrigger value="todos">Todos os anos</TabsTrigger>
-          <TabsTrigger value="5">5º EF</TabsTrigger>
-          <TabsTrigger value="9">9º EF</TabsTrigger>
-          <TabsTrigger value="3">3º EM</TabsTrigger>
+          <TabsTrigger value="todos">Todas as disciplinas</TabsTrigger>
+          <TabsTrigger value="matematica">Matemática</TabsTrigger>
+          <TabsTrigger value="portugues">Português</TabsTrigger>
+          <TabsTrigger value="ingles">Inglês</TabsTrigger>
         </TabsList>
 
         <TabsContent value={filtro} className="mt-6">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle>Aplicações</CardTitle>
+              <CardTitle>Diagnósticas</CardTitle>
               <div className="flex items-center gap-2">
-                <Badge variant="primary">{list.length} avaliações</Badge>
+                <Badge variant="primary">{list.length} alunos</Badge>
                 <Button size="sm" variant="primary">Nova diagnóstica</Button>
               </div>
             </CardHeader>
