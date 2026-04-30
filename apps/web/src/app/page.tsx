@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="p-10 max-w-6xl">
       <div className="mb-10">
-        <h1 className="text-4xl font-bold text-[var(--color-text)] mb-2">ds-impactx</h1>
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--color-text)] mb-2">ds-impactx</h1>
         <p className="text-lg text-[var(--color-text-muted)]">
           Education DS · 6 templates SAS clonados como base do design system multi-vertical.
         </p>

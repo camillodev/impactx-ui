@@ -35,7 +35,7 @@ export default function DonutPage() {
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
           Estados de valor (sem label)
         </h2>
-        <div className="rounded-xl p-8 bg-[var(--color-surface)] border border-[var(--color-border)] grid grid-cols-4 gap-6">
+        <div className="rounded-xl p-8 bg-[var(--color-surface)] border border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[0, 25, 75, 100].map((v) => (
             <div key={v} className="flex flex-col items-center gap-2">
               <DonutScore value={v} size={120} label="" />

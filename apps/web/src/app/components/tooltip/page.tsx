@@ -15,7 +15,7 @@ export default function TooltipPage() {
           <h2 className="text-xs font-medium text-[#999ea3] uppercase tracking-wide mb-6">
             Posições (delay padrão 300ms)
           </h2>
-          <div className="grid grid-cols-3 gap-6 max-w-3xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-3xl">
             <Tooltip content="Tooltip — Top Start" side="top" align="start">
               <button className="w-full rounded-lg border border-[#c9cccf] bg-white px-4 py-3 text-sm font-medium text-[#1e2124] hover:bg-[#f7f7f7] transition-colors">Top Start</button>
             </Tooltip>
