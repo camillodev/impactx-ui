@@ -163,11 +163,17 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
         {/* Footer */}
         <div className="flex items-center justify-between px-4 py-2 border-t border-[var(--color-border)] bg-[var(--color-surface)] text-[11px] text-[var(--color-text-muted)]">
           <div className="flex items-center gap-3">
-            <span>
-              <kbd className="font-mono">↑↓</kbd> navegar
+            <span className="inline-flex items-center gap-1">
+              <kbd className="inline-flex items-center h-5 px-1.5 rounded font-mono text-[10px] border border-[var(--color-border)] bg-[var(--color-bg)]">↑↓</kbd>
+              navegar
             </span>
-            <span>
-              <kbd className="font-mono">↵</kbd> abrir
+            <span className="inline-flex items-center gap-1">
+              <kbd className="inline-flex items-center h-5 px-1.5 rounded font-mono text-[10px] border border-[var(--color-border)] bg-[var(--color-bg)]">↵</kbd>
+              selecionar
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <kbd className="inline-flex items-center h-5 px-1.5 rounded font-mono text-[10px] border border-[var(--color-border)] bg-[var(--color-bg)]">esc</kbd>
+              fechar
             </span>
           </div>
           <span>{allItems.length} resultados</span>
@@ -182,10 +188,31 @@ export function useCommandPalette() {
   const [open, setOpen] = React.useState(false)
 
   React.useEffect(() => {
+    const isEditableTarget = (target: EventTarget | null) => {
+      if (!(target instanceof HTMLElement)) return false
+      const tag = target.tagName
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true
+      if (target.isContentEditable) return true
+      return false
+    }
+
     const onKey = (e: KeyboardEvent) => {
+      // Cmd+K / Ctrl+K toggle (sempre, mesmo em inputs)
       if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((v) => !v)
+        return
+      }
+      // "/" abre — apenas se não estiver em campo editável e sem modificadores
+      if (
+        e.key === "/" &&
+        !e.metaKey &&
+        !e.ctrlKey &&
+        !e.altKey &&
+        !isEditableTarget(e.target)
+      ) {
+        e.preventDefault()
+        setOpen(true)
       }
     }
     window.addEventListener("keydown", onKey)
