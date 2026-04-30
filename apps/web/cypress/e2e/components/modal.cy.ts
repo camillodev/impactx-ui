@@ -53,3 +53,36 @@ describe("Modal: open, close, focus", () => {
     cy.closeModalEsc();
   });
 });
+
+describe("Modal: viewport positioning (regression)", () => {
+  const assertWithinViewport = (vw: number, vh: number) => {
+    cy.get('[role="dialog"]').should("be.visible").then(($el) => {
+      const rect = $el[0].getBoundingClientRect();
+      expect(rect.top, "modal top inside viewport").to.be.gte(0);
+      expect(rect.bottom, "modal bottom inside viewport").to.be.lte(vh);
+      expect(rect.left, "modal left inside viewport").to.be.gte(0);
+      expect(rect.right, "modal right inside viewport").to.be.lte(vw);
+    });
+  };
+
+  it("renders within viewport on mobile (375x667)", () => {
+    cy.viewport(375, 667);
+    cy.visit("/components/modal");
+    cy.openModal(/simple/i);
+    assertWithinViewport(375, 667);
+  });
+
+  it("renders within viewport on laptop (1280x800)", () => {
+    cy.viewport(1280, 800);
+    cy.visit("/components/modal");
+    cy.openModal(/simple/i);
+    assertWithinViewport(1280, 800);
+  });
+
+  it("renders welcome modal within viewport on small laptop (1280x720)", () => {
+    cy.viewport(1280, 720);
+    cy.visit("/components/modal");
+    cy.openModal(/welcome/i);
+    assertWithinViewport(1280, 720);
+  });
+});

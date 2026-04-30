@@ -76,20 +76,22 @@ const ModalContent = React.forwardRef<
     <Dialog.Content
       ref={ref}
       className={cn(
-        // posição
+        // posição — fixed na viewport, centralizado, com margem mínima pra não colar nas bordas
         "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
         // visual
-        "w-full bg-[var(--color-bg)] text-[var(--color-text)] rounded-2xl",
+        "bg-[var(--color-bg)] text-[var(--color-text)] rounded-2xl",
         "shadow-[0_20px_50px_rgba(0,0,0,0.18)]",
         "flex flex-col overflow-hidden",
+        // viewport safety — nunca extrapola tela; conteúdo interno scrolla
+        "w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)]",
         // animação
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
         "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
         // tamanho
         size === "welcome" || size === "carousel"
-          ? "w-[70vw] max-w-[960px] max-h-[85vh]"
-          : "max-w-[480px]",
+          ? "sm:w-[70vw] sm:max-w-[960px] sm:max-h-[85vh]"
+          : "sm:max-w-[480px]",
         className
       )}
       {...props}
@@ -166,7 +168,7 @@ const ModalBody = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "flex-1 px-10 pb-8 pt-2 text-base leading-relaxed text-[var(--color-text-muted-strong)] max-md:px-6",
+      "flex-1 min-h-0 overflow-y-auto px-10 pb-8 pt-2 text-base leading-relaxed text-[var(--color-text-muted-strong)] max-md:px-6",
       className
     )}
     {...props}
@@ -284,7 +286,7 @@ const ModalSplitBody = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "flex gap-10 px-10 pt-10 pb-8 flex-1 min-h-0",
+      "flex gap-10 px-10 pt-10 pb-8 flex-1 min-h-0 overflow-y-auto",
       "max-md:flex-col max-md:gap-6 max-md:px-6 max-md:pt-6",
       className
     )}
