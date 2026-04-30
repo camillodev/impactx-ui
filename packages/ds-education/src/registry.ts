@@ -37,6 +37,18 @@ export const components: RegistryItem[] = [
   { href: "/components/data-table",      label: "DataTable",      description: "Sort, density, loading, empty", category: "organism", keywords: ["table", "grid", "list"] },
   { href: "/components/assessment-card", label: "AssessmentCard", description: "Card com 5 status",             category: "organism", keywords: ["card", "course", "test"] },
   { href: "/components/card",            label: "Card",           description: "Container com Header/Title/Content", category: "atom", keywords: ["container", "panel"] },
+
+  // Education domain organisms (showcase routes pending — see docs/atomic-design-audit.md)
+  { href: "/components/assessment-header",  label: "AssessmentHeader",  description: "Header de avaliação (domain)",          category: "organism", exampleType: "education", keywords: ["header", "assessment", "education"] },
+  { href: "/components/assessment-list-item", label: "AssessmentListItem", description: "Item de lista de avaliação",         category: "organism", exampleType: "education", keywords: ["list", "row", "assessment"] },
+  { href: "/components/big-card",           label: "BigCard",           description: "Card hero/marketing emphasis",          category: "organism", exampleType: "education", keywords: ["hero", "marketing", "card"] },
+  { href: "/components/campo-card",         label: "CampoCard",         description: "Card de campo/área (domain)",           category: "organism", exampleType: "education", keywords: ["campo", "area", "card"] },
+  { href: "/components/category-card",      label: "CategoryCard",      description: "Card de categoria (domain)",            category: "organism", exampleType: "education", keywords: ["category", "card"] },
+  { href: "/components/cta-banner",         label: "CtaBanner",         description: "Banner CTA (domain education)",         category: "organism", exampleType: "education", keywords: ["cta", "banner", "promo"] },
+  { href: "/components/donut-score",        label: "DonutScore",        description: "Donut com score (domain)",              category: "organism", exampleType: "education", keywords: ["donut", "score", "chart"] },
+  { href: "/components/hero-banner",        label: "HeroBanner",        description: "Hero de dashboard/escola",              category: "organism", exampleType: "education", keywords: ["hero", "banner", "top"] },
+  { href: "/components/question-row",       label: "QuestionRow",       description: "Linha de questão em tabela",            category: "organism", exampleType: "education", keywords: ["question", "row", "table"] },
+  { href: "/components/subject-stat-card",  label: "SubjectStatCard",   description: "Stat card por matéria",                 category: "organism", exampleType: "education", keywords: ["stat", "subject", "kpi"] },
 ]
 
 export const examples: RegistryItem[] = [

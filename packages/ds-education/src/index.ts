@@ -36,5 +36,8 @@ export * from "./components-education/hero-banner";
 export * from "./components-education/question-row";
 export * from "./components-education/subject-stat-card";
 
+// Registry (componentes/exemplos/páginas — dogfooding + command palette)
+export * from "./registry";
+
 // Utils
 export { cn } from "./utils";
