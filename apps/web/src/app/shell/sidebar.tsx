@@ -29,13 +29,12 @@ const CATEGORY_ORDER: { key: CategoryKey; label: string }[] = [
 
 type TemplateItem = { href: string; label: string }
 
+// TODO(Wave 2): rotas abaixo serão criadas em PR separada (matricula/relatorios/alunos).
+// Até lá, links retornam 404 — placeholder intencional pra preparar sidebar.
 const TEMPLATES_EDUCATION: TemplateItem[] = [
-  { href: "/templates/education/avaliacoes", label: "Avaliações" },
-  { href: "/templates/education/catalogo", label: "Catálogo" },
-  { href: "/templates/education/lista-diagnostica", label: "Lista Diagnóstica" },
-  { href: "/templates/education/diagnostica-ano", label: "Diagnóstica Ano" },
-  { href: "/templates/education/relatorio-visao-geral", label: "Visão Geral" },
-  { href: "/templates/education/relatorio-questoes", label: "Questões" },
+  { href: "/templates/education/matricula", label: "Matrícula" },
+  { href: "/templates/education/relatorios", label: "Relatórios" },
+  { href: "/templates/education/alunos", label: "Alunos" },
 ]
 
 function groupByCategory(items: RegistryItem[]) {
