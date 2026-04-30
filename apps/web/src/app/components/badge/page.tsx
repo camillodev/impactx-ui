@@ -1,4 +1,4 @@
-import { Badge } from "@impactx/ds-education"
+import { Badge, CodeBlock } from "@impactx/ds-education"
 import { Check, AlertTriangle, X, Info, Star } from "lucide-react"
 
 const variants = [
@@ -57,6 +57,33 @@ export default function BadgePage() {
           </div>
         </section>
       ))}
+
+      <section className="mb-10 max-w-3xl">
+        <h2 className="text-xl font-medium text-[#1e2124] mb-4">Uso</h2>
+        <div className="flex flex-col gap-4">
+          <div>
+            <p className="text-xs text-[#9ca3af] mb-2">Básico</p>
+            <CodeBlock language="tsx">{`import { Badge } from "@impactx/ds-education"
+
+<Badge variant="primary">Novo</Badge>`}</CodeBlock>
+          </div>
+          <div>
+            <p className="text-xs text-[#9ca3af] mb-2">Com variant + size</p>
+            <CodeBlock language="tsx">{`<Badge variant="success" size="lg">Ativo</Badge>
+<Badge variant="danger" size="sm">Erro</Badge>`}</CodeBlock>
+          </div>
+          <div>
+            <p className="text-xs text-[#9ca3af] mb-2">Com ícone</p>
+            <CodeBlock language="tsx">{`import { Check } from "lucide-react"
+
+<Badge variant="success" icon={<Check size={12} />}>
+  Concluído
+</Badge>
+
+<Badge variant="primary" icon={<Check size={12} />} iconOnly />`}</CodeBlock>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
