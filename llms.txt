@@ -56,6 +56,20 @@
 - `packages/ds-education/` — DS canonico
 - `scripts/` — build-registry, check-cohesion
 
+## Design principles
+
+Detalhes em [docs/design-principles.md](./docs/design-principles.md). Resumo:
+- Variants = hierarquia (primary fill, secondary outline, tertiary ghost). Nao cores diferentes.
+- Intents = semantica (danger/success/warning/info). Eixo ortogonal a variants.
+- Tertiary eh ghost em todos os themes — incluindo impactx (amarelo IX eh brand-secondary, nao tertiary).
+
+## Design principles
+
+Detalhes em [docs/design-principles.md](./docs/design-principles.md). Resumo:
+- Variants = hierarquia (primary fill, secondary outline, tertiary ghost). Nao cores diferentes.
+- Intents = semantica (danger/success/warning/info). Eixo ortogonal a variants.
+- Tertiary eh ghost em todos os themes — incluindo impactx (amarelo IX eh brand-secondary, nao tertiary).
+
 ## Owner
 
 Rafael Camillo — Impact X.
