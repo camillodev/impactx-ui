@@ -15,7 +15,7 @@ export default function CardPage() {
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
           Estrutura padrão
         </h2>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <Card>
             <CardHeader>
               <CardTitle>Título do card</CardTitle>
@@ -59,7 +59,7 @@ export default function CardPage() {
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
           Sem header (só CardContent)
         </h2>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Card>
             <CardContent>
               <p className="text-sm text-[var(--color-text)]">
