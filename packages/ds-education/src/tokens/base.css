@@ -1,8 +1,13 @@
 /* Base tokens — fixos entre verticals
  * NÃO trocar entre temas. Cinzas, semantics, spacing, radius.
+ *
+ * IMPORTANTE: usa :root (não @theme) porque os componentes consomem
+ * via var(--color-X) direto em arbitrary values (bg-[var(--color-danger)]),
+ * não via utilities geradas pelo Tailwind. @theme em v4 não vaza vars
+ * pra getComputedStyle do DOM.
  */
 
-@theme {
+:root {
   /* Neutrals (light mode default) */
   --color-bg: #FFFFFF;
   --color-surface: #F5F5F7;

@@ -1,13 +1,16 @@
 @import "tailwindcss";
+
+@source "/Users/rafae/projetos/impactx-ui/packages/ds-education/src/**/*.{ts,tsx}";
+
 @import "@fontsource/roboto/400.css";
 @import "@fontsource/roboto/500.css";
 @import "@fontsource/roboto/700.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 
-@import "../lib/tokens/base.css";
-@import "../lib/tokens/themes/education.css";
-@import "../lib/tokens/themes/impactx.css";
-@import "../lib/tokens/themes/kumon.css";
+@import "@impactx/ds-education/tokens/base.css";
+@import "@impactx/ds-education/tokens/themes/education.css";
+@import "@impactx/ds-education/tokens/themes/impactx.css";
+@import "@impactx/ds-education/tokens/themes/kumon.css";
 
 html, body {
   background: var(--color-bg);
