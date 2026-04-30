@@ -1,12 +1,11 @@
 import Link from "next/link"
 
+// TODO(Wave 2): rotas abaixo virão em PR separada — Kumon flows reais.
+// Links 404 até lá (placeholder intencional).
 const templates = [
-  { href: "/templates/education/avaliacoes", title: "Hub Avaliações", desc: "Hero azul + 2 big cards + banner CTA" },
-  { href: "/templates/education/catalogo", title: "Catálogo Relatórios", desc: "Grid 4-col de cards azuis" },
-  { href: "/templates/education/lista-diagnostica", title: "Lista Diagnóstica", desc: "Filtro Ano + cards com ações" },
-  { href: "/templates/education/diagnostica-ano", title: "Diagnóstica · ano", desc: "Stat cards + banner CTA roxo" },
-  { href: "/templates/education/relatorio-visao-geral", title: "Relatório · Visão Geral", desc: "Tabs + donuts + tabela" },
-  { href: "/templates/education/relatorio-questoes", title: "Relatório · Questões", desc: "Tabela 12 questões" },
+  { href: "/templates/education/matricula", title: "Matrícula", desc: "Fluxo de matrícula Kumon (Wave 2)" },
+  { href: "/templates/education/relatorios", title: "Relatórios", desc: "Relatórios pedagógicos Kumon (Wave 2)" },
+  { href: "/templates/education/alunos", title: "Alunos", desc: "Gestão de alunos Kumon (Wave 2)" },
 ]
 
 export default function Home() {
