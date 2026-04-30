@@ -189,6 +189,29 @@ Decisões arquiteturais que NÃO são revisitáveis sem RFC:
 
 ---
 
+## Responsive primitives
+
+Utilities CSS pra evitar layouts que quebram em viewports menores. Use estas
+ao invés de Tailwind `grid-cols-N` hardcoded em showcases/templates.
+
+### Grids
+- `.responsive-grid-2` → 1 col mobile, 2 cols ≥640px
+- `.responsive-grid-3` → 1 → 2 → 3 (≥1024px)
+- `.responsive-grid-4` → 1 → 2 → 4
+
+### Layout helpers
+- `.stack-on-mobile` → flex column mobile, flex row ≥768px
+- `[data-min-w-0]` ou `.min-w-0-default` → permite flex item truncar
+
+### Tipografia fluida
+- `[data-text-fluid="h1|h2|h3|lead"]` → clamp() automático
+
+### Convenção
+Showcases e templates devem preferir estas utilities ou Tailwind responsive
+prefixes (`md:`, `lg:`). NUNCA usar `grid-cols-N` sem prefixo.
+
+---
+
 ## Anti-patterns (não faça)
 
 Padrões já vistos em PR e rejeitados. Se você se pegar fazendo qualquer coisa abaixo, pare e revise contra este doc.

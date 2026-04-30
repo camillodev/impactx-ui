@@ -59,3 +59,70 @@ nav a > span,
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* === Responsive grid utilities ===
+ * Opt-in via class. 1 col mobile → 2 sm → 3-4 lg.
+ * Use quando layout precisa de adaptação automática.
+ */
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .responsive-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .responsive-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .responsive-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.responsive-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .responsive-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .responsive-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* === Stack on mobile === */
+.stack-on-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .stack-on-mobile {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* === Min-width-0 for flex children ===
+ * Aplicar com classe ou data-attr em flex items que precisam truncar.
+ */
+[data-min-w-0],
+.min-w-0-default {
+  min-width: 0;
+}
+
+/* === Fluid typography ===
+ * Heading scale fluida via clamp(). Opt-in via data-attr.
+ * Range: ~70% mobile → 100% desktop.
+ */
+[data-text-fluid="h1"] { font-size: clamp(1.875rem, 1.4rem + 2vw, 2.5rem); line-height: 1.1; }
+[data-text-fluid="h2"] { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2rem); line-height: 1.15; }
+[data-text-fluid="h3"] { font-size: clamp(1.25rem, 1.05rem + 1vw, 1.5rem); line-height: 1.2; }
+[data-text-fluid="lead"] { font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem); line-height: 1.5; }
