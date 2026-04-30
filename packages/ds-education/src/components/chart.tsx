@@ -66,13 +66,14 @@ export function EChart({
     }
   }, [])
 
-  // Init / dispose
+  // Init / dispose + apply current option imediatamente (evita race entre init e option-update effect)
   React.useEffect(() => {
     if (!ready || !containerRef.current || !echartsRef.current) return
     const inst = echartsRef.current.init(containerRef.current, undefined, {
       renderer: "canvas",
     })
     instanceRef.current = inst
+    inst.setOption(option, true)
     const ro = new ResizeObserver(() => inst.resize())
     ro.observe(containerRef.current)
     return () => {
@@ -80,12 +81,14 @@ export function EChart({
       inst.dispose()
       instanceRef.current = null
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready])
 
-  // Update option
+  // Update option em mudanças subsequentes
   React.useEffect(() => {
+    if (!ready) return
     instanceRef.current?.setOption(option, true)
-  }, [option, themeKey])
+  }, [ready, option, themeKey])
 
   return (
     <div
