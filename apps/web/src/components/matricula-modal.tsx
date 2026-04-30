@@ -105,7 +105,7 @@ export function MatriculaModal({ open, onClose, onSubmit }: MatriculaModalProps)
 
   return (
     <Modal open={open} onOpenChange={handleOpenChange}>
-      <Modal.Content className="max-w-[560px] w-full">
+      <Modal.Content className="sm:max-w-2xl">
         <Modal.Header>
           <div className="flex flex-col gap-1">
             <Modal.Title>Nova matrícula</Modal.Title>
@@ -346,7 +346,7 @@ function StepConfirmacao({ data }: StepConfirmacaoProps) {
         </p>
       </div>
 
-      <dl className="flex flex-col gap-4">
+      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <SummaryRow label="Aluno" value={data.aluno.nome || "—"} />
         <SummaryRow label="Email" value={data.aluno.email || "—"} />
         <SummaryRow
@@ -355,7 +355,7 @@ function StepConfirmacao({ data }: StepConfirmacaoProps) {
         />
         <SummaryRow label="Responsável" value={data.aluno.responsavel || "—"} />
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 sm:col-span-2">
           <dt className="text-xs uppercase tracking-wider text-[var(--color-text-muted)] font-medium">
             Disciplinas
           </dt>
@@ -373,10 +373,12 @@ function StepConfirmacao({ data }: StepConfirmacaoProps) {
         </div>
 
         {data.diagnosticaInicial.observacoes.trim() && (
-          <SummaryRow
-            label="Observações"
-            value={data.diagnosticaInicial.observacoes}
-          />
+          <div className="sm:col-span-2">
+            <SummaryRow
+              label="Observações"
+              value={data.diagnosticaInicial.observacoes}
+            />
+          </div>
         )}
       </dl>
     </div>
