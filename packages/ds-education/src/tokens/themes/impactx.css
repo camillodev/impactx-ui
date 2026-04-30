@@ -29,18 +29,18 @@
   --color-secondary-bd:          #11C76F;
   --color-secondary-bd-active:   #064D2A;
 
-  /* ========== Tertiary (Impact X brand secondary — yellow) ==========
-   * Override semântico: no theme Impact X, tertiary = amarelo brand
-   * (acentos, CTAs secundários). Em outros themes, tertiary continua ghost.
+  /* ========== Tertiary (ghost on light bg) ==========
+   * Tertiary = ghost em TODOS os themes (consistente com education/kumon).
+   * Amarelo IX vive em --color-brand-secondary (acentos, badges).
    */
-  --color-tertiary:           #F5C400;
-  --color-tertiary-hover:     #C99F00;
-  --color-tertiary-active:    #997900;
-  --color-tertiary-disabled:  #FFF5C2;
-  --color-tertiary-fg:           #1E1E1E;
-  --color-tertiary-fg-hover:     #1E1E1E;
+  --color-tertiary:           transparent;
+  --color-tertiary-hover:     #000000;
+  --color-tertiary-active:    #000000;
+  --color-tertiary-disabled:  transparent;
+  --color-tertiary-fg:           #1E2124;
+  --color-tertiary-fg-hover:     #FFFFFF;
   --color-tertiary-fg-active:    #FFFFFF;
-  --color-tertiary-fg-disabled:  #999EA3;
+  --color-tertiary-fg-disabled:  #C9CCCF;
 
   /* ========== Tertiary Dark (ghost on dark bg) ========== */
   --color-tertiary-dark:           transparent;
