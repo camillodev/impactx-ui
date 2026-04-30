@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Search, Moon, Sun } from "lucide-react"
+import { Search, Moon, Sun, Menu } from "lucide-react"
 import { useTheme } from "@/app/theme-provider"
 import { IconButton } from "@impactx/ds-education"
 import { CommandPalette, useCommandPalette } from "@impactx/ds-education"
+import { useMobileNav } from "@/app/shell/mobile-nav-context"
 
 function ModeToggle() {
   const [mode, setMode] = React.useState<"light" | "dark">("light")
@@ -68,10 +69,19 @@ function SearchTrigger({ onClick }: { onClick: () => void }) {
 export function Header() {
   const { theme, setTheme } = useTheme()
   const { open, setOpen } = useCommandPalette()
+  const { openNav } = useMobileNav()
 
   return (
     <>
-      <header className="h-16 shrink-0 border-b border-[var(--color-border)] bg-[var(--color-bg)] z-10 flex items-center px-6 gap-4">
+      <header className="h-16 shrink-0 border-b border-[var(--color-border)] bg-[var(--color-bg)] z-10 flex items-center px-4 md:px-6 gap-3 md:gap-4">
+        <IconButton
+          aria-label="Abrir menu"
+          onClick={openNav}
+          variant="ghost"
+          shape="square"
+          icon={<Menu />}
+          className="md:hidden"
+        />
         <div className="flex-1 flex items-center">
           <SearchTrigger onClick={() => setOpen(true)} />
         </div>
