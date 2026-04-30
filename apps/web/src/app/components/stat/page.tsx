@@ -14,7 +14,7 @@ export default function StatPage() {
           Valores básicos
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Stat asCard label="Total Students" value="1.247" />
             <Stat asCard label="Completion Rate" value="87%" />
             <Stat asCard label="Average Score" value="78.4" />
@@ -28,7 +28,7 @@ export default function StatPage() {
           Com delta
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Stat
               asCard
               label="Conversion"
@@ -63,10 +63,28 @@ export default function StatPage() {
 
       <section className="mb-12">
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
+          Auto-detect de sinal (sem prop deltaTrend)
+        </h2>
+        <p className="text-sm text-[var(--color-text-muted)] mb-4">
+          Quando <code>deltaTrend</code> não é passado, o sinal do delta string é
+          detectado automaticamente: <code>+N</code> → success, <code>-N</code> → danger,
+          sem sinal → neutral.
+        </p>
+        <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Stat asCard label="Pré-matrículas" value="142" delta="+12%" />
+            <Stat asCard label="Cancelamentos" value="8" delta="-3%" />
+            <Stat asCard label="Pendentes" value="24" delta="5%" />
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
           Sem card (inline)
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Stat label="Total Students" value="1.247" />
             <Stat label="Completion Rate" value="87%" />
             <Stat label="Average Score" value="78.4" />
@@ -80,7 +98,7 @@ export default function StatPage() {
           Com ícone
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Stat
               asCard
               label="Growth"

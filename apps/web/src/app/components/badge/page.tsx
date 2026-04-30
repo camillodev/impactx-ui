@@ -32,7 +32,7 @@ export default function BadgePage() {
             {variantLabel}
           </h2>
 
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sizes.map(({ key: size, label: sizeLabel }) => (
               <div key={size} className="flex flex-col gap-3">
                 <p className="text-xs text-[#6b7280] mb-1">{sizeLabel}</p>
