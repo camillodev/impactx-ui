@@ -80,3 +80,41 @@ export function Stat({
     </div>
   )
 }
+
+export interface StatGridProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * Number of columns at the largest breakpoint (lg).
+   * Smaller breakpoints automatically degrade: 1 col mobile, 2 cols sm.
+   * @default 4
+   */
+  cols?: 2 | 3 | 4
+}
+
+const colsClass: Record<NonNullable<StatGridProps["cols"]>, string> = {
+  2: "grid-cols-1 sm:grid-cols-2",
+  3: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+  4: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+}
+
+/**
+ * Responsive grid wrapper for `Stat` components.
+ * Default: 1 col mobile, 2 cols tablet (sm), 4 cols desktop (lg).
+ *
+ * @example
+ * <StatGrid>
+ *   <Stat asCard label="Alunos" value="1.2k" />
+ *   <Stat asCard label="Turmas" value="32" />
+ * </StatGrid>
+ */
+export function StatGrid({
+  className,
+  cols = 4,
+  ...props
+}: StatGridProps) {
+  return (
+    <div
+      className={cn("grid gap-4", colsClass[cols], className)}
+      {...props}
+    />
+  )
+}
