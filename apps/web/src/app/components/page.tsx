@@ -42,7 +42,7 @@ const categoryMeta: Record<
   organism: {
     title: "Organisms",
     subtitle: "Estruturas complexas com lógica interna",
-    badgeVariant: "warning",
+    badgeVariant: "ink",
   },
 }
 
