@@ -23,8 +23,6 @@ const buttonVariants = cva(
 
         secondary:
           "bg-[var(--color-secondary)] text-[var(--color-secondary-bd)] border-2 border-[var(--color-secondary-bd)] shadow-sm hover:bg-[var(--color-secondary-hover)] active:bg-[var(--color-secondary-active)] active:border-[var(--color-secondary-bd-active)] active:text-[var(--color-secondary-bd-active)]",
-        outline:
-          "bg-[var(--color-secondary)] text-[var(--color-secondary-bd)] border-2 border-[var(--color-secondary-bd)] shadow-sm hover:bg-[var(--color-secondary-hover)] active:bg-[var(--color-secondary-active)] active:border-[var(--color-secondary-bd-active)] active:text-[var(--color-secondary-bd-active)]",
 
         tertiary:
           "bg-[var(--color-tertiary)] text-[var(--color-tertiary-fg)] hover:bg-[var(--color-tertiary-hover)] hover:text-[var(--color-tertiary-fg-hover)] active:bg-[var(--color-tertiary-active)] active:text-[var(--color-tertiary-fg-active)]",

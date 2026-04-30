@@ -63,7 +63,7 @@ export function AssessmentListItem({
 
       {/* Direita: botões */}
       <div className="flex items-center gap-3 flex-shrink-0">
-        <Button variant="outline" size="sm" onClick={onViewDetails}>
+        <Button variant="secondary" size="sm" onClick={onViewDetails}>
           Ver detalhes
         </Button>
         <Button variant="primary" size="sm" onClick={onFinalResult}>

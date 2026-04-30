@@ -22,7 +22,7 @@
 
 - **alfabeto** — primary `#0467DB`
 - **kumon** — primary `#00A9E3`
-- **impactx** — primary `#11C76F` + tertiary `#F5C400`
+- **impactx** — primary `#11C76F` + brand-secondary `#F5C400` (cor de marca, nao variant)
 
 ## Convencoes
 
@@ -38,7 +38,7 @@
 - Outline buttons usam `border-2` da intent color (nao cinza)
 - Helper text de Input usa primary color (nao muted)
 - Toast bg eh tinted da intent (nao branco/preto puro)
-- Tertiary buttons no theme `impactx` = amarelo `#F5C400`
+- Tertiary eh ghost em TODOS os themes (incluindo impactx — amarelo IX eh brand-secondary, nao tertiary)
 - Theme switching via classe HTML, mode via atributo HTML
 - Schema do registry estende `https://ui.shadcn.com/schema/registry-item.json` com `meta.impactx`
 

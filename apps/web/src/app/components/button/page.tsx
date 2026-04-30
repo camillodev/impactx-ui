@@ -92,11 +92,6 @@ export default function ButtonPage() {
             <span className="text-xs text-[#999ea3]">Exemplo</span>
           </div>
           <div className="grid grid-cols-[120px_1fr_1fr] gap-4 items-center">
-            <span className="text-xs font-mono text-[#999ea3]">outline</span>
-            <span className="text-xs text-[#1e2124]">secondary</span>
-            <Button variant="outline" size="md">outline alias</Button>
-          </div>
-          <div className="grid grid-cols-[120px_1fr_1fr] gap-4 items-center">
             <span className="text-xs font-mono text-[#999ea3]">ghost</span>
             <span className="text-xs text-[#1e2124]">tertiary</span>
             <Button variant="ghost" size="md">ghost alias</Button>
