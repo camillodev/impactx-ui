@@ -26,9 +26,21 @@ export interface StatProps
   label: string
   value: string | number
   delta?: string
+  /**
+   * Override automatic delta sign detection.
+   * Auto-detect: starts with "+" → up, starts with "-" → down, else → neutral.
+   */
   deltaTrend?: "up" | "down" | "neutral"
   asCard?: boolean
   icon?: React.ReactNode
+}
+
+function detectDeltaTrend(delta?: string): "up" | "down" | "neutral" {
+  if (!delta) return "neutral"
+  const str = String(delta).trim()
+  if (str.startsWith("+")) return "up"
+  if (str.startsWith("-") || str.startsWith("−")) return "down"
+  return "neutral"
 }
 
 export function Stat({
@@ -36,11 +48,12 @@ export function Stat({
   label,
   value,
   delta,
-  deltaTrend = "neutral",
+  deltaTrend,
   asCard,
   icon,
   ...props
 }: StatProps) {
+  const resolvedTrend = deltaTrend ?? detectDeltaTrend(delta)
   const body = (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between gap-2">
@@ -57,9 +70,9 @@ export function Stat({
         {value}
       </span>
       {delta && (
-        <span className={cn(deltaVariants({ trend: deltaTrend }))}>
-          {deltaTrend === "up" && <ArrowUp size={12} strokeWidth={2.5} />}
-          {deltaTrend === "down" && <ArrowDown size={12} strokeWidth={2.5} />}
+        <span className={cn(deltaVariants({ trend: resolvedTrend }))}>
+          {resolvedTrend === "up" && <ArrowUp size={12} strokeWidth={2.5} />}
+          {resolvedTrend === "down" && <ArrowDown size={12} strokeWidth={2.5} />}
           {delta}
         </span>
       )}
