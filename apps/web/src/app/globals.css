@@ -23,16 +23,39 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Ellipsis padrão em elementos inline de uma linha que normalmente
- * vivem dentro de containers de largura controlada (cards, nav items,
- * table cells, badges). Multi-line ainda precisa de .line-clamp-* explícito.
+/* === Text overflow policy ===
+ * Ellipsis single-line: aplicado por default em containers de largura
+ * controlada (cards, nav, cells, command palette). Outros lugares: opt-in
+ * via classe `.truncate` ou atributo `data-ellipsis`.
+ *
+ * Multi-line clamp: opt-in via `data-clamp="2"` ou `data-clamp="3"`.
+ * Pra clamp customizado, use Tailwind utility line-clamp-N.
+ *
+ * NUNCA aplique ellipsis em parágrafos de prosa — texto deve quebrar
+ * normalmente. Ellipsis é pra labels, títulos curtos, table cells.
  */
 nav a > span,
 [data-card-title],
 [data-card-desc],
 [role="cell"],
-[cmdk-item] {
+[cmdk-item],
+.truncate,
+[data-ellipsis] {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+[data-clamp="2"] {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+[data-clamp="3"] {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
