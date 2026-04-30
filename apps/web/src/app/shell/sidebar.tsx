@@ -1,8 +1,9 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutGrid, Component } from "lucide-react"
+import { LayoutGrid, Component, FileText, ChevronRight } from "lucide-react"
 import { Avatar, Separator, cn, components } from "@impactx/ds-education"
 import type { RegistryItem } from "@impactx/ds-education"
 import { useMobileNav } from "@/app/shell/mobile-nav-context"
@@ -24,6 +25,17 @@ const CATEGORY_ORDER: { key: CategoryKey; label: string }[] = [
   { key: "molecule", label: "Molecules" },
   { key: "chart", label: "Charts" },
   { key: "organism", label: "Organisms" },
+]
+
+type TemplateItem = { href: string; label: string }
+
+const TEMPLATES_EDUCATION: TemplateItem[] = [
+  { href: "/templates/education/avaliacoes", label: "Avaliações" },
+  { href: "/templates/education/catalogo", label: "Catálogo" },
+  { href: "/templates/education/lista-diagnostica", label: "Lista Diagnóstica" },
+  { href: "/templates/education/diagnostica-ano", label: "Diagnóstica Ano" },
+  { href: "/templates/education/relatorio-visao-geral", label: "Visão Geral" },
+  { href: "/templates/education/relatorio-questoes", label: "Questões" },
 ]
 
 function groupByCategory(items: RegistryItem[]) {
@@ -51,6 +63,14 @@ export function Sidebar() {
       : pathname === href || pathname.startsWith(href + "/")
 
   const componentsActive = pathname.startsWith("/components")
+  const templatesActive = pathname.startsWith("/templates")
+
+  // Default: ambos abertos. Se rota indica group, garantir aberto.
+  const [componentsOpen, setComponentsOpen] = useState<boolean>(true)
+  const [templatesOpen, setTemplatesOpen] = useState<boolean>(true)
+
+  const isComponentsOpen = componentsOpen || componentsActive
+  const isTemplatesOpen = templatesOpen || templatesActive
 
   return (
     <>
@@ -119,37 +139,100 @@ export function Sidebar() {
                 </li>
               )
             })}
-
-            {/* Components header */}
-            <li>
-              <Link
-                href="/components"
-                onClick={close}
-                className={cn(
-                  "flex items-center gap-3 rounded-md px-3 py-1.5 text-sm font-medium transition-colors mt-1",
-                  componentsActive && pathname === "/components"
-                    ? "bg-[var(--color-primary-soft)] text-[var(--color-primary)]"
-                    : "text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
-                )}
-              >
-                <Component className="size-4 shrink-0" />
-                <span className="truncate">Components</span>
-              </Link>
-            </li>
           </ul>
 
-          {/* Categorias */}
-          <div className="mt-2">
-            {CATEGORY_ORDER.map(({ key, label }) => {
-              const items = grouped.get(key) ?? []
-              if (items.length === 0) return null
-              return (
-                <div key={key} className="mt-6">
+          {/* Components group (colapsável) */}
+          <div className="mt-3">
+            <button
+              type="button"
+              onClick={() => setComponentsOpen((v) => !v)}
+              aria-expanded={isComponentsOpen}
+              className={cn(
+                "w-full flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                componentsActive
+                  ? "text-[var(--color-primary)]"
+                  : "text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
+              )}
+            >
+              <ChevronRight
+                className={cn(
+                  "size-3.5 shrink-0 transition-transform",
+                  isComponentsOpen && "rotate-90"
+                )}
+              />
+              <Component className="size-4 shrink-0" />
+              <span className="truncate flex-1 text-left">Components</span>
+            </button>
+
+            {isComponentsOpen ? (
+              <div className="mt-1">
+                {CATEGORY_ORDER.map(({ key, label }) => {
+                  const items = grouped.get(key) ?? []
+                  if (items.length === 0) return null
+                  return (
+                    <div key={key} className="mt-3">
+                      <div className="px-3 mb-1 text-xs uppercase tracking-wider text-[var(--color-text-muted)] font-medium">
+                        {label}
+                      </div>
+                      <ul className="space-y-0.5">
+                        {items.map((it) => {
+                          const active = isActive(it.href)
+                          return (
+                            <li key={it.href}>
+                              <Link
+                                href={it.href}
+                                onClick={close}
+                                className={cn(
+                                  "flex items-center rounded-md pl-6 pr-3 py-1 text-sm font-medium transition-colors",
+                                  active
+                                    ? "bg-[var(--color-primary-soft)] text-[var(--color-primary)]"
+                                    : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-text)]"
+                                )}
+                              >
+                                <span className="truncate">{it.label}</span>
+                              </Link>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+                  )
+                })}
+              </div>
+            ) : null}
+          </div>
+
+          {/* Templates group (colapsável) */}
+          <div className="mt-3">
+            <button
+              type="button"
+              onClick={() => setTemplatesOpen((v) => !v)}
+              aria-expanded={isTemplatesOpen}
+              className={cn(
+                "w-full flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                templatesActive
+                  ? "text-[var(--color-primary)]"
+                  : "text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
+              )}
+            >
+              <ChevronRight
+                className={cn(
+                  "size-3.5 shrink-0 transition-transform",
+                  isTemplatesOpen && "rotate-90"
+                )}
+              />
+              <FileText className="size-4 shrink-0" />
+              <span className="truncate flex-1 text-left">Templates</span>
+            </button>
+
+            {isTemplatesOpen ? (
+              <div className="mt-1">
+                <div className="mt-3">
                   <div className="px-3 mb-1 text-xs uppercase tracking-wider text-[var(--color-text-muted)] font-medium">
-                    {label}
+                    Education
                   </div>
                   <ul className="space-y-0.5">
-                    {items.map((it) => {
+                    {TEMPLATES_EDUCATION.map((it) => {
                       const active = isActive(it.href)
                       return (
                         <li key={it.href}>
@@ -157,7 +240,7 @@ export function Sidebar() {
                             href={it.href}
                             onClick={close}
                             className={cn(
-                              "flex items-center rounded-md px-3 py-1 text-sm font-medium transition-colors",
+                              "flex items-center rounded-md pl-6 pr-3 py-1 text-sm font-medium transition-colors",
                               active
                                 ? "bg-[var(--color-primary-soft)] text-[var(--color-primary)]"
                                 : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-text)]"
@@ -170,8 +253,8 @@ export function Sidebar() {
                     })}
                   </ul>
                 </div>
-              )
-            })}
+              </div>
+            ) : null}
           </div>
         </nav>
 
