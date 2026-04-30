@@ -4,7 +4,8 @@
   "private": true,
   "description": "Impact X UI — multi-DS, multi-theme component library distributed via @impactx/ui CLI",
   "scripts": {
-    "dev": "turbo dev",
+    "dev": "pnpm --filter @impactx/web dev",
+    "dev:all": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
     "test": "turbo test",
