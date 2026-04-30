@@ -32,6 +32,7 @@
 - Componentes consomem so tokens — DS eh agnostico ao theme
 - ESM only, TypeScript strict
 - DataTable headless — Pagination compoem externo
+- Responsive primitives em globals.css: .responsive-grid-{2,3,4}, .stack-on-mobile, [data-text-fluid]. Usar ao invés de grid-cols-N hardcoded.
 
 ## Decisoes de design fechadas
 

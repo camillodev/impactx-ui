@@ -78,11 +78,11 @@ export function DataTable<T>({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)]",
+        "overflow-x-auto rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)]",
         className
       )}
     >
-      <table className="w-full text-sm">
+      <table className="w-full min-w-full text-sm">
         <thead className="bg-[var(--color-surface)] text-[var(--color-text-muted)]">
           <tr>
             {columns.map((col) => {
