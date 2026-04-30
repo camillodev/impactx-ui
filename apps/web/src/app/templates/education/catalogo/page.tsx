@@ -3,72 +3,91 @@
 import { useState } from "react"
 import {
   HeroBanner,
-  CategoryCard,
   Card,
   CardHeader,
   CardTitle,
   CardContent,
   Badge,
+  DataTable,
+  type Column,
+  Input,
+  Pagination,
 } from "@impactx/ds-education"
-import {
-  BarChart3,
-  PieChart,
-  Users,
-  School,
-  BookOpen,
-  Target,
-  TrendingUp,
-  Award,
-} from "lucide-react"
 
-const reports = [
-  { id: "visao-geral", title: "Visão geral", subtitle: "Resumo executivo da rede", icon: BarChart3 },
-  { id: "questoes", title: "Análise por questão", subtitle: "Detalhamento item a item", icon: PieChart },
-  { id: "alunos", title: "Por aluno", subtitle: "Desempenho individual", icon: Users },
-  { id: "escolas", title: "Por escola", subtitle: "Comparativo entre unidades", icon: School },
-  { id: "componentes", title: "Componentes curriculares", subtitle: "Matemática, Português, Ciências…", icon: BookOpen },
-  { id: "habilidades", title: "Habilidades BNCC", subtitle: "Mapa de fragilidades", icon: Target },
-  { id: "evolucao", title: "Evolução temporal", subtitle: "Comparativo entre bimestres", icon: TrendingUp },
-  { id: "destaques", title: "Destaques", subtitle: "Top alunos e turmas", icon: Award },
+type Item = {
+  id: string
+  name: string
+  category: string
+  status: "active" | "draft" | "archived"
+  updatedAt: string
+}
+
+const items: Item[] = [
+  { id: "001", name: "Item Alpha", category: "Categoria A", status: "active", updatedAt: "28/04/2026" },
+  { id: "002", name: "Item Bravo", category: "Categoria B", status: "active", updatedAt: "27/04/2026" },
+  { id: "003", name: "Item Charlie", category: "Categoria A", status: "draft", updatedAt: "26/04/2026" },
+  { id: "004", name: "Item Delta", category: "Categoria C", status: "active", updatedAt: "25/04/2026" },
+  { id: "005", name: "Item Echo", category: "Categoria B", status: "archived", updatedAt: "20/04/2026" },
+  { id: "006", name: "Item Foxtrot", category: "Categoria A", status: "active", updatedAt: "18/04/2026" },
+  { id: "007", name: "Item Golf", category: "Categoria C", status: "draft", updatedAt: "16/04/2026" },
+  { id: "008", name: "Item Hotel", category: "Categoria B", status: "active", updatedAt: "12/04/2026" },
+]
+
+const columns: Column<Item>[] = [
+  { key: "id", header: "ID", cell: (r) => <span className="font-mono text-xs text-muted-foreground">{r.id}</span> },
+  { key: "name", header: "Nome", cell: (r) => <span className="font-medium">{r.name}</span> },
+  { key: "category", header: "Categoria", cell: (r) => r.category },
+  {
+    key: "status",
+    header: "Status",
+    cell: (r) =>
+      r.status === "active" ? (
+        <Badge variant="success">Ativo</Badge>
+      ) : r.status === "draft" ? (
+        <Badge variant="ink">Rascunho</Badge>
+      ) : (
+        <Badge variant="warning">Arquivado</Badge>
+      ),
+  },
+  { key: "updatedAt", header: "Última atualização", align: "right", cell: (r) => r.updatedAt },
 ]
 
 export default function CatalogoTemplate() {
-  const [active, setActive] = useState<string>("visao-geral")
+  const [query, setQuery] = useState("")
+  const [page, setPage] = useState(1)
+  const filtered = items.filter((i) => i.name.toLowerCase().includes(query.toLowerCase()))
 
   return (
     <div className="mx-auto max-w-6xl space-y-6 p-8">
       <HeroBanner
         eyebrow="Catálogo"
-        title="Relatórios disponíveis"
-        description="Escolha o recorte ideal para entender o desempenho da sua rede."
+        title="DataTable example"
+        description="Demonstração do componente DataTable com filtros, badges e paginação — dados neutros."
       />
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {reports.map((r) => (
-          <CategoryCard
-            key={r.id}
-            icon={r.icon}
-            title={r.title}
-            subtitle={r.subtitle}
-            active={active === r.id}
-            onClick={() => setActive(r.id)}
-          />
-        ))}
-      </div>
-
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Atualizações recentes</CardTitle>
-          <Badge variant="success">Novo</Badge>
+        <CardHeader className="flex flex-row items-center justify-between gap-4">
+          <CardTitle>Itens</CardTitle>
+          <div className="flex items-center gap-3">
+            <Input
+              placeholder="Buscar por nome…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-64"
+            />
+            <Badge variant="primary">{filtered.length} itens</Badge>
+          </div>
         </CardHeader>
         <CardContent>
-          <ul className="space-y-3 text-sm text-muted-foreground">
-            <li>Relatório de Habilidades BNCC agora cobre o 9º Ano EF.</li>
-            <li>Comparativo regional disponível para redes municipais a partir de 03/2026.</li>
-            <li>Exportação em PDF unificada por escola ou turma.</li>
-          </ul>
+          <DataTable
+            columns={columns}
+            data={filtered}
+            defaultSort={{ key: "updatedAt", direction: "desc" }}
+          />
         </CardContent>
       </Card>
+
+      <Pagination total={64} pageSize={8} value={page} onChange={setPage} />
     </div>
   )
 }
