@@ -48,6 +48,7 @@ const ATOM_SLUGS = new Set([
 const MOLECULE_SLUGS = new Set([
   "stat", "banner-cta", "modal", "toast",
   "command-palette", "help-fab", "code-block", "assessment-card",
+  "dropdown-menu",
 ])
 const CHART_SLUGS = new Set(["chart", "donut-score"])
 const ORGANISM_SLUGS = new Set([
@@ -60,6 +61,7 @@ const ORGANISM_SLUGS = new Set([
 const TITLE_MAP = {
   "icon-button": "IconButton",
   "banner-cta": "BannerCTA",
+  "dropdown-menu": "DropdownMenu",
   "command-palette": "CommandPalette",
   "help-fab": "HelpFab",
   "code-block": "CodeBlock",

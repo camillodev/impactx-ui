@@ -15,18 +15,26 @@ export const components: RegistryItem[] = [
   { href: "/components/button",      label: "Button",      description: "7 variants × 3 sizes",          category: "atom", keywords: ["cta", "action"] },
   { href: "/components/icon-button", label: "IconButton",  description: "Square / circle, ghost/filled", category: "atom", keywords: ["icon", "action"] },
   { href: "/components/badge",       label: "Badge",       description: "5 variants pastel",             category: "atom", keywords: ["tag", "label", "status"] },
+  { href: "/components/checkbox",    label: "Checkbox",    description: "Checked, disabled, indeterminate", category: "atom", keywords: ["input", "form", "selection"] },
   { href: "/components/avatar",      label: "Avatar",      description: "Image + fallback iniciais",     category: "atom", keywords: ["user", "profile", "image"] },
   { href: "/components/breadcrumb",  label: "Breadcrumb",  description: "Hierarquia de navegação",       category: "atom", keywords: ["nav", "path"] },
   { href: "/components/input",       label: "Input",       description: "Label, error, leading icon",    category: "atom", keywords: ["text", "field", "form"] },
+  { href: "/components/label",       label: "Label",       description: "Form label + states",           category: "atom", keywords: ["form", "text", "field"] },
+  { href: "/components/textarea",    label: "Textarea",    description: "Multiline input com label, error e helper", category: "atom", keywords: ["form", "field", "multiline"] },
   { href: "/components/pagination",  label: "Pagination",  description: "Numérica + prev/next",          category: "atom", keywords: ["pages", "nav"] },
+  { href: "/components/skeleton",    label: "Skeleton",    description: "Loading placeholder",          category: "atom", keywords: ["loading", "placeholder", "shimmer"] },
   { href: "/components/tabs",        label: "Tabs",        description: "Navegação horizontal",          category: "atom" },
   { href: "/components/tooltip",     label: "Tooltip",     description: "Top / Right / Bottom / Left",   category: "atom", keywords: ["hint", "popup"] },
 
   // Molecules
+  { href: "/components/dropdown-menu", label: "DropdownMenu", description: "Menu contextual — Item, Checkbox, Radio, SubMenu, Shortcut", category: "molecule", keywords: ["menu", "context", "dropdown", "actions", "submenu"] },
+  { href: "/components/select",      label: "Select",      description: "Dropdown compound com grupos, label e estado controlado", category: "molecule", keywords: ["dropdown", "form", "option", "field"] },
   { href: "/components/stat",        label: "Stat",        description: "Label + valor + delta",         category: "molecule", keywords: ["kpi", "metric", "number"] },
   { href: "/components/chip",        label: "Chip",        description: "Chip + SegmentedControl",       category: "molecule", keywords: ["filter", "segmented", "tag"] },
   { href: "/components/banner-cta",  label: "BannerCTA",   description: "Banner full-width com CTA",     category: "molecule", keywords: ["promo", "hero", "callout"] },
+  { href: "/components/alert-dialog", label: "AlertDialog", description: "Confirm / Cancel para ações destrutivas", category: "molecule", keywords: ["confirm", "dialog", "destructive", "danger", "overlay"] },
   { href: "/components/modal",       label: "Modal",       description: "Default / Welcome / Split",     category: "molecule", keywords: ["dialog", "popup", "overlay"] },
+  { href: "/components/sheet",       label: "Sheet",       description: "Drawer / slide-over — top, right, bottom, left", category: "molecule", keywords: ["drawer", "panel", "slide", "sidebar", "overlay"] },
   { href: "/components/toast",       label: "Toast",       description: "Success / Info / Warn / Error", category: "molecule", keywords: ["notification", "snackbar"] },
 
   // Charts

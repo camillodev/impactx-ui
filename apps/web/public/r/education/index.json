@@ -9,6 +9,13 @@
   "defaultTheme": "alfabeto",
   "items": [
     {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "AlertDialog",
+      "description": "AlertDialog — Impact X DS Education",
+      "category": "atom"
+    },
+    {
       "name": "assessment-card",
       "type": "registry:ui",
       "title": "AssessmentCard",
@@ -65,6 +72,13 @@
       "category": "chart"
     },
     {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox — Impact X DS Education",
+      "category": "atom"
+    },
+    {
       "name": "chip",
       "type": "registry:ui",
       "title": "Chip",
@@ -93,6 +107,13 @@
       "category": "organism"
     },
     {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "DropdownMenu",
+      "description": "DropdownMenu — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
       "name": "help-fab",
       "type": "registry:ui",
       "title": "HelpFab",
@@ -111,6 +132,13 @@
       "type": "registry:ui",
       "title": "Input",
       "description": "Input — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Label — Impact X DS Education",
       "category": "atom"
     },
     {
@@ -135,10 +163,31 @@
       "category": "atom"
     },
     {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Select — Impact X DS Education",
+      "category": "atom"
+    },
+    {
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
       "description": "Separator — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Sheet — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Skeleton — Impact X DS Education",
       "category": "atom"
     },
     {
@@ -149,10 +198,24 @@
       "category": "molecule"
     },
     {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Switch — Impact X DS Education",
+      "category": "atom"
+    },
+    {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
       "description": "Tabs — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Textarea — Impact X DS Education",
       "category": "atom"
     },
     {
