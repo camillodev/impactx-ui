@@ -6,7 +6,7 @@ import { Checkbox } from "@impactx/ds-education"
 type CheckedState = boolean | "indeterminate"
 
 export default function CheckboxPlayground() {
-  const [checked, setChecked] = useState<CheckedState>(false)
+  const [checked, setChecked] = useState<CheckedState>(true)
   const [indeterminate, setIndeterminate] = useState<CheckedState>("indeterminate")
 
   return (
