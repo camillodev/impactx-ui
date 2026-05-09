@@ -13,7 +13,7 @@
       "type": "registry:ui",
       "title": "AlertDialog",
       "description": "AlertDialog — Impact X DS Education",
-      "category": "atom"
+      "category": "molecule"
     },
     {
       "name": "assessment-card",
@@ -167,7 +167,7 @@
       "type": "registry:ui",
       "title": "Select",
       "description": "Select — Impact X DS Education",
-      "category": "atom"
+      "category": "molecule"
     },
     {
       "name": "separator",
@@ -181,7 +181,7 @@
       "type": "registry:ui",
       "title": "Sheet",
       "description": "Sheet — Impact X DS Education",
-      "category": "atom"
+      "category": "molecule"
     },
     {
       "name": "skeleton",
