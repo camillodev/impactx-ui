@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "question-row",
+  "type": "registry:ui",
+  "title": "QuestionRow",
+  "description": "QuestionRow — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/question-row.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/question-row.tsx",
+      "content": "import * as React from \"react\"\nimport { AlertTriangle, ArrowRight } from \"lucide-react\"\n\nexport interface QuestionRowProps {\n  numero: string\n  campoAtuacao: string\n  acertosEscola: string\n  acertosNacional: string\n  isFragilidade?: boolean\n  isEven?: boolean\n}\n\nexport function QuestionRow({\n  numero,\n  campoAtuacao,\n  acertosEscola,\n  acertosNacional,\n  isFragilidade = false,\n}: QuestionRowProps) {\n  return (\n    <tr\n      style={{\n        backgroundColor: \"var(--color-bg)\",\n        borderBottom: \"1px solid var(--color-border)\",\n      }}\n    >\n      {/* Questão */}\n      <td\n        className=\"py-5 px-5 text-sm font-semibold\"\n        style={{ color: \"var(--color-text)\" }}\n      >\n        {numero}\n      </td>\n\n      {/* Campo de atuação */}\n      <td className=\"py-5 px-5\">\n        <div className=\"flex items-center gap-2\">\n          {isFragilidade && (\n            <AlertTriangle\n              size={16}\n              style={{ color: \"var(--color-warning)\", flexShrink: 0 }}\n            />\n          )}\n          <span className=\"text-sm\" style={{ color: \"var(--color-text-muted)\" }}>\n            {campoAtuacao}\n          </span>\n        </div>\n      </td>\n\n      {/* Acertos Escola */}\n      <td\n        className=\"py-5 px-5 text-sm font-bold\"\n        style={{ color: \"var(--color-text)\" }}\n      >\n        {acertosEscola}\n      </td>\n\n      {/* Acertos Nacional */}\n      <td\n        className=\"py-5 px-5 text-sm\"\n        style={{ color: \"var(--color-text-muted)\" }}\n      >\n        {acertosNacional}\n      </td>\n\n      {/* Seta */}\n      <td className=\"py-5 px-5 text-right\">\n        <ArrowRight size={16} style={{ color: \"var(--color-text-subtle)\" }} />\n      </td>\n    </tr>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "organism"
+    }
+  }
+}

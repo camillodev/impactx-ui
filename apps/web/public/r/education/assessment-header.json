@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "assessment-header",
+  "type": "registry:ui",
+  "title": "AssessmentHeader",
+  "description": "AssessmentHeader — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/assessment-header.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/assessment-header.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ArrowLeft } from \"lucide-react\"\nimport { Tabs, TabsList, TabsTrigger } from \"../components/tabs\"\n\nexport type BreadcrumbItem = { label: string; href?: string }\n\nexport type AssessmentTab = {\n  value: string\n  label: string\n}\n\nexport interface AssessmentHeaderProps {\n  breadcrumbs: BreadcrumbItem[]\n  subtitle: string\n  title: string\n  icon: React.ReactNode\n  tabs: AssessmentTab[]\n  activeTab: string\n  children?: React.ReactNode\n}\n\n/**\n * Header branco reutilizável para telas de relatório de avaliação.\n * Contém: breadcrumb + seta voltar, bloco título (ícone + nome), e tabs.\n *\n * `children` é renderizado dentro do TabsContent da aba ativa — use quando\n * o conteúdo da aba vive FORA desta área (i.e., não use children; apenas\n * passe activeTab e coloque o body cinza abaixo do header).\n *\n * Para navegação real, envolva com Router do Next.js no nível da página.\n */\nexport function AssessmentHeader({\n  breadcrumbs,\n  subtitle,\n  title,\n  icon,\n  tabs,\n  activeTab,\n}: AssessmentHeaderProps) {\n  return (\n    <div\n      className=\"border-b\"\n      style={{\n        backgroundColor: \"var(--color-bg)\",\n        borderColor: \"var(--color-border)\",\n      }}\n    >\n      <div className=\"max-w-5xl mx-auto px-6 pt-5 pb-0\">\n        {/* Breadcrumb */}\n        <div className=\"flex items-center gap-1.5 mb-4\">\n          {breadcrumbs.map((crumb, i) => (\n            <React.Fragment key={i}>\n              {i > 0 && (\n                <span style={{ color: \"var(--color-text-muted)\" }} className=\"text-sm\">\n                  /\n                </span>\n              )}\n              {i === 0 ? (\n                <button\n                  type=\"button\"\n                  className=\"flex items-center gap-1 text-sm hover:underline\"\n                  style={{ color: \"var(--color-text-muted)\" }}\n                >\n                  <ArrowLeft size={14} />\n                  {crumb.label}\n                </button>\n              ) : (\n                <span\n                  className=\"text-sm\"\n                  style={{ color: \"var(--color-text-muted)\" }}\n                >\n                  {crumb.label}\n                </span>\n              )}\n            </React.Fragment>\n          ))}\n        </div>\n\n        {/* Título */}\n        <div className=\"flex items-start gap-3 mb-5\">\n          <div\n            className=\"flex items-center justify-center w-14 h-14 rounded-[var(--radius-lg)] flex-shrink-0 mt-0.5\"\n            style={{ backgroundColor: \"var(--color-primary)\" }}\n          >\n            {icon}\n          </div>\n          <div className=\"flex flex-col gap-0.5\">\n            <span className=\"text-xs\" style={{ color: \"var(--color-text-muted)\" }}>\n              {subtitle}\n            </span>\n            <h1\n              className=\"text-2xl font-bold leading-tight\"\n              style={{ color: \"var(--color-text)\" }}\n            >\n              {title}\n            </h1>\n          </div>\n        </div>\n\n        {/* Tabs — sem conteúdo aqui; body fica abaixo no layout da página */}\n        <Tabs value={activeTab}>\n          <TabsList>\n            {tabs.map((tab) => (\n              <TabsTrigger key={tab.value} value={tab.value}>\n                {tab.label}\n              </TabsTrigger>\n            ))}\n          </TabsList>\n        </Tabs>\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "organism"
+    }
+  }
+}

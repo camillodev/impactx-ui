@@ -1,0 +1,243 @@
+{
+  "ds": "education",
+  "version": "0.2.0",
+  "themes": [
+    "alfabeto",
+    "kumon",
+    "impactx"
+  ],
+  "defaultTheme": "alfabeto",
+  "items": [
+    {
+      "name": "assessment-card",
+      "type": "registry:ui",
+      "title": "AssessmentCard",
+      "description": "AssessmentCard — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Avatar — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "banner-cta",
+      "type": "registry:ui",
+      "title": "BannerCTA",
+      "description": "BannerCTA — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Breadcrumb — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Chart — Impact X DS Education",
+      "category": "chart"
+    },
+    {
+      "name": "chip",
+      "type": "registry:ui",
+      "title": "Chip",
+      "description": "Chip — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "CodeBlock",
+      "description": "CodeBlock — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
+      "name": "command-palette",
+      "type": "registry:ui",
+      "title": "CommandPalette",
+      "description": "CommandPalette — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "DataTable",
+      "description": "DataTable — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "help-fab",
+      "type": "registry:ui",
+      "title": "HelpFab",
+      "description": "HelpFab — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
+      "name": "icon-button",
+      "type": "registry:ui",
+      "title": "IconButton",
+      "description": "IconButton — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Input — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "modal",
+      "type": "registry:ui",
+      "title": "Modal",
+      "description": "Modal — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "title": "ProgressBar",
+      "description": "ProgressBar — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Separator — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "stat",
+      "type": "registry:ui",
+      "title": "Stat",
+      "description": "Stat — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Toast — Impact X DS Education",
+      "category": "molecule"
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Tooltip — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "assessment-header",
+      "type": "registry:ui",
+      "title": "AssessmentHeader",
+      "description": "AssessmentHeader — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "assessment-list-item",
+      "type": "registry:ui",
+      "title": "AssessmentListItem",
+      "description": "AssessmentListItem — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "big-card",
+      "type": "registry:ui",
+      "title": "BigCard",
+      "description": "BigCard — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "campo-card",
+      "type": "registry:ui",
+      "title": "CampoCard",
+      "description": "CampoCard — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "category-card",
+      "type": "registry:ui",
+      "title": "CategoryCard",
+      "description": "CategoryCard — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "cta-banner",
+      "type": "registry:ui",
+      "title": "CtaBanner",
+      "description": "CtaBanner — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "donut-score",
+      "type": "registry:ui",
+      "title": "DonutScore",
+      "description": "DonutScore — Impact X DS Education",
+      "category": "chart"
+    },
+    {
+      "name": "hero-banner",
+      "type": "registry:ui",
+      "title": "HeroBanner",
+      "description": "HeroBanner — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "question-row",
+      "type": "registry:ui",
+      "title": "QuestionRow",
+      "description": "QuestionRow — Impact X DS Education",
+      "category": "organism"
+    },
+    {
+      "name": "subject-stat-card",
+      "type": "registry:ui",
+      "title": "SubjectStatCard",
+      "description": "SubjectStatCard — Impact X DS Education",
+      "category": "organism"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-cta",
+  "type": "registry:ui",
+  "title": "BannerCTA",
+  "description": "BannerCTA — Impact X DS Education",
+  "dependencies": [
+    "class-variance-authority",
+    "react"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/banner-cta.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/banner-cta.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\n\nconst bannerVariants = cva(\n  \"flex flex-col md:flex-row items-center text-center md:text-left gap-6 px-6 py-6 lg:px-8 lg:py-8 rounded-xl shadow-[var(--shadow-md)]\",\n  {\n    variants: {\n      variant: {\n        soft: \"bg-[var(--color-primary-soft)] text-[var(--color-text)]\",\n        gradient:\n          \"bg-[linear-gradient(135deg,var(--color-primary),var(--color-primary-hover))] text-[var(--color-primary-fg)]\",\n        filled: \"bg-[var(--color-primary)] text-[var(--color-primary-fg)]\",\n      },\n    },\n    defaultVariants: {\n      variant: \"soft\",\n    },\n  }\n)\n\ntype BannerVariant = NonNullable<VariantProps<typeof bannerVariants>[\"variant\"]>\n\nexport interface BannerCTAProps {\n  title: string\n  description?: string\n  actionLabel: string\n  onAction?: () => void\n  variant?: BannerVariant\n  illustration?: React.ReactNode\n  illustrationPosition?: \"left\" | \"right\"\n  className?: string\n}\n\nexport const BannerCTA = React.forwardRef<HTMLDivElement, BannerCTAProps>(\n  (\n    {\n      title,\n      description,\n      actionLabel,\n      onAction,\n      variant = \"soft\",\n      illustration,\n      illustrationPosition = \"right\",\n      className,\n    },\n    ref\n  ) => {\n    const buttonVariant = variant === \"soft\" ? \"primary\" : \"secondary\"\n    const descriptionClass =\n      variant === \"soft\"\n        ? \"text-[var(--color-text-muted)]\"\n        : \"opacity-90\"\n\n    const illo = illustration ? (\n      <div className=\"shrink-0 max-w-[160px] w-full md:w-auto flex items-center justify-center\">\n        {illustration}\n      </div>\n    ) : null\n\n    const orderClass =\n      illustrationPosition === \"left\" ? \"md:order-first\" : \"md:order-last\"\n\n    return (\n      <div ref={ref} className={cn(bannerVariants({ variant }), className)}>\n        {illo && <div className={cn(orderClass)}>{illo}</div>}\n        <div className=\"flex-1 flex flex-col gap-3 items-center md:items-start\">\n          <h3 className=\"text-xl font-bold\">{title}</h3>\n          {description && (\n            <p className={cn(\"text-sm\", descriptionClass)}>{description}</p>\n          )}\n          <Button variant={buttonVariant} onClick={onAction} className=\"mt-1\">\n            {actionLabel}\n          </Button>\n        </div>\n      </div>\n    )\n  }\n)\nBannerCTA.displayName = \"BannerCTA\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "molecule"
+    }
+  }
+}

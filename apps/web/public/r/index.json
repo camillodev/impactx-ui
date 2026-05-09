@@ -1,0 +1,10 @@
+{
+  "systems": [
+    {
+      "ds": "education",
+      "version": "0.2.0",
+      "description": "Impact X Education DS — atoms, molecules, charts, organisms",
+      "componentCount": 33
+    }
+  ]
+}

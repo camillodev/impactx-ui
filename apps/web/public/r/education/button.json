@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "Button — Impact X DS Education",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui",
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"radix-ui\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Button — atomic, theme-driven.\n *\n * Zero hex hardcoded. Todas as cores via CSS vars do theme ativo\n * (ver src/lib/tokens/themes/<theme>.css).\n *\n * Trocar `.theme-education` por `.theme-kumon` no <html> = trocar\n * o esquema de cores sem tocar neste arquivo.\n */\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        primary:\n          \"bg-[var(--color-primary)] text-[var(--color-primary-fg)] hover:bg-[var(--color-primary-hover)] active:bg-[var(--color-primary-active)]\",\n\n        secondary:\n          \"bg-[var(--color-secondary)] text-[var(--color-secondary-bd)] border-2 border-[var(--color-secondary-bd)] shadow-sm hover:bg-[var(--color-secondary-hover)] active:bg-[var(--color-secondary-active)] active:border-[var(--color-secondary-bd-active)] active:text-[var(--color-secondary-bd-active)]\",\n\n        tertiary:\n          \"bg-[var(--color-tertiary)] text-[var(--color-tertiary-fg)] hover:bg-[var(--color-tertiary-hover)] hover:text-[var(--color-tertiary-fg-hover)] active:bg-[var(--color-tertiary-active)] active:text-[var(--color-tertiary-fg-active)]\",\n        ghost:\n          \"bg-[var(--color-tertiary)] text-[var(--color-tertiary-fg)] hover:bg-[var(--color-tertiary-hover)] hover:text-[var(--color-tertiary-fg-hover)] active:bg-[var(--color-tertiary-active)] active:text-[var(--color-tertiary-fg-active)]\",\n\n        \"tertiary-dark\":\n          \"bg-[var(--color-tertiary-dark)] text-[var(--color-tertiary-dark-fg)] hover:bg-[var(--color-tertiary-dark-hover)] hover:text-[var(--color-tertiary-dark-fg-hover)] active:bg-[var(--color-tertiary-dark-active)] active:text-[var(--color-tertiary-dark-fg-active)]\",\n\n        \"danger-primary\":\n          \"bg-[var(--color-danger-primary)] text-[var(--color-danger-primary-fg)] hover:bg-[var(--color-danger-primary-hover)] active:bg-[var(--color-danger-primary-active)]\",\n\n        \"danger-secondary\":\n          \"bg-[var(--color-danger-secondary)] text-[var(--color-danger-secondary-bd)] border-2 border-[var(--color-danger-secondary-bd)] shadow-sm hover:bg-[var(--color-danger-secondary-hover)] active:bg-[var(--color-danger-secondary-active)] active:border-[var(--color-danger-secondary-bd-active)] active:text-[var(--color-danger-secondary-bd-active)]\",\n\n        danger:\n          \"bg-[var(--color-danger-primary)] text-[var(--color-danger-primary-fg)] hover:bg-[var(--color-danger-primary-hover)] active:bg-[var(--color-danger-primary-active)]\",\n\n        \"danger-tertiary\":\n          \"bg-[var(--color-danger-tertiary)] text-[var(--color-danger-tertiary-fg)] hover:bg-[var(--color-danger-tertiary-hover)] hover:text-[var(--color-danger-tertiary-fg-hover)] active:bg-[var(--color-danger-tertiary-active)] active:text-[var(--color-danger-tertiary-fg-active)]\",\n      },\n      size: {\n        sm: \"h-7 px-3 text-sm [&_svg]:size-4\",\n        md: \"h-9 px-3.5 text-sm [&_svg]:size-4\",\n        lg: \"h-11 px-4 text-base [&_svg]:size-5\",\n      },\n    },\n    defaultVariants: {\n      variant: \"primary\",\n      size: \"md\",\n    },\n  }\n)\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  asChild?: boolean\n}\n\nexport const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(\n  ({ className, variant, size, asChild = false, ...props }, ref) => {\n    const Comp = asChild ? Slot.Root : \"button\"\n    return (\n      <Comp\n        ref={ref}\n        className={cn(buttonVariants({ variant, size, className }))}\n        {...props}\n      />\n    )\n  }\n)\nButton.displayName = \"Button\"\n\nexport { buttonVariants }\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

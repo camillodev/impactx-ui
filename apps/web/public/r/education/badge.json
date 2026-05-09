@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Badge — Impact X DS Education",
+  "dependencies": [
+    "class-variance-authority",
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/badge.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center font-medium rounded-full leading-none whitespace-nowrap\",\n  {\n    variants: {\n      variant: {\n        primary: \"bg-[var(--color-primary-soft)] text-[var(--color-primary-hover)]\",\n        success: \"bg-[var(--badge-success-bg)] text-[var(--badge-success-fg)]\",\n        ink:     \"bg-[var(--color-secondary-active)] text-[var(--color-secondary-fg)]\",\n        warning: \"bg-[var(--badge-warning-bg)] text-[var(--badge-warning-fg)]\",\n        danger:  \"bg-[var(--badge-danger-bg)] text-[var(--badge-danger-fg)]\",\n      },\n      size: {\n        sm: \"py-1 px-2.5 gap-1 text-[12px]\",\n        md: \"py-1.5 px-3 gap-1.5 text-[13px]\",\n        lg: \"py-2 px-3.5 gap-1.5 text-[14px]\",\n      },\n    },\n    defaultVariants: {\n      variant: \"ink\",\n      size: \"md\",\n    },\n  }\n)\n\nexport interface BadgeProps\n  extends React.HTMLAttributes<HTMLSpanElement>,\n    VariantProps<typeof badgeVariants> {\n  icon?: React.ReactNode\n  iconOnly?: boolean\n}\n\nconst iconOnlySize = {\n  sm: \"w-6 h-6 p-0 [&>span>svg]:w-3.5 [&>span>svg]:h-3.5\",\n  md: \"w-7 h-7 p-0 [&>span>svg]:w-4 [&>span>svg]:h-4\",\n  lg: \"w-9 h-9 p-0 [&>span>svg]:w-5 [&>span>svg]:h-5\",\n} as const\n\nexport function Badge({\n  className,\n  variant,\n  size,\n  icon,\n  iconOnly,\n  children,\n  ...props\n}: BadgeProps) {\n  return (\n    <span\n      className={cn(\n        badgeVariants({ variant, size }),\n        iconOnly && \"justify-center aspect-square\",\n        iconOnly && iconOnlySize[size ?? \"md\"],\n        className\n      )}\n      {...props}\n    >\n      {icon && (\n        <span className=\"flex items-center justify-center [&>svg]:stroke-[2.5]\">\n          {icon}\n        </span>\n      )}\n      {!iconOnly && children}\n    </span>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

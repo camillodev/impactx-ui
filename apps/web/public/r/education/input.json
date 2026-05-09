@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "Input — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/input.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/input.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface InputProps\n  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, \"size\"> {\n  label?: string\n  error?: string\n  helperText?: string\n  leadingIcon?: React.ReactNode\n  trailingIcon?: React.ReactNode\n  containerClassName?: string\n}\n\nlet inputIdCounter = 0\n\nexport const Input = React.forwardRef<HTMLInputElement, InputProps>(\n  (\n    {\n      className,\n      containerClassName,\n      label,\n      error,\n      helperText,\n      leadingIcon,\n      trailingIcon,\n      id,\n      disabled,\n      ...props\n    },\n    ref\n  ) => {\n    const reactId = React.useId()\n    const inputId = id ?? `ix-input-${reactId}`\n    const describedById = error\n      ? `${inputId}-error`\n      : helperText\n      ? `${inputId}-helper`\n      : undefined\n\n    return (\n      <div className={cn(\"flex flex-col gap-1.5\", containerClassName)}>\n        {label && (\n          <label\n            htmlFor={inputId}\n            className=\"text-sm font-medium text-[var(--color-text)]\"\n          >\n            {label}\n          </label>\n        )}\n        <div\n          className={cn(\n            \"flex items-center gap-2 h-10 px-3.5 rounded-md border bg-[var(--color-bg)] transition-colors\",\n            \"border-[var(--color-border)]\",\n            \"focus-within:border-[var(--color-primary)] focus-within:ring-2 focus-within:ring-[var(--color-primary)]/20\",\n            error &&\n              \"border-[var(--color-danger-primary)] focus-within:border-[var(--color-danger-primary)] focus-within:ring-[var(--color-danger-primary)]/20\",\n            disabled && \"opacity-50 pointer-events-none\"\n          )}\n        >\n          {leadingIcon && (\n            <span className=\"text-[var(--color-text-muted)] [&>svg]:size-4 shrink-0\">\n              {leadingIcon}\n            </span>\n          )}\n          <input\n            ref={ref}\n            id={inputId}\n            disabled={disabled}\n            aria-invalid={error ? true : undefined}\n            aria-describedby={describedById}\n            className={cn(\n              \"flex-1 bg-transparent outline-none text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] disabled:cursor-not-allowed\",\n              className\n            )}\n            {...props}\n          />\n          {trailingIcon && (\n            <span className=\"text-[var(--color-text-muted)] [&>svg]:size-4 shrink-0\">\n              {trailingIcon}\n            </span>\n          )}\n        </div>\n        {error ? (\n          <span\n            id={`${inputId}-error`}\n            className=\"text-xs text-[var(--color-danger-primary)]\"\n          >\n            {error}\n          </span>\n        ) : helperText ? (\n          <span\n            id={`${inputId}-helper`}\n            className=\"text-xs text-[var(--color-primary)]\"\n          >\n            {helperText}\n          </span>\n        ) : null}\n      </div>\n    )\n  }\n)\nInput.displayName = \"Input\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}
