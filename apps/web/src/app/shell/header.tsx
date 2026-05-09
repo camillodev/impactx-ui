@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
 import { Search, Moon, Sun, Menu } from "lucide-react"
 import { useTheme } from "@/app/theme-provider"
 import { IconButton } from "@impactx/ds-education"
@@ -8,21 +9,15 @@ import { CommandPalette, useCommandPalette } from "@impactx/ds-education"
 import { useMobileNav } from "@/app/shell/mobile-nav-context"
 
 function ModeToggle() {
-  const [mode, setMode] = React.useState<"light" | "dark">("light")
+  const [mode, setMode] = React.useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "light"
+    const stored = localStorage.getItem("ds-mode") as "light" | "dark" | null
+    return stored ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+  })
 
   React.useEffect(() => {
-    const stored = (typeof window !== "undefined" && localStorage.getItem("ds-mode")) as
-      | "light"
-      | "dark"
-      | null
-    const initial =
-      stored ??
-      (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light")
-    setMode(initial)
-    document.documentElement.dataset.mode = initial
-  }, [])
+    document.documentElement.dataset.mode = mode
+  }, [mode])
 
   const toggle = () => {
     const next = mode === "dark" ? "light" : "dark"
@@ -43,13 +38,9 @@ function ModeToggle() {
 }
 
 function SearchTrigger({ onClick }: { onClick: () => void }) {
-  const [shortcut, setShortcut] = React.useState("Ctrl K")
-
-  React.useEffect(() => {
-    if (typeof navigator !== "undefined" && /Mac/.test(navigator.platform)) {
-      setShortcut("⌘ K")
-    }
-  }, [])
+  const [shortcut] = React.useState(() =>
+    typeof navigator !== "undefined" && /Mac/.test(navigator.platform) ? "⌘ K" : "Ctrl K"
+  )
 
   return (
     <button
@@ -67,6 +58,7 @@ function SearchTrigger({ onClick }: { onClick: () => void }) {
 }
 
 export function Header() {
+  const router = useRouter()
   const { theme, setTheme } = useTheme()
   const { open, setOpen } = useCommandPalette()
   const { openNav } = useMobileNav()
@@ -101,7 +93,7 @@ export function Header() {
         </div>
       </header>
 
-      <CommandPalette open={open} onOpenChange={setOpen} />
+      <CommandPalette open={open} onOpenChange={setOpen} onNavigate={(href) => router.push(href)} />
     </>
   )
 }

@@ -491,20 +491,20 @@ function buildFolhas(): Folha[] {
   const dayMs = 24 * 60 * 60 * 1000
 
   for (let i = 0; i < 80; i++) {
-    const aluno = ativos[i % ativos.length]
-    const disciplinaInfo = aluno.disciplinas[i % aluno.disciplinas.length]
+    const aluno = ativos[i % ativos.length]!
+    const disciplinaInfo = aluno.disciplinas[i % aluno.disciplinas.length]!
     const folhaSeq = ((i * 7) % 200) + 1
     const data = new Date(baseDate - (i % 30) * dayMs).toISOString().slice(0, 10)
-    const acertoBase = disciplinaInfo.taxaAcerto
+    const acertoBase = disciplinaInfo!.taxaAcerto
     const acerto = Math.max(60, Math.min(100, acertoBase + ((i % 7) - 3)))
     const tempo = 8 + (i % 17)
 
     out.push({
       id: `f-${String(i + 1).padStart(3, "0")}`,
-      alunoId: aluno.id,
-      disciplina: disciplinaInfo.disciplina,
-      level: disciplinaInfo.levelAtual,
-      numero: `${disciplinaInfo.levelAtual}-${folhaSeq}`,
+      alunoId: aluno!.id,
+      disciplina: disciplinaInfo!.disciplina,
+      level: disciplinaInfo!.levelAtual,
+      numero: `${disciplinaInfo!.levelAtual}-${folhaSeq}`,
       dataConclusao: data,
       taxaAcerto: acerto,
       tempoMedio: tempo,
@@ -532,20 +532,20 @@ function buildSessoes(): Sessao[] {
   ]
 
   for (let i = 0; i < 50; i++) {
-    const aluno = candidatos[i % candidatos.length]
+    const aluno = candidatos[i % candidatos.length]!
     const offsetDays = (i * 3) % 56
     const hour = 9 + (i % 8)
     const dt = new Date(baseDate - offsetDays * dayMs)
     dt.setUTCHours(hour, 0, 0, 0)
     const disciplinasSessao =
       aluno.disciplinas.length === 1
-        ? [aluno.disciplinas[0].disciplina]
+        ? [aluno.disciplinas[0]!.disciplina]
         : aluno.disciplinas.slice(0, ((i % aluno.disciplinas.length) + 1)).map((d) => d.disciplina)
     const folhasEntregues = 3 + (i % 6)
 
     out.push({
       id: `s-${String(i + 1).padStart(3, "0")}`,
-      alunoId: aluno.id,
+      alunoId: aluno!.id,
       data: dt.toISOString(),
       disciplinas: disciplinasSessao,
       folhasEntregues,
