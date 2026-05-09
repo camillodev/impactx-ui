@@ -48,12 +48,13 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-invalid={error ? true : undefined}
           aria-describedby={describedById}
           className={cn(
-            "w-full min-h-[80px] resize-y rounded-md border px-3.5 py-2.5 font-sans text-sm bg-[var(--color-bg)] transition-colors",
-            "border-[var(--color-border)]",
-            "text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]",
-            "outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20",
+            "w-full min-h-[80px] resize-y rounded-md border-2 px-3.5 py-2.5 font-sans text-sm bg-[var(--color-bg)] transition-all duration-150",
+            "border-[var(--color-border-input)]",
+            "text-[var(--color-text)] placeholder:text-[var(--color-text-subtle)]",
+            "hover:border-[var(--color-text-subtle)]",
+            "outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-ring)] focus:hover:border-[var(--color-primary)]",
             error &&
-              "border-[var(--color-danger-primary)] focus:border-[var(--color-danger-primary)] focus:ring-[var(--color-danger-primary)]/20",
+              "border-[var(--color-danger-primary)] focus:border-[var(--color-danger-primary)] focus:ring-[var(--color-danger-primary)]/25",
             disabled && "opacity-50 cursor-not-allowed",
             className
           )}

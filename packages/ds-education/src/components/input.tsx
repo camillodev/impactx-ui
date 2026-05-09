@@ -49,11 +49,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         <div
           className={cn(
-            "flex items-center gap-2 h-10 px-3.5 rounded-md border bg-[var(--color-bg)] transition-colors",
-            "border-[var(--color-border)]",
-            "focus-within:border-[var(--color-primary)] focus-within:ring-2 focus-within:ring-[var(--color-primary)]/20",
+            "flex items-center gap-2 h-10 px-3.5 rounded-md border-2 bg-[var(--color-bg)] transition-all duration-150",
+            "border-[var(--color-border-input)]",
+            "hover:border-[var(--color-text-subtle)]",
+            "focus-within:border-[var(--color-primary)] focus-within:ring-2 focus-within:ring-[var(--color-primary-ring)] focus-within:hover:border-[var(--color-primary)]",
             error &&
-              "border-[var(--color-danger-primary)] focus-within:border-[var(--color-danger-primary)] focus-within:ring-[var(--color-danger-primary)]/20",
+              "border-[var(--color-danger-primary)] focus-within:border-[var(--color-danger-primary)] focus-within:ring-[var(--color-danger-primary)]/25",
             disabled && "opacity-50 pointer-events-none"
           )}
         >
