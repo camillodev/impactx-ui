@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "Switch — Impact X DS Education",
+  "dependencies": [
+    "@radix-ui/react-switch",
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/switch.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/switch.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SwitchPrimitive from \"@radix-ui/react-switch\"\nimport { cn } from \"@/lib/utils\"\n\nconst Switch = React.forwardRef<\n  React.ElementRef<typeof SwitchPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <SwitchPrimitive.Root\n    className={cn(\n      \"peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50\",\n      \"data-[state=unchecked]:border-[var(--color-border)] data-[state=unchecked]:bg-[var(--color-bg)]\",\n      \"data-[state=checked]:border-[var(--color-primary)] data-[state=checked]:bg-[var(--color-primary)]\",\n      className\n    )}\n    ref={ref}\n    {...props}\n  >\n    <SwitchPrimitive.Thumb\n      className={cn(\n        \"pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg transition-transform\",\n        \"data-[state=unchecked]:translate-x-0\",\n        \"data-[state=checked]:translate-x-5\"\n      )}\n    />\n  </SwitchPrimitive.Root>\n))\nSwitch.displayName = SwitchPrimitive.Root.displayName\n\nexport { Switch }\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

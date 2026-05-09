@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "Textarea — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/textarea.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/textarea.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TextareaProps\n  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {\n  label?: string\n  error?: string\n  helperText?: string\n  containerClassName?: string\n}\n\nexport const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(\n  (\n    {\n      className,\n      containerClassName,\n      label,\n      error,\n      helperText,\n      id,\n      disabled,\n      ...props\n    },\n    ref\n  ) => {\n    const reactId = React.useId()\n    const textareaId = id ?? `ix-textarea-${reactId}`\n    const describedById = error\n      ? `${textareaId}-error`\n      : helperText\n      ? `${textareaId}-helper`\n      : undefined\n\n    return (\n      <div className={cn(\"flex flex-col gap-1.5\", containerClassName)}>\n        {label && (\n          <label\n            htmlFor={textareaId}\n            className=\"text-sm font-medium text-[var(--color-text)]\"\n          >\n            {label}\n          </label>\n        )}\n        <textarea\n          ref={ref}\n          id={textareaId}\n          disabled={disabled}\n          aria-invalid={error ? true : undefined}\n          aria-describedby={describedById}\n          className={cn(\n            \"w-full min-h-[80px] resize-y rounded-md border px-3.5 py-2.5 font-sans text-sm bg-[var(--color-bg)] transition-colors\",\n            \"border-[var(--color-border)]\",\n            \"text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]\",\n            \"outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20\",\n            error &&\n              \"border-[var(--color-danger-primary)] focus:border-[var(--color-danger-primary)] focus:ring-[var(--color-danger-primary)]/20\",\n            disabled && \"opacity-50 cursor-not-allowed\",\n            className\n          )}\n          {...props}\n        />\n        {error ? (\n          <span\n            id={`${textareaId}-error`}\n            className=\"text-xs text-[var(--color-danger-primary)]\"\n          >\n            {error}\n          </span>\n        ) : helperText ? (\n          <span\n            id={`${textareaId}-helper`}\n            className=\"text-xs text-[var(--color-primary)]\"\n          >\n            {helperText}\n          </span>\n        ) : null}\n      </div>\n    )\n  }\n)\nTextarea.displayName = \"Textarea\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

@@ -44,10 +44,13 @@ const ATOM_SLUGS = new Set([
   "button", "icon-button", "badge", "avatar", "breadcrumb",
   "input", "pagination", "tabs", "tooltip", "separator",
   "progress-bar", "card", "chip",
+  "label", "skeleton", "switch", "checkbox", "textarea",
 ])
 const MOLECULE_SLUGS = new Set([
   "stat", "banner-cta", "modal", "toast",
   "command-palette", "help-fab", "code-block", "assessment-card",
+  "dropdown-menu",
+  "select", "alert-dialog", "sheet",
 ])
 const CHART_SLUGS = new Set(["chart", "donut-score"])
 const ORGANISM_SLUGS = new Set([
@@ -60,6 +63,7 @@ const ORGANISM_SLUGS = new Set([
 const TITLE_MAP = {
   "icon-button": "IconButton",
   "banner-cta": "BannerCTA",
+  "dropdown-menu": "DropdownMenu",
   "command-palette": "CommandPalette",
   "help-fab": "HelpFab",
   "code-block": "CodeBlock",
@@ -76,6 +80,7 @@ const TITLE_MAP = {
   "hero-banner": "HeroBanner",
   "question-row": "QuestionRow",
   "subject-stat-card": "SubjectStatCard",
+  "alert-dialog": "AlertDialog",
 }
 
 function toTitle(slug) {

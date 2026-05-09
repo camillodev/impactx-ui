@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "Checkbox — Impact X DS Education",
+  "dependencies": [
+    "@radix-ui/react-checkbox",
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/checkbox.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/checkbox.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as CheckboxPrimitive from \"@radix-ui/react-checkbox\"\nimport { Check } from \"lucide-react\"\nimport { cn } from \"@/lib/utils\"\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <CheckboxPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"peer h-4 w-4 shrink-0 rounded-[4px] border border-[var(--color-border)]\",\n      \"transition-colors focus-visible:outline-none focus-visible:ring-2\",\n      \"focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      \"data-[state=checked]:bg-[var(--color-primary)]\",\n      \"data-[state=checked]:border-[var(--color-primary)]\",\n      \"data-[state=checked]:text-[var(--color-text-on-primary)]\",\n      className\n    )}\n    {...props}\n  >\n    <CheckboxPrimitive.Indicator\n      className={cn(\"flex items-center justify-center text-current\")}\n    >\n      <Check className=\"h-3 w-3\" strokeWidth={3} />\n    </CheckboxPrimitive.Indicator>\n  </CheckboxPrimitive.Root>\n))\n\nCheckbox.displayName = \"Checkbox\"\n\nexport { Checkbox }\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

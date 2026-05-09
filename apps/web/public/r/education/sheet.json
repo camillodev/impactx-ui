@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet",
+  "description": "Sheet — Impact X DS Education",
+  "dependencies": [
+    "@radix-ui/react-dialog",
+    "class-variance-authority",
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/sheet.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/sheet.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as Dialog from \"@radix-ui/react-dialog\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { X } from \"lucide-react\"\nimport { cn } from \"@/lib/utils\"\n\n// ─── Root ───────────────────────────────────────────────────────────────────\n\nconst Sheet = Dialog.Root\nSheet.displayName = \"Sheet\"\n\n// ─── Trigger ────────────────────────────────────────────────────────────────\n\nconst SheetTrigger = Dialog.Trigger\nSheetTrigger.displayName = \"Sheet.Trigger\"\n\n// ─── Close ──────────────────────────────────────────────────────────────────\n\nconst SheetClose = Dialog.Close\nSheetClose.displayName = \"Sheet.Close\"\n\n// ─── Portal ─────────────────────────────────────────────────────────────────\n\nconst SheetPortal = Dialog.Portal\n\n// ─── Overlay ────────────────────────────────────────────────────────────────\n\nconst SheetOverlay = React.forwardRef<\n  React.ElementRef<typeof Dialog.Overlay>,\n  React.ComponentPropsWithoutRef<typeof Dialog.Overlay>\n>(({ className, ...props }, ref) => (\n  <Dialog.Overlay\n    ref={ref}\n    className={cn(\n      \"fixed inset-0 z-50 bg-black/50\",\n      \"data-[state=open]:animate-in data-[state=closed]:animate-out\",\n      \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n      className\n    )}\n    {...props}\n  />\n))\nSheetOverlay.displayName = \"Sheet.Overlay\"\n\n// ─── Content ────────────────────────────────────────────────────────────────\n\nconst sheetContentVariants = cva(\n  [\n    \"fixed z-50 flex flex-col\",\n    \"bg-[var(--color-bg)] text-[var(--color-text)]\",\n    \"shadow-lg\",\n    \"transition-transform duration-300 ease-in-out\",\n    \"data-[state=open]:animate-in data-[state=closed]:animate-out\",\n    \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n  ],\n  {\n    variants: {\n      side: {\n        top: [\n          \"inset-x-0 top-0 h-auto max-h-[85vh] border-b border-[var(--color-border)]\",\n          \"data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top\",\n        ],\n        bottom: [\n          \"inset-x-0 bottom-0 h-auto max-h-[85vh] border-t border-[var(--color-border)]\",\n          \"data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom\",\n        ],\n        left: [\n          \"inset-y-0 left-0 h-full w-3/4 max-w-sm border-r border-[var(--color-border)]\",\n          \"data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left\",\n        ],\n        right: [\n          \"inset-y-0 right-0 h-full w-3/4 max-w-sm border-l border-[var(--color-border)]\",\n          \"data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right\",\n        ],\n      },\n    },\n    defaultVariants: {\n      side: \"right\",\n    },\n  }\n)\n\nexport interface SheetContentProps\n  extends React.ComponentPropsWithoutRef<typeof Dialog.Content>,\n    VariantProps<typeof sheetContentVariants> {\n  /** Show internal X close button (default true) */\n  showCloseButton?: boolean\n}\n\nconst SheetContent = React.forwardRef<\n  React.ElementRef<typeof Dialog.Content>,\n  SheetContentProps\n>(({ className, children, side = \"right\", showCloseButton = true, ...props }, ref) => (\n  <SheetPortal>\n    <SheetOverlay />\n    <Dialog.Content\n      ref={ref}\n      className={cn(sheetContentVariants({ side }), className)}\n      {...props}\n    >\n      {children}\n      {showCloseButton && (\n        <Dialog.Close\n          className={cn(\n            \"absolute top-4 right-4\",\n            \"flex items-center justify-center w-8 h-8 rounded-full shrink-0\",\n            \"text-[var(--color-text-muted)] hover:bg-[var(--color-secondary-hover)]\",\n            \"transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]\",\n            \"[&_svg]:stroke-2\"\n          )}\n          aria-label=\"Close\"\n        >\n          <X size={18} />\n        </Dialog.Close>\n      )}\n    </Dialog.Content>\n  </SheetPortal>\n))\nSheetContent.displayName = \"Sheet.Content\"\n\n// ─── Header ─────────────────────────────────────────────────────────────────\n\nconst SheetHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex flex-col gap-1.5 px-6 pt-6 pb-4 pr-14\", className)}\n    {...props}\n  />\n))\nSheetHeader.displayName = \"Sheet.Header\"\n\n// ─── Footer ─────────────────────────────────────────────────────────────────\n\nconst SheetFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"mt-auto flex flex-col gap-2 px-6 py-5\",\n      \"border-t border-[var(--color-border)]\",\n      className\n    )}\n    {...props}\n  />\n))\nSheetFooter.displayName = \"Sheet.Footer\"\n\n// ─── Title ──────────────────────────────────────────────────────────────────\n\nconst SheetTitle = React.forwardRef<\n  React.ElementRef<typeof Dialog.Title>,\n  React.ComponentPropsWithoutRef<typeof Dialog.Title>\n>(({ className, ...props }, ref) => (\n  <Dialog.Title\n    ref={ref}\n    className={cn(\n      \"text-lg font-bold leading-snug text-[var(--color-text)]\",\n      className\n    )}\n    {...props}\n  />\n))\nSheetTitle.displayName = \"Sheet.Title\"\n\n// ─── Description ────────────────────────────────────────────────────────────\n\nconst SheetDescription = React.forwardRef<\n  React.ElementRef<typeof Dialog.Description>,\n  React.ComponentPropsWithoutRef<typeof Dialog.Description>\n>(({ className, ...props }, ref) => (\n  <Dialog.Description\n    ref={ref}\n    className={cn(\"text-sm text-[var(--color-text-muted)]\", className)}\n    {...props}\n  />\n))\nSheetDescription.displayName = \"Sheet.Description\"\n\n// ─── Exports ─────────────────────────────────────────────────────────────────\n\nexport {\n  Sheet,\n  SheetTrigger,\n  SheetClose,\n  SheetPortal,\n  SheetOverlay,\n  SheetContent,\n  SheetHeader,\n  SheetFooter,\n  SheetTitle,\n  SheetDescription,\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "molecule"
+    }
+  }
+}

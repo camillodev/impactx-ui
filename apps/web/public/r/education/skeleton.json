@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "Skeleton — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/skeleton.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/skeleton.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport const Skeleton = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"animate-pulse rounded-md bg-[var(--color-surface-muted)]\",\n      className\n    )}\n    {...props}\n  />\n))\nSkeleton.displayName = \"Skeleton\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}
