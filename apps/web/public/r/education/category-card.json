@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "category-card",
+  "type": "registry:ui",
+  "title": "CategoryCard",
+  "description": "CategoryCard — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/category-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/category-card.tsx",
+      "content": "import * as React from \"react\"\nimport { type LucideIcon } from \"lucide-react\"\n\nexport interface CategoryCardProps {\n  icon: LucideIcon\n  title: string\n  subtitle: string\n  /** Marca o card como selecionado/ativo */\n  active?: boolean\n  onClick?: () => void\n}\n\n/**\n * CategoryCard — card azul gradient com ícone, título e subtítulo.\n * Reutilizável em Catálogo de Avaliações, Hub de Avaliações etc.\n * Usa exclusivamente CSS tokens — troca de tema automática.\n */\nexport function CategoryCard({\n  icon: Icon,\n  title,\n  subtitle,\n  active = false,\n  onClick,\n}: CategoryCardProps) {\n  return (\n    <button\n      type=\"button\"\n      onClick={onClick}\n      className=\"group relative flex flex-col justify-between w-full aspect-square p-6 rounded-[var(--radius-md)] cursor-pointer transition-all duration-150\"\n      style={{\n        background:\n          \"linear-gradient(160deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%)\",\n        color: \"var(--color-primary-fg)\",\n        outline: active\n          ? \"3px solid var(--color-primary-fg)\"\n          : \"3px solid transparent\",\n        outlineOffset: \"-3px\",\n        boxShadow: active\n          ? \"0 0 0 2px var(--color-primary)\"\n          : \"var(--shadow-md)\",\n      }}\n    >\n      {/* Ícone — topo-esquerdo */}\n      <div className=\"flex items-start\">\n        <Icon\n          size={40}\n          strokeWidth={1.25}\n          style={{ color: \"var(--color-primary-fg)\", opacity: 1 }}\n        />\n      </div>\n\n      {/* Textos — bottom */}\n      <div className=\"flex flex-col gap-1 text-left\">\n        <span\n          className=\"text-base font-semibold leading-snug\"\n          style={{ color: \"var(--color-primary-fg)\" }}\n        >\n          {title}\n        </span>\n        <span\n          className=\"text-sm leading-snug\"\n          style={{ color: \"var(--color-primary-fg)\", opacity: 0.7 }}\n        >\n          {subtitle}\n        </span>\n      </div>\n    </button>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "organism"
+    }
+  }
+}

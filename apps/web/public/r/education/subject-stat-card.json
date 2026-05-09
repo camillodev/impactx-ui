@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "subject-stat-card",
+  "type": "registry:ui",
+  "title": "SubjectStatCard",
+  "description": "SubjectStatCard — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/subject-stat-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/subject-stat-card.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ArrowRight } from \"lucide-react\"\nimport { Button } from \"../components/button\"\n\nexport interface SubjectStatCardProps {\n  subject: string\n  mediaSerie: string\n  mediaNacional: string\n  onVerRelatorio?: () => void\n}\n\nexport function SubjectStatCard({\n  subject,\n  mediaSerie,\n  mediaNacional,\n  onVerRelatorio,\n}: SubjectStatCardProps) {\n  return (\n    <div\n      className=\"rounded-[var(--radius-lg)] border flex flex-col gap-4 p-6\"\n      style={{\n        backgroundColor: \"var(--color-bg)\",\n        borderColor: \"var(--color-border-muted)\",\n        boxShadow: \"var(--shadow-md)\",\n      }}\n    >\n      {/* Título disciplina */}\n      <h2\n        className=\"text-3xl font-extrabold\"\n        style={{ color: \"var(--color-text)\" }}\n      >\n        {subject}\n      </h2>\n\n      {/* Médias */}\n      <div className=\"flex items-end gap-6\">\n        {/* Média da Série — maior */}\n        <div className=\"flex flex-col gap-1\">\n          <span\n            className=\"text-xs\"\n            style={{ color: \"var(--color-text-muted)\" }}\n          >\n            Média da Série\n          </span>\n          <span\n            className=\"text-5xl font-bold leading-none\"\n            style={{ color: \"var(--color-text)\" }}\n          >\n            {mediaSerie}\n          </span>\n        </div>\n\n        {/* Média Nacional — menor */}\n        <div className=\"flex flex-col gap-1\">\n          <span\n            className=\"text-xs\"\n            style={{ color: \"var(--color-text-muted)\" }}\n          >\n            Média Nacional\n          </span>\n          <span\n            className=\"text-2xl font-semibold leading-none\"\n            style={{ color: \"var(--color-text-muted)\" }}\n          >\n            {mediaNacional}\n          </span>\n        </div>\n      </div>\n\n      {/* Botão */}\n      <Button\n        variant=\"primary\"\n        size=\"md\"\n        className=\"w-full\"\n        onClick={onVerRelatorio}\n      >\n        Ver Relatório da Prova\n        <ArrowRight size={16} />\n      </Button>\n    </div>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "organism"
+    }
+  }
+}

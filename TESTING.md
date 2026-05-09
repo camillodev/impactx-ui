@@ -89,7 +89,7 @@ Em qualquer rota:
 
 ```js
 // DevTools console
-document.documentElement.className = "theme-alfabeto"  // #0467DB
+document.documentElement.className = "theme-education"  // #0467DB
 document.documentElement.className = "theme-kumon"     // #00A9E3
 document.documentElement.className = "theme-impactx"   // #11C76F + #F5C400 (tertiary)
 ```

@@ -14,13 +14,13 @@ npx @impactx/ui
 npx @impactx/ui add education
 
 # instalar componente especifico com theme
-npx @impactx/ui add education button --alfabeto
+npx @impactx/ui add education button --education
 ```
 
 Aplique o theme no root da sua app:
 
 ```html
-<html class="theme-alfabeto" data-mode="dark">
+<html class="theme-education" data-mode="dark">
 ```
 
 ## Design Systems disponiveis

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "assessment-card",
+  "type": "registry:ui",
+  "title": "AssessmentCard",
+  "description": "AssessmentCard — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "badge",
+    "button",
+    "card",
+    "icon-button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/assessment-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/assessment-card.tsx",
+      "content": "import * as React from \"react\"\nimport { MoreVertical, BarChart3, ChevronRight } from \"lucide-react\"\nimport { cn } from \"@/lib/utils\"\nimport { Card } from \"@/components/ui/card\"\nimport { Badge } from \"@/components/ui/badge\"\nimport { Button } from \"@/components/ui/button\"\nimport { IconButton } from \"@/components/ui/icon-button\"\n\nexport type AssessmentStatus = \"completed\" | \"in-progress\" | \"scheduled\" | \"draft\" | \"not-started\"\n\nexport interface AssessmentCardProps {\n  title: string\n  subject: string\n  grade: string\n  description?: string\n  status: AssessmentStatus\n  actionLabel?: string\n  onAction?: () => void\n  onMenuClick?: () => void\n  onChartClick?: () => void\n  className?: string\n}\n\nconst statusMap: Record<\n  AssessmentStatus,\n  { variant: \"success\" | \"primary\" | \"warning\" | \"ink\"; label: string }\n> = {\n  completed: { variant: \"success\", label: \"Completed\" },\n  \"in-progress\": { variant: \"primary\", label: \"In progress\" },\n  scheduled: { variant: \"warning\", label: \"Scheduled\" },\n  draft: { variant: \"ink\", label: \"Draft\" },\n  \"not-started\": { variant: \"ink\", label: \"Not started\" },\n}\n\nexport function AssessmentCard({\n  title,\n  subject,\n  grade,\n  description,\n  status,\n  actionLabel = \"View Results\",\n  onAction,\n  onMenuClick,\n  onChartClick,\n  className,\n}: AssessmentCardProps) {\n  const { variant, label } = statusMap[status]\n\n  return (\n    <Card className={cn(\"p-5 hover:shadow-lg transition-shadow\", className)}>\n      <div className=\"flex items-start gap-2\">\n        <h3 className=\"text-base font-semibold text-[var(--color-text)] flex-1\">{title}</h3>\n        <IconButton\n          size=\"sm\"\n          variant=\"ghost\"\n          icon={<MoreVertical />}\n          aria-label=\"Open menu\"\n          onClick={onMenuClick}\n        />\n      </div>\n\n      <span className=\"text-xs text-[var(--color-text-muted)]\">\n        {subject} · {grade}\n      </span>\n\n      {description && (\n        <p className=\"text-sm text-[var(--color-text)] line-clamp-2 mt-2\">{description}</p>\n      )}\n\n      <div className=\"mt-4 flex items-center justify-between\">\n        <Badge variant={variant} size=\"sm\">\n          {label}\n        </Badge>\n        <div className=\"flex items-center gap-2\">\n          <Button size=\"sm\" variant=\"primary\" onClick={onAction}>\n            {actionLabel}\n            <ChevronRight />\n          </Button>\n          <IconButton\n            size=\"sm\"\n            variant=\"ghost\"\n            icon={<BarChart3 />}\n            aria-label=\"View chart\"\n            onClick={onChartClick}\n          />\n        </div>\n      </div>\n    </Card>\n  )\n}\n\nexport type { AssessmentStatus as Status }\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "molecule"
+    }
+  }
+}

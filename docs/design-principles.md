@@ -9,7 +9,7 @@ Documento canônico das decisões conceituais do Design System. Formaliza conven
 Três princípios não-negociáveis:
 
 1. **Tokens-first.** Componentes consomem apenas CSS custom properties (`var(--color-*)`, `var(--radius-*)`, etc.). Nunca hex literal, nunca classe Tailwind com valor hardcoded (`bg-blue-500` é proibido em código de componente).
-2. **Theme-switchable em runtime.** Trocar `class="theme-alfabeto"` por `class="theme-impactx"` no `<html>` reestiliza toda a árvore sem rebuild. Isso só funciona se nenhum componente "souber" qual theme está ativo.
+2. **Theme-switchable em runtime.** Trocar `class="theme-education"` por `class="theme-impactx"` no `<html>` reestiliza toda a árvore sem rebuild. Isso só funciona se nenhum componente "souber" qual theme está ativo.
 3. **Zero hex em componente.** Hex existe em exatamente um lugar: arquivos de tokens (`packages/ds-*/src/tokens/themes/*.css`). Qualquer outro lugar é bug.
 
 Consequência prática: se você está prestes a escrever `#0467DB` ou `border-blue-500` em um `.tsx`, pare. A resposta é uma CSS var nova ou uma var existente que ainda não conhece.
@@ -183,7 +183,7 @@ Decisões arquiteturais que NÃO são revisitáveis sem RFC:
 - **Toast bg é tinted da intent** (mistura sutil da cor com o background base), nunca branco/preto puro.
 - **Tertiary é ghost em todos os themes**, incluindo impactx. O amarelo IX é brand-secondary do theme — variant separado, futuro.
 - **Variant `outline` não existe.** Use `secondary`. Manter um nome só evita que metade do código diga `outline` e a outra metade `secondary`.
-- **Theme switching é por classe** no `<html>` (`theme-alfabeto`, `theme-kumon`, `theme-impactx`). Mode é por atributo (`data-mode="dark"`).
+- **Theme switching é por classe** no `<html>` (`theme-education`, `theme-kumon`, `theme-impactx`). Mode é por atributo (`data-mode="dark"`).
 - **Schema do registry estende** `https://ui.shadcn.com/schema/registry-item.json` com extensão `meta.impactx`. Sem fork.
 - **Componentes consomem apenas tokens.** O DS é agnóstico ao theme — quem decide é a aplicação consumidora.
 

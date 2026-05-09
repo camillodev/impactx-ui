@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "Toast — Impact X DS Education",
+  "dependencies": [
+    "sonner"
+  ],
+  "registryDependencies": [
+    "toast"
+  ],
+  "files": [
+    {
+      "path": "components/toast.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/toast.tsx",
+      "content": "\"use client\"\n\nimport { Toaster as SonnerToaster, toast as sonnerToast } from \"sonner\"\n\n// ─── Toaster ────────────────────────────────────────────────────────────────\n// Adicionar <Toaster /> ao app/layout.tsx (fora de qualquer Suspense):\n//   import { Toaster } from \"@/components/ui/toast\"\n//   <Toaster />\n\nfunction Toaster() {\n  return (\n    <SonnerToaster\n      position=\"top-right\"\n      duration={4000}\n      closeButton\n      toastOptions={{\n        unstyled: true,\n        classNames: {\n          toast: [\n            \"flex items-start gap-3 w-full min-w-[320px] max-w-[400px]\",\n            \"rounded-[8px] px-4 py-3\",\n            \"shadow-[0_8px_24px_rgba(0,0,0,0.12)]\",\n            \"border-l-[4px]\",\n            \"font-[var(--font-sans)] text-[14px] text-[var(--color-secondary-fg)]\",\n          ].join(\" \"),\n          title: \"font-medium text-[var(--color-secondary-fg)] text-[14px] leading-snug\",\n          description: \"text-[13px] text-[var(--color-text-muted)] mt-0.5\",\n          closeButton: [\n            \"absolute top-2 right-2\",\n            \"text-[var(--color-secondary-fg-disabled)] hover:text-[var(--color-secondary-fg)]\",\n            \"bg-transparent border-none cursor-pointer\",\n          ].join(\" \"),\n          success:\n            \"bg-[var(--color-toast-success-bg)] border-l-[var(--color-toast-success)]\",\n          error:\n            \"bg-[var(--color-toast-error-bg)] border-l-[var(--color-danger-primary)]\",\n          warning:\n            \"bg-[var(--color-toast-warning-bg)] border-l-[var(--color-toast-warning)]\",\n          info: \"bg-[var(--color-toast-info-bg)] border-l-[var(--color-primary)]\",\n        },\n      }}\n    />\n  )\n}\n\n// ─── toast() imperativo ─────────────────────────────────────────────────────\nconst toast = {\n  success: (message: string, options?: Parameters<typeof sonnerToast>[1]) =>\n    sonnerToast.success(message, options),\n  error: (message: string, options?: Parameters<typeof sonnerToast>[1]) =>\n    sonnerToast.error(message, options),\n  info: (message: string, options?: Parameters<typeof sonnerToast>[1]) =>\n    sonnerToast.info(message, options),\n  warning: (message: string, options?: Parameters<typeof sonnerToast>[1]) =>\n    sonnerToast.warning(message, options),\n}\n\nexport { Toaster, toast }\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "molecule"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-banner",
+  "type": "registry:ui",
+  "title": "HeroBanner",
+  "description": "HeroBanner — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/hero-banner.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hero-banner.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nexport interface HeroBannerProps {\n  eyebrow?: string\n  title?: string\n  description?: string\n}\n\nexport function HeroBanner({\n  eyebrow = \"AVALIAÇÕES\",\n  title = \"Avaliações SAS\",\n  description = \"Visualize relatórios de desempenho das suas turmas e baixe cadernos de prova ou gabaritos das avaliações e simulados do SAS.\",\n}: HeroBannerProps) {\n  return (\n    <div\n      className=\"relative w-full overflow-hidden\"\n      style={{\n        background:\n          \"linear-gradient(to right, var(--color-hero-from) 0%, var(--color-hero-to) 100%)\",\n        minHeight: \"280px\",\n      }}\n    >\n      {/* Formas decorativas — curvas brancas semi-transparentes */}\n      <svg\n        aria-hidden=\"true\"\n        className=\"absolute inset-0 w-full h-full pointer-events-none\"\n        preserveAspectRatio=\"none\"\n        viewBox=\"0 0 1200 280\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <ellipse\n          cx=\"1100\"\n          cy=\"60\"\n          rx=\"320\"\n          ry=\"220\"\n          fill=\"var(--color-overlay-xs)\"\n        />\n        <ellipse\n          cx=\"950\"\n          cy=\"240\"\n          rx=\"280\"\n          ry=\"160\"\n          fill=\"var(--color-overlay-xxs)\"\n        />\n        <ellipse\n          cx=\"1180\"\n          cy=\"180\"\n          rx=\"180\"\n          ry=\"120\"\n          fill=\"var(--color-overlay-xs)\"\n        />\n      </svg>\n\n      {/* Conteúdo */}\n      <div className=\"relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-20 flex flex-col\">\n        {/* Eyebrow */}\n        <span\n          className=\"text-xs font-bold uppercase\"\n          style={{ color: \"var(--color-warning)\", letterSpacing: \"0.2em\" }}\n        >\n          {eyebrow}\n        </span>\n\n        {/* Título */}\n        <h1\n          className=\"text-5xl font-bold leading-tight mt-2 mb-3\"\n          style={{ color: \"var(--color-text-on-primary)\" }}\n        >\n          {title}\n        </h1>\n\n        {/* Subtítulo */}\n        <p\n          className=\"text-base leading-relaxed max-w-xl\"\n          style={{ color: \"var(--color-overlay-text)\" }}\n        >\n          {description}\n        </p>\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "organism"
+    }
+  }
+}

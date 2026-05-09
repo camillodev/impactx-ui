@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "title": "Breadcrumb",
+  "description": "Breadcrumb — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "radix-ui",
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/breadcrumb.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb.tsx",
+      "content": "import * as React from \"react\"\nimport { ChevronRight } from \"lucide-react\"\nimport { Slot } from \"radix-ui\"\nimport { cn } from \"@/lib/utils\"\n\nexport const Breadcrumb = React.forwardRef<\n  HTMLElement,\n  React.ComponentPropsWithoutRef<\"nav\">\n>(({ className, ...props }, ref) => (\n  <nav\n    ref={ref}\n    aria-label=\"breadcrumb\"\n    className={cn(\"text-sm\", className)}\n    {...props}\n  />\n))\nBreadcrumb.displayName = \"Breadcrumb\"\n\nexport const BreadcrumbList = React.forwardRef<\n  HTMLOListElement,\n  React.ComponentPropsWithoutRef<\"ol\">\n>(({ className, ...props }, ref) => (\n  <ol\n    ref={ref}\n    className={cn(\n      \"flex flex-wrap items-center gap-1.5 text-[var(--color-text-muted)]\",\n      className\n    )}\n    {...props}\n  />\n))\nBreadcrumbList.displayName = \"BreadcrumbList\"\n\nexport const BreadcrumbItem = React.forwardRef<\n  HTMLLIElement,\n  React.ComponentPropsWithoutRef<\"li\">\n>(({ className, ...props }, ref) => (\n  <li\n    ref={ref}\n    className={cn(\"inline-flex items-center gap-1.5\", className)}\n    {...props}\n  />\n))\nBreadcrumbItem.displayName = \"BreadcrumbItem\"\n\nexport interface BreadcrumbLinkProps\n  extends React.ComponentPropsWithoutRef<\"a\"> {\n  asChild?: boolean\n}\n\nexport const BreadcrumbLink = React.forwardRef<\n  HTMLAnchorElement,\n  BreadcrumbLinkProps\n>(({ className, asChild, ...props }, ref) => {\n  const Comp = asChild ? Slot.Root : \"a\"\n  return (\n    <Comp\n      ref={ref}\n      className={cn(\n        \"transition-colors hover:text-[var(--color-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded\",\n        className\n      )}\n      {...props}\n    />\n  )\n})\nBreadcrumbLink.displayName = \"BreadcrumbLink\"\n\nexport const BreadcrumbPage = React.forwardRef<\n  HTMLSpanElement,\n  React.ComponentPropsWithoutRef<\"span\">\n>(({ className, ...props }, ref) => (\n  <span\n    ref={ref}\n    role=\"link\"\n    aria-disabled=\"true\"\n    aria-current=\"page\"\n    className={cn(\"font-medium text-[var(--color-text)]\", className)}\n    {...props}\n  />\n))\nBreadcrumbPage.displayName = \"BreadcrumbPage\"\n\nexport const BreadcrumbSeparator = ({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<\"li\">) => (\n  <li\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    className={cn(\"text-[var(--color-text-muted)] [&>svg]:size-3.5\", className)}\n    {...props}\n  >\n    {children ?? <ChevronRight />}\n  </li>\n)\nBreadcrumbSeparator.displayName = \"BreadcrumbSeparator\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

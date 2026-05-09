@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "assessment-list-item",
+  "type": "registry:ui",
+  "title": "AssessmentListItem",
+  "description": "AssessmentListItem — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/assessment-list-item.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/assessment-list-item.tsx",
+      "content": "import * as React from \"react\"\nimport { Calendar } from \"lucide-react\"\nimport { Badge } from \"../components/badge\"\nimport { Button } from \"../components/button\"\n\nexport interface AssessmentListItemProps {\n  title: string\n  applicationPeriod: string\n  status?: \"concluded\" | \"in-progress\" | \"pending\"\n  onViewDetails?: () => void\n  onFinalResult?: () => void\n}\n\nexport function AssessmentListItem({\n  title,\n  applicationPeriod,\n  status = \"concluded\",\n  onViewDetails,\n  onFinalResult,\n}: AssessmentListItemProps) {\n  return (\n    <div\n      className=\"flex items-center justify-between gap-6 px-6 py-4 rounded-[var(--radius-lg)]\"\n      style={{\n        backgroundColor: \"var(--color-bg)\",\n        border: \"1px solid var(--color-border)\",\n      }}\n    >\n      {/* Esquerda: título + datas */}\n      <div className=\"flex flex-col gap-1 min-w-0 flex-1\">\n        <span\n          className=\"text-base font-bold leading-snug\"\n          style={{ color: \"var(--color-text)\" }}\n        >\n          {title}\n        </span>\n        <div className=\"flex items-center gap-1.5\">\n          <Calendar\n            size={13}\n            style={{ color: \"var(--color-text-subtle)\", flexShrink: 0 }}\n          />\n          <span\n            className=\"text-xs\"\n            style={{ color: \"var(--color-text-subtle)\" }}\n          >\n            {applicationPeriod}\n          </span>\n        </div>\n      </div>\n\n      {/* Centro-direita: badge status */}\n      <div className=\"flex-shrink-0\">\n        {status === \"concluded\" && (\n          <Badge variant=\"success\">Concluída</Badge>\n        )}\n        {status === \"in-progress\" && (\n          <Badge variant=\"warning\">Em andamento</Badge>\n        )}\n        {status === \"pending\" && (\n          <Badge variant=\"ink\">Pendente</Badge>\n        )}\n      </div>\n\n      {/* Direita: botões */}\n      <div className=\"flex items-center gap-3 flex-shrink-0\">\n        <Button variant=\"secondary\" size=\"sm\" onClick={onViewDetails}>\n          Ver detalhes\n        </Button>\n        <Button variant=\"primary\" size=\"sm\" onClick={onFinalResult}>\n          Resultado final\n        </Button>\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "organism"
+    }
+  }
+}

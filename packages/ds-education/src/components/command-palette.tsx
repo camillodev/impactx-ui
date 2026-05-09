@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useRouter } from "next/navigation"
 import { Command } from "cmdk"
 import {
   Search,
@@ -47,10 +46,10 @@ const CATEGORY_ORDER: RegistryItem["category"][] = [
 export interface CommandPaletteProps {
   open: boolean
   onOpenChange: (open: boolean) => void
+  onNavigate?: (href: string) => void
 }
 
-export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
-  const router = useRouter()
+export function CommandPalette({ open, onOpenChange, onNavigate }: CommandPaletteProps) {
   const [query, setQuery] = React.useState("")
 
   // Reset query ao fechar
@@ -77,7 +76,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
 
   const handleSelect = (href: string) => {
     onOpenChange(false)
-    router.push(href)
+    onNavigate?.(href)
   }
 
   return (

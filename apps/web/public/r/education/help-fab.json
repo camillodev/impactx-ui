@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "help-fab",
+  "type": "registry:ui",
+  "title": "HelpFab",
+  "description": "HelpFab — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/help-fab.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/help-fab.tsx",
+      "content": "import * as React from \"react\"\nimport { HelpCircle } from \"lucide-react\"\n\nexport interface HelpFabProps {\n  onClick?: () => void\n}\n\nexport function HelpFab({ onClick }: HelpFabProps) {\n  return (\n    <button\n      type=\"button\"\n      onClick={onClick}\n      className=\"fixed bottom-6 right-6 flex items-center gap-2 px-4 py-2 rounded-[var(--radius-full)] shadow-[var(--shadow-md)] transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2\"\n      style={{\n        backgroundColor: \"var(--color-text-muted-strong)\",\n        color: \"var(--color-bg)\",\n        zIndex: 50,\n      }}\n    >\n      <HelpCircle size={16} />\n      <span className=\"text-sm font-medium\">Ajuda</span>\n    </button>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "molecule"
+    }
+  }
+}

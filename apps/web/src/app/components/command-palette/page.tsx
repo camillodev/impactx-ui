@@ -1,9 +1,11 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Card, CardContent, Badge, Separator, Button, CommandPalette, useCommandPalette } from "@impactx/ds-education"
 import { Search } from "lucide-react"
 
 export default function CommandPaletteShowcase() {
+  const router = useRouter()
   const { open, setOpen } = useCommandPalette()
 
   return (
@@ -47,7 +49,7 @@ export default function CommandPaletteShowcase() {
         </Card>
       </section>
 
-      <CommandPalette open={open} onOpenChange={setOpen} />
+      <CommandPalette open={open} onOpenChange={setOpen} onNavigate={(href) => router.push(href)} />
     </div>
   )
 }

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block",
+  "type": "registry:ui",
+  "title": "CodeBlock",
+  "description": "CodeBlock — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react",
+    "shiki"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/code-block.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/code-block.tsx",
+      "content": "\"use client\"\nimport * as React from \"react\"\nimport { codeToHtml } from \"shiki\"\nimport { Copy, Check } from \"lucide-react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CodeBlockProps {\n  children: string\n  language?: \"tsx\" | \"ts\" | \"css\" | \"html\" | \"bash\" | \"json\"\n  className?: string\n}\n\nexport function CodeBlock({ children, language = \"tsx\", className }: CodeBlockProps) {\n  const [html, setHtml] = React.useState<string>(\"\")\n  const [copied, setCopied] = React.useState(false)\n\n  React.useEffect(() => {\n    let mounted = true\n    codeToHtml(children, {\n      lang: language,\n      theme: \"github-light\",\n    }).then((rendered) => {\n      if (mounted) setHtml(rendered)\n    })\n    return () => { mounted = false }\n  }, [children, language])\n\n  const handleCopy = async () => {\n    await navigator.clipboard.writeText(children)\n    setCopied(true)\n    setTimeout(() => setCopied(false), 1500)\n  }\n\n  // shiki output is trusted — content comes from controlled showcase pages,\n  // not user input. dangerouslySetInnerHTML is required for syntax highlight markup.\n  return (\n    <div className={cn(\"relative group rounded-[var(--radius-md)] border border-[var(--color-border)] overflow-hidden bg-[var(--color-surface)]\", className)}>\n      <button\n        type=\"button\"\n        onClick={handleCopy}\n        aria-label={copied ? \"Copiado\" : \"Copiar código\"}\n        className=\"absolute top-2 right-2 inline-flex items-center justify-center h-8 w-8 rounded-md bg-[var(--color-bg)] border border-[var(--color-border)] opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-[var(--color-surface-muted)]\"\n      >\n        {copied ? <Check className=\"h-4 w-4 text-[var(--color-success)]\" /> : <Copy className=\"h-4 w-4 text-[var(--color-text-muted)]\" />}\n      </button>\n      <div\n        className=\"text-sm font-mono leading-relaxed [&_pre]:p-4 [&_pre]:overflow-x-auto [&_pre]:bg-transparent\"\n        dangerouslySetInnerHTML={{ __html: html || `<pre><code>${children}</code></pre>` }}\n      />\n    </div>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "molecule"
+    }
+  }
+}

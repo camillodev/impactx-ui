@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "Separator — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/separator.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/separator.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport function Separator({\n  className,\n  orientation = \"horizontal\",\n  ...props\n}: React.HTMLAttributes<HTMLDivElement> & {\n  orientation?: \"horizontal\" | \"vertical\"\n}) {\n  return (\n    <div\n      role=\"separator\"\n      aria-orientation={orientation}\n      className={cn(\n        \"bg-[var(--color-border-strong)]\",\n        orientation === \"horizontal\" ? \"h-0.5 w-full\" : \"h-full w-0.5\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

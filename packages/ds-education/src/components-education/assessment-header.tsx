@@ -4,7 +4,7 @@ import * as React from "react"
 import { ArrowLeft } from "lucide-react"
 import { Tabs, TabsList, TabsTrigger } from "../components/tabs"
 
-export type BreadcrumbItem = { label: string; href?: string }
+export type AssessmentBreadcrumbItem = { label: string; href?: string }
 
 export type AssessmentTab = {
   value: string
@@ -12,7 +12,7 @@ export type AssessmentTab = {
 }
 
 export interface AssessmentHeaderProps {
-  breadcrumbs: BreadcrumbItem[]
+  breadcrumbs: AssessmentBreadcrumbItem[]
   subtitle: string
   title: string
   icon: React.ReactNode

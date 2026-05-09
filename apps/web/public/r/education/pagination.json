@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "type": "registry:ui",
+  "title": "Pagination",
+  "description": "Pagination — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "icon-button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/pagination.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/pagination.tsx",
+      "content": "import * as React from \"react\"\nimport { ChevronLeft, ChevronRight, MoreHorizontal } from \"lucide-react\"\nimport { IconButton } from \"@/components/ui/icon-button\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PaginationProps\n  extends Omit<React.HTMLAttributes<HTMLElement>, \"onChange\"> {\n  /** Número total de itens (não páginas) */\n  total: number\n  /** Quantidade de itens por página */\n  pageSize?: number\n  /** Página atual (1-indexed) */\n  value: number\n  onChange: (page: number) => void\n  /** Quantas páginas mostrar de cada lado da atual */\n  siblingCount?: number\n}\n\nconst RANGE_DOTS = \"...\"\n\nfunction buildRange(\n  current: number,\n  totalPages: number,\n  siblingCount: number\n): Array<number | typeof RANGE_DOTS> {\n  const totalNumbers = siblingCount * 2 + 5\n  if (totalPages <= totalNumbers) {\n    return Array.from({ length: totalPages }, (_, i) => i + 1)\n  }\n\n  const leftSibling = Math.max(current - siblingCount, 1)\n  const rightSibling = Math.min(current + siblingCount, totalPages)\n  const showLeftDots = leftSibling > 2\n  const showRightDots = rightSibling < totalPages - 1\n\n  if (!showLeftDots && showRightDots) {\n    const leftCount = 3 + 2 * siblingCount\n    const left = Array.from({ length: leftCount }, (_, i) => i + 1)\n    return [...left, RANGE_DOTS, totalPages]\n  }\n  if (showLeftDots && !showRightDots) {\n    const rightCount = 3 + 2 * siblingCount\n    const right = Array.from(\n      { length: rightCount },\n      (_, i) => totalPages - rightCount + 1 + i\n    )\n    return [1, RANGE_DOTS, ...right]\n  }\n  const middle = Array.from(\n    { length: rightSibling - leftSibling + 1 },\n    (_, i) => leftSibling + i\n  )\n  return [1, RANGE_DOTS, ...middle, RANGE_DOTS, totalPages]\n}\n\nexport function Pagination({\n  total,\n  pageSize = 10,\n  value,\n  onChange,\n  siblingCount = 1,\n  className,\n  ...props\n}: PaginationProps) {\n  const totalPages = Math.max(1, Math.ceil(total / pageSize))\n  const safeValue = Math.min(Math.max(1, value), totalPages)\n  const items = buildRange(safeValue, totalPages, siblingCount)\n\n  const goTo = (page: number) => {\n    if (page < 1 || page > totalPages || page === safeValue) return\n    onChange(page)\n  }\n\n  return (\n    <nav\n      role=\"navigation\"\n      aria-label=\"Pagination\"\n      className={cn(\"flex items-center gap-1\", className)}\n      {...props}\n    >\n      <IconButton\n        aria-label=\"Página anterior\"\n        size=\"sm\"\n        variant=\"ghost\"\n        icon={<ChevronLeft />}\n        disabled={safeValue === 1}\n        onClick={() => goTo(safeValue - 1)}\n      />\n      {items.map((item, idx) =>\n        item === RANGE_DOTS ? (\n          <span\n            key={`dots-${idx}`}\n            className=\"inline-flex h-8 w-8 items-center justify-center text-[var(--color-text-muted)]\"\n            aria-hidden=\"true\"\n          >\n            <MoreHorizontal className=\"size-4\" />\n          </span>\n        ) : (\n          <button\n            key={item}\n            type=\"button\"\n            aria-current={item === safeValue ? \"page\" : undefined}\n            onClick={() => goTo(item)}\n            className={cn(\n              \"h-8 min-w-8 px-2.5 rounded-lg text-sm font-medium transition-colors\",\n              \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2\",\n              item === safeValue\n                ? \"bg-[var(--color-primary)] text-[var(--color-primary-fg)]\"\n                : \"text-[var(--color-text)] hover:bg-[var(--color-surface)]\"\n            )}\n          >\n            {item}\n          </button>\n        )\n      )}\n      <IconButton\n        aria-label=\"Próxima página\"\n        size=\"sm\"\n        variant=\"ghost\"\n        icon={<ChevronRight />}\n        disabled={safeValue === totalPages}\n        onClick={() => goTo(safeValue + 1)}\n      />\n    </nav>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

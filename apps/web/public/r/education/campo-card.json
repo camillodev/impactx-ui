@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "campo-card",
+  "type": "registry:ui",
+  "title": "CampoCard",
+  "description": "CampoCard — Impact X DS Education",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "donut-score",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/campo-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/campo-card.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { PlusCircle } from \"lucide-react\"\nimport { Badge } from \"../components/badge\"\nimport { DonutScore } from \"@/components/ui/donut-score\"\nimport { cn } from \"@/lib/utils\"\n\ninterface CampoCardProps {\n  title: string\n  questoes: number\n  acertosEscola: number\n  acertosNacional: number\n  /** Quando true: donut laranja + banner lateral de fragilidade + CTA */\n  isFragilidade?: boolean\n  className?: string\n}\n\n/**\n * Card de Campo de Atuação — donut + badge nacional + link \"Ver acertos\".\n *\n * Variante fragilidade: layout 2 colunas (donut + nacional à esquerda,\n * banner alerta + CTA à direita). Donut fica laranja.\n */\nexport function CampoCard({\n  title,\n  questoes,\n  acertosEscola,\n  acertosNacional,\n  isFragilidade = false,\n  className,\n}: CampoCardProps) {\n  return (\n    <div\n      className={cn(\n        \"bg-[var(--color-bg)] rounded-[var(--radius-lg)] border border-[var(--color-border-muted)] shadow-[var(--shadow-sm)] p-6 flex flex-col gap-4\",\n        className\n      )}\n    >\n      {/* Header: título + badge questões */}\n      <div className=\"flex flex-col gap-2\">\n        <h3 className=\"text-base font-semibold\" style={{ color: \"var(--color-text)\" }}>\n          {title}\n        </h3>\n        <Badge variant=\"ink\" className=\"self-start text-xs border border-[var(--color-border)]\">\n          {questoes} questões na prova\n        </Badge>\n      </div>\n\n      {/* Corpo — layout condicional */}\n      {isFragilidade ? (\n        /* ---------------------------------------------------------------- */\n        /* VARIANTE FRAGILIDADE: 2 colunas                                   */\n        /* ---------------------------------------------------------------- */\n        <div className=\"flex gap-6\">\n          {/* Coluna esquerda: donut + nacional */}\n          <div className=\"flex items-center gap-4\">\n            <DonutScore\n              value={acertosEscola}\n              size={110}\n              strokeWidth={7}\n              warning={true}\n            />\n            <NacionalBadge value={acertosNacional} />\n          </div>\n\n          {/* Coluna direita: banner fragilidade */}\n          <div className=\"flex-1\">\n            <FragilidadeBanner />\n          </div>\n        </div>\n      ) : (\n        /* ---------------------------------------------------------------- */\n        /* VARIANTE NORMAL: donut + nacional inline                          */\n        /* ---------------------------------------------------------------- */\n        <div className=\"flex items-center gap-4\">\n          <DonutScore value={acertosEscola} size={96} strokeWidth={7} />\n          <NacionalBadge value={acertosNacional} />\n        </div>\n      )}\n\n      {/* Link \"Ver acertos\" */}\n      <button\n        type=\"button\"\n        className=\"flex items-center gap-1.5 text-sm hover:underline self-start mt-auto\"\n        style={{ color: \"var(--color-primary)\" }}\n      >\n        <PlusCircle size={16} strokeWidth={1.5} />\n        Ver acertos por Prática de Linguagem\n      </button>\n    </div>\n  )\n}\n\n// ---------------------------------------------------------------------------\n// Sub-componentes\n// ---------------------------------------------------------------------------\n\nfunction NacionalBadge({ value }: { value: number }) {\n  return (\n    <div\n      className=\"flex flex-col items-center justify-center rounded-[var(--radius-md)] px-3 py-2 text-center\"\n      style={{ backgroundColor: \"var(--color-surface)\", minWidth: 82 }}\n    >\n      <span\n        className=\"text-xs leading-tight mb-1\"\n        style={{ color: \"var(--color-text-muted)\" }}\n      >\n        Acertos Nacional\n      </span>\n      <span\n        className=\"text-2xl font-bold\"\n        style={{ color: \"var(--color-text)\" }}\n      >\n        {value}%\n      </span>\n    </div>\n  )\n}\n\nfunction FragilidadeBanner() {\n  return (\n    <div\n      className=\"flex flex-col gap-3 rounded-[var(--radius-md)] p-4 h-full\"\n      style={{ backgroundColor: \"var(--color-surface)\" }}\n    >\n      {/* Ícone alerta — alinhado à direita no topo, sem container */}\n      <div className=\"flex justify-end\">\n        <svg\n          width=\"28\"\n          height=\"28\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          stroke=\"var(--color-warning)\"\n          strokeWidth=\"2\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          aria-hidden=\"true\"\n        >\n          <path d=\"M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z\" />\n          <line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\" />\n          <line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\" />\n        </svg>\n      </div>\n\n      <p\n        className=\"text-sm font-semibold leading-snug\"\n        style={{ color: \"var(--color-text)\" }}\n      >\n        Esta é a sua principal fragilidade de conteúdo nesta avaliação.\n      </p>\n      <p\n        className=\"text-sm leading-snug\"\n        style={{ color: \"var(--color-text-muted)\" }}\n      >\n        Melhore o desempenho dos seus alunos com um Plano de Estudos personalizado.\n      </p>\n      <button\n        type=\"button\"\n        className=\"inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-[var(--radius-md)] transition-colors mt-auto w-full\"\n        style={{\n          backgroundColor: \"var(--color-primary)\",\n          color: \"var(--color-primary-fg)\",\n        }}\n      >\n        Ir para o Plano de Estudos\n      </button>\n    </div>\n  )\n}\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "organism"
+    }
+  }
+}

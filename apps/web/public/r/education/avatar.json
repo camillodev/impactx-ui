@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "Avatar — Impact X DS Education",
+  "dependencies": [
+    "@radix-ui/react-avatar",
+    "class-variance-authority",
+    "react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/avatar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/avatar.tsx",
+      "content": "import * as React from \"react\"\nimport * as AvatarPrimitive from \"@radix-ui/react-avatar\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"@/lib/utils\"\n\nconst avatarVariants = cva(\n  \"relative inline-flex shrink-0 overflow-hidden select-none\",\n  {\n    variants: {\n      size: {\n        sm: \"h-6 w-6 text-[10px]\",\n        md: \"h-8 w-8 text-xs\",\n        lg: \"h-10 w-10 text-sm\",\n        xl: \"h-14 w-14 text-base\",\n      },\n      shape: {\n        circle: \"rounded-full\",\n        rounded: \"rounded-lg\",\n      },\n    },\n    defaultVariants: {\n      size: \"md\",\n      shape: \"circle\",\n    },\n  }\n)\n\nexport interface AvatarProps\n  extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>,\n    VariantProps<typeof avatarVariants> {\n  src?: string\n  alt?: string\n  fallback?: string\n}\n\nfunction getInitials(value?: string) {\n  if (!value) return \"?\"\n  const parts = value.trim().split(/\\s+/)\n  const first = parts[0]?.[0] ?? \"\"\n  const last = parts.length > 1 ? parts[parts.length - 1][0] : \"\"\n  return (first + last).toUpperCase() || \"?\"\n}\n\nexport const Avatar = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Root>,\n  AvatarProps\n>(({ className, size, shape, src, alt, fallback, ...props }, ref) => {\n  const initials = getInitials(fallback ?? alt)\n  return (\n    <AvatarPrimitive.Root\n      ref={ref}\n      className={cn(avatarVariants({ size, shape }), className)}\n      {...props}\n    >\n      {src && (\n        <AvatarPrimitive.Image\n          src={src}\n          alt={alt ?? \"\"}\n          className=\"aspect-square h-full w-full object-cover\"\n        />\n      )}\n      <AvatarPrimitive.Fallback\n        delayMs={src ? 200 : 0}\n        className=\"flex h-full w-full items-center justify-center bg-[var(--color-primary-soft)] font-semibold text-[var(--color-primary)]\"\n      >\n        {initials}\n      </AvatarPrimitive.Fallback>\n    </AvatarPrimitive.Root>\n  )\n})\nAvatar.displayName = \"Avatar\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "0.2.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}
