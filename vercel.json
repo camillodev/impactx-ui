@@ -3,6 +3,5 @@
   "buildCommand": "pnpm build --filter=@impactx/web",
   "installCommand": "pnpm install",
   "outputDirectory": "apps/web/.next",
-  "framework": "nextjs",
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- apps/web packages/ds-education vercel.json package.json pnpm-lock.yaml turbo.json"
+  "framework": "nextjs"
 }
