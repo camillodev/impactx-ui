@@ -12,7 +12,7 @@ const iconButtonVariants = cva(
         filled:
           "bg-[var(--color-primary)] text-[var(--color-primary-fg)] hover:bg-[var(--color-primary-hover)] active:bg-[var(--color-primary-active)]",
         outline:
-          "bg-transparent text-[var(--color-text)] border border-[var(--color-border)] hover:bg-[var(--color-surface)] active:bg-[var(--color-surface-muted)]",
+          "bg-transparent text-[var(--color-secondary-bd)] border-2 border-[var(--color-secondary-bd)] hover:bg-[var(--color-secondary-hover)] active:bg-[var(--color-secondary-active)] active:border-[var(--color-secondary-bd-active)] active:text-[var(--color-secondary-bd-active)]",
         danger:
           "bg-transparent text-[var(--color-danger-primary)] hover:bg-[var(--color-danger-tertiary-hover)] active:bg-[var(--color-danger-tertiary-active)]",
       },

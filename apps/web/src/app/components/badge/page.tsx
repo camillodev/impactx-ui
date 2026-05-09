@@ -23,23 +23,23 @@ const modifiers = [
 
 export default function BadgePage() {
   return (
-    <main className="min-h-screen bg-[#f7f7f7] p-10">
-      <h1 className="text-2xl font-semibold text-[#1e2124] mb-8">Badge</h1>
+    <main className="min-h-screen bg-[var(--color-surface)] p-10">
+      <h1 className="text-2xl font-semibold text-[var(--color-text)] mb-8">Badge</h1>
 
       {variants.map(({ key: variant, label: variantLabel, icon }) => (
         <section key={variant} className="mb-10">
-          <h2 className="text-sm font-medium text-[#1e2124] mb-4 uppercase tracking-wide">
+          <h2 className="text-sm font-medium text-[var(--color-text)] mb-4 uppercase tracking-wide">
             {variantLabel}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sizes.map(({ key: size, label: sizeLabel }) => (
               <div key={size} className="flex flex-col gap-3">
-                <p className="text-xs text-[#6b7280] mb-1">{sizeLabel}</p>
+                <p className="text-xs text-[var(--color-text-muted)] mb-1">{sizeLabel}</p>
 
                 {modifiers.map(({ key: modifier, label: modLabel }) => (
                   <div key={modifier} className="flex flex-col gap-1">
-                    <span className="text-[10px] text-[#9ca3af]">{modLabel}</span>
+                    <span className="text-[10px] text-[var(--color-text-subtle)]">{modLabel}</span>
                     <Badge
                       variant={variant}
                       size={size}
@@ -59,21 +59,21 @@ export default function BadgePage() {
       ))}
 
       <section className="mb-10 max-w-3xl">
-        <h2 className="text-xl font-medium text-[#1e2124] mb-4">Uso</h2>
+        <h2 className="text-xl font-medium text-[var(--color-text)] mb-4">Uso</h2>
         <div className="flex flex-col gap-4">
           <div>
-            <p className="text-xs text-[#9ca3af] mb-2">Básico</p>
+            <p className="text-xs text-[var(--color-text-subtle)] mb-2">Básico</p>
             <CodeBlock language="tsx">{`import { Badge } from "@impactx/ds-education"
 
 <Badge variant="primary">Novo</Badge>`}</CodeBlock>
           </div>
           <div>
-            <p className="text-xs text-[#9ca3af] mb-2">Com variant + size</p>
+            <p className="text-xs text-[var(--color-text-subtle)] mb-2">Com variant + size</p>
             <CodeBlock language="tsx">{`<Badge variant="success" size="lg">Ativo</Badge>
 <Badge variant="danger" size="sm">Erro</Badge>`}</CodeBlock>
           </div>
           <div>
-            <p className="text-xs text-[#9ca3af] mb-2">Com ícone</p>
+            <p className="text-xs text-[var(--color-text-subtle)] mb-2">Com ícone</p>
             <CodeBlock language="tsx">{`import { Check } from "lucide-react"
 
 <Badge variant="success" icon={<Check size={12} />}>

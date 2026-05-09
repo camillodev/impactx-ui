@@ -19,29 +19,29 @@ const sizes = [
 
 export default function ButtonPage() {
   return (
-    <main className="min-h-screen bg-[#f7f7f7] px-10 py-12 font-sans">
-      <h1 className="text-2xl font-semibold text-[#1e2124] mb-1">Button</h1>
-      <p className="text-sm text-[#999ea3] mb-10">
+    <main className="min-h-screen bg-[var(--color-surface)] px-10 py-12 font-sans">
+      <h1 className="text-2xl font-semibold text-[var(--color-text)] mb-1">Button</h1>
+      <p className="text-sm text-[var(--color-text-subtle)] mb-10">
         Tokens Figma SAS/Alfabeto — radius 8px, Metropolis SemiBold, sem shadow.
       </p>
 
       {variants.map(({ key, label, dark }) => (
         <section key={key} className="mb-12">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-[#999ea3] mb-4">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-subtle)] mb-4">
             {label}
           </h2>
 
           {/* Sizes × States */}
           <div
-            className={`rounded-xl p-6 flex flex-col gap-6 ${dark ? "bg-[#1e2124]" : "bg-white border border-[#e5e7eb]"}`}
+            className={`rounded-xl p-6 flex flex-col gap-6 ${dark ? "bg-[var(--color-text)]" : "bg-white border border-[var(--color-border)]"}`}
           >
             {/* Header row */}
             <div className="grid grid-cols-[120px_1fr_1fr_1fr_1fr] gap-4 items-center">
-              <span className="text-xs text-[#999ea3]">Size</span>
-              <span className="text-xs text-[#999ea3]">Default</span>
-              <span className="text-xs text-[#999ea3]">Icon Left</span>
-              <span className="text-xs text-[#999ea3]">Icon Right</span>
-              <span className="text-xs text-[#999ea3]">Disabled</span>
+              <span className="text-xs text-[var(--color-text-subtle)]">Size</span>
+              <span className="text-xs text-[var(--color-text-subtle)]">Default</span>
+              <span className="text-xs text-[var(--color-text-subtle)]">Icon Left</span>
+              <span className="text-xs text-[var(--color-text-subtle)]">Icon Right</span>
+              <span className="text-xs text-[var(--color-text-subtle)]">Disabled</span>
             </div>
 
             {sizes.map(({ key: sizeKey, label: sizeLabel }) => (
@@ -49,7 +49,7 @@ export default function ButtonPage() {
                 key={sizeKey}
                 className="grid grid-cols-[120px_1fr_1fr_1fr_1fr] gap-4 items-center"
               >
-                <span className={`text-xs font-mono ${dark ? "text-[#999ea3]" : "text-[#999ea3]"}`}>
+                <span className={`text-xs font-mono ${dark ? "text-[var(--color-text-subtle)]" : "text-[var(--color-text-subtle)]"}`}>
                   {sizeLabel}
                 </span>
 
@@ -82,39 +82,39 @@ export default function ButtonPage() {
 
       {/* Aliases legados */}
       <section className="mb-12">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-[#999ea3] mb-4">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-subtle)] mb-4">
           Aliases legados (compatibilidade)
         </h2>
-        <div className="rounded-xl p-6 bg-white border border-[#e5e7eb] flex flex-col gap-6">
+        <div className="rounded-xl p-6 bg-white border border-[var(--color-border)] flex flex-col gap-6">
           <div className="grid grid-cols-[120px_1fr_1fr] gap-4 items-center">
-            <span className="text-xs text-[#999ea3]">Alias</span>
-            <span className="text-xs text-[#999ea3]">Mapa para</span>
-            <span className="text-xs text-[#999ea3]">Exemplo</span>
+            <span className="text-xs text-[var(--color-text-subtle)]">Alias</span>
+            <span className="text-xs text-[var(--color-text-subtle)]">Mapa para</span>
+            <span className="text-xs text-[var(--color-text-subtle)]">Exemplo</span>
           </div>
           <div className="grid grid-cols-[120px_1fr_1fr] gap-4 items-center">
-            <span className="text-xs font-mono text-[#999ea3]">ghost</span>
-            <span className="text-xs text-[#1e2124]">tertiary</span>
+            <span className="text-xs font-mono text-[var(--color-text-subtle)]">ghost</span>
+            <span className="text-xs text-[var(--color-text)]">tertiary</span>
             <Button variant="ghost" size="md">ghost alias</Button>
           </div>
         </div>
       </section>
 
       <section className="mb-12 max-w-3xl">
-        <h2 className="text-xl font-medium text-[#1e2124] mb-4">Uso</h2>
+        <h2 className="text-xl font-medium text-[var(--color-text)] mb-4">Uso</h2>
         <div className="flex flex-col gap-4">
           <div>
-            <p className="text-xs text-[#999ea3] mb-2">Básico</p>
+            <p className="text-xs text-[var(--color-text-subtle)] mb-2">Básico</p>
             <CodeBlock language="tsx">{`import { Button } from "@impactx/ds-education"
 
 <Button variant="primary" size="md">Click me</Button>`}</CodeBlock>
           </div>
           <div>
-            <p className="text-xs text-[#999ea3] mb-2">Com variant + size</p>
+            <p className="text-xs text-[var(--color-text-subtle)] mb-2">Com variant + size</p>
             <CodeBlock language="tsx">{`<Button variant="secondary" size="lg">Salvar</Button>
 <Button variant="danger-primary" size="sm">Excluir</Button>`}</CodeBlock>
           </div>
           <div>
-            <p className="text-xs text-[#999ea3] mb-2">Com ícone + onClick</p>
+            <p className="text-xs text-[var(--color-text-subtle)] mb-2">Com ícone + onClick</p>
             <CodeBlock language="tsx">{`import { ArrowRight } from "lucide-react"
 
 <Button variant="primary" size="md" onClick={() => console.log("ok")}>

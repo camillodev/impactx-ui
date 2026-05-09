@@ -35,21 +35,21 @@ export function HeroBanner({
           cy="60"
           rx="320"
           ry="220"
-          fill="rgba(255,255,255,0.06)"
+          fill="var(--color-overlay-xs)"
         />
         <ellipse
           cx="950"
           cy="240"
           rx="280"
           ry="160"
-          fill="rgba(255,255,255,0.04)"
+          fill="var(--color-overlay-xxs)"
         />
         <ellipse
           cx="1180"
           cy="180"
           rx="180"
           ry="120"
-          fill="rgba(255,255,255,0.05)"
+          fill="var(--color-overlay-xs)"
         />
       </svg>
 
@@ -74,7 +74,7 @@ export function HeroBanner({
         {/* Subtítulo */}
         <p
           className="text-base leading-relaxed max-w-xl"
-          style={{ color: "rgba(255,255,255,0.85)" }}
+          style={{ color: "var(--color-overlay-text)" }}
         >
           {description}
         </p>

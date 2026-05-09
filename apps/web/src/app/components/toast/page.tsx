@@ -6,25 +6,25 @@ import { CheckCircle, Info, AlertTriangle, XCircle } from "lucide-react"
 const toastTypes = [
   {
     label: "Success",
-    color: "#00b54a",
+    color: "var(--color-toast-success)",
     icon: <CheckCircle size={16} />,
     action: () => toast.success("Salvo com sucesso"),
   },
   {
     label: "Info",
-    color: "#0467db",
+    color: "var(--color-primary)",
     icon: <Info size={16} />,
     action: () => toast.info("Aviso importante"),
   },
   {
     label: "Warning",
-    color: "#f5a623",
+    color: "var(--color-toast-warning)",
     icon: <AlertTriangle size={16} />,
     action: () => toast.warning("Atenção necessária"),
   },
   {
     label: "Danger",
-    color: "#eb0000",
+    color: "var(--color-danger)",
     icon: <XCircle size={16} />,
     action: () => toast.error("Erro ao salvar"),
   },
@@ -39,14 +39,14 @@ export default function ToastPage() {
       */}
       <Toaster />
 
-      <main className="min-h-screen bg-[#f7f7f7] p-10">
-        <h1 className="text-2xl font-semibold text-[#1e2124] mb-2">Toast</h1>
-        <p className="text-sm text-[#6b7280] mb-10">
+      <main className="min-h-screen bg-[var(--color-surface)] p-10">
+        <h1 className="text-2xl font-semibold text-[var(--color-text)] mb-2">Toast</h1>
+        <p className="text-sm text-[var(--color-text-muted)] mb-10">
           Auto-dismiss em 4s. Clique nos botões para disparar cada tipo.
         </p>
 
         <section>
-          <h2 className="text-xs font-medium text-[#999ea3] uppercase tracking-wide mb-6">
+          <h2 className="text-xs font-medium text-[var(--color-text-subtle)] uppercase tracking-wide mb-6">
             Tipos
           </h2>
           <div className="flex flex-wrap gap-4">
@@ -54,7 +54,7 @@ export default function ToastPage() {
               <button
                 key={label}
                 onClick={action}
-                className="flex items-center gap-2 rounded-lg border bg-white px-5 py-3 text-sm font-medium text-[#1e2124] shadow-sm hover:bg-[#f7f7f7] transition-colors"
+                className="flex items-center gap-2 rounded-lg border bg-white px-5 py-3 text-sm font-medium text-[var(--color-text)] shadow-sm hover:bg-[var(--color-surface)] transition-colors"
                 style={{ borderLeftColor: color, borderLeftWidth: 4 }}
               >
                 <span style={{ color }}>{icon}</span>
@@ -65,7 +65,7 @@ export default function ToastPage() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-xs font-medium text-[#999ea3] uppercase tracking-wide mb-4">
+          <h2 className="text-xs font-medium text-[var(--color-text-subtle)] uppercase tracking-wide mb-4">
             Com descrição
           </h2>
           <div className="flex flex-wrap gap-4">
@@ -75,7 +75,7 @@ export default function ToastPage() {
                   description: "Disponível em produção a partir de agora.",
                 })
               }
-              className="rounded-lg border border-[#c9cccf] bg-white px-5 py-3 text-sm font-medium text-[#1e2124] hover:bg-[#f7f7f7] transition-colors"
+              className="rounded-lg border border-[var(--color-border)] bg-white px-5 py-3 text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-colors"
             >
               Success + descrição
             </button>
@@ -85,7 +85,7 @@ export default function ToastPage() {
                   description: "Verifique sua rede e tente novamente.",
                 })
               }
-              className="rounded-lg border border-[#c9cccf] bg-white px-5 py-3 text-sm font-medium text-[#1e2124] hover:bg-[#f7f7f7] transition-colors"
+              className="rounded-lg border border-[var(--color-border)] bg-white px-5 py-3 text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-colors"
             >
               Danger + descrição
             </button>

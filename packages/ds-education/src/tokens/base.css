@@ -66,6 +66,13 @@
   /* Typography */
   --font-sans: "Roboto", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Overlays — branco semi-transparente sobre superfícies coloridas (banners, hero) */
+  --color-overlay-xxs: rgba(255, 255, 255, 0.04);
+  --color-overlay-xs:  rgba(255, 255, 255, 0.06);
+  --color-overlay-sm:  rgba(255, 255, 255, 0.15);
+  --color-overlay-md:  rgba(255, 255, 255, 0.40);
+  --color-overlay-text: rgba(255, 255, 255, 0.85);
 }
 
 /* ==========================================================================

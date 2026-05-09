@@ -47,7 +47,7 @@ export function CtaBanner({
             style={{
               backgroundColor: "var(--color-bg)",
               color: "var(--color-text)",
-              border: "1px solid rgba(255,255,255,0.4)",
+              border: "1px solid var(--color-overlay-md)",
             }}
           >
             <CheckSquare size={16} style={{ color: "var(--color-text-muted)" }} />
@@ -59,7 +59,7 @@ export function CtaBanner({
         <div className="flex items-center justify-center h-full min-h-[200px]">
           <div
             className="flex items-center justify-center w-24 h-24 rounded-full"
-            style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+            style={{ backgroundColor: "var(--color-overlay-sm)" }}
           >
             <Target
               size={48}
