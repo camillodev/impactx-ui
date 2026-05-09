@@ -4,9 +4,9 @@ import "../support/commands";
 
 describe("cross-component theme interaction smoke", () => {
   it("themedVisit applies theme class and primary var resolves", () => {
-    cy.themedVisit("/components/button", "alfabeto");
+    cy.themedVisit("/components/button", "education");
     cy.document().then((doc) => {
-      expect(doc.documentElement.classList.contains("theme-alfabeto")).to.eq(
+      expect(doc.documentElement.classList.contains("theme-education")).to.eq(
         true
       );
     });

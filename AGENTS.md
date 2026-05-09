@@ -35,7 +35,7 @@ scripts/                 # build-registry, check-cohesion
 - ESM only — nunca `require`
 - TypeScript strict — nada de `any` sem justificativa
 - Tokens via `var(--color-*)` — nunca hex hardcoded
-- Theme via classe HTML (`theme-alfabeto`/`theme-kumon`/`theme-impactx`)
+- Theme via classe HTML (`theme-education`/`theme-kumon`/`theme-impactx`)
 - Mode via atributo HTML (`data-mode="dark"`); light eh default sem atributo
 - @clack/prompts pra interacao CLI; picocolors pra cores (nao chalk)
 

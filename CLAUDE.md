@@ -19,7 +19,7 @@ Stack: pnpm + turbo, Next 16, React 19, Tailwind v4, TypeScript strict, ESM only
 ## Regras de codigo
 - TypeScript strict, ESM only (`import/export`, nunca `require`)
 - Sem hex hardcoded — sempre tokens via `var(--color-*)`
-- Theme aplicado em `<html className="theme-alfabeto">` (ou `theme-kumon` / `theme-impactx`)
+- Theme aplicado em `<html className="theme-education">` (ou `theme-kumon` / `theme-impactx`)
 - Mode aplicado em `<html data-mode="dark">` (light eh default sem data-mode)
 - @clack/prompts pra qualquer interacao CLI nova; picocolors pra output colorido (nao chalk)
 
