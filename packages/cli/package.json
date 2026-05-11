@@ -1,5 +1,5 @@
 {
-  "name": "@impactx/ui",
+  "name": "@impactx/ui-cli",
   "version": "0.0.1",
   "type": "module",
   "description": "Impact X UI — multi-DS, multi-theme component CLI",

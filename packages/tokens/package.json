@@ -1,0 +1,20 @@
+{
+  "name": "@impactx/tokens",
+  "version": "0.1.0",
+  "description": "Impact X design tokens — CSS custom properties for colors, typography, spacing, and radius",
+  "type": "module",
+  "files": ["dist"],
+  "exports": {
+    "./base.css": "./dist/base.css",
+    "./themes/education.css": "./dist/themes/education.css",
+    "./themes/kumon.css": "./dist/themes/kumon.css",
+    "./themes/impactx.css": "./dist/themes/impactx.css"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
