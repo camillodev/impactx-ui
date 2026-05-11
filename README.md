@@ -64,10 +64,15 @@ pnpm lint && pnpm typecheck && pnpm test
 
 ## Como contribuir
 
-1. Branch a partir de `main`: `git checkout -b feature/<nome>` (ou `fix/`, `chore/`, `report/`)
-2. Commits na branch — sem `Co-Authored-By`
+Gitflow: `develop` é a branch base de todo desenvolvimento. `main` recebe apenas merges de release.
+
+1. Branch a partir de `develop`: `git checkout develop && git checkout -b feature/<nome>` (ou `fix/`, `chore/`, `report/`)
+2. Commits na branch
 3. Push: `git push origin feature/<nome>`
-4. Abrir PR pro `main` — nunca merge local direto
+4. Abrir PR para `develop` — nunca merge local direto
+5. Releases: PR de `develop` → `main` com tag `v<semver>`
+
+Ver [CONTRIBUTING.md](./CONTRIBUTING.md) para detalhes completos.
 
 Stack: pnpm workspaces + turbo. ESM only. TypeScript strict.
 
