@@ -1,9 +1,7 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "@/app/theme-provider"
-import { Sidebar } from "@/app/shell/sidebar"
-import { Header } from "@/app/shell/header"
-import { MobileNavProvider } from "@/app/shell/mobile-nav-context"
+import { ShowcaseShell } from "@/app/shell/showcase-shell"
 
 export const metadata: Metadata = {
   title: "ds-impactx · Education DS",
@@ -17,15 +15,9 @@ export default function RootLayout({
     <html lang="pt-BR" className="theme-education">
       <body className="antialiased">
         <ThemeProvider>
-          <MobileNavProvider>
-            <div className="flex h-screen overflow-hidden">
-              <Sidebar />
-              <div className="flex-1 flex flex-col min-w-0">
-                <Header />
-                <main className="flex-1 overflow-y-auto bg-[var(--color-surface)]">{children}</main>
-              </div>
-            </div>
-          </MobileNavProvider>
+          <ShowcaseShell>
+            {children}
+          </ShowcaseShell>
         </ThemeProvider>
       </body>
     </html>

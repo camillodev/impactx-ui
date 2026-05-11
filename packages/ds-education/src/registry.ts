@@ -45,6 +45,7 @@ export const components: RegistryItem[] = [
   { href: "/components/data-table",      label: "DataTable",      description: "Sort, density, loading, empty", category: "organism", keywords: ["table", "grid", "list"] },
   { href: "/components/assessment-card", label: "AssessmentCard", description: "Card com 5 status",             category: "organism", keywords: ["card", "course", "test"] },
   { href: "/components/card",            label: "Card",           description: "Container com Header/Title/Content", category: "atom", keywords: ["container", "panel"] },
+  { href: "/components/sidebar-shell",   label: "SidebarShell",   description: "Layout shell: sidebar + top bar Cmd+K + dark mode", category: "organism", keywords: ["layout", "shell", "sidebar", "navigation", "dark mode", "command palette"] },
 
   // Education domain organisms (showcase routes pending — see docs/atomic-design-audit.md)
   { href: "/components/assessment-header",  label: "AssessmentHeader",  description: "Header de avaliação (domain)",          category: "organism", exampleType: "education", keywords: ["header", "assessment", "education"] },

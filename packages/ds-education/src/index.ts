@@ -35,6 +35,7 @@ export * from "./components/toast";
 export * from "./components/tooltip";
 
 // Components — education domain organisms
+export * from "./components-education/sidebar-shell";
 export * from "./components-education/assessment-header";
 export * from "./components-education/assessment-list-item";
 export * from "./components-education/big-card";

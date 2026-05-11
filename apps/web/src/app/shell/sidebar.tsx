@@ -4,9 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LayoutGrid, Component, FileText, ChevronRight } from "lucide-react"
-import { Avatar, Separator, cn, components } from "@impactx/ds-education"
+import { Avatar, Separator, cn, components, useSidebarShell } from "@impactx/ds-education"
 import type { RegistryItem } from "@impactx/ds-education"
-import { useMobileNav } from "@/app/shell/mobile-nav-context"
 
 type TopLevelItem = {
   href: string
@@ -54,7 +53,7 @@ export function Sidebar() {
   const pathname = usePathname()
   const grouped = groupByCategory(components)
   const totalComponents = components.length
-  const { open, close } = useMobileNav()
+  const { closeSidebar: close } = useSidebarShell()
 
   const isActive = (href: string) =>
     href === "/"
@@ -64,7 +63,6 @@ export function Sidebar() {
   const componentsActive = pathname.startsWith("/components")
   const templatesActive = pathname.startsWith("/templates")
 
-  // Default: ambos abertos. Se rota indica group, garantir aberto.
   const [componentsOpen, setComponentsOpen] = useState<boolean>(true)
   const [templatesOpen, setTemplatesOpen] = useState<boolean>(true)
 
@@ -72,24 +70,9 @@ export function Sidebar() {
   const isTemplatesOpen = templatesOpen || templatesActive
 
   return (
-    <>
-      {/* Backdrop apenas mobile, quando aberto */}
-      {open ? (
-        <div
-          aria-hidden
-          onClick={close}
-          className="fixed inset-0 bg-black/40 z-40 md:hidden"
-        />
-      ) : null}
-
       <aside
         className={cn(
-          "w-64 shrink-0 border-r border-[var(--color-border)] bg-[var(--color-bg)] flex flex-col h-screen",
-          // Mobile: drawer fixo deslizante
-          "fixed inset-y-0 left-0 z-50 transform transition-transform duration-300",
-          open ? "translate-x-0" : "-translate-x-full",
-          // Desktop: estático no flow
-          "md:relative md:translate-x-0 md:transition-none md:sticky md:top-0"
+          "w-64 shrink-0 border-r border-[var(--color-border)] bg-[var(--color-bg)] flex flex-col h-full",
         )}
       >
         {/* Brand (sticky header) */}
@@ -264,6 +247,5 @@ export function Sidebar() {
           </div>
         </div>
       </aside>
-    </>
   )
 }
