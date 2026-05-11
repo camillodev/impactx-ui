@@ -23,3 +23,17 @@ Regras persistentes lidas em toda sessão. Valeam para agentes de IA e humanos.
 - **RULE-DS-005**: TDD é obrigatório para comportamento não-trivial.
   Fluxo: teste falhando → implementação mínima que passa → refactor.
   Stack: Vitest + Testing Library. Rodar `pnpm test` antes de considerar a tarefa concluída.
+
+## Development Workflow
+
+- **RULE-WF-001**: Toda PR deve passar por **QA antes de chegar ao CTO**.
+  Fluxo obrigatório: `implementação → QA review → CTO aprova → merge`.
+  QA deve comentar na issue **e** no PR com resultado dos testes antes de liberar para o CTO.
+
+- **RULE-WF-002**: Testes são obrigatórios e devem passar no CI antes de qualquer review.
+  Nenhuma PR sem cobertura de teste para comportamento novo será aprovada.
+  Rodar `pnpm test` localmente antes de abrir PR.
+
+- **RULE-WF-003**: O CTO é o único aprovador final de merge em `develop` e `main`.
+  PRs não podem ser mergeadas sem aprovação explícita do CTO.
+  Aprovação de outros reviewers é bem-vinda mas não suficiente.
