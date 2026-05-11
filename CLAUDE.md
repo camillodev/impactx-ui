@@ -1,5 +1,8 @@
 # Impact X UI — Claude Code Instructions
 
+@AGENTS.md
+@RULES.md
+
 ## Visao geral
 Monorepo do design system multi-DS / multi-theme da Impact X. Composto por:
 - `@impactx/ui` — CLI shadcn-style (`npx @impactx/ui add <ds> [<component>]`)
