@@ -10,7 +10,32 @@ import {
   Separator,
   Badge,
   cn,
+  type CommandPaletteGroup,
 } from "@impactx/ds-education"
+
+const DEMO_GROUPS: CommandPaletteGroup[] = [
+  {
+    heading: "Alunos",
+    items: [
+      { label: "João Silva", description: "Turma 9A", href: "#" },
+      { label: "Maria Santos", description: "Turma 8B", href: "#" },
+    ],
+  },
+  {
+    heading: "Turmas",
+    items: [
+      { label: "Turma 9A — Matemática", href: "#" },
+      { label: "Turma 8B — Português", href: "#" },
+    ],
+  },
+  {
+    heading: "Relatórios",
+    items: [
+      { label: "Relatório Mensal", description: "Maio 2026", href: "#" },
+      { label: "Taxa de conclusão", href: "#" },
+    ],
+  },
+]
 
 // ─── Demo sidebar content ─────────────────────────────────────────────────────
 
@@ -117,6 +142,7 @@ function SidebarShellSandbox() {
       <SidebarShell
         sidebar={<DemoSidebar />}
         commandPalette={{
+          groups: DEMO_GROUPS,
           placeholder: "Buscar alunos, turmas, relatórios…",
           onNavigate: (href) => router.push(href),
         }}
@@ -175,7 +201,7 @@ export default function SidebarShellPage() {
         <div className="divide-y divide-[var(--color-border)]">
           {[
             { prop: "sidebar",          type: "ReactNode",                          desc: "Conteúdo do painel lateral. Pode usar useSidebarShell() para fechar o drawer." },
-            { prop: "commandPalette?",  type: "{ placeholder?, onNavigate? }",      desc: "Ativa busca Cmd+K no top bar. Usa o registry interno do ds-education." },
+            { prop: "commandPalette?",  type: "{ groups, placeholder?, onNavigate? }", desc: "Ativa busca Cmd+K no top bar com grupos de items configuráveis." },
             { prop: "darkModeToggle?",  type: "boolean",                            desc: "Renderiza botão de dark mode no top bar (persiste em localStorage)." },
             { prop: "userMenu?",        type: "ReactNode",                          desc: "Slot à direita do top bar (avatar, badge de plano, etc.)." },
             { prop: "children",         type: "ReactNode",                          desc: "Conteúdo principal da página." },
@@ -214,7 +240,7 @@ function MySidebar() {
 
 <SidebarShell
   sidebar={<MySidebar />}
-  commandPalette={{ placeholder: "Buscar…", onNavigate: router.push }}
+  commandPalette={{ groups: myGroups, placeholder: "Buscar…", onNavigate: router.push }}
   darkModeToggle
   userMenu={<Avatar />}
 >

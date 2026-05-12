@@ -1,9 +1,59 @@
 "use client"
 
+import * as React from "react"
 import { useRouter } from "next/navigation"
-import { SidebarShell } from "@impactx/ds-education"
+import {
+  SidebarShell,
+  allItems,
+  type RegistryItem,
+  type CommandPaletteGroup,
+} from "@impactx/ds-education"
+import {
+  LayoutGrid, Box, Layers, BarChart3, Component, FileBox,
+} from "lucide-react"
 import { Sidebar } from "@/app/shell/sidebar"
 import { useTheme } from "@/app/theme-provider"
+
+const CATEGORY_LABEL: Record<RegistryItem["category"], string> = {
+  page: "Páginas",
+  atom: "Components · Atoms",
+  molecule: "Components · Molecules",
+  chart: "Components · Charts",
+  organism: "Components · Organisms",
+  example: "Exemplos",
+}
+
+const CATEGORY_ICON: Record<RegistryItem["category"], React.ComponentType<{ className?: string }>> = {
+  page: LayoutGrid,
+  atom: Box,
+  molecule: Layers,
+  chart: BarChart3,
+  organism: Component,
+  example: FileBox,
+}
+
+const CATEGORY_ORDER: RegistryItem["category"][] = ["page", "example", "atom", "molecule", "chart", "organism"]
+
+function buildGroups(): CommandPaletteGroup[] {
+  const map = new Map<RegistryItem["category"], RegistryItem[]>()
+  for (const item of allItems) {
+    const list = map.get(item.category) ?? []
+    list.push(item)
+    map.set(item.category, list)
+  }
+  return CATEGORY_ORDER.filter((c) => map.has(c)).map((c) => ({
+    heading: CATEGORY_LABEL[c],
+    items: map.get(c)!.map((item) => ({
+      label: item.label,
+      description: item.description,
+      href: item.href,
+      icon: CATEGORY_ICON[c],
+      keywords: item.keywords,
+    })),
+  }))
+}
+
+const PALETTE_GROUPS = buildGroups()
 
 function ThemeSelector() {
   const { theme, setTheme } = useTheme()
@@ -30,6 +80,7 @@ export function ShowcaseShell({ children }: { children: React.ReactNode }) {
     <SidebarShell
       sidebar={<Sidebar />}
       commandPalette={{
+        groups: PALETTE_GROUPS,
         placeholder: "Buscar componentes, telas ou páginas…",
         onNavigate: (href) => router.push(href),
       }}

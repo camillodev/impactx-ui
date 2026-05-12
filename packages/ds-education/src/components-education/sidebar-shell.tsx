@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Moon, Sun, Menu, Search } from "lucide-react"
 import { cn } from "../utils"
-import { CommandPalette, useCommandPalette } from "../components/command-palette"
+import { CommandPalette, useCommandPalette, type CommandPaletteGroup } from "../components/command-palette"
 import { IconButton } from "../components/icon-button"
 
 // ─── Dark mode hook ───────────────────────────────────────────────────────────
@@ -48,6 +48,8 @@ export function useSidebarShell(): SidebarShellContextValue {
 // ─── SidebarShell ─────────────────────────────────────────────────────────────
 
 export interface SidebarShellCommandPaletteConfig {
+  /** Groups of items to display in the palette */
+  groups: CommandPaletteGroup[]
   /** Search input placeholder */
   placeholder?: string
   /** Called when the user selects an item with a href */
@@ -186,6 +188,8 @@ export function SidebarShell({
           <CommandPalette
             open={paletteOpen}
             onOpenChange={setPaletteOpen}
+            groups={commandPalette.groups}
+            placeholder={commandPalette.placeholder}
             onNavigate={commandPalette.onNavigate}
           />
         )}
