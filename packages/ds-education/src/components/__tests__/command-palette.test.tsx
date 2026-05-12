@@ -47,7 +47,9 @@ describe("CommandPalette", () => {
 
   it("renderiza título oculto para a11y (sem warning Radix)", () => {
     renderPalette({ open: true, title: "Meu título" })
-    expect(screen.getByText("Meu título")).toBeTruthy()
+    // Dialog.Title renders as <h2> inside VisuallyHidden — use getByRole to target it specifically
+    // (cmdk also renders a <label> with the same text via the label prop)
+    expect(screen.getByRole("heading", { name: "Meu título" })).toBeTruthy()
   })
 
   it("renderiza descrição oculta quando fornecida", () => {
