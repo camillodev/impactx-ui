@@ -2,11 +2,58 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { Search, Moon, Sun, Menu } from "lucide-react"
+import { Search, Moon, Sun, Menu, Component, FileBox, LayoutGrid, BarChart3, Layers, Box } from "lucide-react"
 import { useTheme } from "@/app/theme-provider"
-import { IconButton } from "@impactx/ds-education"
-import { CommandPalette, useCommandPalette } from "@impactx/ds-education"
+import { IconButton, CommandPalette, useCommandPalette, allItems, type RegistryItem, type CommandPaletteGroup } from "@impactx/ds-education"
 import { useMobileNav } from "@/app/shell/mobile-nav-context"
+
+const CATEGORY_LABEL: Record<RegistryItem["category"], string> = {
+  page: "Páginas",
+  atom: "Components · Atoms",
+  molecule: "Components · Molecules",
+  chart: "Components · Charts",
+  organism: "Components · Organisms",
+  example: "Exemplos",
+}
+
+const CATEGORY_ICON: Record<RegistryItem["category"], React.ComponentType<{ className?: string }>> = {
+  page: LayoutGrid,
+  atom: Box,
+  molecule: Layers,
+  chart: BarChart3,
+  organism: Component,
+  example: FileBox,
+}
+
+const CATEGORY_ORDER: RegistryItem["category"][] = [
+  "page",
+  "example",
+  "atom",
+  "molecule",
+  "chart",
+  "organism",
+]
+
+function buildGroups(): CommandPaletteGroup[] {
+  const map = new Map<RegistryItem["category"], RegistryItem[]>()
+  for (const item of allItems) {
+    const list = map.get(item.category) ?? []
+    list.push(item)
+    map.set(item.category, list)
+  }
+  return CATEGORY_ORDER.filter((c) => map.has(c)).map((c) => ({
+    heading: CATEGORY_LABEL[c],
+    items: map.get(c)!.map((item) => ({
+      label: item.label,
+      description: item.description,
+      href: item.href,
+      icon: CATEGORY_ICON[c],
+      keywords: item.keywords,
+    })),
+  }))
+}
+
+const PALETTE_GROUPS = buildGroups()
 
 function ModeToggle() {
   const [mode, setMode] = React.useState<"light" | "dark">(() => {
@@ -93,7 +140,14 @@ export function Header() {
         </div>
       </header>
 
-      <CommandPalette open={open} onOpenChange={setOpen} onNavigate={(href) => router.push(href)} />
+      <CommandPalette
+        open={open}
+        onOpenChange={setOpen}
+        groups={PALETTE_GROUPS}
+        placeholder="Buscar componentes, telas ou páginas..."
+        title="Buscar componentes e telas"
+        onNavigate={(href) => router.push(href)}
+      />
     </>
   )
 }
