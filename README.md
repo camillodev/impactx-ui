@@ -62,14 +62,23 @@ pnpm registry:build            # gera apps/web/public/r/*.json
 pnpm lint && pnpm typecheck && pnpm test
 ```
 
-## Como contribuir
+## Como contribuir (Gitflow)
 
-1. Branch a partir de `main`: `git checkout -b feature/<nome>` (ou `fix/`, `chore/`, `report/`)
-2. Commits na branch — sem `Co-Authored-By`
-3. Push: `git push origin feature/<nome>`
-4. Abrir PR pro `main` — nunca merge local direto
+Este repo usa gitflow com `develop` como branch default de integracao:
 
-Stack: pnpm workspaces + turbo. ESM only. TypeScript strict.
+| Branch | Funcao |
+|--------|--------|
+| `develop` | integracao continua (default) |
+| `main` | producao / releases |
+
+1. Atualize seu local: `git fetch origin`
+2. Branch a partir de `develop`: `git checkout -b feature/<nome> origin/develop` (ou `fix/`, `chore/`, `report/`)
+3. Commits na branch
+4. Push: `git push origin feature/<nome>`
+5. Abrir PR para `develop` — nunca merge local direto
+6. Merge de `develop` → `main` somente em releases
+
+> **Branches abertas no `main` antigo:** rebaser antes do proximo PR com `git rebase origin/develop`.
 
 ## Documentacao para agentes / LLMs
 

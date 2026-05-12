@@ -26,6 +26,8 @@ export * from "./components/progress-bar";
 export * from "./components/select";
 export * from "./components/separator";
 export * from "./components/sheet";
+export * from "./components/sidebar";
+export * from "./components/sidebar-from-config";
 export * from "./components/skeleton";
 export * from "./components/stat";
 export * from "./components/switch";
