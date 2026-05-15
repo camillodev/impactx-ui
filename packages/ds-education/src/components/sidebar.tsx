@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Slot } from "radix-ui"
 import { cn } from "../utils"
 
 // ─── Context ─────────────────────────────────────────────────────────────────
@@ -290,24 +291,27 @@ export interface SidebarMenuButtonProps extends React.ButtonHTMLAttributes<HTMLB
 }
 
 export const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonProps>(
-  ({ className, isActive, asChild: _asChild, children, ...props }, ref) => (
-    <button
-      ref={ref}
-      type="button"
-      data-active={isActive}
-      className={cn(
-        "peer/menu-button flex w-full items-center gap-3 overflow-hidden rounded-md px-3 py-1.5 text-sm font-medium",
-        "transition-colors outline-none",
-        "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-text)]",
-        "focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]",
-        isActive && "bg-[var(--color-primary-soft)] text-[var(--color-primary)] hover:bg-[var(--color-primary-soft)] hover:text-[var(--color-primary)]",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  )
+  ({ className, isActive, asChild = false, children, ...props }, ref) => {
+    const Comp = asChild ? Slot.Root : "button"
+    return (
+      <Comp
+        ref={ref}
+        {...(!asChild ? { type: "button" } : {})}
+        data-active={isActive}
+        className={cn(
+          "peer/menu-button flex w-full items-center gap-3 overflow-hidden rounded-md px-3 py-1.5 text-sm font-medium",
+          "transition-colors outline-none",
+          "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-text)]",
+          "focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]",
+          isActive && "bg-[var(--color-primary-soft)] text-[var(--color-primary)] hover:bg-[var(--color-primary-soft)] hover:text-[var(--color-primary)]",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </Comp>
+    )
+  }
 )
 SidebarMenuButton.displayName = "SidebarMenuButton"
 

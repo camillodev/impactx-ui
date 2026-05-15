@@ -105,17 +105,26 @@ function CollapsibleGroup({ group, activeHref, LinkComponent }: CollapsibleGroup
             {group.items.map((item) => {
               const ItemIcon = item.icon
               const isActive = item.href === activeHref
+              const content = (
+                <>
+                  {ItemIcon && <ItemIcon className="size-4 shrink-0" />}
+                  <span className="flex-1 truncate text-left">{item.label}</span>
+                  {item.badge != null && <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>}
+                </>
+              )
               return (
                 <SidebarMenuItem key={item.href}>
-                  <LinkComponent href={item.href} className="w-full">
-                    <SidebarMenuButton isActive={isActive} disabled={item.disabled} className="w-full">
-                      {ItemIcon && <ItemIcon className="size-4 shrink-0" />}
-                      <span className="flex-1 truncate text-left">{item.label}</span>
-                      {item.badge != null && (
-                        <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>
-                      )}
+                  {item.disabled ? (
+                    <SidebarMenuButton isActive={isActive} disabled className="w-full">
+                      {content}
                     </SidebarMenuButton>
-                  </LinkComponent>
+                  ) : (
+                    <SidebarMenuButton asChild isActive={isActive} className="w-full">
+                      <LinkComponent href={item.href} className="w-full">
+                        {content}
+                      </LinkComponent>
+                    </SidebarMenuButton>
+                  )}
                 </SidebarMenuItem>
               )
             })}
@@ -143,17 +152,26 @@ function FlatGroup({
           {group.items.map((item) => {
             const ItemIcon = item.icon
             const isActive = item.href === activeHref
+            const content = (
+              <>
+                {ItemIcon && <ItemIcon className="size-4 shrink-0" />}
+                <span className="flex-1 truncate text-left">{item.label}</span>
+                {item.badge != null && <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>}
+              </>
+            )
             return (
               <SidebarMenuItem key={item.href}>
-                <LinkComponent href={item.href} className="w-full">
-                  <SidebarMenuButton isActive={isActive} disabled={item.disabled} className="w-full">
-                    {ItemIcon && <ItemIcon className="size-4 shrink-0" />}
-                    <span className="flex-1 truncate text-left">{item.label}</span>
-                    {item.badge != null && (
-                      <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>
-                    )}
+                {item.disabled ? (
+                  <SidebarMenuButton isActive={isActive} disabled className="w-full">
+                    {content}
                   </SidebarMenuButton>
-                </LinkComponent>
+                ) : (
+                  <SidebarMenuButton asChild isActive={isActive} className="w-full">
+                    <LinkComponent href={item.href} className="w-full">
+                      {content}
+                    </LinkComponent>
+                  </SidebarMenuButton>
+                )}
               </SidebarMenuItem>
             )
           })}
