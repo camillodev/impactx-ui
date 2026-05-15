@@ -42,6 +42,7 @@ export const components: RegistryItem[] = [
   { href: "/components/donut",       label: "Donut score", description: "Educacional (legacy)",          category: "chart", keywords: ["pie", "score"] },
 
   // Organisms
+  { href: "/components/sidebar",         label: "Sidebar",        description: "Primitivos shadcn-style + SidebarFromConfig config-driven", category: "organism", keywords: ["nav", "navigation", "menu", "layout"] },
   { href: "/components/data-table",      label: "DataTable",      description: "Sort, density, loading, empty", category: "organism", keywords: ["table", "grid", "list"] },
   { href: "/components/assessment-card", label: "AssessmentCard", description: "Card com 5 status",             category: "organism", keywords: ["card", "course", "test"] },
   { href: "/components/card",            label: "Card",           description: "Container com Header/Title/Content", category: "atom", keywords: ["container", "panel"] },

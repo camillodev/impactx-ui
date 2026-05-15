@@ -2,57 +2,48 @@
 
 import * as React from "react"
 import { Command } from "cmdk"
-import {
-  Search,
-  Component,
-  FileBox,
-  LayoutGrid,
-  BarChart3,
-  Layers,
-  Box,
-  ArrowRight,
-} from "lucide-react"
-import { allItems, type RegistryItem } from "../registry"
+import * as Dialog from "@radix-ui/react-dialog"
+import { VisuallyHidden } from "radix-ui"
+import { Search, ArrowRight } from "lucide-react"
 import { cn } from "../utils"
 
-const CATEGORY_LABEL: Record<RegistryItem["category"], string> = {
-  page: "Páginas",
-  atom: "Components · Atoms",
-  molecule: "Components · Molecules",
-  chart: "Components · Charts",
-  organism: "Components · Organisms",
-  example: "Exemplos",
+export interface CommandPaletteItem {
+  label: string
+  description?: string
+  href?: string
+  icon?: React.ComponentType<{ className?: string }>
+  keywords?: string[]
+  onSelect?: () => void
 }
 
-const CATEGORY_ICON: Record<RegistryItem["category"], React.ComponentType<{ className?: string }>> = {
-  page: LayoutGrid,
-  atom: Box,
-  molecule: Layers,
-  chart: BarChart3,
-  organism: Component,
-  example: FileBox,
+export interface CommandPaletteGroup {
+  heading: string
+  items: CommandPaletteItem[]
 }
-
-// Ordem de renderização dos grupos
-const CATEGORY_ORDER: RegistryItem["category"][] = [
-  "page",
-  "example",
-  "atom",
-  "molecule",
-  "chart",
-  "organism",
-]
 
 export interface CommandPaletteProps {
   open: boolean
   onOpenChange: (open: boolean) => void
+  groups: CommandPaletteGroup[]
+  placeholder?: string
+  /** Título visível apenas para leitores de tela (a11y) */
+  title?: string
+  /** Descrição visível apenas para leitores de tela (a11y) */
+  description?: string
   onNavigate?: (href: string) => void
 }
 
-export function CommandPalette({ open, onOpenChange, onNavigate }: CommandPaletteProps) {
+export function CommandPalette({
+  open,
+  onOpenChange,
+  groups,
+  placeholder = "Buscar...",
+  title = "Buscar",
+  description,
+  onNavigate,
+}: CommandPaletteProps) {
   const [query, setQuery] = React.useState("")
 
-  // Reset query ao fechar
   React.useEffect(() => {
     if (!open) {
       const t = setTimeout(() => setQuery(""), 150)
@@ -60,37 +51,33 @@ export function CommandPalette({ open, onOpenChange, onNavigate }: CommandPalett
     }
   }, [open])
 
-  // Agrupa items por categoria preservando ordem
-  const grouped = React.useMemo(() => {
-    const map = new Map<RegistryItem["category"], RegistryItem[]>()
-    for (const item of allItems) {
-      const list = map.get(item.category) ?? []
-      list.push(item)
-      map.set(item.category, list)
-    }
-    return CATEGORY_ORDER.filter((c) => map.has(c)).map((c) => ({
-      category: c,
-      items: map.get(c)!,
-    }))
-  }, [])
+  const totalItems = groups.reduce((acc, g) => acc + g.items.length, 0)
 
-  const handleSelect = (href: string) => {
+  const handleSelect = (item: CommandPaletteItem) => {
     onOpenChange(false)
-    onNavigate?.(href)
+    if (item.onSelect) {
+      item.onSelect()
+    } else if (item.href) {
+      onNavigate?.(item.href)
+    }
   }
 
   return (
     <Command.Dialog
       open={open}
       onOpenChange={onOpenChange}
-      label="Buscar componentes e telas"
+      label={title}
       shouldFilter
       className={cn(
         "fixed inset-0 z-50 flex items-start justify-center p-4 pt-[15vh]",
-        // overlay
         "[&[data-state=open]]:animate-in [&[data-state=closed]]:animate-out"
       )}
     >
+      <VisuallyHidden.Root>
+        <Dialog.Title>{title}</Dialog.Title>
+        {description && <Dialog.Description>{description}</Dialog.Description>}
+      </VisuallyHidden.Root>
+
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/50 backdrop-blur-sm"
@@ -98,7 +85,7 @@ export function CommandPalette({ open, onOpenChange, onNavigate }: CommandPalett
         aria-hidden
       />
 
-      {/* Dialog */}
+      {/* Dialog panel */}
       <div
         className="relative w-full max-w-2xl rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
@@ -109,7 +96,7 @@ export function CommandPalette({ open, onOpenChange, onNavigate }: CommandPalett
           <Command.Input
             value={query}
             onValueChange={setQuery}
-            placeholder="Buscar componentes, telas ou páginas..."
+            placeholder={placeholder}
             className="flex-1 h-12 bg-transparent outline-none text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]"
           />
           <kbd className="hidden md:inline-flex items-center h-6 px-1.5 rounded text-[11px] font-mono text-[var(--color-text-muted)] border border-[var(--color-border)] bg-[var(--color-surface)]">
@@ -124,39 +111,43 @@ export function CommandPalette({ open, onOpenChange, onNavigate }: CommandPalett
             <span className="font-mono text-[var(--color-text)]">{query}</span>
           </Command.Empty>
 
-          {grouped.map(({ category, items }) => {
-            const Icon = CATEGORY_ICON[category]
-            return (
-              <Command.Group
-                key={category}
-                heading={CATEGORY_LABEL[category]}
-                className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[11px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-[var(--color-text-muted)]"
-              >
-                {items.map((item) => (
+          {groups.map((group) => (
+            <Command.Group
+              key={group.heading}
+              heading={group.heading}
+              className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[11px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-[var(--color-text-muted)]"
+            >
+              {group.items.map((item) => {
+                const Icon = item.icon
+                return (
                   <Command.Item
-                    key={item.href}
-                    value={`${item.label} ${item.description} ${(item.keywords ?? []).join(" ")} ${item.exampleType ?? ""}`}
-                    onSelect={() => handleSelect(item.href)}
+                    key={item.href ?? item.label}
+                    value={`${item.label} ${item.description ?? ""} ${(item.keywords ?? []).join(" ")}`}
+                    onSelect={() => handleSelect(item)}
                     className={cn(
                       "flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-sm",
                       "data-[selected=true]:bg-[var(--color-primary-soft)] data-[selected=true]:text-[var(--color-primary)]"
                     )}
                   >
-                    <Icon className="size-4 text-[var(--color-text-muted)] shrink-0 group-data-[selected=true]:text-[var(--color-primary)]" />
+                    {Icon && (
+                      <Icon className="size-4 text-[var(--color-text-muted)] shrink-0" />
+                    )}
                     <div className="min-w-0 flex-1">
-                      <div className="font-medium text-[var(--color-text)] data-[selected=true]:text-[var(--color-primary)]">
+                      <div className="font-medium text-[var(--color-text)]">
                         {item.label}
                       </div>
-                      <div className="text-xs text-[var(--color-text-muted)] truncate">
-                        {item.description}
-                      </div>
+                      {item.description && (
+                        <div className="text-xs text-[var(--color-text-muted)] truncate">
+                          {item.description}
+                        </div>
+                      )}
                     </div>
                     <ArrowRight className="size-3.5 text-[var(--color-text-muted)] shrink-0 opacity-0 group-data-[selected=true]:opacity-100" />
                   </Command.Item>
-                ))}
-              </Command.Group>
-            )
-          })}
+                )
+              })}
+            </Command.Group>
+          ))}
         </Command.List>
 
         {/* Footer */}
@@ -175,7 +166,7 @@ export function CommandPalette({ open, onOpenChange, onNavigate }: CommandPalett
               fechar
             </span>
           </div>
-          <span>{allItems.length} resultados</span>
+          <span>{totalItems} resultados</span>
         </div>
       </div>
     </Command.Dialog>
@@ -196,13 +187,11 @@ export function useCommandPalette() {
     }
 
     const onKey = (e: KeyboardEvent) => {
-      // Cmd+K / Ctrl+K toggle (sempre, mesmo em inputs)
       if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((v) => !v)
         return
       }
-      // "/" abre — apenas se não estiver em campo editável e sem modificadores
       if (
         e.key === "/" &&
         !e.metaKey &&
