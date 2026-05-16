@@ -1,4 +1,44 @@
-# Overnight Notes — Semanas 1-3 do DS
+# Overnight Notes — Semanas 1-5 do DS (atualizado)
+
+> **Atualização final 2 — 2026-05-16:** Rafa liberou execução de fases adicionais. Entregues W5a (Changesets), W5b (5 organism rules), W4a (ESLint kumon), W4b+c (Playwright visual + axe-core). W6 (kumon migration) e parte de W5 (MCP server, Style Dictionary) ficaram pendentes — decisões arquiteturais/produto.
+
+## Branches adicionais (W4-W5) pushed
+
+| Branch | Conteúdo |
+|---|---|
+| `chore/setup-changesets` (impactx-ui) | Changesets CLI + GitHub Action que bloqueia PR sem changeset. Initial changeset documenta entregáveis do overnight. |
+| `docs/organism-rules` (impactx-ui) | 5 rules em `.impactx/rules/organisms/` — hero-banner, assessment-card, big-card, donut-score, cta-banner. |
+| `feature/ds-week-4-visual-gate` (impactx-ui) | Playwright + axe-core. 11 rotas × 3 viewports = 33 screenshots baseline + 66 testes total (33 visual + 33 a11y). |
+| `chore/eslint-block-tailwind-raw` (kumon-app) | ESLint custom rule que warn em `bg-(red\|blue\|green\|yellow\|...)-N`, `text-X-N`, `border-X-N`, e hex em arbitrary values. 12 violations encontradas no código atual (esperado — migration backlog). |
+
+## CAVEATS importantes (LEIA)
+
+### 1. Baselines de Playwright foram bot-generated
+
+As 33 screenshots em `apps/web/playwright-tests/visual-regression.spec.ts-snapshots/` foram capturadas pelo bot rodando os showcases. **Não são "ground truth" — são "o que o bot construiu".** Antes de merge do `feature/ds-week-4-visual-gate`, eyeball cada uma:
+
+```bash
+git checkout feature/ds-week-4-visual-gate
+open apps/web/playwright-tests/visual-regression.spec.ts-snapshots/
+```
+
+Se algo estiver visualmente errado, ajusta o showcase e roda `pnpm --filter @impactx/web test:visual:update`.
+
+### 2. A11y gate atualmente apenas "critical", não "serious"
+
+Existem warnings reais de `color-contrast` (texto muted em fundo claro) e `scrollable-region-focusable` (DataTable wrapper). Pra não bloquear W4 inteiro, gate só falha em "critical". Apertar pra "serious" depois de triagem. Detalhes em `apps/web/playwright-tests/visual-regression.spec.ts` linha 47.
+
+### 3. ESLint rule em kumon é WARN, não ERROR
+
+12 violations no código existente. Aperta pra "error" só depois de W6 (migration). Detalhes em `kumon-app/eslint.config.mjs`.
+
+### 4. Changesets workflow assume `pnpm changeset status --since=origin/main`
+
+Esse comando precisa de `origin/main` acessível no CI. Se branch vier de fork, pode falhar. Validar no primeiro PR real.
+
+---
+
+# Overnight Notes — Semanas 1-3 do DS (original)
 
 > Data: 2026-05-16 (overnight) · Quem: Caio (Sonnet orquestrador) + 12 sub-agents Haiku
 >
