@@ -71,6 +71,7 @@ export default function ListPageExample() {
             containerClassName="w-full max-w-sm"
           />
           <select
+            aria-label="Filtrar por status"
             defaultValue=""
             className="h-10 rounded-md border-2 border-[var(--color-border-input)] bg-[var(--color-bg)] px-3 text-sm text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]"
           >
