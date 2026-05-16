@@ -31,8 +31,21 @@ Stack: pnpm + turbo, Next 16, React 19, Tailwind v4, TypeScript strict, ESM only
 - NUNCA commitar direto no `main` — sempre branch `feature/`, `fix/`, `chore/` ou `report/`
 - Sempre PR pro main, nunca merge local
 
+## Contrato declarativo `.impactx/` (LER PRIMEIRO)
+
+Pasta `.impactx/` no root do repo contem o contrato pro bot que vai gerar/consumir codigo do DS. Pattern inspirado em Lovable + Vercel AI-Native DS.
+
+- **`.impactx/system.md`** — sempre carregar antes de tocar codigo frontend
+- **`.impactx/rules/components/*.md`** — regra por componente (button, input, card, badge, modal, +)
+- **`.impactx/rules/styling/tokens.md`** — tokens, temas, anti-patterns de cor
+- **`.impactx/rules/primitives/`** — em construcao (Semana 2)
+- **`.impactx/rules/templates/`** — em construcao (Semana 3)
+
+Plano completo: `docs/ds-implementation-plan.md`. Skill: `ix-design-system`.
+
 ## Skills disponiveis (`.claude/skills/`)
 Leia a skill relevante ANTES de tocar em codigo:
+- `ix-design-system` — contrato do DS, aponta pra `.impactx/` (NOVO)
 - `ix-frontend` — padroes obrigatorios de frontend Impact X
 - `ix-engineering` — system design, arquitetura, PRDs
 - `ix-code-guidelines` — regras de qualidade cross-cutting (naming, TDD, error handling, DRY)
