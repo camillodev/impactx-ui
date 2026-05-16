@@ -68,6 +68,22 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
+  /* Card semantic tokens — Figma Alfabeto reference (Card system w/ 5 states × layouts).
+   * Bot/component nunca usa --shadow-* ou --radius-* direto pra Card —
+   * sempre via estas semantic vars. Trocar visual do Card globalmente = editar só estas.
+   */
+  --radius-card: 12px;
+  --shadow-card-subtle: 0 1px 2px 0 rgb(15 23 42 / 0.04);
+  --shadow-card-default: 0 1px 3px 0 rgb(15 23 42 / 0.06), 0 1px 2px -1px rgb(15 23 42 / 0.04);
+  --shadow-card-hover:   0 4px 12px -2px rgb(15 23 42 / 0.10), 0 2px 4px -2px rgb(15 23 42 / 0.06);
+  /* Border do Card — usa border-input (cinza com presença) como fallback,
+   * theme pode overrider --color-border-card pra tint primary. */
+  --color-border-card: var(--color-border-input);
+  /* Active/focus state — primary do tema, 2px peso. */
+  --color-border-card-active: var(--color-primary);
+  --color-border-card-width: 1px;
+  --color-border-card-width-active: 2px;
+
   /* Typography */
   --font-sans: "Plus Jakarta Sans", "Roboto", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;

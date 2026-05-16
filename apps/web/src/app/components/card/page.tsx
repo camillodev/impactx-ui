@@ -1,28 +1,338 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@impactx/ds-education"
-import { Button } from "@impactx/ds-education"
-import { Badge } from "@impactx/ds-education"
-import { Separator } from "@impactx/ds-education"
+import {
+  Card,
+  CardMedia,
+  CardHeader,
+  CardTitle,
+  CardSubtitle,
+  CardContent,
+  CardMeta,
+  Badge,
+  Button,
+  Avatar,
+  IconButton,
+  Separator,
+} from "@impactx/ds-education"
+import { MoreHorizontal, GraduationCap, Calendar, BookOpen } from "lucide-react"
+
+// Reference: Figma Alfabeto Card 4156:291 — 5 states × layouts.
+// Tudo via tokens — visual segue tema ativo (kumon azul, education azul, impactx verde).
+
+const STATES = [
+  { state: "default", label: "Default" },
+  { state: "default", label: "Hover (hover me)", hint: "interactive" },
+  { state: "active", label: "Active / Selected" },
+  { state: "disabled", label: "Disabled" },
+  { state: "loading", label: "Loading" },
+] as const
+
+type ShowcaseState = "default" | "active" | "disabled" | "loading"
+
+interface CardStateProps {
+  state: ShowcaseState
+  hint?: string
+}
+
+function StateLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="text-[10px] uppercase tracking-widest text-[var(--color-text-muted)]">
+      {children}
+    </span>
+  )
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// Vertical · Media=image · Footer=false
+// ───────────────────────────────────────────────────────────────────────────
+
+function VerticalImageCard({ state, hint }: CardStateProps) {
+  if (state === "loading") {
+    return <Card loading direction="vertical" />
+  }
+  return (
+    <Card
+      direction="vertical"
+      state={state === "active" || state === "disabled" ? state : "default"}
+      interactive={hint === "interactive"}
+    >
+      <CardMedia
+        src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=400"
+        alt="Paisagem montanhosa"
+      />
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardSubtitle>Subtitle 1</CardSubtitle>
+      </CardHeader>
+    </Card>
+  )
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// Vertical · Media=image · Footer=true (Figma reference exato)
+// ───────────────────────────────────────────────────────────────────────────
+
+function VerticalImageFooterCard({ state, hint }: CardStateProps) {
+  if (state === "loading") {
+    return <Card loading direction="vertical" />
+  }
+  return (
+    <Card
+      direction="vertical"
+      state={state === "active" || state === "disabled" ? state : "default"}
+      interactive={hint === "interactive"}
+    >
+      <CardMedia
+        src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=400"
+        alt="Paisagem montanhosa"
+      />
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardSubtitle>Subtitle 1</CardSubtitle>
+      </CardHeader>
+      <CardMeta
+        avatar={
+          <Avatar
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80"
+            alt="Maria Silva"
+            size="sm"
+          />
+        }
+        caption="Atualizado em 19/4/2021"
+        actions={
+          <IconButton
+            aria-label="Mais ações"
+            variant="ghost"
+            size="sm"
+            icon={<MoreHorizontal />}
+          />
+        }
+      />
+    </Card>
+  )
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// Vertical · Media=icon · Footer=false
+// ───────────────────────────────────────────────────────────────────────────
+
+function VerticalIconCard({ state, hint }: CardStateProps) {
+  if (state === "loading") {
+    return <Card loading direction="vertical" />
+  }
+  return (
+    <Card
+      direction="vertical"
+      state={state === "active" || state === "disabled" ? state : "default"}
+      interactive={hint === "interactive"}
+    >
+      <CardMedia variant="icon">
+        <GraduationCap />
+      </CardMedia>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardSubtitle>Subtitle 1</CardSubtitle>
+      </CardHeader>
+    </Card>
+  )
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// Vertical · Media=none · Footer=false
+// ───────────────────────────────────────────────────────────────────────────
+
+function VerticalNoneCard({ state, hint }: CardStateProps) {
+  if (state === "loading") {
+    return <Card loading direction="vertical" />
+  }
+  return (
+    <Card
+      direction="vertical"
+      state={state === "active" || state === "disabled" ? state : "default"}
+      interactive={hint === "interactive"}
+    >
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardSubtitle>Subtitle 1</CardSubtitle>
+      </CardHeader>
+    </Card>
+  )
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// Horizontal · Media=image · Footer=false
+// ───────────────────────────────────────────────────────────────────────────
+
+function HorizontalImageCard({ state, hint }: CardStateProps) {
+  if (state === "loading") {
+    return <Card loading direction="horizontal" />
+  }
+  return (
+    <Card
+      direction="horizontal"
+      state={state === "active" || state === "disabled" ? state : "default"}
+      interactive={hint === "interactive"}
+    >
+      <CardMedia
+        src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=200"
+        alt="Paisagem"
+      />
+      <CardHeader className="justify-center">
+        <CardTitle>Card Title</CardTitle>
+        <CardSubtitle>Subtitle 1</CardSubtitle>
+      </CardHeader>
+    </Card>
+  )
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// Horizontal · Media=image · Footer=true
+// ───────────────────────────────────────────────────────────────────────────
+
+function HorizontalImageFooterCard({ state, hint }: CardStateProps) {
+  if (state === "loading") {
+    return <Card loading direction="horizontal" />
+  }
+  return (
+    <Card
+      direction="horizontal"
+      state={state === "active" || state === "disabled" ? state : "default"}
+      interactive={hint === "interactive"}
+    >
+      <CardMedia
+        src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=200"
+        alt="Paisagem"
+      />
+      <div className="flex flex-col flex-1 min-w-0">
+        <CardHeader>
+          <CardTitle>Card Title</CardTitle>
+          <CardSubtitle>Subtitle 1</CardSubtitle>
+        </CardHeader>
+        <CardMeta
+          avatar={
+            <Avatar
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80"
+              alt=""
+              size="sm"
+            />
+          }
+          caption="Atualizado em 19/4/2021"
+          actions={
+            <IconButton
+              aria-label="Mais ações"
+              variant="ghost"
+              size="sm"
+              icon={<MoreHorizontal />}
+            />
+          }
+        />
+      </div>
+    </Card>
+  )
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// Page
+// ───────────────────────────────────────────────────────────────────────────
+
+function StateGrid({
+  title,
+  description,
+  renderCard,
+}: {
+  title: string
+  description?: string
+  renderCard: (props: CardStateProps) => React.ReactNode
+}) {
+  return (
+    <section className="mb-12">
+      <header className="mb-4">
+        <h2 className="text-sm font-semibold text-[var(--color-text)]">{title}</h2>
+        {description && (
+          <p className="text-xs text-[var(--color-text-muted)] mt-0.5">{description}</p>
+        )}
+      </header>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {STATES.map((entry) => {
+          const hint = "hint" in entry ? entry.hint : undefined
+          return (
+            <div key={entry.label} className="flex flex-col gap-2">
+              <StateLabel>{entry.label}</StateLabel>
+              {renderCard({
+                state: entry.state as ShowcaseState,
+                ...(hint ? { hint } : {}),
+              })}
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
 
 export default function CardPage() {
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] px-10 py-12 font-sans">
-      <h1 className="text-2xl font-semibold text-[var(--color-text)] mb-1">Card</h1>
-      <p className="text-sm text-[var(--color-text-muted)] mb-10">
-        Container primitivo. Compõe com CardHeader / CardTitle / CardContent.
-      </p>
+    <main className="min-h-screen bg-[var(--color-surface)] px-10 py-12 font-sans">
+      <header className="mb-12 max-w-3xl">
+        <h1 className="text-3xl font-bold text-[var(--color-text)] mb-2">Card</h1>
+        <p className="text-base text-[var(--color-text-muted)] mb-4">
+          Container multi-direção com slots opcionais (CardMedia, CardHeader, CardContent, CardMeta).
+          Referência: sistema do Figma Alfabeto (60 variants = direction × media × footer × state).
+        </p>
+        <p className="text-sm text-[var(--color-text-muted)]">
+          <strong className="text-[var(--color-text)]">Tudo via tokens.</strong> Visual segue
+          o tema ativo (kumon azul, education azul, impactx verde) automaticamente. Border
+          do active state usa <code className="font-mono text-xs">var(--color-border-card-active)</code>.
+        </p>
+      </header>
 
-      <section className="mb-10">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
-          Estrutura padrão
+      <StateGrid
+        title="Vertical · Media=Image · Footer=False"
+        renderCard={VerticalImageCard}
+      />
+
+      <StateGrid
+        title="Vertical · Media=Icon · Footer=False"
+        renderCard={VerticalIconCard}
+      />
+
+      <StateGrid
+        title="Vertical · Media=None · Footer=False"
+        renderCard={VerticalNoneCard}
+      />
+
+      <StateGrid
+        title="Vertical · Media=Image · Footer=True (com Avatar + Data + Actions)"
+        description="Padrão usado em lista de matrículas / cards de aluno."
+        renderCard={VerticalImageFooterCard}
+      />
+
+      <StateGrid
+        title="Horizontal · Media=Image · Footer=False"
+        renderCard={HorizontalImageCard}
+      />
+
+      <StateGrid
+        title="Horizontal · Media=Image · Footer=True"
+        description="Padrão de lista compacta com meta-info."
+        renderCard={HorizontalImageFooterCard}
+      />
+
+      {/* Legacy composições — preservadas pra back-compat */}
+      <section className="mt-16 pt-12 border-t border-[var(--color-border)]">
+        <h2 className="text-base font-semibold text-[var(--color-text)] mb-1">
+          Composições legadas
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <p className="text-sm text-[var(--color-text-muted)] mb-6">
+          API antiga (Card + CardHeader + CardTitle + CardContent) continua funcionando.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
           <Card>
             <CardHeader>
               <CardTitle>Título do card</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-[var(--color-text-muted)]">
-                Conteúdo do card. Texto descritivo, ações ou qualquer composição.
+                Conteúdo descritivo, ações ou qualquer composição.
               </p>
             </CardContent>
           </Card>
@@ -32,11 +342,9 @@ export default function CardPage() {
               <CardTitle>Com badge</CardTitle>
             </CardHeader>
             <CardContent>
-              <Badge variant="success" size="sm">
-                Ativo
-              </Badge>
+              <Badge variant="success" size="sm">Ativo</Badge>
               <p className="text-sm text-[var(--color-text-muted)] mt-3">
-                Header + content com diferentes elementos.
+                Composições heterogêneas no body.
               </p>
             </CardContent>
           </Card>
@@ -47,46 +355,13 @@ export default function CardPage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-[var(--color-text-muted)] mb-4">
-                Card como container clicável.
+                Card com botão dentro.
               </p>
               <Button size="sm">Abrir</Button>
             </CardContent>
           </Card>
         </div>
-      </section>
 
-      <section className="mb-10">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
-          Sem header (só CardContent)
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <Card>
-            <CardContent>
-              <p className="text-sm text-[var(--color-text)]">
-                Conteúdo direto, sem header. Usar quando não há título destacado.
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-sm font-semibold text-[var(--color-text)]">
-                    Total students
-                  </div>
-                  <div className="text-2xl font-bold text-[var(--color-text)] mt-1">1,247</div>
-                </div>
-                <Badge variant="primary">+8%</Badge>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
-          Composição com Separator
-        </h2>
         <Card className="max-w-md">
           <CardHeader>
             <CardTitle>Configurações</CardTitle>
@@ -94,17 +369,19 @@ export default function CardPage() {
           <Separator />
           <CardContent>
             <ul className="space-y-3 text-sm">
-              <li className="flex justify-between">
-                <span className="text-[var(--color-text-muted)]">Tema</span>
+              <li className="flex justify-between gap-4">
+                <span className="text-[var(--color-text-muted)]">
+                  <BookOpen className="inline size-4 mr-2 align-text-bottom" />
+                  Tema
+                </span>
                 <span className="text-[var(--color-text)] font-medium">Education</span>
               </li>
-              <li className="flex justify-between">
-                <span className="text-[var(--color-text-muted)]">Modo</span>
+              <li className="flex justify-between gap-4">
+                <span className="text-[var(--color-text-muted)]">
+                  <Calendar className="inline size-4 mr-2 align-text-bottom" />
+                  Modo
+                </span>
                 <span className="text-[var(--color-text)] font-medium">Light</span>
-              </li>
-              <li className="flex justify-between">
-                <span className="text-[var(--color-text-muted)]">Idioma</span>
-                <span className="text-[var(--color-text)] font-medium">PT-BR</span>
               </li>
             </ul>
           </CardContent>
