@@ -12,9 +12,9 @@ import { Cluster } from "@education/components"
 
 | Prop | Type | Default | Descrição |
 |------|------|---------|-----------|
-| `gap` | `"none" \| "xs" \| "sm" \| "md" \| "lg"` | `"md"` | Espaçamento entre itens (none=0, xs=4px, sm=8px, md=12px, lg=16px) |
-| `align` | `"start" \| "center" \| "end" \| "baseline"` | `"center"` | Alinhamento vertical |
-| `justify` | `"start" \| "center" \| "end" \| "between"` | `"start"` | Distribuição horizontal |
+| `gap` | `"none" \| "xs" \| "sm" \| "md" \| "lg"` <br/> `\| { base?, sm?, md?, lg?, xl? }` | `"md"` | Espaçamento entre itens. Aceita valor único ou objeto responsivo. |
+| `align` | `"start" \| "center" \| "end" \| "baseline"` <br/> `\| { base?, sm?, md?, lg?, xl? }` | `"center"` | Alinhamento vertical. Aceita valor único ou objeto responsivo. |
+| `justify` | `"start" \| "center" \| "end" \| "between"` <br/> `\| { base?, sm?, md?, lg?, xl? }` | `"start"` | Distribuição horizontal. Aceita valor único ou objeto responsivo. |
 | `as` | `ElementType` | `"div"` | Renderiza como outro elemento (button, nav, etc.) |
 | Spread | `HTMLAttributes<HTMLDivElement>` | — | className, id, data-*, event handlers, etc. |
 
@@ -34,7 +34,7 @@ Grid 2D?
 
 ## Exemplos ✅
 
-**Footer de modal: Cancel + Action**
+**Footer de modal: Cancel + Action (valor único)**
 ```tsx
 <Cluster gap="sm" justify="end">
   <Button variant="ghost">Cancelar</Button>
@@ -58,14 +58,17 @@ Grid 2D?
     <option>Todos</option>
     <option>Ativos</option>
   </Select>
-  <Input placeholder="Buscar..." value={search} onChange={e => setSearch(e.target.value)} />
-  <Button onClick={handleFilter}>Filtrar</Button>
+  <Input placeholder="Buscar..." />
+  <Button>Filtrar</Button>
 </Cluster>
 ```
 
-**Toolbar de tabela: ações lado a lado**
+**Toolbar de tabela com responsivo: ações distribuem diferente em mobile**
 ```tsx
-<Cluster gap="sm" justify="between">
+<Cluster 
+  gap={{ base: "sm", md: "md" }}
+  justify={{ base: "start", md: "between" }}
+>
   <span>{selectedCount} selecionados</span>
   <Cluster gap="xs">
     <Button size="sm" variant="ghost">Editar</Button>
@@ -74,15 +77,42 @@ Grid 2D?
 </Cluster>
 ```
 
+## Responsive
+
+Props `gap`, `align` e `justify` aceitam **objeto responsivo** com breakpoints `base` (mobile-first), `sm`, `md`, `lg`, `xl`.
+
+**Padrão:**
+```tsx
+// Valor único → aplica em todos breakpoints
+<Cluster justify="start">
+
+// Objeto responsivo → override por breakpoint
+<Cluster justify={{ base: "start", md: "between" }}>
+// mobile: justify-start; ≥768px: justify-between
+```
+
+**Exemplo real: Navbar com ações responsivas**
+```tsx
+<Cluster
+  gap={{ base: "xs", md: "md" }}
+  align="center"
+  justify={{ base: "between", lg: "end" }}
+>
+  <Logo />
+  <nav>{links}</nav>
+  <Button>CTA</Button>
+</Cluster>
+```
+
 ## Anti-patterns ❌
 
 **Cru flex com Tailwind (nunca fazer)**
 ```tsx
-<div className="flex flex-wrap gap-3">
+<div className="flex flex-wrap gap-3 justify-start md:justify-between">
   {items}
 </div>
 ```
-→ Use `<Cluster gap="md">` em vez.
+→ Use `<Cluster justify={{ base: "start", md: "between" }}>`.
 
 **Cluster vertical**
 ```tsx
@@ -105,12 +135,12 @@ Grid 2D?
 
 **Cluster com children fixed-width que somam mais que parent**
 ```tsx
-<Cluster gap="md">  {/* ❌ Overflow horizontal se flex-shrink-0 */}
+<Cluster gap="md">  {/* ❌ Overflow se flex-shrink-0 */}
   <div style={{ width: "500px" }}>Item 1</div>
   <div style={{ width: "500px" }}>Item 2</div>
 </Cluster>
 ```
-→ Garantir que itens sejam shrinkable ou caber no container.
+→ Garantir que itens sejam shrinkable ou caibam.
 
 ## Quando NÃO usar Cluster
 
@@ -119,17 +149,19 @@ Grid 2D?
 | Itens horizontais sem wrap (devem ficar em linha sempre) | Stack horizontal (sem `flex-wrap`) |
 | Conteúdo vertical | Stack vertical |
 | Grid 2D com colunas fixas | Grid |
-| Alinhamento baseline com texto de tamanhos diferentes | Cluster com `align="baseline"` (ainda correto) |
+| Alinhamento baseline com texto de tamanhos diferentes | Cluster com `align="baseline"` |
 
 ## Implementação técnica
 
-**Source:** `/Users/rafae/projetos/impactx-ui/packages/ds-education/src/components/cluster.tsx`
+**Source:** `/packages/ds-education/src/components/cluster.tsx`
 
 **Pattern:** Every Layout (Heydon Pickering) — `display: flex`, `flex-wrap: wrap`, gap automático.
 
+**Responsive resolution:** `resolveResponsive()` mapeia valores escalares ou objetos `{ base, sm, md, lg, xl }` em classes Tailwind v4 (e.g. `gap-3 md:gap-4 lg:gap-5`).
+
 **Por debaixo:**
 - `flex flex-wrap` — layout horizontal com quebra automática
-- `gapMap` → Tailwind classes (gap-0, gap-1, gap-2, gap-3, gap-4)
-- `alignMap` → items-start, items-center, items-end, items-baseline
-- `justifyMap` → justify-start, justify-center, justify-end, justify-between
+- `gapMap` → Tailwind classes por breakpoint
+- `alignMap` → items-* por breakpoint
+- `justifyMap` → justify-* por breakpoint
 - `as` prop → renderiza como `<Comp ref={ref} ...>` (div, nav, button, etc.)
