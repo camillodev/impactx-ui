@@ -41,6 +41,13 @@ export * from "./components/textarea";
 export * from "./components/toast";
 export * from "./components/tooltip";
 
+// Templates (page-level composition)
+export type { BreadcrumbTrailItem } from "./templates/types";
+export * from "./templates/list-page-template";
+export * from "./templates/detail-page-template";
+export * from "./templates/form-page-template";
+export * from "./templates/dashboard-template";
+
 // Components — education domain organisms
 export * from "./components-education/assessment-header";
 export * from "./components-education/assessment-list-item";
