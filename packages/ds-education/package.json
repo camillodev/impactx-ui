@@ -1,6 +1,6 @@
 {
   "name": "@impactxlab/ds-education",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Impact X DS Education — React component library + tokens (Education / Kumon / Impact X themes)",
   "license": "UNLICENSED",
   "type": "module",
@@ -24,8 +24,8 @@
     "*.css"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
-    "clean": "node -e \"import('node:fs/promises').then(fs => fs.rm('dist', { recursive: true, force: true }))\"",
+    "build": "npm run clean && tsc -p tsconfig.json && node scripts/copy-assets.mjs && node scripts/verify-build.mjs",
+    "clean": "node -e \"import('node:fs/promises').then(fs => Promise.all([fs.rm('dist', { recursive: true, force: true }), fs.rm('tsconfig.tsbuildinfo', { force: true })]))\"",
     "prepublishOnly": "npm run build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
