@@ -24,6 +24,7 @@ const SHOWCASE_ROUTES = [
   "/template-examples/detail-page",
   "/template-examples/form-page",
   "/template-examples/dashboard",
+  "/components/card",
 ] as const
 
 for (const route of SHOWCASE_ROUTES) {
