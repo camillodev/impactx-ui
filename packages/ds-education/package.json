@@ -1,25 +1,41 @@
 {
   "name": "@impactx/ds-education",
   "version": "0.2.0",
-  "private": true,
+  "description": "Impact X DS Education — React component library + tokens (Education / Kumon / Impact X themes)",
+  "license": "UNLICENSED",
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./tokens/base.css": "./src/tokens/base.css",
-    "./tokens/themes/education.css": "./src/tokens/themes/education.css",
-    "./tokens/themes/kumon.css": "./src/tokens/themes/kumon.css",
-    "./tokens/themes/impactx.css": "./src/tokens/themes/impactx.css",
-    "./styles.css": "./src/styles.css"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens/base.css": "./dist/tokens/base.css",
+    "./tokens/themes/education.css": "./dist/tokens/themes/education.css",
+    "./tokens/themes/kumon.css": "./dist/tokens/themes/kumon.css",
+    "./tokens/themes/impactx.css": "./dist/tokens/themes/impactx.css",
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
+    "clean": "node -e \"import('node:fs/promises').then(fs => fs.rm('dist', { recursive: true, force: true }))\"",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "publishConfig": {
+    "access": "restricted"
   },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
-  },
-  "scripts": {
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.11",
