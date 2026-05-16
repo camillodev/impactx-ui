@@ -46,14 +46,38 @@ Quando bot for gerar UI, decide nessa ordem:
 
 | Camada | Pergunta | Onde achar |
 |---|---|---|
+| 0. **Pattern** (por intenção) | "Cria página de listagem", "form simples", "dashboard"... | `rules/patterns/<intenção>.md` ← **comece aqui se for tela inteira** |
 | 1. Token | Cor, radius, spacing, tipografia | `rules/styling/tokens.md` |
 | 2. Componente | Button, Input, Card, Modal | `rules/components/<nome>.md` |
-| 3. Layout primitive | Grid, Stack, PageContainer | `rules/primitives/<nome>.md` (em construção) |
-| 4. Template | Página inteira (Lista, Form, Detail) | `rules/templates/<nome>.md` (em construção) |
-| 5. Pattern | Composição comum (form com validação, navegação) | `rules/patterns/<nome>.md` |
+| 3. Layout primitive | Grid, Stack, Cluster, PageContainer (responsivo declarado) | `rules/primitives/<nome>.md` |
+| 4. Template | Página inteira (Lista, Form, Detail, Dashboard) | `rules/templates/<nome>.md` |
+| 5. Organism domain | Education-specific (assessment, hero-banner) | `rules/organisms/<nome>.md` |
 | 6. App | Lógica de negócio | Código do app (kumon-app, etc) |
 
 **Regra:** consome só a camada de baixo. Não pula camadas.
+
+**Fluxo recomendado pra tela nova:**
+1. Bot recebe "monta página X" → vai direto pra **`rules/patterns/`** (indexado por intenção)
+2. Pattern aponta pra template + organisms certos
+3. Template usa primitives + componentes
+4. Componentes usam tokens
+
+## 3.1. Patterns por intenção (camada Lovable)
+
+Quando bot recebe pedido de tela completa, **sempre lê `.impactx/rules/patterns/` primeiro**. Patterns são indexados por *intenção*, não por nome de componente.
+
+| Pedido típico do usuário | Pattern |
+|---|---|
+| "lista de [entidade] com filtros + tabela paginada" | `patterns/list-with-filters.md` |
+| "lista de cursos/produtos em cards visuais" | `patterns/list-as-grid.md` |
+| "detalhe de [entidade] com metadados ao lado" | `patterns/detail-with-sidebar.md` |
+| "criar/editar [entidade]" (≤10 campos) | `patterns/form-simple.md` |
+| "wizard / matrícula em N etapas" | `patterns/form-multistep.md` |
+| "dashboard com KPIs + charts" | `patterns/dashboard-overview.md` |
+| "como tratar loading/empty/error em qualquer tela" | `patterns/empty-loading-error-states.md` |
+| "como escolher Grid vs Stack vs Cluster + breakpoints" | `patterns/responsive-layout-choices.md` |
+
+Cada pattern entrega: decision tree em 30s + receita ≤15 linhas + variações + anti-patterns + links.
 
 ## 4. Decision tree alto nível
 
@@ -104,15 +128,21 @@ Quando bot for gerar UI, decide nessa ordem:
 <Button variant="tertiary">Cancelar</Button>
 ```
 
-### Grid sem responsividade
+### Grid/Layout cru em vez de primitive
 
 ```tsx
-// ❌ Grid hardcoded sem breakpoint — quebra em mobile
-<div className="grid grid-cols-3 gap-4">
-
-// ✅ Sempre com prefix responsivo (até primitive existir)
+// ❌ Tailwind cru — bot inventa breakpoint
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div className="flex flex-col md:flex-row gap-4">
+<div className="max-w-7xl mx-auto px-4">
+
+// ✅ Primitives com responsive prop declarada
+<Grid cols={{ base: 1, md: 2, lg: 3 }} gap="md">
+<Stack direction={{ base: "vertical", md: "horizontal" }} gap="md">
+<PageContainer maxWidth="lg">
 ```
+
+Ver `rules/primitives/` e `patterns/responsive-layout-choices.md`.
 
 ### Editar componente em vez de token
 
@@ -127,20 +157,22 @@ Quando bot for gerar UI, decide nessa ordem:
 .impactx/
 ├── system.md                    ← este arquivo (sempre carregado)
 └── rules/
-    ├── components/              ← Button, Input, Card, Badge, Modal, …
-    ├── primitives/              ← Grid, Stack, PageContainer, Cluster (Semana 2)
-    ├── templates/               ← ListPage, FormPage, DetailPage, Dashboard (Semana 3)
-    ├── patterns/                ← forms (Zod), navigation, modals (Semana 5)
+    ├── patterns/                ← receitas por intenção (8 patterns) ← COMECE AQUI pra tela nova
+    ├── templates/               ← ListPage, DetailPage, FormPage, Dashboard
+    ├── components/              ← Button, Input, Card, Badge, Modal, DataTableWithPagination
+    ├── primitives/              ← Grid, Stack, Cluster, PageContainer (responsive declarado)
+    ├── organisms/               ← education domain (assessment-card, hero-banner, etc)
     └── styling/
         └── tokens.md            ← como tokens vivem, anti-patterns de cor
 ```
 
-Em construção (Semana 2-5 do plano em `docs/ds-implementation-plan.md`):
+Em construção (PRs futuras, ver `docs/ds-implementation-plan.md`):
 
-- Layout primitives (`<Grid>`, `<Stack>`, `<PageContainer>`, `<Cluster>`)
-- Templates de página
-- Tokens 3-tier via Style Dictionary (hoje é CSS vars direto)
-- Patterns documentados
+- Organisms SaaS-genéricos (PageHeader, EmptyState, ErrorState, Stepper) — puxados por necessidade real
+- Templates novos (Settings, Wizard, Auth) — quando padrão emergir
+- Tokens 3-tier via Style Dictionary
+- MCP server expondo `.impactx/` pra v0/Cursor
+- ESLint custom contra Tailwind cru
 
 ## 7. Componentes disponíveis em `@impactxlab/ds-education`
 
@@ -191,14 +223,24 @@ Limite hard: 500 linhas. Se passar, mover detalhes pra rule específica.
 
 ## 11. Plano de evolução
 
-Status atual: **Fase 1 / Semana 1** do plano em `docs/ds-implementation-plan.md`.
+Status atual: **Lovable-ready** — bot consegue montar tela completa em ≤15 linhas via patterns.
 
-Próximas entregas (em ordem):
+Já entregue:
+- ✅ 32 componentes + 10 organisms domain
+- ✅ 4 layout primitives com responsive props declarado (`{ base, sm, md, lg, xl }`)
+- ✅ 4 templates de página (List/Detail/Form/Dashboard) + rules
+- ✅ 8 patterns por intenção em `rules/patterns/`
+- ✅ Visual regression em 3 viewports (Playwright)
+- ✅ Tokens CSS + 3 temas (education/kumon/impactx) + dark mode
 
-1. **Semana 2:** layout primitives (`<Grid>`, `<Stack>`, `<PageContainer>`, `<Cluster>`) + `<DataTableWithPagination>` composto
-2. **Semana 3:** 4 templates de página + tokens 3-tier via Style Dictionary
-3. **Semana 4:** Playwright visual regression + axe-core + ESLint custom rule no kumon-app
-4. **Semana 5:** Changesets + MCP server + 5 rules adicionais de organisms
-5. **Semana 6:** buffer + kumon migration kickoff
+Próximas PRs (puxadas por necessidade real, não especulação):
+
+| PR | Trigger | Conteúdo |
+|---|---|---|
+| Ajustes visuais | "tá feio" no shell | Sidenav primitives, skeleton shimmer, button rename, breadcrumb/inputs/labels |
+| Organisms novos | Pattern aponta pra um inexistente | PageHeader, EmptyState, ErrorState (case-by-case) |
+| Templates novos | Precisa /settings ou /onboarding real | SettingsTemplate, WizardTemplate |
+| MCP server | v0/Cursor entram no fluxo | Servidor expondo patterns + registry |
+| Infra | 2 bots conflitam token | Style Dictionary 3-tier + Changesets + ESLint custom |
 
 Finish criteria F1-F8 em `docs/ds-implementation-plan.md` seção 1.

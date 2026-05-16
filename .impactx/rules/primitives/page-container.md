@@ -14,23 +14,29 @@ import { PageContainer } from "@impactxlab/ds-education"
 interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Max-width do container.
+   * Aceita valor único OU objeto responsivo { base, sm, md, lg, xl }
    * - "sm" = 672px
    * - "md" = 896px
    * - "lg" = 1280px (default — listas, dashboards padrão)
    * - "xl" = 1440px (dashboards wide, tabelas grandes)
    * - "full" = sem limite (hero, landing full-bleed)
    * - "prose" = ~65ch (artigos, documentação, leitura)
+   * Default: "lg"
    */
-  maxWidth?: "sm" | "md" | "lg" | "xl" | "full" | "prose"
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "full" | "prose" | 
+            { base?: ..., sm?: ..., md?: ..., lg?: ..., xl?: ... }
 
   /**
    * Padding responsivo (mobile-first).
+   * Aceita valor único OU objeto responsivo { base, sm, md, lg, xl }
    * - "none" = 0px
    * - "sm" = px-4 py-4, md: px-6 py-6
-   * - "md" = px-4 py-6, md: px-8 py-8 (default)
+   * - "md" = px-4 py-6, md: px-8 py-8
    * - "lg" = px-4 py-8, md: px-12 py-12
+   * Default: { base: "sm", md: "md" } (mobile-first explícito)
    */
-  padding?: "none" | "sm" | "md" | "lg"
+  padding?: "none" | "sm" | "md" | "lg" |
+           { base?: ..., sm?: ..., md?: ..., lg?: ..., xl?: ... }
 
   /**
    * Renderiza como outro elemento. Default: "div".
@@ -53,7 +59,23 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 ## Exemplos ✅
 
-### Página de lista de alunos (default)
+### Página responsiva com quebra de padding
+```tsx
+<PageContainer 
+  as="main" 
+  maxWidth={{ base: "full", md: "lg" }}
+  padding={{ base: "sm", md: "md" }}
+>
+  <Stack gap="lg">
+    <Heading level={1}>Alunos</Heading>
+    <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="md">
+      {students.map(s => <StudentCard key={s.id} {...s} />)}
+    </Grid>
+  </Stack>
+</PageContainer>
+```
+
+### Página de lista (usando defaults mobile-first)
 ```tsx
 <PageContainer as="main">
   <Stack gap="lg">
@@ -65,9 +87,12 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 </PageContainer>
 ```
 
-### Formulário de matrícula (estreito)
+### Formulário responsivo (estreito em mobile, normal em desktop)
 ```tsx
-<PageContainer as="main" maxWidth="md">
+<PageContainer 
+  as="main" 
+  maxWidth={{ base: "sm", md: "md" }}
+>
   <Stack gap="lg">
     <Heading level={1}>Matrícula</Heading>
     <MatriculaForm />
@@ -75,7 +100,7 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 </PageContainer>
 ```
 
-### Dashboard com muitos cards (wide)
+### Dashboard com muitos cards
 ```tsx
 <PageContainer as="main" maxWidth="xl">
   <Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="md">
@@ -94,7 +119,7 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 </PageContainer>
 ```
 
-### Artigo ou documentação (readability)
+### Artigo ou documentação
 ```tsx
 <PageContainer as="main" maxWidth="prose" padding="md">
   <article>
@@ -105,6 +130,32 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 ```
 
 ## Anti-patterns ❌
+
+### ❌ Padding fixo em mobile/desktop sem objeto responsivo
+```tsx
+// ERRADO: padding fixo não adapta entre breakpoints
+<PageContainer padding="md">
+  {/* sm em mobile, md em desktop — sem transição intermediária */}
+</PageContainer>
+
+// CORRETO: usar objeto responsivo pra mobile-first explícito
+<PageContainer padding={{ base: "sm", md: "md" }}>
+  {/* px-4 py-4 em mobile, px-8 py-8 em md+ */}
+</PageContainer>
+```
+
+### ❌ Esquecerse do default padding mobile-first
+```tsx
+// ERRADO: padding grande demais no mobile
+<PageContainer padding="md">
+  {/* px-4 py-6 em mobile — pode apertar em telas pequenas */}
+</PageContainer>
+
+// CORRETO: começar com sm, subir pra md em md+
+<PageContainer padding={{ base: "sm", md: "md" }}>
+  {/* px-4 py-4 em mobile, px-8 py-8 em md+ */}
+</PageContainer>
+```
 
 ### ❌ max-w-7xl mx-auto px-4 py-6 cru em className
 ```tsx
@@ -159,19 +210,6 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 </PageContainer>
 ```
 
-### ❌ Usar padding="none" com PageContainer
-```tsx
-// ERRADO: padding="none" é casos raros (hero, custom chrome)
-<PageContainer padding="none">
-  <CardCommon /> {/* margem inesperada */}
-</PageContainer>
-
-// CORRETO: usar padding padrão ou explicit
-<PageContainer padding="md">
-  <CardCommon />
-</PageContainer>
-```
-
 ## Quando NÃO usar PageContainer
 
 | Caso | Alternativa | Motivo |
@@ -186,6 +224,10 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 **Localização:** `packages/ds-education/src/components/page-container.tsx`
 
+**Props aceita:**
+- Valor único (string): `maxWidth="lg"` → resolve em classe base
+- Objeto responsivo: `maxWidth={{ base: "full", md: "lg" }}` → classes por breakpoint
+
 **Classes Tailwind:** mapeadas em constantes para build-time detection:
 - `max-w-2xl` (sm, 672px)
 - `max-w-4xl` (md, 896px)
@@ -195,8 +237,8 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 - `max-w-prose` (~65ch)
 
 **Padding:** mobile-first responsivo
-- Base: `px-4 py-6` em mobile
-- Tablet+: `md:px-8 md:py-8` em tablet e acima
-- Variações por size: sm (px-6), lg (px-12 py-12)
+- Base: `px-4 py-4` em mobile
+- Tablet+: `md:px-6 md:py-6` / `md:px-8 md:py-8` em tablet e acima
+- Variações por size: lg (px-12 py-12), xl (px-20 py-20)
 
 **Estrutura:** wrapper with `mx-auto w-full` garante centralização e expansão horizontal.
