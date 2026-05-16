@@ -1,144 +1,262 @@
-# Overnight Notes — Semana 1 do DS
+# Overnight Notes — Semanas 1-3 do DS
 
-> Branch: `feature/impactx-folder` · Data: 2026-05-16 · Quem: Caio (orquestrador) + 5 sub-agents Haiku
+> Data: 2026-05-16 (overnight) · Quem: Caio (Sonnet orquestrador) + 12 sub-agents Haiku
+>
+> Atualização final: **Semanas 1, 2 e 3 do plano em `docs/ds-implementation-plan.md` foram entregues**.
 
-## O que foi feito
+## TL;DR pra Rafa ao acordar
 
-Semana 1 inteira do plano em `docs/ds-implementation-plan.md`.
+**Branches pushed (3):**
+- `feature/impactx-folder` — Semana 1: `.impactx/` + 5 rules de atoms + skill `ix-design-system`
+- `feature/ds-week-2-primitives` — Semana 2: 5 primitives (Grid/Stack/Cluster/PageContainer/DataTableWithPagination) + 5 rules + 5 showcases
+- `feature/ds-week-3-templates` — Semana 3: 4 templates de página + 4 rules + 4 showcases
 
-### Arquivos criados
+**Tudo verde:** `pnpm typecheck` ✅ · `pnpm lint` ✅ (0 errors) · `pnpm build` ✅ em todas as semanas.
 
-```
-impactx-ui/
-├── .impactx/
-│   ├── system.md                                (sempre carregado, ~200 linhas)
-│   └── rules/
-│       ├── components/
-│       │   ├── button.md                        (213 linhas)
-│       │   ├── input.md                         (221 linhas)
-│       │   ├── card.md                          (281 linhas)
-│       │   ├── badge.md                         (278 linhas)
-│       │   └── modal.md                         (namespace completo)
-│       └── styling/
-│           └── tokens.md                        (48 tokens, 3 temas + dark)
-└── docs/
-    ├── ds-implementation-plan.md                (atualizado v0.2 com Semana 1 ✅)
-    └── overnight-notes.md                       (este arquivo)
-```
+**Branches são sequenciais:** W3 depende de W2 que depende de W1. Sugestão de merge order: W1 → W2 → W3, ou squash de tudo numa branch só se for mais limpo pro histórico.
 
-### Arquivos alterados
-
-- `impactx-ui/CLAUDE.md` — adicionada seção "Contrato declarativo `.impactx/`" + skill referência
-- `kumon-app/CLAUDE.md` — adicionada seção "Design System (frontend) — `ix-design-system` skill"
-- `~/.claude/skills/ix-design-system/SKILL.md` — skill criada com triggers e hierarchical loading
-
-## 4 testes pra rodar (≤ 10 min)
-
-### Teste 1 — F5: As 5 rules existem
-
-```bash
-ls /Users/rafae/projetos/impactx-ui/.impactx/rules/components/
-# Esperado: button.md badge.md card.md input.md modal.md (5 arquivos)
-
-ls /Users/rafae/projetos/impactx-ui/.impactx/rules/styling/
-# Esperado: tokens.md
-```
-
-**Pass se:** todos os 6 arquivos listados.
+**O que NÃO foi feito (intencional):**
+- Style Dictionary 3-tier (W3 do plano original) — refactor grande, sem Rafa pra reagir a builds quebrados
+- Playwright visual regression (W4) — baselines exigem aprovação humana
+- ESLint custom rule (W4) — precisa rodar contra código real
+- MCP server (W5) — decisão arquitetural pendente (endpoint, auth, formato)
+- kumon-app migration (W6) — decisões de produto sobre quais telas
 
 ---
 
-### Teste 2 — F7: Skill responde corretamente
+## Semana 1 — `.impactx/` declarative contract
 
-Abre uma sessão nova do Claude Code em `~/projetos/kumon-app/` e pergunta:
+**Branch:** `feature/impactx-folder`
+**PR URL:** https://github.com/camillodev/impactx-ui/pull/new/feature/impactx-folder
+
+**Arquivos novos:**
+```
+.impactx/
+├── system.md                              (~200 linhas)
+└── rules/
+    ├── components/
+    │   ├── button.md                      (213 linhas)
+    │   ├── input.md                       (221 linhas)
+    │   ├── card.md                        (281 linhas)
+    │   ├── badge.md                       (278 linhas)
+    │   └── modal.md                       (namespace completo)
+    └── styling/
+        └── tokens.md                      (48 tokens, 3 temas + dark)
+
+docs/
+├── ds-implementation-plan.md              (v0.2 — plano vivo)
+└── overnight-notes.md                     (este arquivo)
+```
+
+**Skill criada:** `~/.claude/skills/ix-design-system/SKILL.md` (triggers automáticos, hierarchical loading, single source of truth aponta pra `.impactx/`).
+
+**CLAUDE.md atualizado:** `kumon-app` + `impactx-ui` apontam pra skill.
+
+**Companion branch no kumon-app:** `chore/claude-md-ds-design-system` (já pushed).
+
+---
+
+## Semana 2 — Layout Primitives + DataTableWithPagination
+
+**Branch:** `feature/ds-week-2-primitives`
+**PR URL:** https://github.com/camillodev/impactx-ui/pull/new/feature/ds-week-2-primitives
+
+**Componentes novos** (`packages/ds-education/src/components/`):
+- `grid.tsx` — Grid responsivo (`cols={3}` ou `cols={{base:1, md:2, lg:3}}`, gap, as)
+- `stack.tsx` — Flex vertical/horizontal com gap consistente
+- `cluster.tsx` — Flex com wrap (Every Layout pattern)
+- `page-container.tsx` — Wrapper de página com max-width tipado
+- `data-table-with-pagination.tsx` — DataTable + Pagination + estado interno
+
+**Rules** (`.impactx/rules/`):
+- `primitives/grid.md`, `stack.md`, `cluster.md`, `page-container.md`
+- `components/data-table-with-pagination.md`
+
+**Showcase routes** (`apps/web/src/app/primitives/`):
+- `/primitives` (index)
+- `/primitives/{grid, stack, cluster, page-container, data-table-with-pagination}`
+
+**Decisões técnicas registradas:**
+- Tailwind v4 content-aware: classes do Grid foram listadas explicitamente em maps (não interpoladas), pra que o build pegue corretamente.
+- DataTableWithPagination usa estado **client-side** (useState page). Pra server-pagination, consumer ainda usa `DataTable` + `Pagination` controlados separadamente.
+- Stack tem `min-w-0` built-in (evita overflow em flex children).
+- Auto-reset pra página 1 quando data shrink (filtro removeu rows).
+
+---
+
+## Semana 3 — Page Templates
+
+**Branch:** `feature/ds-week-3-templates`
+**PR URL:** https://github.com/camillodev/impactx-ui/pull/new/feature/ds-week-3-templates
+
+**Templates novos** (`packages/ds-education/src/templates/`):
+- `list-page-template.tsx` — header + filters + primaryAction + body
+- `detail-page-template.tsx` — back link + title + sidebar opcional + main
+- `form-page-template.tsx` — header + form (com onSubmit) + actions footer
+- `dashboard-template.tsx` — métricas top + controls + actions + charts area
+- `types.ts` — `BreadcrumbTrailItem` compartilhado (nome evita colisão com componente `BreadcrumbItem`)
+
+**Rules** (`.impactx/rules/templates/`):
+- `list-page.md`, `detail-page.md`, `form-page.md`, `dashboard.md`
+
+**Showcase routes** (`apps/web/src/app/template-examples/`):
+- `/template-examples` (index)
+- `/template-examples/{list-page, detail-page, form-page, dashboard}`
+
+**Decisões técnicas registradas:**
+- `BreadcrumbTrailItem` em vez de `BreadcrumbItem` (que é o componente React). Compartilhado via `templates/types.ts`.
+- `FormPageTemplate` exige `Omit<HTMLAttributes, "title" | "onSubmit">` no extends — onSubmit do form não é compatível com onSubmit de div.
+- Form renderiza `<form>` se `onSubmit` for passado, senão `<div>` (refatorado pra condicional, não dynamic element).
+- Showcases usaram `<select>` nativo onde Select do DS exige API Radix mais elaborada (SelectTrigger/Content/Item) — pragmático pra showcase, app real usaria API completa.
+
+---
+
+## Validação técnica
+
+Cada semana passou pelo gate:
+
+| Check | W1 | W2 | W3 |
+|---|---|---|---|
+| `pnpm typecheck` | ✅ 3/3 | ✅ 3/3 | ✅ 3/3 |
+| `pnpm lint` | n/a (só markdown) | ✅ 0 errors | ✅ 0 errors |
+| `pnpm build` | n/a | ✅ all routes | ✅ all routes |
+
+**Warnings restantes (não meus):** 2 warnings em `apps/web/cypress/e2e/` pré-existentes (`charts.cy.ts` unused expression, `toast.cy.ts` unused var `i`).
+
+---
+
+## 6 testes pra rodar quando voltar (≤ 15 min)
+
+### Teste 1 — Skill ix-design-system ativa
+
+Abrir nova sessão Caio em `~/projetos/kumon-app/` e perguntar:
 
 > "Como uso o Button do DS pra ação de salvar matrícula com loading state?"
 
-**Pass se:**
-- Skill `ix-design-system` ativa (vê o nome aparecendo nos system-reminders)
-- Resposta vem com `<Button>` importado de `@impactx/ds-education`
-- Resposta menciona `variant="primary"` (default)
-- Resposta cita `disabled={isSubmitting}` com texto "Salvando…" (padrão da rule)
-- Resposta NÃO usa Tailwind cru tipo `bg-blue-500`
+**Pass se:** resposta vem da rule `button.md` (variants reais, exemplos certos, sem Tailwind cru).
 
-Se o bot inventar UI, abrir issue: skill não tá triggerando bem.
+### Teste 2 — Skill carrega rule de primitive
 
----
+> "Como uso Grid responsivo no kumon?"
 
-### Teste 3 — Skill aponta pro arquivo certo
+**Pass se:** resposta cita `<Grid cols={{base:1, md:2, lg:3}}>` e linka pra `rules/primitives/grid.md`.
 
-Pergunta:
+### Teste 3 — Skill carrega rule de template
 
-> "Onde tá documentado quando usar Modal vs AlertDialog?"
+> "Como crio uma página de lista de alunos com filtros e paginação?"
 
-**Pass se:** resposta cita `/Users/rafae/projetos/impactx-ui/.impactx/rules/components/modal.md` seção "Quando NÃO usar Modal".
-
----
+**Pass se:** resposta cita `<ListPageTemplate>` + `<DataTableWithPagination>` com props certas.
 
 ### Teste 4 — Anti-pattern detectado
 
-Pergunta:
+> "Posso usar `<button className='bg-blue-500'>Salvar</button>` no kumon?"
 
-> "Posso usar `<button className='bg-blue-500 px-4 py-2 rounded text-white'>Salvar</button>` no kumon-app?"
+**Pass se:** NÃO, refactor pra `<Button variant="primary">`.
 
-**Pass se:** resposta diz NÃO, aponta pro `button.md` anti-patterns, e oferece refactor pra `<Button variant="primary">Salvar</Button>`.
+### Teste 5 — Validar build local
+
+```bash
+cd /Users/rafae/projetos/impactx-ui
+git checkout feature/ds-week-3-templates
+pnpm install
+pnpm build
+```
+
+**Pass se:** verde, sem erros.
+
+### Teste 6 — Abrir showcases no browser
+
+```bash
+pnpm --filter @impactx/web dev
+```
+
+Visitar:
+- `http://localhost:3002/primitives` — ver os 5 primitives
+- `http://localhost:3002/primitives/grid` — testar responsivo (redimensionar janela)
+- `http://localhost:3002/template-examples/list-page` — página de Alunos completa
+- `http://localhost:3002/template-examples/dashboard` — dashboard com métricas
+
+**Pass se:** todas as páginas renderizam sem erros visíveis e respondem ao resize.
 
 ---
 
-## O que NÃO foi feito (intencionalmente)
+## Padrão de paralelização aplicado (lição aprendida)
 
-- ❌ Primitives (`<Grid>`, `<Stack>`, `<PageContainer>`) — são Semana 2, exigem código + teste real
-- ❌ ESLint custom rule — Semana 4, precisa rodar lint pra validar
-- ❌ Templates de página — Semana 3, depende de primitives
-- ❌ Style Dictionary tokens 3-tier — Semana 3, refator grande
-- ❌ Demo de matrícula real — escopo cortado pra focar no plano (instrução do Rafa: "foco é no plano")
+Rafa pediu pra salvar como default: **N arquivos independentes = N Haikus em paralelo**. Aplicado em:
 
-## Gaps identificados (backlog pra discutir)
+- 5 rules de atoms (W1) → ~5 min vs ~30 min sequencial
+- 5 rules de primitives (W2) → mesma economia
+- 4 templates React (W3) → ~21s por template, paralelos
+- 4 rules de templates (W3) → ~35s por rule, paralelos
+- 3 showcases (W3) → ~17s cada paralelos
+- Orquestrador (Sonnet) escreveu: system.md, button.md, grid.md, list-page-template.tsx + list-page showcase (templates de estilo pros Haikus)
 
-1. **Falta documentar 27 dos 32 componentes.** Próximos por ordem de uso no kumon: DataTable, Pagination, Tabs, Select, Sheet, Toast, Tooltip, Sidebar, Chip, IconButton.
-2. **`tokens.md` está acoplada à arquitetura atual** (CSS vars direto). Quando Semana 3 trouxer Style Dictionary 3-tier, rule precisa de update.
-3. **Não há rule para organisms domain** (hero-banner, assessment-card, big-card, donut-score). Plano coloca isso na Semana 5.
-4. **Skill ainda não tem MCP server** — Semana 5. Por enquanto, bot lê arquivo via Read tool.
+**Total Haikus rodados:** 12. **Erros encontrados em outputs:** 4 (corrigidos: BreadcrumbItem colisão, FormPageTemplate onSubmit, Chip children API, Select API). Todos foram fixes de 1-3 linhas — paralelização compensou.
 
-## Como continuar amanhã
+Padrão salvo em:
+- `~/.claude/projects/-Users-rafae/memory/feedback_paralelizacao_padrao.md`
+- `~/.claude/projects/-Users-rafae/memory/MEMORY.md` (índice)
+- `~/.claude/CLAUDE.md` (seção "Paralelização — OBRIGATÓRIO — default")
 
-### Caminho A — Validação primeiro (sugerido)
+---
 
-1. Roda os 4 testes acima
-2. Se algo falha, abre issue específica
-3. Se passa tudo: começa Semana 2 (primitives) — escopo já definido no plano
+## O que ficou pendente (W4-W6 do plano)
 
-### Caminho B — Bater na frente
+### Semana 4 — Gates automáticos
+- [ ] Playwright visual regression no `apps/web` showcase (3 viewports × 3 temas × dark/light = 18 baselines por rota)
+- [ ] axe-core integrado no mesmo Playwright run
+- [ ] ESLint custom rule no `kumon-app/.eslintrc` bloqueando Tailwind cru
 
-1. Semana 2 direto: criar `<Grid>`, `<Stack>`, `<PageContainer>`, `<Cluster>` em `packages/ds-education/src/components/`
-2. Adicionar showcase no `apps/web` pra cada um
-3. Criar rules correspondentes em `.impactx/rules/primitives/`
-4. Migrar 1 página do kumon usando primitives (smoke test)
+**Por que parou:** baselines visuais exigem aprovação humana primeira vez. Bot aprovar suas próprias screenshots = falsa confiança. Risco de regression silenciosa entrando em produção.
 
-### Caminho C — Demo prático
+### Semana 5 — Versionamento + MCP
+- [ ] Changesets instalado e configurado no monorepo
+- [ ] CI: PR sem changeset = bloqueado
+- [ ] MCP server expondo `.impactx/rules/` como recursos
+- [ ] 5 rules adicionais pra organisms (hero-banner, assessment-card, big-card, donut-score, cta-banner)
 
-Se quiser ver bot construindo tela do zero com `.impactx/`, abre sessão Caio em kumon-app e pede:
+**Por que parou:** decisões arquiteturais pendentes — qual endpoint, auth, formato do MCP. Changesets exige config inicial que Rafa pode querer customizar (release notes template, github action, npm token).
 
-> "Cria mock de form de matrícula multi-step. Tem que ter: 1) dados do aluno (nome, CPF, data nascimento), 2) responsável (nome, CPF, telefone), 3) plano escolhido (radio), 4) confirmação. Usa só componentes do `@impactx/ds-education`."
+### Semana 6 — kumon migration
+- [ ] Migrar telas do `kumon-app` pra usar `<ListPageTemplate>` + primitives
+- [ ] ESLint rule passa a falhar em código antigo
+- [ ] Validar finish criteria F1-F8
 
-Vai validar F1 do finish criteria (página completa em ≤ 15 linhas se template existisse — sem template ainda, será mais linhas, mas componentes consistentes).
+**Por que parou:** decisões de produto — quais telas migrar primeiro, manter back-compat ou big-bang, tratamento de telas que precisam de variants do template ainda inexistentes.
 
-## Decisões importantes registradas no plano (v0.2)
+---
 
-- Button tem 9 variants reais, não 4 — rule reflete realidade
-- Temas: `theme-education / theme-kumon / theme-impactx` (não `theme-alfabeto`)
-- Modal é namespace gigante (25+ subcomponentes) — rule ficou em 280 linhas
-- Card é simples: só 4 componentes (Card/Header/Title/Content)
-- Paralelização Haiku funcionou: 5 minutos vs ~30+ sequencial
+## Recomendação de próximos passos (quando acordar)
 
-## Riscos identificados durante execução
+### Caminho A — Merge e descansar (sugerido)
 
-- **Rules podem ficar desatualizadas vs código** se DS mudar e ninguém atualizar markdown. Mitigação proposta no plano (CI rule) ainda não implementada.
-- **Bot pode ignorar skill se trigger não casar.** Resolver testando com prompts ambíguos amanhã.
-- **`apps/web` showcase ainda não tem rotas pra todos os 5 componentes** com 3 viewports × 3 temas — Semana 4 (visual regression) vai precisar criar primeiro.
+1. Roda os 6 testes acima
+2. Se passar, merge as 3 PRs em ordem (W1 → W2 → W3) ou squash em 1 só
+3. Tira foto mental do progresso (3 semanas de plano em 1 noite)
+4. Volta segunda-feira começando Semana 4
 
-## Próximo passo concreto recomendado
+### Caminho B — Visualmente validar primeiro
 
-Rodar Teste 2 primeiro (skill responde corretamente). Se passar, o ciclo principal funciona — daí ou parte pra Semana 2 (primitives) ou pra demo de matrícula pra ver Caio compondo.
+1. `pnpm dev` em `apps/web`, navegar pelo showcase
+2. Tira screenshots dos primitives + templates pros breakpoints
+3. Se algum quebrar visualmente, abre issue antes do merge
+
+### Caminho C — Acelerar Semana 4 imediato
+
+1. Setup Playwright visual regression (~3-4 horas)
+2. Tu aprova primeiras baselines manualmente
+3. Daí gate é automático
+
+---
+
+## Decisões registradas no plano (v0.2)
+
+Atualizar `docs/ds-implementation-plan.md` seção 13 ("Notas de execução") com este overnight quando merge happen — ele está só na branch W1 por enquanto.
+
+---
+
+## Mensagem Slack postada (handoff)
+
+Final overnight post em `#alertas` (C0AS2TAMSUR) detalha branches, PRs, e testes pra validar.
 
 Bom dia.
