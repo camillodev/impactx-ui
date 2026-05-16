@@ -95,10 +95,11 @@ export default function FormPageExample() {
           onChange={(e) => handleChange("telefone", e.target.value)}
         />
         <div>
-          <label className="text-sm font-medium text-[var(--color-text)] block mb-1.5">
+          <label htmlFor="form-turma" className="text-sm font-medium text-[var(--color-text)] block mb-1.5">
             Turma
           </label>
           <select
+            id="form-turma"
             value={values.turma}
             onChange={(e) => handleChange("turma", e.target.value)}
             className="flex h-10 w-full items-center rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] px-3 text-sm text-[var(--color-text)]"

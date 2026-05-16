@@ -64,6 +64,7 @@ export default function DashboardExample() {
       breadcrumbs={[{ label: "Dashboard" }]}
       controls={
         <select
+          aria-label="Período do dashboard"
           value={period}
           onChange={(e) => setPeriod(e.target.value)}
           className="h-9 rounded-lg border-2 border-[var(--color-border-input)] bg-[var(--color-bg)] px-3 text-sm text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]"
