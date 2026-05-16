@@ -1,4 +1,4 @@
-import { Grid, Card, CardContent, CodeBlock } from "@impactx/ds-education"
+import { Grid, Card, CardContent, CodeBlock } from "@impactxlab/ds-education"
 
 function DemoBox({ children }: { children: React.ReactNode }) {
   return (
@@ -61,7 +61,7 @@ export default function GridShowcase() {
 
       <section className="mb-10 max-w-3xl">
         <h2 className="text-base font-semibold text-[var(--color-text)] mb-3">Uso</h2>
-        <CodeBlock language="tsx">{`import { Grid } from "@impactx/ds-education"
+        <CodeBlock language="tsx">{`import { Grid } from "@impactxlab/ds-education"
 
 // Fixo
 <Grid cols={3} gap="md">{children}</Grid>

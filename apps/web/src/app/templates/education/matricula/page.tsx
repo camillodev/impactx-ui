@@ -16,7 +16,7 @@ import {
   Toaster,
   toast,
   type Column,
-} from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
 import {
   MatriculaModal,
   type MatriculaFormData,

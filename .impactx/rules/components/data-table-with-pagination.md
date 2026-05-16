@@ -5,7 +5,7 @@
 ## Import
 
 ```ts
-import { DataTableWithPagination, type Column } from "@impactx/ds-education"
+import { DataTableWithPagination, type Column } from "@impactxlab/ds-education"
 ```
 
 ## Props

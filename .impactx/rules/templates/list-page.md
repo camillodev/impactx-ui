@@ -5,7 +5,7 @@
 ## Import
 
 ```tsx
-import { ListPageTemplate, DataTableWithPagination, type Column, Button } from "@impactx/ds-education"
+import { ListPageTemplate, DataTableWithPagination, type Column, Button } from "@impactxlab/ds-education"
 ```
 
 ## Props

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Pagination } from "@impactx/ds-education"
+import { Pagination } from "@impactxlab/ds-education"
 
 export default function PaginationPage() {
   const [smallPage, setSmallPage] = React.useState(1)

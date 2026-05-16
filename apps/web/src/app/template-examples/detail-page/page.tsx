@@ -11,7 +11,7 @@ import {
   CardContent,
   Stack,
   Cluster,
-} from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
 import { Edit2, Trash2, Mail, Phone, Calendar, Clock } from "lucide-react"
 
 export default function DetailPageExample() {

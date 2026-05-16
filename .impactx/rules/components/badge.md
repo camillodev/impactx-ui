@@ -1,11 +1,11 @@
-# Badge — `@impactx/ds-education`
+# Badge — `@impactxlab/ds-education`
 
 > Carrega quando bot mencionar: badge, tag, status, label, chip, contador, pill, etiqueta, distintivo, marcador, rótulo.
 
 ## Import
 
 ```tsx
-import { Badge } from "@impactx/ds-education"
+import { Badge } from "@impactxlab/ds-education"
 ```
 
 ## Props (reais, do código)
@@ -79,7 +79,7 @@ Defaults: `variant="ink"`, `size="md"`.
 ### Status de aluno
 
 ```tsx
-import { Badge } from "@impactx/ds-education"
+import { Badge } from "@impactxlab/ds-education"
 
 <Badge variant="success">Ativo</Badge>
 ```

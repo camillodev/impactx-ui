@@ -1,6 +1,6 @@
 {
-  "name": "@impactx/ds-education",
-  "version": "0.2.0",
+  "name": "@impactxlab/ds-education",
+  "version": "0.3.0",
   "description": "Impact X DS Education — React component library + tokens (Education / Kumon / Impact X themes)",
   "license": "UNLICENSED",
   "type": "module",
@@ -31,7 +31,7 @@
     "test": "vitest run"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "peerDependencies": {
     "react": ">=18",

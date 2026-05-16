@@ -1,4 +1,4 @@
-// @impactx/ds-education — public API
+// @impactxlab/ds-education — public API
 
 // Components (primitives)
 export * from "./components/alert-dialog";

@@ -5,7 +5,7 @@
 ## Import
 
 ```ts
-import { Grid } from "@impactx/ds-education"
+import { Grid } from "@impactxlab/ds-education"
 ```
 
 ## Props

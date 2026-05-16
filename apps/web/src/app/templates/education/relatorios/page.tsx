@@ -21,7 +21,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
 
 import {
   ALUNOS,

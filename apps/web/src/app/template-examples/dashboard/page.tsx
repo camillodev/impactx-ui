@@ -12,7 +12,7 @@ import {
   CardContent,
   Stack,
   Cluster,
-} from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
 import { BarChart3, Share2 } from "lucide-react"
 
 interface StudentWithPendingLessons {

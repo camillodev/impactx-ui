@@ -16,7 +16,7 @@ import {
   Pagination,
   HeroBanner,
   type Column,
-} from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
 import { Plus, MoreHorizontal, Search } from "lucide-react"
 import {
   ALUNOS,

@@ -1,4 +1,4 @@
-# Tokens de Design — `@impactx/ds-education`
+# Tokens de Design — `@impactxlab/ds-education`
 
 > Carrega quando bot mencionar: cor, color, token, tema, theme, var, radius, shadow, spacing, dark mode, hex, paleta, variável, design token.
 

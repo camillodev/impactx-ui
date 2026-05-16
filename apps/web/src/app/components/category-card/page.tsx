@@ -9,7 +9,7 @@ import {
   Badge,
   Separator,
   CategoryCard,
-} from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
 import {
   GraduationCap,
   BookOpen,
