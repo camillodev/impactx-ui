@@ -13,18 +13,21 @@ import { defineConfig, devices } from "@playwright/test"
  */
 export default defineConfig({
   testDir: "./playwright-tests",
-  fullyParallel: true,
+  fullyParallel: false,
   forbidOnly: !!process.env["CI"],
-  retries: process.env["CI"] ? 2 : 0,
-  workers: process.env["CI"] ? 1 : undefined,
+  retries: 1,
+  // 2 workers parallel — balances dev server load against speed.
+  // 1 was too slow (~5min), unlimited overloaded Next dev compile.
+  workers: 2,
   reporter: process.env["CI"] ? "github" : "list",
 
-  timeout: 60_000,
+  timeout: 120_000,
 
   use: {
     baseURL: "http://localhost:3002",
     trace: "on-first-retry",
-    navigationTimeout: 45_000,
+    navigationTimeout: 60_000,
+    actionTimeout: 30_000,
   },
 
   // Tolerance for pixel diffs (some font rendering varies across OS).
@@ -62,6 +65,6 @@ export default defineConfig({
     command: "pnpm dev",
     url: "http://localhost:3002",
     reuseExistingServer: !process.env["CI"],
-    timeout: 120_000,
+    timeout: 180_000,
   },
 })
