@@ -1,6 +1,6 @@
 "use client"
 
-import { Tooltip, TooltipProvider } from "@impactx/ds-education"
+import { Tooltip, TooltipProvider } from "@impactxlab/ds-education"
 
 export default function TooltipPage() {
   return (

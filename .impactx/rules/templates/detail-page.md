@@ -5,7 +5,7 @@
 ## Import
 
 ```ts
-import { DetailPageTemplate, type DetailPageTemplateProps } from "@impactx/ds-education"
+import { DetailPageTemplate, type DetailPageTemplateProps } from "@impactxlab/ds-education"
 ```
 
 ## Props

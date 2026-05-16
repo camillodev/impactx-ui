@@ -1,11 +1,11 @@
-# Input — `@impactx/ds-education`
+# Input — `@impactxlab/ds-education`
 
 > Carrega quando bot mencionar: input, campo, form field, label, helper, validação, campo de texto, field, entrada.
 
 ## Import
 
 ```tsx
-import { Input } from "@impactx/ds-education"
+import { Input } from "@impactxlab/ds-education"
 ```
 
 ## Props (reais, do código)
@@ -43,7 +43,7 @@ Defaults: sem label, sem erro, sem helper, sem ícones.
 ### Input simples com label
 
 ```tsx
-import { Input } from "@impactx/ds-education"
+import { Input } from "@impactxlab/ds-education"
 
 <Input
   label="Nome completo"
@@ -54,7 +54,7 @@ import { Input } from "@impactx/ds-education"
 ### Com validação (Zod + react-hook-form)
 
 ```tsx
-import { Input } from "@impactx/ds-education"
+import { Input } from "@impactxlab/ds-education"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -93,7 +93,7 @@ export function MyForm() {
 ### Com ícone e helper
 
 ```tsx
-import { Input } from "@impactx/ds-education"
+import { Input } from "@impactxlab/ds-education"
 import { Search } from "lucide-react"
 
 <Input
@@ -107,7 +107,7 @@ import { Search } from "lucide-react"
 ### Com ícone trailing (clear button)
 
 ```tsx
-import { Input } from "@impactx/ds-education"
+import { Input } from "@impactxlab/ds-education"
 import { X } from "lucide-react"
 import { useState } from "react"
 

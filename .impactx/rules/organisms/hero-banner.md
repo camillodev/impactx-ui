@@ -5,7 +5,7 @@
 ## Import
 
 ```typescript
-import { HeroBanner } from "@impactx/ds-education"
+import { HeroBanner } from "@impactxlab/ds-education"
 ```
 
 ## Props
@@ -104,7 +104,7 @@ interface HeroBannerProps {
 
 ## Implementação
 
-**Localização**: `@impactx/ds-education` / `src/components-education/hero-banner.tsx`
+**Localização**: `@impactxlab/ds-education` / `src/components-education/hero-banner.tsx`
 
 **Tokens CSS consumidos**:
 - `--color-hero-from` — cor inicial do gradiente (canto esquerdo)

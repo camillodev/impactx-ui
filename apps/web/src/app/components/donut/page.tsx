@@ -1,4 +1,4 @@
-import { DonutScore } from "@impactx/ds-education"
+import { DonutScore } from "@impactxlab/ds-education"
 
 const sizes = [
   { value: 64, size: 80,  caption: "sm — 80px",  label: "" },

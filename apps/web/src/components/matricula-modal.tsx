@@ -12,7 +12,7 @@ import {
   Stat,
   BannerCTA,
   cn,
-} from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
 
 // ─── Types ────────────────────────────────────────────────────────────────
 

@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, CtaBanner } from "@impactx/ds-education"
+import { Card, CardContent, Badge, Separator, CtaBanner } from "@impactxlab/ds-education"
 
 export default function CtaBannerShowcase() {
   return (

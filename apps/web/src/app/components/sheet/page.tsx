@@ -10,9 +10,9 @@ import {
   SheetFooter,
   SheetTitle,
   SheetDescription,
-} from "@impactx/ds-education"
-import { Button } from "@impactx/ds-education"
-import { Input } from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
+import { Button } from "@impactxlab/ds-education"
+import { Input } from "@impactxlab/ds-education"
 
 export default function SheetPlayground() {
   const [name, setName] = React.useState("")

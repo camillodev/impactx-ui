@@ -1,4 +1,4 @@
-import { AssessmentCard } from "@impactx/ds-education"
+import { AssessmentCard } from "@impactxlab/ds-education"
 
 export default function AssessmentCardPage() {
   return (

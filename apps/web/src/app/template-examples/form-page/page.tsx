@@ -7,7 +7,7 @@ import {
   Stack,
   Input,
   Textarea,
-} from "@impactx/ds-education"
+} from "@impactxlab/ds-education"
 
 interface FormValues {
   nome: string

@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, CampoCard } from "@impactx/ds-education"
+import { Card, CardContent, Badge, Separator, CampoCard } from "@impactxlab/ds-education"
 
 export default function CampoCardShowcase() {
   return (

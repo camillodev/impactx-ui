@@ -5,7 +5,7 @@
 ## Import
 
 ```tsx
-import { DashboardTemplate, type DashboardMetric, Badge, Stack, Card } from "@impactx/ds-education"
+import { DashboardTemplate, type DashboardMetric, Badge, Stack, Card } from "@impactxlab/ds-education"
 ```
 
 ## Props

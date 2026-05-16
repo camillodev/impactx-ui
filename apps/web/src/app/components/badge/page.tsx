@@ -1,4 +1,4 @@
-import { Badge, CodeBlock } from "@impactx/ds-education"
+import { Badge, CodeBlock } from "@impactxlab/ds-education"
 import { Check, AlertTriangle, X, Info, Star } from "lucide-react"
 
 const variants = [
@@ -63,7 +63,7 @@ export default function BadgePage() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-xs text-[var(--color-text-subtle)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Badge } from "@impactx/ds-education"
+            <CodeBlock language="tsx">{`import { Badge } from "@impactxlab/ds-education"
 
 <Badge variant="primary">Novo</Badge>`}</CodeBlock>
           </div>

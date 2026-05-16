@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, DonutScore } from "@impactx/ds-education"
+import { Card, CardContent, Badge, Separator, DonutScore } from "@impactxlab/ds-education"
 
 export default function DonutScoreShowcase() {
   return (

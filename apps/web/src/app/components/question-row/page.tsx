@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, QuestionRow } from "@impactx/ds-education"
+import { Card, CardContent, Badge, Separator, QuestionRow } from "@impactxlab/ds-education"
 
 export default function QuestionRowShowcase() {
   return (
