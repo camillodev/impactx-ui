@@ -11,10 +11,8 @@
 @import "@fontsource/roboto/700.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 
-@import "@impactx/ds-education/tokens/base.css";
-@import "@impactx/ds-education/tokens/themes/education.css";
-@import "@impactx/ds-education/tokens/themes/impactx.css";
-@import "@impactx/ds-education/tokens/themes/kumon.css";
+/* Tokens fonte única: @impactxlab/tokens (3-tier, gerado via Style Dictionary). */
+@import "@impactxlab/tokens/tokens.css";
 
 html, body {
   background: var(--color-bg);

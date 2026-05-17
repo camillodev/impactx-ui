@@ -1,5 +1,6 @@
-/* @impactx/ds — full styles entry */
-@import "./tokens/base.css";
-@import "./tokens/themes/education.css";
-@import "./tokens/themes/kumon.css";
-@import "./tokens/themes/impactx.css";
+/* @impactx/ds — full styles entry.
+ * A partir do PR6, tokens vêm do package @impactxlab/tokens (3-tier via Style Dictionary).
+ * Os imports legados (tokens/base.css etc) ficam exportados em package.json#exports
+ * pra retrocompatibilidade de consumidores externos, mas a fonte de verdade é @impactxlab/tokens.
+ */
+@import "@impactxlab/tokens/tokens.css";

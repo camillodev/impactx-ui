@@ -1,16 +1,56 @@
-# Tokens de Design — `@impactxlab/ds-education`
+# Tokens de Design — `@impactxlab/tokens`
 
-> Carrega quando bot mencionar: cor, color, token, tema, theme, var, radius, shadow, spacing, dark mode, hex, paleta, variável, design token.
+> Carrega quando bot mencionar: cor, color, token, tema, theme, var, radius, shadow, spacing, dark mode, hex, paleta, variável, design token, style dictionary, DTCG, primitive, semantic.
 
 ## Princípio
 
-Tokens são **CSS variables** globais — nunca hardcode hex. Temas vivem em `packages/ds-education/src/tokens/themes/*.css`. Mudar de tema = mudar **className no `<html>`**, tokens se redefinem sozinhos.
+Tokens são **CSS variables** globais — nunca hardcode hex. Mudar de tema = mudar **className no `<html>`**, tokens se redefinem sozinhos.
 
-## Arquitetura
+## Arquitetura 3-tier (Style Dictionary v4 + DTCG)
 
-- **`base.css`** (`:root` global) — variáveis fixas entre temas: cinzas, spacing, radius, shadows, semantics (success, warning, danger), badges, toast.
-- **`themes/*.css`** (`.theme-{education,kumon,impactx}`) — primária, secundária, terciária, danger (3 papéis cada), hero gradients, cores específicas (ex.: disciplinas Kumon).
-- **Dark mode** (`[data-mode="dark"]`) — neutrals escuros + transparências reajustadas. Brand colors (primary, danger) **iguais**.
+A partir do PR6 a fonte de verdade dos tokens é o package **`@impactxlab/tokens`**, organizado em 3 camadas:
+
+| Tier | Pasta | O que vive aqui | Exemplo |
+|---|---|---|---|
+| **1. Primitive** | `packages/tokens/src/primitive/` | Paleta crua, sem semântica | `color.blue.500 = #0467DB`, `radius.md = 10px` |
+| **2. Semantic** | `packages/tokens/src/semantic/` | Roles por tema + base + dark | `color.primary → {color.blue.500}` (varia por tema) |
+| **3. Component** | `packages/tokens/src/component/` | Overrides por componente | `component.card.radius → {radius.card}` |
+
+**Regra de fluxo:**
+- Componente React lê CSS vars (`var(--color-primary)`, `var(--component-card-radius)`).
+- CSS vars são geradas a partir do JSON DTCG via `pnpm --filter @impactxlab/tokens build`.
+- Mudar `primitive.color.blue.500` propaga em **todos** os componentes que usam primary no theme education sem editar um único `.tsx`.
+
+### Onde alterar?
+
+| Quero | Edito |
+|---|---|
+| Mudar paleta (azul Education vira mais escuro) | `primitive/color.json` |
+| Trocar role (primary do Kumon vira outro azul) | `semantic/kumon.json` |
+| Mudar radius do Card sem afetar Button | `component/card.json` |
+| Mudar dark mode neutrals | `semantic/dark.json` |
+
+### Output do build
+
+```
+packages/tokens/dist/
+├── tokens.css              ← bundle único (425 vars, todos os temas)
+├── themes/education.css    ← fatia individual por tema
+├── themes/kumon.css
+├── themes/impactx.css
+├── tokens.js + .d.ts       ← exports JS programáticos (tema education default)
+└── tailwind.js             ← preset Tailwind com cores primitive
+```
+
+## Compatibilidade
+
+O contrato externo (`--color-primary`, `--radius-card`, etc.) é **idêntico** ao base.css/themes anteriores. Consumidores que importam `@impactxlab/ds-education/tokens/base.css` continuam funcionando — o DS package mantém os CSS legados como passthrough. Migração para consumir `@impactxlab/tokens/tokens.css` direto é incremental e opcional.
+
+## Estrutura legada (mantida durante transição)
+
+- **`packages/ds-education/src/tokens/base.css`** (`:root` global) — variáveis fixas entre temas.
+- **`packages/ds-education/src/tokens/themes/*.css`** (`.theme-{education,kumon,impactx}`) — papéis temáticos.
+- **Dark mode** (`[data-mode="dark"]`) — neutrals escuros.
 
 ## Trocar Tema
 
