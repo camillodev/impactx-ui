@@ -1,0 +1,58 @@
+{
+  "component": {
+    "input": {
+      "radius": {
+        "$value": "{radius.sm}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.bg}",
+        "$type": "color"
+      },
+      "bg-disabled": {
+        "$value": "{color.surface}",
+        "$type": "color"
+      },
+      "border": {
+        "$value": "{color.border-input}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$value": "{color.border-strong}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$value": "{color.primary}",
+        "$type": "color"
+      },
+      "border-error": {
+        "$value": "{color.danger}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.text}",
+        "$type": "color"
+      },
+      "text-placeholder": {
+        "$value": "{color.text-subtle}",
+        "$type": "color"
+      },
+      "text-disabled": {
+        "$value": "{color.text-muted}",
+        "$type": "color"
+      },
+      "label": {
+        "$value": "{color.text-muted-strong}",
+        "$type": "color"
+      },
+      "helper": {
+        "$value": "{color.primary}",
+        "$type": "color"
+      },
+      "helper-error": {
+        "$value": "{color.danger}",
+        "$type": "color"
+      }
+    }
+  }
+}

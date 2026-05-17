@@ -1,0 +1,19 @@
+{
+  "component": {
+    "badge": {
+      "radius": { "$value": "{radius.full}", "$type": "dimension" },
+      "success": {
+        "bg": { "$value": "{badge.success.bg}", "$type": "color" },
+        "fg": { "$value": "{badge.success.fg}", "$type": "color" }
+      },
+      "warning": {
+        "bg": { "$value": "{badge.warning.bg}", "$type": "color" },
+        "fg": { "$value": "{badge.warning.fg}", "$type": "color" }
+      },
+      "danger": {
+        "bg": { "$value": "{badge.danger.bg}", "$type": "color" },
+        "fg": { "$value": "{badge.danger.fg}", "$type": "color" }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "component": {
+    "card": {
+      "radius": {
+        "$value": "{radius.card}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "subtle": {
+          "$value": "{shadow.card-subtle}",
+          "$type": "shadow"
+        },
+        "default": {
+          "$value": "{shadow.card-default}",
+          "$type": "shadow"
+        },
+        "hover": {
+          "$value": "{shadow.card-hover}",
+          "$type": "shadow"
+        }
+      },
+      "border": {
+        "color": {
+          "$value": "{color.border-input}",
+          "$type": "color"
+        },
+        "color-active": {
+          "$value": "{color.primary}",
+          "$type": "color"
+        },
+        "width": {
+          "$value": "1px",
+          "$type": "dimension"
+        },
+        "width-active": {
+          "$value": "2px",
+          "$type": "dimension"
+        }
+      }
+    }
+  }
+}

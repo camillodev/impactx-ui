@@ -11,6 +11,8 @@
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "registry:build": "node scripts/build-registry.mjs",
+    "tokens:build": "pnpm --filter @impactxlab/tokens build",
+    "tokens:check": "node scripts/check-tokens-parity.mjs",
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish"

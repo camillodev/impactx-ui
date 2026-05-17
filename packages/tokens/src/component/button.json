@@ -1,0 +1,86 @@
+{
+  "component": {
+    "button": {
+      "radius": {
+        "$value": "{radius.md}",
+        "$type": "dimension"
+      },
+      "primary": {
+        "bg": {
+          "$value": "{color.primary}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.primary-hover}",
+          "$type": "color"
+        },
+        "bg-active": {
+          "$value": "{color.primary-active}",
+          "$type": "color"
+        },
+        "bg-disabled": {
+          "$value": "{color.primary-disabled}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{color.primary-fg}",
+          "$type": "color"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{color.secondary}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.secondary-hover}",
+          "$type": "color"
+        },
+        "bg-active": {
+          "$value": "{color.secondary-active}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{color.secondary-fg}",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.secondary-bd}",
+          "$type": "color"
+        },
+        "border-active": {
+          "$value": "{color.secondary-bd-active}",
+          "$type": "color"
+        }
+      },
+      "tertiary": {
+        "bg": {
+          "$value": "{color.tertiary}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.tertiary-hover}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{color.tertiary-fg}",
+          "$type": "color"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{color.danger-primary}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.danger-primary-hover}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{color.danger-primary-fg}",
+          "$type": "color"
+        }
+      }
+    }
+  }
+}

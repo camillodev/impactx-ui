@@ -1,0 +1,13 @@
+{
+  "opacity": {
+    "overlay-xxs": { "$value": 0.04, "$type": "number" },
+    "overlay-xs": { "$value": 0.06, "$type": "number" },
+    "overlay-sm": { "$value": 0.15, "$type": "number" },
+    "overlay-md": { "$value": 0.4, "$type": "number" },
+    "overlay-text": { "$value": 0.85, "$type": "number" },
+    "primary-soft": { "$value": 0.08, "$type": "number" },
+    "primary-ring": { "$value": 0.25, "$type": "number" },
+    "tertiary-hover-dark": { "$value": 0.1, "$type": "number" },
+    "tertiary-active-dark": { "$value": 0.2, "$type": "number" }
+  }
+}
