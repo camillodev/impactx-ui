@@ -20,6 +20,7 @@ const ROOT = path.resolve(__dirname, "..");
 
 const LEGACY_FILES = {
   base: "packages/ds-education/src/tokens/base.css",
+  dark: "packages/ds-education/src/tokens/base.css",
   education: "packages/ds-education/src/tokens/themes/education.css",
   kumon: "packages/ds-education/src/tokens/themes/kumon.css",
   impactx: "packages/ds-education/src/tokens/themes/impactx.css",
@@ -27,6 +28,7 @@ const LEGACY_FILES = {
 
 const GENERATED_FILES = {
   base: "packages/tokens/dist/tokens.css",
+  dark: "packages/tokens/dist/tokens.css",
   education: "packages/tokens/dist/themes/education.css",
   kumon: "packages/tokens/dist/themes/kumon.css",
   impactx: "packages/tokens/dist/themes/impactx.css",
@@ -90,6 +92,7 @@ async function extractVars(file, slice) {
   // Para cada slice, define quais blocos são relevantes (ordem de cascata simulada).
   const wantedSelectors = {
     base: [":root"], // apenas root, sem dark nem themes
+    dark: ['[data-mode="dark"]'], // overrides de dark mode no base
     education: [":root", ":root, .theme-education", ".theme-education"],
     kumon: [".theme-kumon"],
     impactx: [".theme-impactx"],
@@ -106,12 +109,13 @@ async function extractVars(file, slice) {
 
 let failures = 0;
 
-for (const slice of ["base", "education", "kumon", "impactx"]) {
+for (const slice of ["base", "dark", "education", "kumon", "impactx"]) {
   const legacy = await extractVars(path.join(ROOT, LEGACY_FILES[slice]), slice);
   const generated = await extractVars(path.join(ROOT, GENERATED_FILES[slice]), slice);
 
   const missing = [];
   const mismatched = [];
+  const extra = [];
 
   for (const [name, legacyValue] of legacy) {
     if (!generated.has(name)) {
@@ -126,12 +130,18 @@ for (const slice of ["base", "education", "kumon", "impactx"]) {
     }
   }
 
-  if (missing.length === 0 && mismatched.length === 0) {
+  for (const name of generated.keys()) {
+    if (legacy.has(name)) continue;
+    if (EXPECTED_DRIFTS[name]) continue;
+    extra.push(name);
+  }
+
+  if (missing.length === 0 && mismatched.length === 0 && extra.length === 0) {
     console.log(`✔ [${slice}] paridade OK (${legacy.size} vars, valores idênticos)`);
     continue;
   }
 
-  failures += missing.length + mismatched.length;
+  failures += missing.length + mismatched.length + extra.length;
   if (missing.length) {
     console.error(`\n✘ [${slice}] vars ausentes no @impactxlab/tokens (${missing.length}):`);
     for (const n of missing) console.error(`  ${n}`);
@@ -143,6 +153,10 @@ for (const slice of ["base", "education", "kumon", "impactx"]) {
       console.error(`    legacy:    ${m.legacy}`);
       console.error(`    generated: ${m.generated}`);
     }
+  }
+  if (extra.length) {
+    console.error(`\n✘ [${slice}] vars extras no @impactxlab/tokens não presentes no legado (${extra.length}):`);
+    for (const n of extra) console.error(`  ${n}`);
   }
 }
 

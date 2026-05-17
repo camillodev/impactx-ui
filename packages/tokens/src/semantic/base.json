@@ -182,33 +182,7 @@
       }
     }
   },
-  "toast": {
-    "success": {
-      "$value": "{color.success.toast}",
-      "$type": "color"
-    },
-    "success-bg": {
-      "$value": "{color.success.toast-bg-light}",
-      "$type": "color"
-    },
-    "warning": {
-      "$value": "{color.warning.toast}",
-      "$type": "color"
-    },
-    "warning-bg": {
-      "$value": "{color.warning.toast-bg-light}",
-      "$type": "color"
-    },
-    "error-bg": {
-      "$value": "{color.danger.toast-bg-light}",
-      "$type": "color"
-    },
-    "info-bg": {
-      "$value": "{color.info.toast-bg-light}",
-      "$type": "color"
-    }
-  },
   "_": {
-    "$comment": "radius / shadow / font live em primitive — não duplicamos aqui pra evitar circular refs."
+    "$comment": "radius / shadow / font live em primitive — não duplicamos aqui pra evitar circular refs. Toast tokens vivem em color.toast-* (linhas 68-91), não em namespace próprio, pra paridade com legado."
   }
 }

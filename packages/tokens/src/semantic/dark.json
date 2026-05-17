@@ -112,24 +112,20 @@
       "$value": "{color.slate.500}",
       "$type": "color"
     },
-    "overlay-xxs": {
-      "$value": "rgba(255, 255, 255, 0.04)",
+    "toast-success-bg": {
+      "$value": "{color.success.toast-bg-dark}",
       "$type": "color"
     },
-    "overlay-xs": {
-      "$value": "rgba(255, 255, 255, 0.06)",
+    "toast-warning-bg": {
+      "$value": "{color.warning.toast-bg-dark}",
       "$type": "color"
     },
-    "overlay-sm": {
-      "$value": "rgba(255, 255, 255, 0.15)",
+    "toast-error-bg": {
+      "$value": "{color.danger.toast-bg-dark}",
       "$type": "color"
     },
-    "overlay-md": {
-      "$value": "rgba(255, 255, 255, 0.40)",
-      "$type": "color"
-    },
-    "overlay-text": {
-      "$value": "rgba(255, 255, 255, 0.85)",
+    "toast-info-bg": {
+      "$value": "{color.info.toast-bg-dark}",
       "$type": "color"
     }
   },
@@ -165,22 +161,7 @@
       }
     }
   },
-  "toast": {
-    "success-bg": {
-      "$value": "{color.success.toast-bg-dark}",
-      "$type": "color"
-    },
-    "warning-bg": {
-      "$value": "{color.warning.toast-bg-dark}",
-      "$type": "color"
-    },
-    "error-bg": {
-      "$value": "{color.danger.toast-bg-dark}",
-      "$type": "color"
-    },
-    "info-bg": {
-      "$value": "{color.info.toast-bg-dark}",
-      "$type": "color"
-    }
+  "_": {
+    "$comment": "Toast dark overrides vivem em color.toast-*-bg pra bater 1:1 com legado base.css [data-mode=\"dark\"]. Overlays não duplicam aqui — herdam do :root via cascade."
   }
 }

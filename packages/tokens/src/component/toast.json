@@ -3,18 +3,18 @@
     "toast": {
       "radius": { "$value": "{radius.md}", "$type": "dimension" },
       "success": {
-        "color": { "$value": "{toast.success}", "$type": "color" },
-        "bg": { "$value": "{toast.success-bg}", "$type": "color" }
+        "color": { "$value": "{color.toast-success}", "$type": "color" },
+        "bg": { "$value": "{color.toast-success-bg}", "$type": "color" }
       },
       "warning": {
-        "color": { "$value": "{toast.warning}", "$type": "color" },
-        "bg": { "$value": "{toast.warning-bg}", "$type": "color" }
+        "color": { "$value": "{color.toast-warning}", "$type": "color" },
+        "bg": { "$value": "{color.toast-warning-bg}", "$type": "color" }
       },
       "error": {
-        "bg": { "$value": "{toast.error-bg}", "$type": "color" }
+        "bg": { "$value": "{color.toast-error-bg}", "$type": "color" }
       },
       "info": {
-        "bg": { "$value": "{toast.info-bg}", "$type": "color" }
+        "bg": { "$value": "{color.toast-info-bg}", "$type": "color" }
       },
       "shadow": { "$value": "{shadow.lg}", "$type": "shadow" }
     }
