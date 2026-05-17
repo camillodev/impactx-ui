@@ -9,4 +9,6 @@ dist
 coverage
 .vercel
 .playwright-mcp
+test-results/
+playwright-report/
 .claude/RESUME-*.md
