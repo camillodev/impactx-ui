@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent, Badge, Separator, BigCard } from "@impactxlab/ds-education"
+import { Card, CardContent, Badge, Separator, BigCard, Grid } from "@impactxlab/ds-education"
 import { BookOpen, Target } from "lucide-react"
 
 export default function BigCardShowcase() {
@@ -20,7 +20,7 @@ export default function BigCardShowcase() {
         <h2 className="text-xl font-medium mb-4">Exemplos</h2>
         <Card>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+            <Grid cols={{ base: 1, md: 2 }} gap="lg" className="py-4">
               <BigCard
                 icon={BookOpen}
                 title="Plano de Estudos"
@@ -31,7 +31,7 @@ export default function BigCardShowcase() {
                 title="Avaliações SAS"
                 description="Aplique simulados e avaliações diagnósticas alinhadas à BNCC e ao ENEM."
               />
-            </div>
+            </Grid>
           </CardContent>
         </Card>
       </section>

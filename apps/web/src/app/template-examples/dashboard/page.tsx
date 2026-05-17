@@ -12,6 +12,7 @@ import {
   CardContent,
   Stack,
   Cluster,
+  Grid,
 } from "@impactxlab/ds-education"
 import { BarChart3, Share2 } from "lucide-react"
 
@@ -122,7 +123,7 @@ export default function DashboardExample() {
         </Card>
 
         {/* Grid 2 cols: Distribuição + Inadimplência */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Grid cols={{ base: 1, lg: 2 }} gap="lg">
           <Card>
             <CardHeader>
               <CardTitle>Distribuição por turma</CardTitle>
@@ -144,7 +145,7 @@ export default function DashboardExample() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </Grid>
       </Stack>
     </DashboardTemplate>
   )

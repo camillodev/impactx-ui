@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, CampoCard } from "@impactxlab/ds-education"
+import { Card, CardContent, Badge, Separator, CampoCard, Grid } from "@impactxlab/ds-education"
 
 export default function CampoCardShowcase() {
   return (
@@ -17,7 +17,7 @@ export default function CampoCardShowcase() {
         <h2 className="text-xl font-medium mb-4">Padrão</h2>
         <Card>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+            <Grid cols={{ base: 1, md: 2 }} gap="lg" className="py-4">
               <CampoCard
                 title="Leitura e Interpretação de Texto"
                 questoes={12}
@@ -30,7 +30,7 @@ export default function CampoCardShowcase() {
                 acertosEscola={62}
                 acertosNacional={58}
               />
-            </div>
+            </Grid>
           </CardContent>
         </Card>
       </section>

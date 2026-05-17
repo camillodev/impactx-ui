@@ -50,6 +50,8 @@ function groupByCategory(items: RegistryItem[]) {
 
 // TODO: extrair como molecule SidebarSection se padrão se repetir em outras shells
 
+// TODO(PR visual pass): migrar pra SidebarFromConfig do DS. Manter custom aqui só ate la.
+// eslint-disable-next-line @impactx/ui/no-duplicate-component
 export function Sidebar() {
   const pathname = usePathname()
   const grouped = groupByCategory(components)

@@ -15,6 +15,7 @@ import {
   DataTable,
   Pagination,
   HeroBanner,
+  Stack,
   type Column,
 } from "@impactxlab/ds-education"
 import { Plus, MoreHorizontal, Search } from "lucide-react"
@@ -137,6 +138,7 @@ export default function AlunosTemplate() {
 
       <div className="p-4 md:p-8 space-y-6">
         <Card>
+          {/* eslint-disable-next-line @impactx/ui/no-raw-tailwind-layout */}
           <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <CardTitle>Lista de alunos</CardTitle>
             <Button
@@ -149,7 +151,7 @@ export default function AlunosTemplate() {
             </Button>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex flex-col md:flex-row gap-3">
+            <Stack direction={{ base: "vertical", md: "horizontal" }} gap="md">
               <Input
                 placeholder="Buscar aluno por nome..."
                 value={search}
@@ -173,7 +175,7 @@ export default function AlunosTemplate() {
                   />
                 ))}
               </div>
-            </div>
+            </Stack>
 
             <DataTable
               columns={columns}

@@ -11,6 +11,8 @@ import {
   Avatar,
   IconButton,
   Separator,
+  Stack,
+  Grid,
 } from "@impactxlab/ds-education"
 import { MoreHorizontal, GraduationCap, Calendar, BookOpen } from "lucide-react"
 
@@ -201,7 +203,7 @@ function HorizontalImageFooterCard({ state, hint }: CardStateProps) {
         src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=200"
         alt="Paisagem"
       />
-      <div className="flex flex-col flex-1 min-w-0">
+      <Stack direction="vertical" className="flex-1 min-w-0">
         <CardHeader>
           <CardTitle>Card Title</CardTitle>
           <CardSubtitle>Subtitle 1</CardSubtitle>
@@ -224,7 +226,7 @@ function HorizontalImageFooterCard({ state, hint }: CardStateProps) {
             />
           }
         />
-      </div>
+      </Stack>
     </Card>
   )
 }
@@ -250,20 +252,20 @@ function StateGrid({
           <p className="text-xs text-[var(--color-text-muted)] mt-0.5">{description}</p>
         )}
       </header>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <Grid cols={{ base: 1, sm: 2, md: 3, lg: 5 }} gap="md">
         {STATES.map((entry) => {
           const hint = "hint" in entry ? entry.hint : undefined
           return (
-            <div key={entry.label} className="flex flex-col gap-2">
+            <Stack key={entry.label} direction="vertical" gap="sm">
               <StateLabel>{entry.label}</StateLabel>
               {renderCard({
                 state: entry.state as ShowcaseState,
                 ...(hint ? { hint } : {}),
               })}
-            </div>
+            </Stack>
           )
         })}
-      </div>
+      </Grid>
     </section>
   )
 }
@@ -325,7 +327,7 @@ export default function CardPage() {
           API antiga (Card + CardHeader + CardTitle + CardContent) continua funcionando.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+        <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="lg" className="mb-8">
           <Card>
             <CardHeader>
               <CardTitle>Título do card</CardTitle>
@@ -360,7 +362,7 @@ export default function CardPage() {
               <Button size="sm">Abrir</Button>
             </CardContent>
           </Card>
-        </div>
+        </Grid>
 
         <Card className="max-w-md">
           <CardHeader>

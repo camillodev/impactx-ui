@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { DonutChart, BarChart, LineChart, AreaChart } from "@impactxlab/ds-education"
+import { DonutChart, BarChart, LineChart, AreaChart, Grid } from "@impactxlab/ds-education"
 
 export default function ChartsPage() {
   const [tick, setTick] = React.useState(0)
@@ -28,12 +28,12 @@ export default function ChartsPage() {
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
           DonutChart — single value
         </h2>
-        <div className="rounded-xl p-8 bg-[var(--color-surface)] border border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+        <Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="lg" className="rounded-xl p-8 bg-[var(--color-surface)] border border-[var(--color-border)] items-center">
           <DonutChart value={64} size={140} themeKey={tick} centerSubtext="Reading" />
           <DonutChart value={78} size={140} themeKey={tick} centerSubtext="Math" tone="success" />
           <DonutChart value={42} size={140} themeKey={tick} centerSubtext="Writing" tone="warning" />
           <DonutChart value={29} size={140} themeKey={tick} centerSubtext="History" tone="danger" />
-        </div>
+        </Grid>
       </section>
 
       <section className="mb-12">
@@ -61,7 +61,7 @@ export default function ChartsPage() {
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">
           BarChart — single & multi-series
         </h2>
-        <div className="rounded-xl p-8 bg-[var(--color-surface)] border border-[var(--color-border)] grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Grid cols={{ base: 1, md: 2 }} gap="lg" className="rounded-xl p-8 bg-[var(--color-surface)] border border-[var(--color-border)]">
           <BarChart
             categories={["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"]}
             series={[{ name: "Success rate", data: [78, 65, 82, 58, 91, 73], tone: "primary" }]}
@@ -75,7 +75,7 @@ export default function ChartsPage() {
             ]}
             themeKey={tick}
           />
-        </div>
+        </Grid>
       </section>
 
       <section className="mb-12">

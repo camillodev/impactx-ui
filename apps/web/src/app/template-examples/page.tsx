@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Grid } from "@impactxlab/ds-education"
 
 const TEMPLATES = [
   {
@@ -33,7 +34,7 @@ export default function TemplateExamplesIndex() {
         padding responsivo e estrutura consistente.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Grid cols={{ base: 1, md: 2 }} gap="md">
         {TEMPLATES.map(({ slug, name, desc }) => (
           <Link
             key={slug}
@@ -44,7 +45,7 @@ export default function TemplateExamplesIndex() {
             <p className="text-sm text-[var(--color-text-muted)]">{desc}</p>
           </Link>
         ))}
-      </div>
+      </Grid>
     </main>
   )
 }
