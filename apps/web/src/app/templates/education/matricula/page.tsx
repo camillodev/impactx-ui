@@ -15,6 +15,7 @@ import {
   HeroBanner,
   Toaster,
   toast,
+  Grid,
   type Column,
 } from "@impactxlab/ds-education"
 import {
@@ -130,7 +131,7 @@ export default function MatriculaTemplate() {
       />
 
       <div className="px-4 md:px-8 flex flex-col gap-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="md">
           <Stat asCard label="Pré-matrículas" value="7" />
           <Stat
             asCard
@@ -141,7 +142,7 @@ export default function MatriculaTemplate() {
           />
           <Stat asCard label="Conversão" value="78%" delta="+4 pp" deltaTrend="up" />
           <Stat asCard label="Aguardando diagnóstica" value="4" />
-        </div>
+        </Grid>
 
         <Card>
           <CardHeader className="flex items-center justify-between flex-wrap gap-3">

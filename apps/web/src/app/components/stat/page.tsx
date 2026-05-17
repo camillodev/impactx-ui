@@ -1,4 +1,4 @@
-import { Stat } from "@impactxlab/ds-education"
+import { Stat, Grid } from "@impactxlab/ds-education"
 import { TrendingUp, Users } from "lucide-react"
 
 export default function StatPage() {
@@ -14,12 +14,12 @@ export default function StatPage() {
           Valores básicos
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="md">
             <Stat asCard label="Total Students" value="1.247" />
             <Stat asCard label="Completion Rate" value="87%" />
             <Stat asCard label="Average Score" value="78.4" />
             <Stat asCard label="Tests Taken" value="3.421" />
-          </div>
+          </Grid>
         </div>
       </section>
 
@@ -28,7 +28,7 @@ export default function StatPage() {
           Com delta
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="md">
             <Stat
               asCard
               label="Conversion"
@@ -57,7 +57,7 @@ export default function StatPage() {
               delta="+8% vs last week"
               deltaTrend="up"
             />
-          </div>
+          </Grid>
         </div>
       </section>
 
@@ -71,11 +71,11 @@ export default function StatPage() {
           sem sinal → neutral.
         </p>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <Grid cols={{ base: 1, sm: 3 }} gap="md">
             <Stat asCard label="Pré-matrículas" value="142" delta="+12%" />
             <Stat asCard label="Cancelamentos" value="8" delta="-3%" />
             <Stat asCard label="Pendentes" value="24" delta="5%" />
-          </div>
+          </Grid>
         </div>
       </section>
 
@@ -84,12 +84,12 @@ export default function StatPage() {
           Sem card (inline)
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="md">
             <Stat label="Total Students" value="1.247" />
             <Stat label="Completion Rate" value="87%" />
             <Stat label="Average Score" value="78.4" />
             <Stat label="Tests Taken" value="3.421" />
-          </div>
+          </Grid>
         </div>
       </section>
 
@@ -98,7 +98,7 @@ export default function StatPage() {
           Com ícone
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Grid cols={{ base: 1, md: 2 }} gap="md">
             <Stat
               asCard
               label="Growth"
@@ -113,7 +113,7 @@ export default function StatPage() {
               value="2.108"
               icon={<Users size={16} />}
             />
-          </div>
+          </Grid>
         </div>
       </section>
     </main>

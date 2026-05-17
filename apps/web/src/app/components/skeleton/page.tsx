@@ -1,4 +1,4 @@
-import { Skeleton, CodeBlock } from "@impactxlab/ds-education"
+import { Skeleton, CodeBlock, Grid } from "@impactxlab/ds-education"
 
 export default function SkeletonPage() {
   return (
@@ -49,7 +49,7 @@ export default function SkeletonPage() {
         <h2 className="text-sm font-medium text-[var(--color-text)] mb-4 uppercase tracking-wide">
           Card Skeleton
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl">
+        <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="lg" className="max-w-4xl">
           {[1, 2, 3].map((i) => (
             <div
               key={i}
@@ -64,7 +64,7 @@ export default function SkeletonPage() {
               <Skeleton className="h-10 w-full rounded-md" />
             </div>
           ))}
-        </div>
+        </Grid>
       </section>
 
       {/* Text skeleton variations */}

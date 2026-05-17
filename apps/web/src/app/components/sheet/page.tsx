@@ -10,9 +10,10 @@ import {
   SheetFooter,
   SheetTitle,
   SheetDescription,
+  Button,
+  Input,
+  Grid,
 } from "@impactxlab/ds-education"
-import { Button } from "@impactxlab/ds-education"
-import { Input } from "@impactxlab/ds-education"
 
 export default function SheetPlayground() {
   const [name, setName] = React.useState("")
@@ -124,7 +125,7 @@ export default function SheetPlayground() {
                 Selecione os critérios para filtrar os resultados.
               </SheetDescription>
             </SheetHeader>
-            <div className="grid grid-cols-2 gap-3 px-6 py-4 sm:grid-cols-3">
+            <Grid cols={{ base: 2, sm: 3 }} gap="sm" className="px-6 py-4">
               {[
                 "Matemática",
                 "Português",
@@ -144,7 +145,7 @@ export default function SheetPlayground() {
                   <span className="text-sm text-[var(--color-text)]">{subject}</span>
                 </label>
               ))}
-            </div>
+            </Grid>
             <SheetFooter className="flex-row justify-end">
               <SheetClose asChild>
                 <Button variant="secondary">Limpar</Button>

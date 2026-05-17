@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Grid } from "@impactxlab/ds-education"
 
 // TODO(Wave 2): rotas abaixo virão em PR separada — Kumon flows reais.
 // Links 404 até lá (placeholder intencional).
@@ -21,7 +22,7 @@ export default function Home() {
       <h2 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-text-subtle)] mb-4">
         Templates Education
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="md">
         {templates.map((t) => (
           <Link
             key={t.href}
@@ -34,7 +35,7 @@ export default function Home() {
             <div className="text-sm text-[var(--color-text-muted)]">{t.desc}</div>
           </Link>
         ))}
-      </div>
+      </Grid>
     </div>
   )
 }
