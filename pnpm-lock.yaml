@@ -57,6 +57,9 @@ importers:
       '@axe-core/playwright':
         specifier: ^4.11.3
         version: 4.11.3(playwright-core@1.60.0)
+      '@impactx/eslint-plugin-ui':
+        specifier: workspace:*
+        version: link:../../packages/eslint-plugin-ui
       '@playwright/test':
         specifier: ^1.60.0
         version: 1.60.0
@@ -218,6 +221,12 @@ importers:
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@22.19.17)(jsdom@26.1.0)(lightningcss@1.32.0)
+
+  packages/eslint-plugin-ui:
+    dependencies:
+      eslint:
+        specifier: '>=9.0.0'
+        version: 9.39.4(jiti@2.6.1)
 
 packages:
 

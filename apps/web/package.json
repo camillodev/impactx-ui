@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
+    "@impactx/eslint-plugin-ui": "workspace:*",
     "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22",

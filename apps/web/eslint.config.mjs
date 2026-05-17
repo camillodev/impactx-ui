@@ -1,6 +1,7 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import impactxUI from "@impactx/eslint-plugin-ui";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -13,6 +14,17 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  // Impact X UI custom rules — bloqueia Tailwind cru + duplicacao de componente.
+  // Aplicado apenas em codigo da app (src/**), nao em testes E2E nem snapshots.
+  {
+    files: ["src/**/*.{ts,tsx,js,jsx}"],
+    plugins: { "@impactx/ui": impactxUI },
+    rules: {
+      "@impactx/ui/no-raw-tailwind-colors": "warn",
+      "@impactx/ui/no-raw-tailwind-layout": "warn",
+      "@impactx/ui/no-duplicate-component": "warn",
+    },
+  },
 ]);
 
 export default eslintConfig;

@@ -10,7 +10,10 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
-    "registry:build": "node scripts/build-registry.mjs"
+    "registry:build": "node scripts/build-registry.mjs",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.0",

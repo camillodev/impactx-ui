@@ -2,7 +2,7 @@ name: Changesets Check
 
 on:
   pull_request:
-    branches: [main]
+    branches: [develop]
 
 jobs:
   changeset-required:
@@ -29,4 +29,4 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Check for changeset
-        run: pnpm changeset status --since=origin/main
+        run: pnpm changeset status --since=origin/develop
