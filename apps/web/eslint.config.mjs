@@ -20,9 +20,9 @@ const eslintConfig = defineConfig([
     files: ["src/**/*.{ts,tsx,js,jsx}"],
     plugins: { "@impactx/ui": impactxUI },
     rules: {
-      "@impactx/ui/no-raw-tailwind-colors": "warn",
-      "@impactx/ui/no-raw-tailwind-layout": "warn",
-      "@impactx/ui/no-duplicate-component": "warn",
+      "@impactx/ui/no-raw-tailwind-colors": "error",
+      "@impactx/ui/no-raw-tailwind-layout": "error",
+      "@impactx/ui/no-duplicate-component": "error",
     },
   },
 ]);
