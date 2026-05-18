@@ -17,7 +17,7 @@ Esse nome foi **deprecated** e o publish público foi descontinuado. Não public
 
 ```bash
 # 1. Autenticar — GITHUB_TOKEN classic com scope write:packages
-echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc
+echo "//npm.pkg.github.com/:_authToken=$GITHUB_PERSONAL_ACCESS_TOKEN" >> ~/.npmrc
 
 # 2. Build + publish
 cd packages/ds-education
@@ -37,7 +37,7 @@ Cada projeto consumer precisa de `.npmrc` apontando o scope `@impactxlabs` pro G
 ```bash
 # .npmrc no root do projeto consumer
 @impactxlabs:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+//npm.pkg.github.com/:_authToken=${GITHUB_PERSONAL_ACCESS_TOKEN}
 ```
 
 `GITHUB_TOKEN` precisa ter scope **`read:packages`** (basta isso pra consumir).
