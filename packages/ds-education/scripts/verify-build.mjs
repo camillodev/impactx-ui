@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Hermetic build assertion. Prevents incomplete tarballs from being published.
 //
-// Why this exists: a previous publish (@impactxlabs/ui@0.3.0) shipped
+// Why this exists: a previous publish (@camillodev/ui@0.3.0) shipped
 // dist/components/ empty because tsc reused a stale tsconfig.tsbuildinfo and
 // emitted only index.js. We now (a) clean the buildinfo before build, and
 // (b) fail loud here if the dist looks suspiciously small.

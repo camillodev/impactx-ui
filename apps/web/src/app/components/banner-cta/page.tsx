@@ -1,4 +1,4 @@
-import { BannerCTA } from "@impactxlabs/ui"
+import { BannerCTA } from "@camillodev/ui"
 
 const title = "Improve student performance with personalized learning paths"
 const description =

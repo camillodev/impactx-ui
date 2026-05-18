@@ -26,6 +26,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@camillodev/ui':
+        specifier: workspace:*
+        version: link:../../packages/ds-education
       '@fontsource/ibm-plex-mono':
         specifier: ^5.2.7
         version: 5.2.7
@@ -41,9 +44,6 @@ importers:
       '@impactxlab/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
-      '@impactxlabs/ui':
-        specifier: workspace:*
-        version: link:../../packages/ds-education
       lucide-react:
         specifier: ^1.11.0
         version: 1.14.0(react@19.2.4)

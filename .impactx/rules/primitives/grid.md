@@ -5,7 +5,7 @@
 ## Import
 
 ```ts
-import { Grid } from "@impactxlabs/ui"
+import { Grid } from "@camillodev/ui"
 ```
 
 ## Props

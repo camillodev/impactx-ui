@@ -26,7 +26,7 @@ O DS termina quando **todos os critérios abaixo são verdade simultaneamente**.
 
 | # | Critério | Como medir |
 |---|---|---|
-| F1 | Bot cria página de lista completa em ≤ 15 linhas usando só `@impactxlabs/ui` | Reescrever `kumon-app/src/app/alunos/page.tsx` |
+| F1 | Bot cria página de lista completa em ≤ 15 linhas usando só `@camillodev/ui` | Reescrever `kumon-app/src/app/alunos/page.tsx` |
 | F2 | Mudar 1 token (`radius.card`) propaga em todos os componentes sem editar componente | Edit token → `pnpm build` → diff zero em `.tsx` |
 | F3 | PR no `impactx-ui` com regressão visual é bloqueado por CI antes de merge | Provocar regressão deliberada → ver CI vermelho |
 | F4 | Bot tentando `<div className="grid grid-cols-3">` no kumon-app falha no lint | Rodar lint com código ruim deliberado → ver falha |
@@ -319,7 +319,7 @@ Não bloqueia Phase 1-3. Skip se incerto.
 
 ❌ `<div className="grid grid-cols-3 p-4">` — use `<Grid cols={3}>` + `<PageContainer>`
 ❌ `className="bg-blue-500"` — use `variant`/`intent` props ou token via CSS var
-❌ Inventar componente que já existe em `@impactxlabs/ui` — sempre checar antes
+❌ Inventar componente que já existe em `@camillodev/ui` — sempre checar antes
 ❌ `border-radius: 4px` hardcoded — use `var(--radius-card)` ou token
 ❌ Componente novo sem testes RTL — TDD obrigatório pra lógica
 ❌ Editar `apps/web/src/app/components/<showcase>.tsx` sem regenerar baseline visual
@@ -353,14 +353,14 @@ Não bloqueia Phase 1-3. Skip se incerto.
 ## 10. Anexo B — Skeleton de `.impactx/rules/components/button.md`
 
 ```markdown
-# Button — `@impactxlabs/ui`
+# Button — `@camillodev/ui`
 
 > Carrega quando: bot menciona button, botão, CTA, ação, primary action, submit.
 
 ## Import
 
 \`\`\`tsx
-import { Button } from "@impactxlabs/ui"
+import { Button } from "@camillodev/ui"
 \`\`\`
 
 ## Variants (hierarquia, não cor)

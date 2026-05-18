@@ -43,4 +43,4 @@ export default [
 |---|---|---|
 | `no-raw-tailwind-colors` | `bg-blue-500`, `text-gray-700` etc. | Use `bg-[var(--color-primary)]` |
 | `no-raw-tailwind-layout` | `grid-cols-3`, `flex-col md:flex-row` | Use `<Grid cols={3}>` ou `<Stack direction={{base:"vertical",md:"horizontal"}}>` |
-| `no-duplicate-component` | `export function Button()` quando Button já existe no DS | Importe de `@impactxlabs/ui` |
+| `no-duplicate-component` | `export function Button()` quando Button já existe no DS | Importe de `@camillodev/ui` |

@@ -17,7 +17,7 @@ Toda tela com fetch tem **3 estados visuais**: loading, empty, error. Nunca rend
 ## Receita: Loading com Skeleton (10 linhas)
 
 ```tsx
-import { Skeleton, Stack } from "@impactxlabs/ui"
+import { Skeleton, Stack } from "@camillodev/ui"
 
 function AlunosListSkeleton() {
   return (
@@ -33,7 +33,7 @@ function AlunosListSkeleton() {
 ## Receita: Empty state (composição manual)
 
 ```tsx
-import { Card, Stack, Button } from "@impactxlabs/ui"
+import { Card, Stack, Button } from "@camillodev/ui"
 
 function EmptyAlunos({ onAdd }) {
   return (

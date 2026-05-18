@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, AssessmentHeader } from "@impactxlabs/ui"
+import { Card, CardContent, Badge, Separator, AssessmentHeader } from "@camillodev/ui"
 import { GraduationCap } from "lucide-react"
 
 export default function AssessmentHeaderShowcase() {

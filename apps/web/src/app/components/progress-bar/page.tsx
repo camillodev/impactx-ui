@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, ProgressBar } from "@impactxlabs/ui"
+import { Card, CardContent, Badge, Separator, ProgressBar } from "@camillodev/ui"
 
 export default function ProgressBarShowcase() {
   return (

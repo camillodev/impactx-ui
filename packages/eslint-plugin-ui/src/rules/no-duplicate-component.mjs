@@ -1,7 +1,7 @@
 /** @type {import("eslint").Rule.RuleModule} */
-// Lista de componentes que vivem em @impactxlabs/ui.
+// Lista de componentes que vivem em @camillodev/ui.
 // Atualizar manualmente quando registry crescer.
-// (Idealmente lê de @impactxlabs/ui/registry — fica como TODO pra próxima iteração.)
+// (Idealmente lê de @camillodev/ui/registry — fica como TODO pra próxima iteração.)
 const DS_COMPONENTS = new Set([
   "AlertDialog", "Avatar", "Badge", "Breadcrumb", "Button", "Card",
   "Checkbox", "Chip", "Cluster", "CodeBlock", "CommandPalette",
@@ -17,10 +17,10 @@ export default {
   meta: {
     type: "problem",
     docs: {
-      description: "Forbid defining a component with the same name as one in @impactxlabs/ui.",
+      description: "Forbid defining a component with the same name as one in @camillodev/ui.",
     },
     messages: {
-      duplicate: "Componente '{{name}}' já existe em @impactxlabs/ui. Importe em vez de criar.",
+      duplicate: "Componente '{{name}}' já existe em @camillodev/ui. Importe em vez de criar.",
     },
     schema: [],
   },

@@ -17,8 +17,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuGroup,
-} from "@impactxlabs/ui"
-import { Button } from "@impactxlabs/ui"
+} from "@camillodev/ui"
+import { Button } from "@camillodev/ui"
 
 export default function DropdownMenuPage() {
   const [showStatus, setShowStatus] = React.useState(true)

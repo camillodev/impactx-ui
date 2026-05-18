@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Grid } from "@impactxlabs/ui"
+import { Grid } from "@camillodev/ui"
 
 const PRIMITIVES = [
   {

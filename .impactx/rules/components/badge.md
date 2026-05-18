@@ -1,11 +1,11 @@
-# Badge — `@impactxlabs/ui`
+# Badge — `@camillodev/ui`
 
 > Carrega quando bot mencionar: badge, tag, status, label, chip, contador, pill, etiqueta, distintivo, marcador, rótulo.
 
 ## Import
 
 ```tsx
-import { Badge } from "@impactxlabs/ui"
+import { Badge } from "@camillodev/ui"
 ```
 
 ## Props (reais, do código)
@@ -79,7 +79,7 @@ Defaults: `variant="ink"`, `size="md"`.
 ### Status de aluno
 
 ```tsx
-import { Badge } from "@impactxlabs/ui"
+import { Badge } from "@camillodev/ui"
 
 <Badge variant="success">Ativo</Badge>
 ```

@@ -1,10 +1,10 @@
-# Publishing — onde vive o package `@impactxlabs/ui`
+# Publishing — onde vive o package `@camillodev/ui`
 
 > **REGRA DURA:** o DS NÃO é publicado no npm público. Vive em **GitHub Packages**.
 
 ## Onde está
 
-- **Package:** `@impactxlabs/ui`
+- **Package:** `@camillodev/ui`
 - **Versão atual em desenvolvimento:** `1.0.0`
 - **Registry:** `https://npm.pkg.github.com`
 - **Acesso:** `restricted` (org members + token com `read:packages`)
@@ -64,7 +64,7 @@ Em CI (GitHub Actions), use o `GITHUB_TOKEN` automático:
 ## Renovate (kumon-app)
 
 Kumon-app já tem `renovate.json` configurado pra:
-- PR imediata em release nova de `@impactxlabs/ui` (label `ds-update`)
+- PR imediata em release nova de `@camillodev/ui` (label `ds-update`)
 - Auto-merge patch/minor com CI verde
 - Major: bloqueio manual
 

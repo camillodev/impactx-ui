@@ -13,7 +13,7 @@
 ## Receita (9 linhas)
 
 ```tsx
-import { DetailPageTemplate, Card, Stack, Button } from "@impactxlabs/ui"
+import { DetailPageTemplate, Card, Stack, Button } from "@camillodev/ui"
 
 export default function AlunoPage({ aluno }) {
   return (

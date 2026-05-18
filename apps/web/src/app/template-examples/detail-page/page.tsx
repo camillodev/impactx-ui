@@ -11,7 +11,7 @@ import {
   CardContent,
   Stack,
   Cluster,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 import { Edit2, Trash2, Mail, Phone, Calendar, Clock } from "lucide-react"
 
 export default function DetailPageExample() {

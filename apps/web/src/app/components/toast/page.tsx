@@ -1,6 +1,6 @@
 "use client"
 
-import { toast, Toaster } from "@impactxlabs/ui"
+import { toast, Toaster } from "@camillodev/ui"
 import { CheckCircle, Info, AlertTriangle, XCircle } from "lucide-react"
 
 const toastTypes = [

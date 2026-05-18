@@ -29,7 +29,7 @@ import {
   ModalSplitFooter,
   ModalInfoList,
   ModalInfoItem,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 ```
 
 ## Namespace (23 subcomponentes)

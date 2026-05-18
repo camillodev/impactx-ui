@@ -1,11 +1,11 @@
-# Button — `@impactxlabs/ui`
+# Button — `@camillodev/ui`
 
 > Carrega quando bot mencionar: button, botão, CTA, ação, primary action, submit, salvar, cancelar.
 
 ## Import
 
 ```tsx
-import { Button } from "@impactxlabs/ui"
+import { Button } from "@camillodev/ui"
 ```
 
 ## Props (reais, do código)
@@ -55,7 +55,7 @@ Defaults: `variant="primary"`, `size="md"`.
 ### Página de lista — ação principal
 
 ```tsx
-import { Button } from "@impactxlabs/ui"
+import { Button } from "@camillodev/ui"
 
 <Button onClick={handleNew}>Novo aluno</Button>
 ```

@@ -64,7 +64,7 @@ Indice navegavel das rules em `.impactx/rules/`. Opcional — `system.md` contin
 
 | Rule | Conteúdo |
 |---|---|
-| [`publishing.md`](rules/publishing.md) | **Onde publicar:** GitHub Packages (`@impactxlabs/ui`, restricted). Não usar npm público. |
+| [`publishing.md`](rules/publishing.md) | **Onde publicar:** GitHub Packages (`@camillodev/ui`, restricted). Não usar npm público. |
 
 ---
 

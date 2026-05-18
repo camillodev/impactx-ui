@@ -5,7 +5,7 @@ import {
   BreadcrumbLink,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 import { Home, Slash } from "lucide-react"
 
 export default function BreadcrumbPageDemo() {

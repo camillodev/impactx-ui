@@ -5,7 +5,7 @@
 ## Import
 
 ```ts
-import { DetailPageTemplate, type DetailPageTemplateProps } from "@impactxlabs/ui"
+import { DetailPageTemplate, type DetailPageTemplateProps } from "@camillodev/ui"
 ```
 
 ## Props

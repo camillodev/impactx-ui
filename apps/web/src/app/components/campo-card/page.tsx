@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, CampoCard, Grid } from "@impactxlabs/ui"
+import { Card, CardContent, Badge, Separator, CampoCard, Grid } from "@camillodev/ui"
 
 export default function CampoCardShowcase() {
   return (

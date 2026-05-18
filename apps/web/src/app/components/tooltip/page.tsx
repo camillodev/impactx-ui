@@ -1,6 +1,6 @@
 "use client"
 
-import { Tooltip, TooltipProvider, Grid } from "@impactxlabs/ui"
+import { Tooltip, TooltipProvider, Grid } from "@camillodev/ui"
 
 export default function TooltipPage() {
   return (

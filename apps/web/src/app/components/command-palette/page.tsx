@@ -10,7 +10,7 @@ import {
   CommandPalette,
   useCommandPalette,
   type CommandPaletteGroup,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 import { Search, Box, Layers } from "lucide-react"
 
 const DEMO_GROUPS: CommandPaletteGroup[] = [

@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import { ChevronRight } from "lucide-react"
-import { Badge } from "@impactxlabs/ui"
-import { IconButton } from "@impactxlabs/ui"
-import { Pagination } from "@impactxlabs/ui"
-import { DataTable, type Column } from "@impactxlabs/ui"
+import { Badge } from "@camillodev/ui"
+import { IconButton } from "@camillodev/ui"
+import { Pagination } from "@camillodev/ui"
+import { DataTable, type Column } from "@camillodev/ui"
 
 type Question = {
   id: number

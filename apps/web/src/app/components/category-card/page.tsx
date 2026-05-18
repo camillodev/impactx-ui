@@ -11,7 +11,7 @@ import {
   CategoryCard,
   Grid,
   Stack,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 import {
   GraduationCap,
   BookOpen,

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { DonutChart, BarChart, LineChart, AreaChart, Grid } from "@impactxlabs/ui"
+import { DonutChart, BarChart, LineChart, AreaChart, Grid } from "@camillodev/ui"
 
 export default function ChartsPage() {
   const [tick, setTick] = React.useState(0)

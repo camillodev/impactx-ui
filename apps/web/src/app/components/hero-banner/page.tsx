@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, HeroBanner } from "@impactxlabs/ui"
+import { Card, CardContent, Badge, Separator, HeroBanner } from "@camillodev/ui"
 
 export default function HeroBannerShowcase() {
   return (

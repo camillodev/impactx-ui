@@ -25,9 +25,9 @@ import {
   ModalSplitFooter,
   ModalInfoList,
   ModalInfoItem,
-} from "@impactxlabs/ui"
-import { Button } from "@impactxlabs/ui"
-import { Input } from "@impactxlabs/ui"
+} from "@camillodev/ui"
+import { Button } from "@camillodev/ui"
+import { Input } from "@camillodev/ui"
 
 const HeroIcon = () => (
   <svg width="80" height="80" viewBox="0 0 80 80" fill="none">

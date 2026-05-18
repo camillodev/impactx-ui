@@ -1,4 +1,4 @@
-# Card — `@impactxlabs/ui`
+# Card — `@camillodev/ui`
 
 > Carrega quando bot mencionar: card, container, painel, box, grupo, surface elevada, cartão.
 
@@ -13,7 +13,7 @@ import {
   CardContent,
   CardMedia,
   CardMeta,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 ```
 
 ## Props (reais, do código)
@@ -109,7 +109,7 @@ interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
 ### Vertical com imagem + título + subtítulo
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardSubtitle, CardContent, CardMedia } from "@impactxlabs/ui"
+import { Card, CardHeader, CardTitle, CardSubtitle, CardContent, CardMedia } from "@camillodev/ui"
 
 <Card direction="vertical">
   <CardMedia src="/student.jpg" alt="João Silva" variant="image" />
@@ -139,7 +139,7 @@ import { Card, CardHeader, CardTitle, CardSubtitle, CardContent, CardMedia } fro
 ### Card com footer (avatar + data atualização + DropdownMenu)
 
 ```tsx
-import { DropdownMenu } from "@impactxlabs/ui"
+import { DropdownMenu } from "@camillodev/ui"
 
 <Card>
   <CardHeader>

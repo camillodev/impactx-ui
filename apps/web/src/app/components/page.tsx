@@ -8,7 +8,7 @@ import {
   Separator,
   components as registryComponents,
   type RegistryItem,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 
 // TODO: showcase routes para os 10 organisms de components-education ainda
 // não existem em apps/web/src/app/components/<slug>/page.tsx — escopo de PR

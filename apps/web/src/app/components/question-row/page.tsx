@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, QuestionRow } from "@impactxlabs/ui"
+import { Card, CardContent, Badge, Separator, QuestionRow } from "@camillodev/ui"
 
 export default function QuestionRowShowcase() {
   return (

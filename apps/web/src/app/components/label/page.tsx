@@ -1,4 +1,4 @@
-import { Label, CodeBlock } from "@impactxlabs/ui"
+import { Label, CodeBlock } from "@camillodev/ui"
 
 export default function LabelPage() {
   return (
@@ -143,7 +143,7 @@ export default function LabelPage() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-xs text-[var(--color-text-muted)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Label } from "@impactxlabs/ui"
+            <CodeBlock language="tsx">{`import { Label } from "@camillodev/ui"
 
 <Label>Nome completo</Label>`}</CodeBlock>
           </div>

@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, AssessmentListItem } from "@impactxlabs/ui"
+import { Card, CardContent, Badge, Separator, AssessmentListItem } from "@camillodev/ui"
 
 export default function AssessmentListItemShowcase() {
   return (

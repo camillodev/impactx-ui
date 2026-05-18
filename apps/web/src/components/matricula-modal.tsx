@@ -14,7 +14,7 @@ import {
   Stack,
   Grid,
   cn,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 
 // ─── Types ────────────────────────────────────────────────────────────────
 

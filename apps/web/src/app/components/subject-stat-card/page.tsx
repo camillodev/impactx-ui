@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, SubjectStatCard, Grid } from "@impactxlabs/ui"
+import { Card, CardContent, Badge, Separator, SubjectStatCard, Grid } from "@camillodev/ui"
 
 export default function SubjectStatCardShowcase() {
   return (

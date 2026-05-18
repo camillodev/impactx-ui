@@ -24,7 +24,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@impactxlabs/ui"
+} from "@camillodev/ui"
 
 import {
   ALUNOS,

@@ -6,7 +6,7 @@
 ## Visao geral
 Monorepo do design system multi-DS / multi-theme da Impact X. Composto por:
 - `@impactx/ui` — CLI shadcn-style (`npx @impactx/ui add <ds> [<component>]`)
-- `@impactxlabs/ui` — package canonico com 22 atoms/molecules + 10 organisms domain-specific
+- `@camillodev/ui` — package canonico com 22 atoms/molecules + 10 organisms domain-specific
 - `apps/web` — showcase + docs (Next 16, App Router) servido em `ui.impactx.com.br`
 
 Stack: pnpm + turbo, Next 16, React 19, Tailwind v4, TypeScript strict, ESM only.

@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator } from "@impactxlabs/ui"
+import { Card, CardContent, Badge, Separator } from "@camillodev/ui"
 
 export default function SeparatorShowcase() {
   return (
