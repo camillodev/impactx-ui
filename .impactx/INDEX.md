@@ -60,8 +60,14 @@ Indice navegavel das rules em `.impactx/rules/`. Opcional — `system.md` contin
 |---|---|
 | [`styling/tokens.md`](rules/styling/tokens.md) | 48 tokens dos 3 temas + dark mode + anti-patterns de cor |
 
+## Operações
+
+| Rule | Conteúdo |
+|---|---|
+| [`publishing.md`](rules/publishing.md) | **Onde publicar:** GitHub Packages (`@impactxlabs/ui`, restricted). Não usar npm público. |
+
 ---
 
-Total: 8 patterns + 4 templates + 6 components + 4 primitives + 5 organisms + 1 styling = **28 rules**.
+Total: 8 patterns + 4 templates + 6 components + 4 primitives + 5 organisms + 1 styling + 1 ops = **29 rules**.
 
 Para o contrato global e decisões high-level, ver `.impactx/system.md`.
