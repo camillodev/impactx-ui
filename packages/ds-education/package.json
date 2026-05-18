@@ -31,7 +31,13 @@
     "test": "vitest run"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camillodev/impactx-ui.git",
+    "directory": "packages/ds-education"
   },
   "peerDependencies": {
     "react": ">=18",
