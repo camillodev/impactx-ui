@@ -44,7 +44,7 @@ packages/tokens/dist/
 
 ## Compatibilidade
 
-O contrato externo (`--color-primary`, `--radius-card`, etc.) é **idêntico** ao base.css/themes anteriores. Consumidores que importam `@impactxlab/ds-education/tokens/base.css` continuam funcionando — o DS package mantém os CSS legados como passthrough. Migração para consumir `@impactxlab/tokens/tokens.css` direto é incremental e opcional.
+O contrato externo (`--color-primary`, `--radius-card`, etc.) é **idêntico** ao base.css/themes anteriores. Consumidores que importam `@impactxlabs/ui/tokens/base.css` continuam funcionando — o DS package mantém os CSS legados como passthrough. Migração para consumir `@impactxlab/tokens/tokens.css` direto é incremental e opcional.
 
 ## Estrutura legada (mantida durante transição)
 

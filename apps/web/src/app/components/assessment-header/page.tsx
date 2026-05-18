@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, AssessmentHeader } from "@impactxlab/ds-education"
+import { Card, CardContent, Badge, Separator, AssessmentHeader } from "@impactxlabs/ui"
 import { GraduationCap } from "lucide-react"
 
 export default function AssessmentHeaderShowcase() {

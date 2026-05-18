@@ -1,4 +1,4 @@
-import { IconButton } from "@impactxlab/ds-education"
+import { IconButton } from "@impactxlabs/ui"
 import { Bell, HelpCircle, Trash2, Plus, ChevronRight, Settings } from "lucide-react"
 
 const variants = [

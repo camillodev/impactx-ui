@@ -1,6 +1,6 @@
 "use client"
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@impactxlab/ds-education"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@impactxlabs/ui"
 
 export default function TabsPlayground() {
   return (

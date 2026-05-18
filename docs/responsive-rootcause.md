@@ -1,6 +1,6 @@
 # Responsive Root Cause Analysis
 
-Read-only diagnóstico estrutural da responsividade do DS `@impactxlab/ds-education` e dos showcases em `apps/web`.
+Read-only diagnóstico estrutural da responsividade do DS `@impactxlabs/ui` e dos showcases em `apps/web`.
 
 ## TL;DR
 

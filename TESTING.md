@@ -125,7 +125,7 @@ delete document.documentElement.dataset.mode
 # Hot-reload dev rodando, edita o componente em packages/ds-education/src/components/<X>.tsx
 # Salva, vê mudar ao vivo em apps/web (Next HMR)
 # Quando ok, lint:
-pnpm --filter @impactxlab/ds-education lint   # quando setar
+pnpm --filter @impactxlabs/ui lint   # quando setar
 pnpm --filter @impactx/web lint
 ```
 
@@ -141,7 +141,7 @@ Migração de repo pode quebrar coisas sutis:
 - [ ] **Tailwind v4 tokens:** `var(--color-primary)` resolve em CSS computed style; se vier `var(--color-primary)` literal sem resolver, falta `@theme inline` no `globals.css`
 - [ ] **CMD palette (`/components/command-palette` se existir, ou via atalho `⌘K`):** abre, busca fuzzy funciona
 - [ ] **Sem warnings no console:** abre DevTools em cada rota, ver console — zero warning de hydration, zero key duplicada
-- [ ] **Imports do `@impactxlab/ds-education`:** não pode haver erro de "module not found" — pnpm symlink funciona
+- [ ] **Imports do `@impactxlabs/ui`:** não pode haver erro de "module not found" — pnpm symlink funciona
 
 ---
 
@@ -158,7 +158,7 @@ Comenta no PR `LGTM, mergear` que eu (próximo Claude) faço:
 ## 8. O que NÃO testar nessa fase
 
 - CLI `@impactx/ui` — só stubs, não funciona ainda
-- Build da `ds-education` (`pnpm --filter @impactxlab/ds-education build`) — sem tsup config ainda; próxima sessão
+- Build da `ds-education` (`pnpm --filter @impactxlabs/ui build`) — sem tsup config ainda; próxima sessão
 - Registry JSON em `apps/web/public/r/` — script `scripts/build-registry.mjs` não existe ainda
 - Fumadocs — próxima sessão (Fase 3 do plano)
 

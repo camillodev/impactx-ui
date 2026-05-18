@@ -14,7 +14,7 @@
 
 ```tsx
 "use client"
-import { FormPageTemplate, Stack, Input, Button } from "@impactxlab/ds-education"
+import { FormPageTemplate, Stack, Input, Button } from "@impactxlabs/ui"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"

@@ -1,6 +1,6 @@
 {
   "ds": "education",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "themes": [
     "alfabeto",
     "kumon",
@@ -86,6 +86,13 @@
       "category": "atom"
     },
     {
+      "name": "cluster",
+      "type": "registry:ui",
+      "title": "Cluster",
+      "description": "Cluster — Impact X DS Education",
+      "category": "atom"
+    },
+    {
       "name": "code-block",
       "type": "registry:ui",
       "title": "CodeBlock",
@@ -100,6 +107,13 @@
       "category": "molecule"
     },
     {
+      "name": "data-table-with-pagination",
+      "type": "registry:ui",
+      "title": "DataTableWithPagination",
+      "description": "DataTableWithPagination — Impact X DS Education",
+      "category": "atom"
+    },
+    {
       "name": "data-table",
       "type": "registry:ui",
       "title": "DataTable",
@@ -112,6 +126,13 @@
       "title": "DropdownMenu",
       "description": "DropdownMenu — Impact X DS Education",
       "category": "molecule"
+    },
+    {
+      "name": "grid",
+      "type": "registry:ui",
+      "title": "Grid",
+      "description": "Grid — Impact X DS Education",
+      "category": "atom"
     },
     {
       "name": "help-fab",
@@ -149,10 +170,24 @@
       "category": "molecule"
     },
     {
+      "name": "page-container",
+      "type": "registry:ui",
+      "title": "PageContainer",
+      "description": "PageContainer — Impact X DS Education",
+      "category": "atom"
+    },
+    {
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
       "description": "Pagination — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Popover — Impact X DS Education",
       "category": "atom"
     },
     {
@@ -184,10 +219,31 @@
       "category": "molecule"
     },
     {
+      "name": "sidebar-from-config",
+      "type": "registry:ui",
+      "title": "SidebarFromConfig",
+      "description": "SidebarFromConfig — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Sidebar — Impact X DS Education",
+      "category": "atom"
+    },
+    {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
       "description": "Skeleton — Impact X DS Education",
+      "category": "atom"
+    },
+    {
+      "name": "stack",
+      "type": "registry:ui",
+      "title": "Stack",
+      "description": "Stack — Impact X DS Education",
       "category": "atom"
     },
     {

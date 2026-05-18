@@ -32,7 +32,7 @@ import {
   // Config-driven wrapper
   SidebarFromConfig,
   type SidebarConfigGroup,
-} from "@impactxlab/ds-education"
+} from "@impactxlabs/ui"
 
 // ─── Exemplo 1: API composta (primitives) ────────────────────────────────────
 

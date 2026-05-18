@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Switch, CodeBlock } from "@impactxlab/ds-education"
+import { Switch, CodeBlock } from "@impactxlabs/ui"
 
 export default function SwitchPage() {
   const [isChecked, setIsChecked] = useState(false)
@@ -79,7 +79,7 @@ export default function SwitchPage() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-xs text-[var(--color-text-subtle)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Switch } from "@impactxlab/ds-education"
+            <CodeBlock language="tsx">{`import { Switch } from "@impactxlabs/ui"
 
 <Switch />`}</CodeBlock>
           </div>
@@ -94,7 +94,7 @@ export default function SwitchPage() {
           </div>
           <div>
             <p className="text-xs text-[var(--color-text-subtle)] mb-2">Com label</p>
-            <CodeBlock language="tsx">{`import { Switch } from "@impactxlab/ds-education"
+            <CodeBlock language="tsx">{`import { Switch } from "@impactxlabs/ui"
 import { useState } from "react"
 
 export default function Example() {

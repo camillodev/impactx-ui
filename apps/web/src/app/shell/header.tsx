@@ -4,7 +4,7 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { Search, Moon, Sun, Menu, Component, FileBox, LayoutGrid, BarChart3, Layers, Box } from "lucide-react"
 import { useTheme } from "@/app/theme-provider"
-import { IconButton, CommandPalette, useCommandPalette, allItems, type RegistryItem, type CommandPaletteGroup } from "@impactxlab/ds-education"
+import { IconButton, CommandPalette, useCommandPalette, allItems, type RegistryItem, type CommandPaletteGroup } from "@impactxlabs/ui"
 import { useMobileNav } from "@/app/shell/mobile-nav-context"
 
 const CATEGORY_LABEL: Record<RegistryItem["category"], string> = {

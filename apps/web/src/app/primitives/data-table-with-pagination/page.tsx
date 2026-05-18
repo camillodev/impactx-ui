@@ -7,7 +7,7 @@ import {
   Badge,
   Button,
   CodeBlock,
-} from "@impactxlab/ds-education"
+} from "@impactxlabs/ui"
 
 interface Aluno {
   id: number
@@ -154,7 +154,7 @@ export default function DataTableWithPaginationShowcase() {
 
       <section className="mb-10 max-w-3xl">
         <h2 className="text-base font-semibold text-[var(--color-text)] mb-3">Uso</h2>
-        <CodeBlock language="tsx">{`import { DataTableWithPagination, type Column } from "@impactxlab/ds-education"
+        <CodeBlock language="tsx">{`import { DataTableWithPagination, type Column } from "@impactxlabs/ui"
 
 const columns: Column<Aluno>[] = [
   { key: "nome", header: "Nome", cell: (a) => a.nome, sortable: true, sortAccessor: (a) => a.nome },

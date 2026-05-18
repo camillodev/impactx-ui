@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator } from "@impactxlab/ds-education"
+import { Card, CardContent, Badge, Separator } from "@impactxlabs/ui"
 
 export default function SeparatorShowcase() {
   return (

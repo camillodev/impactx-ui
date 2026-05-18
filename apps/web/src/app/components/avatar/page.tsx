@@ -1,4 +1,4 @@
-import { Avatar } from "@impactxlab/ds-education"
+import { Avatar } from "@impactxlabs/ui"
 
 const sizes = [
   { key: "sm", label: "sm — 24px" },

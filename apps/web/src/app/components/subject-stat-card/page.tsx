@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, SubjectStatCard, Grid } from "@impactxlab/ds-education"
+import { Card, CardContent, Badge, Separator, SubjectStatCard, Grid } from "@impactxlabs/ui"
 
 export default function SubjectStatCardShowcase() {
   return (

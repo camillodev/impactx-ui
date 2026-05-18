@@ -1,4 +1,4 @@
-// @impactxlab/ds-education — public API
+// @impactxlabs/ui — public API
 
 // Components (primitives)
 export * from "./components/alert-dialog";
@@ -26,6 +26,7 @@ export * from "./components/label";
 export * from "./components/modal";
 export * from "./components/page-container";
 export * from "./components/pagination";
+export * from "./components/popover";
 export * from "./components/progress-bar";
 export * from "./components/select";
 export * from "./components/separator";

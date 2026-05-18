@@ -1,4 +1,4 @@
-import { Stat, Grid } from "@impactxlab/ds-education"
+import { Stat, Grid } from "@impactxlabs/ui"
 import { TrendingUp, Users } from "lucide-react"
 
 export default function StatPage() {

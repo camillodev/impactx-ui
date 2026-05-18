@@ -1,6 +1,6 @@
 # Impact X Design System — Sistema
 
-> Contrato declarativo pro bot que vai gerar código consumindo `@impactxlab/ds-education`.
+> Contrato declarativo pro bot que vai gerar código consumindo `@impactxlabs/ui`.
 > Sempre carregado. Limite: 500 linhas. Detalhes vão pra `rules/`.
 >
 > Pattern inspirado em Lovable (`.lovable/`) + Vercel AI-Native DS (shadcn registry + MCP).
@@ -82,7 +82,7 @@ Cada pattern entrega: decision tree em 30s + receita ≤15 linhas + variações 
 ## 4. Decision tree alto nível
 
 - **Preciso de cor?** → Token (`var(--color-X)`). Nunca hex.
-- **Preciso de botão?** → `<Button>` de `@impactxlab/ds-education`. Ver `rules/components/button.md`.
+- **Preciso de botão?** → `<Button>` de `@impactxlabs/ui`. Ver `rules/components/button.md`.
 - **Preciso de input com label/erro/helper?** → `<Input>`. Ver `rules/components/input.md`.
 - **Preciso de container com header/content?** → `<Card>` + `<CardHeader>` + `<CardContent>`. Ver `rules/components/card.md`.
 - **Preciso de label colorido (status, contagem)?** → `<Badge>`. Ver `rules/components/badge.md`.
@@ -174,7 +174,7 @@ Em construção (PRs futuras, ver `docs/ds-implementation-plan.md`):
 - MCP server expondo `.impactx/` pra v0/Cursor
 - ESLint custom contra Tailwind cru
 
-## 7. Componentes disponíveis em `@impactxlab/ds-education`
+## 7. Componentes disponíveis em `@impactxlabs/ui`
 
 ### Atoms / Molecules (32)
 

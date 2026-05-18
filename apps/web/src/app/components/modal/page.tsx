@@ -25,9 +25,9 @@ import {
   ModalSplitFooter,
   ModalInfoList,
   ModalInfoItem,
-} from "@impactxlab/ds-education"
-import { Button } from "@impactxlab/ds-education"
-import { Input } from "@impactxlab/ds-education"
+} from "@impactxlabs/ui"
+import { Button } from "@impactxlabs/ui"
+import { Input } from "@impactxlabs/ui"
 
 const HeroIcon = () => (
   <svg width="80" height="80" viewBox="0 0 80 80" fill="none">

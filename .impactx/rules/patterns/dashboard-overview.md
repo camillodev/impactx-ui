@@ -17,7 +17,7 @@
 
 ```tsx
 // Dashboard de unidade com 3-4 KPIs + charts
-import { DashboardTemplate, type DashboardMetric, Badge, Stack, Card } from "@impactxlab/ds-education"
+import { DashboardTemplate, type DashboardMetric, Badge, Stack, Card } from "@impactxlabs/ui"
 
 export default function DashboardUnidade() {
   const metrics: DashboardMetric[] = [

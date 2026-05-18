@@ -1,4 +1,4 @@
-import { PageContainer, Stack, CodeBlock } from "@impactxlab/ds-education"
+import { PageContainer, Stack, CodeBlock } from "@impactxlabs/ui"
 
 export default function PageContainerShowcase() {
   return (
@@ -59,7 +59,7 @@ export default function PageContainerShowcase() {
 
       <section className="mb-10 max-w-3xl">
         <h2 className="text-base font-semibold text-[var(--color-text)] mb-3">Uso</h2>
-        <CodeBlock language="tsx">{`import { PageContainer } from "@impactxlab/ds-education"
+        <CodeBlock language="tsx">{`import { PageContainer } from "@impactxlabs/ui"
 
 // Página de lista padrão (default maxWidth="lg")
 export default function AlunosPage() {

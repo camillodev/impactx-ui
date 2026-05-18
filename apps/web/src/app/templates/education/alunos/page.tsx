@@ -17,7 +17,7 @@ import {
   HeroBanner,
   Stack,
   type Column,
-} from "@impactxlab/ds-education"
+} from "@impactxlabs/ui"
 import { Plus, MoreHorizontal, Search } from "lucide-react"
 import {
   ALUNOS,

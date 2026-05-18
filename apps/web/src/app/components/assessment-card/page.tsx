@@ -1,4 +1,4 @@
-import { AssessmentCard, Grid } from "@impactxlab/ds-education"
+import { AssessmentCard, Grid } from "@impactxlabs/ui"
 
 export default function AssessmentCardPage() {
   return (

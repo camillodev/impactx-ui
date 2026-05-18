@@ -9,7 +9,7 @@ import {
   Badge,
   Cluster,
   Input,
-} from "@impactxlab/ds-education"
+} from "@impactxlabs/ui"
 import { Plus, Search } from "lucide-react"
 
 interface Aluno {

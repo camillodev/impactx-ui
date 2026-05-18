@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-table-with-pagination",
+  "type": "registry:ui",
+  "title": "DataTableWithPagination",
+  "description": "DataTableWithPagination — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "data-table",
+    "pagination",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/data-table-with-pagination.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/data-table-with-pagination.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { DataTable, type Column, type DataTableProps } from \"@/components/ui/data-table\"\nimport { Pagination } from \"@/components/ui/pagination\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * DataTableWithPagination — composto que junta DataTable + Pagination + state interno.\n *\n * Resolve o caso 90%: tabela paginada client-side. Bot consome com 4 props\n * (columns, data, pageSize, opcionalmente loading) e recebe tabela completa\n * com loading skeleton, empty state, paginação e contador.\n *\n * Decision tree:\n * - Tabela com paginação client-side e poucos KB de dados → DataTableWithPagination\n * - Tabela server-paginated (page como URL state, fetch on change) → DataTable + Pagination controlados\n * - Tabela sem paginação (≤ 20 rows) → DataTable só\n *\n * Anti-pattern: não recompor manualmente DataTable + Pagination quando esse\n * componente resolve. Reservar a composição manual pra casos server-paginated.\n */\n\nexport interface DataTableWithPaginationProps<T>\n  extends Omit<DataTableProps<T>, \"data\"> {\n  /** Dados completos. Pagina internamente. */\n  data: T[]\n  /** Itens por página. Default: 10. */\n  pageSize?: number\n  /** Página inicial (1-indexed). Default: 1. */\n  defaultPage?: number\n  /** Callback quando a página muda. */\n  onPageChange?: (page: number) => void\n  /** Mostrar contador \"Mostrando X-Y de Z\". Default: true. */\n  showSummary?: boolean\n  /** Label customizado pro contador. Recebe {from, to, total}. */\n  summaryLabel?: (info: { from: number; to: number; total: number }) => React.ReactNode\n  /** Classe do wrapper externo (table + footer). */\n  containerClassName?: string\n}\n\nconst defaultSummaryLabel = ({\n  from,\n  to,\n  total,\n}: {\n  from: number\n  to: number\n  total: number\n}) => (\n  <>\n    Mostrando <strong className=\"font-semibold text-[var(--color-text)]\">{from}</strong>\n    {\" – \"}\n    <strong className=\"font-semibold text-[var(--color-text)]\">{to}</strong>\n    {\" de \"}\n    <strong className=\"font-semibold text-[var(--color-text)]\">{total}</strong>\n  </>\n)\n\nexport function DataTableWithPagination<T>({\n  data,\n  pageSize = 10,\n  defaultPage = 1,\n  onPageChange,\n  showSummary = true,\n  summaryLabel = defaultSummaryLabel,\n  containerClassName,\n  className,\n  ...tableProps\n}: DataTableWithPaginationProps<T>) {\n  const [page, setPage] = React.useState(defaultPage)\n\n  // Reset to page 1 when data shrinks below current page (e.g., after filter)\n  React.useEffect(() => {\n    const totalPages = Math.max(1, Math.ceil(data.length / pageSize))\n    if (page > totalPages) {\n      setPage(1)\n      onPageChange?.(1)\n    }\n  }, [data.length, pageSize, page, onPageChange])\n\n  const handlePageChange = (next: number) => {\n    setPage(next)\n    onPageChange?.(next)\n  }\n\n  const total = data.length\n  const totalPages = Math.max(1, Math.ceil(total / pageSize))\n  const safePage = Math.min(Math.max(1, page), totalPages)\n  const start = (safePage - 1) * pageSize\n  const end = Math.min(start + pageSize, total)\n  const pagedData = data.slice(start, end)\n\n  return (\n    <div className={cn(\"flex flex-col gap-3\", containerClassName)}>\n      <DataTable {...tableProps} data={pagedData} className={className} />\n\n      {total > pageSize && (\n        <div className=\"flex items-center justify-between gap-4 flex-wrap\">\n          {showSummary ? (\n            <p className=\"text-sm text-[var(--color-text-muted)]\">\n              {summaryLabel({ from: start + 1, to: end, total })}\n            </p>\n          ) : (\n            <span />\n          )}\n          <Pagination\n            total={total}\n            pageSize={pageSize}\n            value={safePage}\n            onChange={handlePageChange}\n          />\n        </div>\n      )}\n    </div>\n  )\n}\n\nexport type { Column }\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "1.0.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

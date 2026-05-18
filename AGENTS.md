@@ -7,7 +7,7 @@ Documento canonico para agentes de IA (Cursor, Codex, Copilot, Aider, etc) que v
 ## Projeto
 Monorepo do design system multi-DS / multi-theme da Impact X.
 - `@impactx/ui` — CLI shadcn-style distribuindo componentes
-- `@impactxlab/ds-education` — DS canonico (22 atoms/molecules + 10 organisms)
+- `@impactxlabs/ui` — DS canonico (22 atoms/molecules + 10 organisms)
 - `apps/web` — showcase + docs publicado em `ui.impactx.com.br`
 
 ## Stack

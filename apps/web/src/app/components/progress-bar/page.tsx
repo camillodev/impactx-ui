@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, ProgressBar } from "@impactxlab/ds-education"
+import { Card, CardContent, Badge, Separator, ProgressBar } from "@impactxlabs/ui"
 
 export default function ProgressBarShowcase() {
   return (

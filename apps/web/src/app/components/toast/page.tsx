@@ -1,6 +1,6 @@
 "use client"
 
-import { toast, Toaster } from "@impactxlab/ds-education"
+import { toast, Toaster } from "@impactxlabs/ui"
 import { CheckCircle, Info, AlertTriangle, XCircle } from "lucide-react"
 
 const toastTypes = [
