@@ -30,9 +30,10 @@ export default defineConfig({
     actionTimeout: 30_000,
   },
 
-  // Snapshots compartilhados entre darwin/linux/win — sem sufixo de OS no nome
-  // do arquivo. Tolerância de pixel diff absorve variação de antialiasing.
-  snapshotPathTemplate: "{testFileDir}/{testFileName}-snapshots/{arg}{ext}",
+  // Snapshots compartilhados entre darwin/linux/win — remove sufixo de OS do
+  // nome. Tolerância de pixel diff (maxDiffPixelRatio/threshold) absorve
+  // variação de antialiasing entre OSes.
+  snapshotPathTemplate: "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}",
   expect: {
     toHaveScreenshot: {
       maxDiffPixelRatio: 0.02,
