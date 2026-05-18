@@ -56,6 +56,19 @@ scripts/                 # build-registry, check-cohesion
 - NUNCA push direto em `main` — sempre branch `feature/` / `fix/` / `chore/` / `report/` + PR
 - Mensagens curtas e diretas, em portugues ou ingles
 
+## Como contribuir como agent
+
+Se voce eh um agent de IA (Claude, Cursor, Codex, Aider, etc) caindo neste repo pela primeira vez, leia **`docs/AGENT-ONBOARDING.md`** primeiro. Ele resolve em ≤2min:
+
+- TL;DR do projeto + pre-flight checklist
+- Fluxograma "qual doc consultar pra qual tarefa"
+- Hard rules cross-cutting (NUNCA / SEMPRE)
+- Quando parar e pedir ajuda humana
+
+Outros docs operacionais em `docs/` (indice em `docs/README.md`): `VISION.md`, `ARCHITECTURE.md`, `GLOSSARY.md`.
+
+Contrato declarativo pra consumir o DS: `.impactx/system.md` + `.impactx/rules/` (indice em `.impactx/INDEX.md`).
+
 ## Skills (Claude Code)
 Em `.claude/skills/`. Outros agents podem ler como referencia:
 `ix-frontend`, `ix-engineering`, `ix-code-guidelines`, `ix-code-review`, `ix-brand`, `frontend-design`, `test-driven-development`, `official-docs-first`.
