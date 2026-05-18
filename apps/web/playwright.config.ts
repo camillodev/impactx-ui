@@ -37,8 +37,9 @@ export default defineConfig({
     "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}-{projectName}{ext}",
   expect: {
     toHaveScreenshot: {
-      maxDiffPixelRatio: 0.02,
-      threshold: 0.2,
+      // 5% tolerance — accommodates cross-OS antialiasing (darwin↔linux ~3%)
+      maxDiffPixelRatio: 0.05,
+      threshold: 0.3,
     },
   },
 
