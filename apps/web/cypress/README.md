@@ -31,4 +31,4 @@ cypress/
 
 ## Notas
 
-Os specs `interactions.cy.ts`, `themes.cy.ts` e `charts.cy.ts` usam seletores genéricos (`[role="dialog"]`, `[role="tab"]`, `[role="tooltip"]`, `[role="status"]`, `canvas`, `svg`). Se algum componente do `@impactx/ds-education` não expuser esses ARIA roles ou usar wrappers customizados, ajustar os seletores aqui.
+Os specs `interactions.cy.ts`, `themes.cy.ts` e `charts.cy.ts` usam seletores genéricos (`[role="dialog"]`, `[role="tab"]`, `[role="tooltip"]`, `[role="status"]`, `canvas`, `svg`). Se algum componente do `@impactxlabs/ui` não expuser esses ARIA roles ou usar wrappers customizados, ajustar os seletores aqui.

@@ -1,33 +1,57 @@
 {
-  "name": "@impactx/ds-education",
-  "version": "0.2.0",
-  "private": true,
+  "name": "@impactxlabs/ui",
+  "version": "1.0.0",
+  "description": "Impact X UI — React component library + tokens (Education / Kumon / Impact X themes)",
+  "license": "UNLICENSED",
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./tokens/base.css": "./src/tokens/base.css",
-    "./tokens/themes/education.css": "./src/tokens/themes/education.css",
-    "./tokens/themes/kumon.css": "./src/tokens/themes/kumon.css",
-    "./tokens/themes/impactx.css": "./src/tokens/themes/impactx.css",
-    "./styles.css": "./src/styles.css"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens/base.css": "./dist/tokens/base.css",
+    "./tokens/themes/education.css": "./dist/tokens/themes/education.css",
+    "./tokens/themes/kumon.css": "./dist/tokens/themes/kumon.css",
+    "./tokens/themes/impactx.css": "./dist/tokens/themes/impactx.css",
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc -p tsconfig.json && node scripts/copy-assets.mjs && node scripts/verify-build.mjs",
+    "clean": "node -e \"import('node:fs/promises').then(fs => Promise.all([fs.rm('dist', { recursive: true, force: true }), fs.rm('tsconfig.tsbuildinfo', { force: true })]))\"",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camillodev/impactx-ui.git",
+    "directory": "packages/ds-education"
   },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run"
-  },
   "dependencies": {
+    "@impactxlab/tokens": "workspace:*",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-alert-dialog": "^1.1.7",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-switch": "^1.2.6",
     "@radix-ui/react-tooltip": "^1.2.8",

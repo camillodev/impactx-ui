@@ -9,7 +9,9 @@ import {
   Badge,
   Separator,
   CategoryCard,
-} from "@impactx/ds-education"
+  Grid,
+  Stack,
+} from "@impactxlabs/ui"
 import {
   GraduationCap,
   BookOpen,
@@ -47,8 +49,8 @@ export default function CategoryCardShowcase() {
             <CardTitle>Estados</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4 max-w-2xl">
-              <div className="space-y-2">
+            <Grid cols={{ base: 1, md: 2 }} gap="lg" className="py-4 max-w-2xl">
+              <Stack direction="vertical" gap="sm">
                 <span className="text-sm font-medium text-[var(--color-text-muted)]">
                   Default
                 </span>
@@ -57,8 +59,8 @@ export default function CategoryCardShowcase() {
                   title="Avaliações"
                   subtitle="Diagnóstico e simulados"
                 />
-              </div>
-              <div className="space-y-2">
+              </Stack>
+              <Stack direction="vertical" gap="sm">
                 <span className="text-sm font-medium text-[var(--color-text-muted)]">
                   Active
                 </span>
@@ -68,8 +70,8 @@ export default function CategoryCardShowcase() {
                   subtitle="Trilhas por habilidade"
                   active
                 />
-              </div>
-            </div>
+              </Stack>
+            </Grid>
           </CardContent>
         </Card>
       </section>
@@ -81,8 +83,8 @@ export default function CategoryCardShowcase() {
             <CardTitle>Variações de conteúdo</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-4 max-w-3xl">
-              <div className="space-y-2">
+            <Grid cols={{ base: 1, md: 3 }} gap="lg" className="py-4 max-w-3xl">
+              <Stack direction="vertical" gap="sm">
                 <span className="text-sm font-medium text-[var(--color-text-muted)]">
                   Texto curto
                 </span>
@@ -91,8 +93,8 @@ export default function CategoryCardShowcase() {
                   title="Olimpíadas"
                   subtitle="Competições"
                 />
-              </div>
-              <div className="space-y-2">
+              </Stack>
+              <Stack direction="vertical" gap="sm">
                 <span className="text-sm font-medium text-[var(--color-text-muted)]">
                   Texto médio
                 </span>
@@ -101,8 +103,8 @@ export default function CategoryCardShowcase() {
                   title="Laboratório de Ciências"
                   subtitle="Experimentos guiados"
                 />
-              </div>
-              <div className="space-y-2">
+              </Stack>
+              <Stack direction="vertical" gap="sm">
                 <span className="text-sm font-medium text-[var(--color-text-muted)]">
                   Texto longo
                 </span>
@@ -111,8 +113,8 @@ export default function CategoryCardShowcase() {
                   title="Línguas Estrangeiras Modernas"
                   subtitle="Inglês, espanhol e francês com foco em conversação e leitura crítica"
                 />
-              </div>
-            </div>
+              </Stack>
+            </Grid>
           </CardContent>
         </Card>
       </section>
@@ -128,7 +130,7 @@ export default function CategoryCardShowcase() {
               Clique para selecionar — o card ativo recebe outline. Selecionado:{" "}
               <strong>{selected}</strong>
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
+            <Grid cols={{ base: 2, md: 4 }} gap="md" className="py-4">
               <CategoryCard
                 icon={Calculator}
                 title="Matemática"
@@ -157,7 +159,7 @@ export default function CategoryCardShowcase() {
                 active={selected === "historia"}
                 onClick={() => setSelected("historia")}
               />
-            </div>
+            </Grid>
           </CardContent>
         </Card>
       </section>
@@ -173,7 +175,7 @@ export default function CategoryCardShowcase() {
               Grid simulando dashboard do aluno com todas as matérias do
               currículo.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
+            <Grid cols={{ base: 2, md: 4 }} gap="md" className="py-4">
               <CategoryCard
                 icon={Calculator}
                 title="Matemática"
@@ -215,7 +217,7 @@ export default function CategoryCardShowcase() {
                 subtitle="Avançado"
                 active
               />
-            </div>
+            </Grid>
           </CardContent>
         </Card>
       </section>

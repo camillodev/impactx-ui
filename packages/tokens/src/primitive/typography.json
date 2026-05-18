@@ -1,0 +1,13 @@
+{
+  "font": {
+    "sans": {
+      "$value": "\"Plus Jakarta Sans\", \"Roboto\", system-ui, -apple-system, sans-serif",
+      "$type": "string",
+      "$comment": "$type=string para evitar o transform fontFamily/css do Style Dictionary v4 que envelopa em quotes extras."
+    },
+    "mono": {
+      "$value": "\"IBM Plex Mono\", ui-monospace, monospace",
+      "$type": "string"
+    }
+  }
+}

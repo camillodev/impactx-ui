@@ -1,0 +1,40 @@
+{
+  "name": "@impactxlab/tokens",
+  "version": "0.1.0",
+  "description": "Impact X design tokens — 3-tier (primitive / semantic / component) via Style Dictionary",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./dist/tokens.js",
+  "types": "./dist/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./themes/education.css": "./dist/themes/education.css",
+    "./themes/kumon.css": "./dist/themes/kumon.css",
+    "./themes/impactx.css": "./dist/themes/impactx.css",
+    "./tailwind": {
+      "types": "./dist/tailwind.d.ts",
+      "import": "./dist/tailwind.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "clean": "node -e \"import('node:fs/promises').then(fs => fs.rm('dist', { recursive: true, force: true }))\"",
+    "prebuild": "npm run clean"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

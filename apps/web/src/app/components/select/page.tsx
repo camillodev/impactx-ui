@@ -10,8 +10,8 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@impactx/ds-education"
-import { Label } from "@impactx/ds-education"
+} from "@impactxlabs/ui"
+import { Label } from "@impactxlabs/ui"
 
 export default function SelectPlayground() {
   const [controlled, setControlled] = React.useState("")

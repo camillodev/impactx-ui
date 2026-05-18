@@ -11,20 +11,26 @@
     "typecheck": "tsc --noEmit",
     "cypress": "cypress open",
     "cypress:run": "cypress run",
-    "test:e2e": "start-server-and-test dev http://localhost:3002 cypress:run"
+    "test:e2e": "start-server-and-test dev http://localhost:3002 cypress:run",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/metropolis": "^5.2.5",
     "@fontsource/plus-jakarta-sans": "^5.2.8",
     "@fontsource/roboto": "^5.2.10",
-    "@impactx/ds-education": "workspace:*",
+    "@impactxlabs/ui": "workspace:*",
+    "@impactxlab/tokens": "workspace:*",
     "lucide-react": "^1.11.0",
     "next": "16.2.4",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
+    "@impactx/eslint-plugin-ui": "workspace:*",
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22",
     "@types/react": "^19",

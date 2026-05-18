@@ -4,7 +4,7 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { Search, Moon, Sun, Menu, Component, FileBox, LayoutGrid, BarChart3, Layers, Box } from "lucide-react"
 import { useTheme } from "@/app/theme-provider"
-import { IconButton, CommandPalette, useCommandPalette, allItems, type RegistryItem, type CommandPaletteGroup } from "@impactx/ds-education"
+import { IconButton, CommandPalette, useCommandPalette, allItems, type RegistryItem, type CommandPaletteGroup } from "@impactxlabs/ui"
 import { useMobileNav } from "@/app/shell/mobile-nav-context"
 
 const CATEGORY_LABEL: Record<RegistryItem["category"], string> = {
@@ -126,8 +126,10 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-3">
-          <label className="text-xs text-[var(--color-text-muted)]">Tema</label>
+          <label htmlFor="theme-switcher" className="text-xs text-[var(--color-text-muted)]">Tema</label>
           <select
+            id="theme-switcher"
+            aria-label="Trocar tema"
             value={theme}
             onChange={(e) => setTheme(e.target.value as "education" | "impactx" | "kumon")}
             className="h-10 px-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-sm font-medium text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"

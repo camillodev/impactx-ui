@@ -1,6 +1,6 @@
 "use client"
 
-import { Tooltip, TooltipProvider } from "@impactx/ds-education"
+import { Tooltip, TooltipProvider, Grid } from "@impactxlabs/ui"
 
 export default function TooltipPage() {
   return (
@@ -15,7 +15,7 @@ export default function TooltipPage() {
           <h2 className="text-xs font-medium text-[var(--color-text-subtle)] uppercase tracking-wide mb-6">
             Posições (delay padrão 300ms)
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-3xl">
+          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="lg" className="max-w-3xl">
             <Tooltip content="Tooltip — Top Start" side="top" align="start">
               <button className="w-full rounded-lg border border-[var(--color-border)] bg-white px-4 py-3 text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-colors">Top Start</button>
             </Tooltip>
@@ -43,7 +43,7 @@ export default function TooltipPage() {
             <Tooltip content="Delay de 800ms neste tooltip" side="top" align="center" delayDuration={800}>
               <button className="w-full rounded-lg border border-[var(--color-primary)] bg-[var(--color-primary)] px-4 py-3 text-sm font-medium text-white hover:bg-[var(--color-primary-hover)] transition-colors">Delay 800ms</button>
             </Tooltip>
-          </div>
+          </Grid>
         </section>
 
         <section>

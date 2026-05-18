@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, SubjectStatCard } from "@impactx/ds-education"
+import { Card, CardContent, Badge, Separator, SubjectStatCard, Grid } from "@impactxlabs/ui"
 
 export default function SubjectStatCardShowcase() {
   return (
@@ -17,7 +17,7 @@ export default function SubjectStatCardShowcase() {
         <h2 className="text-xl font-medium mb-4">Disciplinas</h2>
         <Card>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+            <Grid cols={{ base: 1, md: 2 }} gap="lg" className="py-4">
               <SubjectStatCard
                 subject="Língua Portuguesa"
                 mediaSerie="7.4"
@@ -38,7 +38,7 @@ export default function SubjectStatCardShowcase() {
                 mediaSerie="7.0"
                 mediaNacional="6.4"
               />
-            </div>
+            </Grid>
           </CardContent>
         </Card>
       </section>

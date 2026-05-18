@@ -11,8 +11,10 @@ import {
   Badge,
   Stat,
   BannerCTA,
+  Stack,
+  Grid,
   cn,
-} from "@impactx/ds-education"
+} from "@impactxlabs/ui"
 
 // ─── Types ────────────────────────────────────────────────────────────────
 
@@ -179,7 +181,7 @@ interface StepDadosAlunoProps {
 
 function StepDadosAluno({ data, onChange }: StepDadosAlunoProps) {
   return (
-    <div className="flex flex-col gap-5">
+    <Stack direction="vertical" gap="lg">
       <div className="flex items-center gap-4">
         <Avatar
           size="xl"
@@ -198,7 +200,7 @@ function StepDadosAluno({ data, onChange }: StepDadosAlunoProps) {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <Grid cols={{ base: 1, sm: 2 }} gap="md">
         <Input
           label="Nome do aluno"
           placeholder="Ex.: Ana Silva"
@@ -233,8 +235,8 @@ function StepDadosAluno({ data, onChange }: StepDadosAlunoProps) {
           onChange={(e) => onChange({ responsavel: e.target.value })}
           required
         />
-      </div>
-    </div>
+      </Grid>
+    </Stack>
   )
 }
 
@@ -247,7 +249,7 @@ interface StepDisciplinasProps {
 
 function StepDisciplinas({ value, onToggle }: StepDisciplinasProps) {
   return (
-    <div className="flex flex-col gap-4">
+    <Stack direction="vertical" gap="md">
       <div>
         <h3 className="text-base font-semibold text-[var(--color-text)]">
           Quais disciplinas o aluno vai cursar?
@@ -273,7 +275,7 @@ function StepDisciplinas({ value, onToggle }: StepDisciplinasProps) {
           Nenhuma disciplina selecionada.
         </p>
       )}
-    </div>
+    </Stack>
   )
 }
 
@@ -286,7 +288,7 @@ interface StepDiagnosticaProps {
 
 function StepDiagnostica({ observacoes, onChange }: StepDiagnosticaProps) {
   return (
-    <div className="flex flex-col gap-5">
+    <Stack direction="vertical" gap="lg">
       <BannerCTA
         variant="soft"
         title="Diagnóstica inicial"
@@ -294,7 +296,7 @@ function StepDiagnostica({ observacoes, onChange }: StepDiagnosticaProps) {
         actionLabel="Saiba mais"
       />
 
-      <div className="flex flex-col gap-1.5">
+      <Stack direction="vertical" gap="xs">
         <label
           htmlFor="diagnostica-obs"
           className="text-sm font-medium text-[var(--color-text)]"
@@ -314,7 +316,7 @@ function StepDiagnostica({ observacoes, onChange }: StepDiagnosticaProps) {
             "focus-visible:border-[var(--color-primary)] focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/20"
           )}
         />
-      </div>
+      </Stack>
 
       <Stat
         asCard
@@ -323,7 +325,7 @@ function StepDiagnostica({ observacoes, onChange }: StepDiagnosticaProps) {
         delta="Confirmação por email"
         deltaTrend="neutral"
       />
-    </div>
+    </Stack>
   )
 }
 
@@ -346,6 +348,7 @@ function StepConfirmacao({ data }: StepConfirmacaoProps) {
         </p>
       </div>
 
+      {/* eslint-disable-next-line @impactx/ui/no-raw-tailwind-layout */}
       <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <SummaryRow label="Aluno" value={data.aluno.nome || "—"} />
         <SummaryRow label="Email" value={data.aluno.email || "—"} />

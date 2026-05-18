@@ -1,4 +1,4 @@
-// @impactx/ds-education — public API
+// @impactxlabs/ui — public API
 
 // Components (primitives)
 export * from "./components/alert-dialog";
@@ -12,16 +12,21 @@ export * from "./components/card";
 export * from "./components/chart";
 export * from "./components/checkbox";
 export * from "./components/chip";
+export * from "./components/cluster";
 export * from "./components/code-block";
 export * from "./components/command-palette";
 export * from "./components/data-table";
+export * from "./components/data-table-with-pagination";
 export * from "./components/dropdown-menu";
+export * from "./components/grid";
 export * from "./components/help-fab";
 export * from "./components/icon-button";
 export * from "./components/input";
 export * from "./components/label";
 export * from "./components/modal";
+export * from "./components/page-container";
 export * from "./components/pagination";
+export * from "./components/popover";
 export * from "./components/progress-bar";
 export * from "./components/select";
 export * from "./components/separator";
@@ -29,12 +34,20 @@ export * from "./components/sheet";
 export * from "./components/sidebar";
 export * from "./components/sidebar-from-config";
 export * from "./components/skeleton";
+export * from "./components/stack";
 export * from "./components/stat";
 export * from "./components/switch";
 export * from "./components/tabs";
 export * from "./components/textarea";
 export * from "./components/toast";
 export * from "./components/tooltip";
+
+// Templates (page-level composition)
+export type { BreadcrumbTrailItem } from "./templates/types";
+export * from "./templates/list-page-template";
+export * from "./templates/detail-page-template";
+export * from "./templates/form-page-template";
+export * from "./templates/dashboard-template";
 
 // Components — education domain organisms
 export * from "./components-education/assessment-header";

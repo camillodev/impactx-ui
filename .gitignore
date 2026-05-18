@@ -9,4 +9,13 @@ dist
 coverage
 .vercel
 .playwright-mcp
+test-results/
+playwright-report/
 .claude/RESUME-*.md
+
+# opencode local tooling (has node_modules, must not be tracked)
+.opencode/node_modules/
+.opencode/package-lock.json
+
+# firecrawl scrape outputs (raw JSON, regenerable)
+.firecrawl/

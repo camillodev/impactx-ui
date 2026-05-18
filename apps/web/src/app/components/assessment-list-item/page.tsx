@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, AssessmentListItem } from "@impactx/ds-education"
+import { Card, CardContent, Badge, Separator, AssessmentListItem } from "@impactxlabs/ui"
 
 export default function AssessmentListItemShowcase() {
   return (

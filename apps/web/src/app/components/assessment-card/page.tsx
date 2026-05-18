@@ -1,4 +1,4 @@
-import { AssessmentCard } from "@impactx/ds-education"
+import { AssessmentCard, Grid } from "@impactxlabs/ui"
 
 export default function AssessmentCardPage() {
   return (
@@ -13,7 +13,7 @@ export default function AssessmentCardPage() {
           Estados (5 status)
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <Grid cols={{ base: 1, md: 2, lg: 5 }} gap="md">
             <AssessmentCard
               title="Mid-year Diagnostic"
               subject="Language"
@@ -49,7 +49,7 @@ export default function AssessmentCardPage() {
               description="Diagnostic to gauge prior knowledge."
               status="not-started"
             />
-          </div>
+          </Grid>
         </div>
       </section>
 
@@ -58,7 +58,7 @@ export default function AssessmentCardPage() {
           Sem description
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Grid cols={{ base: 1, md: 2 }} gap="md">
             <AssessmentCard
               title="Quick Vocabulary Check"
               subject="Language"
@@ -71,7 +71,7 @@ export default function AssessmentCardPage() {
               grade="6th Grade"
               status="in-progress"
             />
-          </div>
+          </Grid>
         </div>
       </section>
 
@@ -80,7 +80,7 @@ export default function AssessmentCardPage() {
           Grid de catálogo (6 cards)
         </h2>
         <div className="rounded-xl p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="md">
             <AssessmentCard
               title="Algebra Foundations"
               subject="Math"
@@ -123,7 +123,7 @@ export default function AssessmentCardPage() {
               description="Meter, metaphor and close reading techniques."
               status="completed"
             />
-          </div>
+          </Grid>
         </div>
       </section>
     </main>

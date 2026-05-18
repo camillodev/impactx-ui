@@ -1,0 +1,19 @@
+{
+  "name": "@impactx/eslint-plugin-ui",
+  "version": "0.1.0",
+  "description": "ESLint plugin pro Impact X UI — bloqueia Tailwind cru e duplicação de componentes em apps consumidores.",
+  "type": "module",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "files": ["src"],
+  "keywords": ["eslint", "eslintplugin", "impactx", "design-system"],
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  }
+}

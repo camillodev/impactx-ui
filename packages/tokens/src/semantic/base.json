@@ -1,0 +1,188 @@
+{
+  "color": {
+    "bg": {
+      "$value": "{color.white}",
+      "$type": "color"
+    },
+    "surface": {
+      "$value": "{color.gray.100}",
+      "$type": "color"
+    },
+    "surface-muted": {
+      "$value": "{color.gray.50}",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "{color.gray.200}",
+      "$type": "color"
+    },
+    "border-muted": {
+      "$value": "{color.gray.150}",
+      "$type": "color"
+    },
+    "border-input": {
+      "$value": "{color.gray.300}",
+      "$type": "color"
+    },
+    "border-strong": {
+      "$value": "{color.gray.400}",
+      "$type": "color"
+    },
+    "text": {
+      "$value": "{color.gray.800}",
+      "$type": "color"
+    },
+    "text-muted-strong": {
+      "$value": "{color.gray.700}",
+      "$type": "color"
+    },
+    "text-muted": {
+      "$value": "{color.gray.600}",
+      "$type": "color"
+    },
+    "text-subtle": {
+      "$value": "{color.gray.500}",
+      "$type": "color"
+    },
+    "text-on-primary": {
+      "$value": "{color.white}",
+      "$type": "color"
+    },
+    "primary-soft": {
+      "$value": "color-mix(in srgb, var(--color-primary) 8%, transparent)",
+      "$type": "string",
+      "$comment": "Fallback dinâmico — themes overridem com hex sólido."
+    },
+    "primary-ring": {
+      "$value": "color-mix(in srgb, var(--color-primary) 25%, transparent)",
+      "$type": "string"
+    },
+    "border-card": {
+      "$value": "var(--color-border-input)",
+      "$type": "string"
+    },
+    "border-card-active": {
+      "$value": "var(--color-primary)",
+      "$type": "string"
+    },
+    "toast-success": {
+      "$value": "{color.success.toast}",
+      "$type": "color"
+    },
+    "toast-success-bg": {
+      "$value": "{color.success.toast-bg-light}",
+      "$type": "color"
+    },
+    "toast-warning": {
+      "$value": "{color.warning.toast}",
+      "$type": "color"
+    },
+    "toast-warning-bg": {
+      "$value": "{color.warning.toast-bg-light}",
+      "$type": "color"
+    },
+    "toast-error-bg": {
+      "$value": "{color.danger.toast-bg-light}",
+      "$type": "color"
+    },
+    "toast-info-bg": {
+      "$value": "{color.info.toast-bg-light}",
+      "$type": "color"
+    },
+    "border-card-width": {
+      "$value": "1px",
+      "$type": "dimension"
+    },
+    "border-card-width-active": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "success": {
+      "$value": "{color.success.500}",
+      "$type": "color"
+    },
+    "success-bg": {
+      "$value": "{color.success.bg-light}",
+      "$type": "color"
+    },
+    "warning": {
+      "$value": "{color.warning.500}",
+      "$type": "color"
+    },
+    "warning-bg": {
+      "$value": "{color.warning.bg-light}",
+      "$type": "color"
+    },
+    "danger": {
+      "$value": "{color.danger.500}",
+      "$type": "color"
+    },
+    "danger-bg": {
+      "$value": "{color.danger.bg-light}",
+      "$type": "color"
+    },
+    "info": {
+      "$value": "{color.info.500}",
+      "$type": "color"
+    },
+    "info-bg": {
+      "$value": "{color.info.bg-light}",
+      "$type": "color"
+    },
+    "overlay-xxs": {
+      "$value": "rgba(255, 255, 255, 0.04)",
+      "$type": "color"
+    },
+    "overlay-xs": {
+      "$value": "rgba(255, 255, 255, 0.06)",
+      "$type": "color"
+    },
+    "overlay-sm": {
+      "$value": "rgba(255, 255, 255, 0.15)",
+      "$type": "color"
+    },
+    "overlay-md": {
+      "$value": "rgba(255, 255, 255, 0.40)",
+      "$type": "color"
+    },
+    "overlay-text": {
+      "$value": "rgba(255, 255, 255, 0.85)",
+      "$type": "color"
+    }
+  },
+  "badge": {
+    "success": {
+      "bg": {
+        "$value": "{color.success.badge-bg-light}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.success.badge-fg-light}",
+        "$type": "color"
+      }
+    },
+    "warning": {
+      "bg": {
+        "$value": "{color.warning.badge-bg-light}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.warning.badge-fg-light}",
+        "$type": "color"
+      }
+    },
+    "danger": {
+      "bg": {
+        "$value": "{color.red.100}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.red.badge-fg}",
+        "$type": "color"
+      }
+    }
+  },
+  "_": {
+    "$comment": "radius / shadow / font live em primitive — não duplicamos aqui pra evitar circular refs. Toast tokens vivem em color.toast-* (linhas 68-91), não em namespace próprio, pra paridade com legado."
+  }
+}

@@ -1,4 +1,4 @@
-import { Badge, CodeBlock } from "@impactx/ds-education"
+import { Badge, CodeBlock, Grid, Stack } from "@impactxlabs/ui"
 import { Check, AlertTriangle, X, Info, Star } from "lucide-react"
 
 const variants = [
@@ -32,13 +32,13 @@ export default function BadgePage() {
             {variantLabel}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="lg">
             {sizes.map(({ key: size, label: sizeLabel }) => (
-              <div key={size} className="flex flex-col gap-3">
+              <Stack key={size} direction="vertical" gap="md">
                 <p className="text-xs text-[var(--color-text-muted)] mb-1">{sizeLabel}</p>
 
                 {modifiers.map(({ key: modifier, label: modLabel }) => (
-                  <div key={modifier} className="flex flex-col gap-1">
+                  <Stack key={modifier} direction="vertical" gap="xs">
                     <span className="text-[10px] text-[var(--color-text-subtle)]">{modLabel}</span>
                     <Badge
                       variant={variant}
@@ -50,20 +50,20 @@ export default function BadgePage() {
                         ? `${variantLabel} ${sizeLabel}`
                         : null}
                     </Badge>
-                  </div>
+                  </Stack>
                 ))}
-              </div>
+              </Stack>
             ))}
-          </div>
+          </Grid>
         </section>
       ))}
 
       <section className="mb-10 max-w-3xl">
         <h2 className="text-xl font-medium text-[var(--color-text)] mb-4">Uso</h2>
-        <div className="flex flex-col gap-4">
+        <Stack direction="vertical" gap="md">
           <div>
             <p className="text-xs text-[var(--color-text-subtle)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Badge } from "@impactx/ds-education"
+            <CodeBlock language="tsx">{`import { Badge } from "@impactxlabs/ui"
 
 <Badge variant="primary">Novo</Badge>`}</CodeBlock>
           </div>
@@ -82,7 +82,7 @@ export default function BadgePage() {
 
 <Badge variant="primary" icon={<Check size={12} />} iconOnly />`}</CodeBlock>
           </div>
-        </div>
+        </Stack>
       </section>
     </main>
   )

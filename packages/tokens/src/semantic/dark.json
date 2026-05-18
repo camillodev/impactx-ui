@@ -1,0 +1,167 @@
+{
+  "color": {
+    "bg": {
+      "$value": "{color.slate.800}",
+      "$type": "color"
+    },
+    "surface": {
+      "$value": "{color.slate.700}",
+      "$type": "color"
+    },
+    "surface-muted": {
+      "$value": "{color.slate.750}",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "{color.slate.600}",
+      "$type": "color"
+    },
+    "border-muted": {
+      "$value": "{color.slate.700}",
+      "$type": "color"
+    },
+    "border-input": {
+      "$value": "{color.slate.500}",
+      "$type": "color"
+    },
+    "border-strong": {
+      "$value": "{color.slate.400}",
+      "$type": "color"
+    },
+    "text": {
+      "$value": "{color.slate.50}",
+      "$type": "color"
+    },
+    "text-muted-strong": {
+      "$value": "{color.slate.100}",
+      "$type": "color"
+    },
+    "text-muted": {
+      "$value": "{color.slate.200}",
+      "$type": "color"
+    },
+    "text-subtle": {
+      "$value": "{color.slate.300}",
+      "$type": "color"
+    },
+    "secondary": {
+      "$value": "{color.slate.700}",
+      "$type": "color"
+    },
+    "secondary-hover": {
+      "$value": "{color.slate.600}",
+      "$type": "color"
+    },
+    "secondary-active": {
+      "$value": "{color.slate.500}",
+      "$type": "color"
+    },
+    "secondary-disabled": {
+      "$value": "{color.slate.700}",
+      "$type": "color"
+    },
+    "secondary-fg": {
+      "$value": "{color.slate.50}",
+      "$type": "color"
+    },
+    "secondary-fg-disabled": {
+      "$value": "{color.slate.400}",
+      "$type": "color"
+    },
+    "danger-secondary": {
+      "$value": "{color.slate.700}",
+      "$type": "color"
+    },
+    "danger-secondary-hover": {
+      "$value": "{color.slate.600}",
+      "$type": "color"
+    },
+    "danger-secondary-active": {
+      "$value": "{color.slate.500}",
+      "$type": "color"
+    },
+    "danger-secondary-disabled": {
+      "$value": "{color.slate.700}",
+      "$type": "color"
+    },
+    "danger-secondary-fg-disabled": {
+      "$value": "{color.slate.400}",
+      "$type": "color"
+    },
+    "tertiary-hover": {
+      "$value": "rgba(255, 255, 255, 0.10)",
+      "$type": "color"
+    },
+    "tertiary-active": {
+      "$value": "rgba(255, 255, 255, 0.20)",
+      "$type": "color"
+    },
+    "tertiary-fg": {
+      "$value": "{color.slate.50}",
+      "$type": "color"
+    },
+    "tertiary-fg-hover": {
+      "$value": "{color.slate.50}",
+      "$type": "color"
+    },
+    "tertiary-fg-active": {
+      "$value": "{color.slate.50}",
+      "$type": "color"
+    },
+    "tertiary-fg-disabled": {
+      "$value": "{color.slate.500}",
+      "$type": "color"
+    },
+    "toast-success-bg": {
+      "$value": "{color.success.toast-bg-dark}",
+      "$type": "color"
+    },
+    "toast-warning-bg": {
+      "$value": "{color.warning.toast-bg-dark}",
+      "$type": "color"
+    },
+    "toast-error-bg": {
+      "$value": "{color.danger.toast-bg-dark}",
+      "$type": "color"
+    },
+    "toast-info-bg": {
+      "$value": "{color.info.toast-bg-dark}",
+      "$type": "color"
+    }
+  },
+  "badge": {
+    "success": {
+      "bg": {
+        "$value": "{color.success.badge-bg-dark}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.success.badge-fg-dark}",
+        "$type": "color"
+      }
+    },
+    "warning": {
+      "bg": {
+        "$value": "{color.warning.badge-bg-dark}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.warning.badge-fg-dark}",
+        "$type": "color"
+      }
+    },
+    "danger": {
+      "bg": {
+        "$value": "{color.danger.toast-bg-dark}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.red.200}",
+        "$type": "color"
+      }
+    }
+  },
+  "_": {
+    "$comment": "Toast dark overrides vivem em color.toast-*-bg pra bater 1:1 com legado base.css [data-mode=\"dark\"]. Overlays não duplicam aqui — herdam do :root via cascade."
+  }
+}

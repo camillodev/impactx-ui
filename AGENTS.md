@@ -7,7 +7,7 @@ Documento canonico para agentes de IA (Cursor, Codex, Copilot, Aider, etc) que v
 ## Projeto
 Monorepo do design system multi-DS / multi-theme da Impact X.
 - `@impactx/ui` — CLI shadcn-style distribuindo componentes
-- `@impactx/ds-education` — DS canonico (22 atoms/molecules + 10 organisms)
+- `@impactxlabs/ui` — DS canonico (22 atoms/molecules + 10 organisms)
 - `apps/web` — showcase + docs publicado em `ui.impactx.com.br`
 
 ## Stack
@@ -55,6 +55,19 @@ scripts/                 # build-registry, check-cohesion
 - NUNCA `Co-Authored-By` em commits — historia eh 100% do owner humano
 - NUNCA push direto em `main` — sempre branch `feature/` / `fix/` / `chore/` / `report/` + PR
 - Mensagens curtas e diretas, em portugues ou ingles
+
+## Como contribuir como agent
+
+Se voce eh um agent de IA (Claude, Cursor, Codex, Aider, etc) caindo neste repo pela primeira vez, leia **`docs/AGENT-ONBOARDING.md`** primeiro. Ele resolve em ≤2min:
+
+- TL;DR do projeto + pre-flight checklist
+- Fluxograma "qual doc consultar pra qual tarefa"
+- Hard rules cross-cutting (NUNCA / SEMPRE)
+- Quando parar e pedir ajuda humana
+
+Outros docs operacionais em `docs/` (indice em `docs/README.md`): `VISION.md`, `ARCHITECTURE.md`, `GLOSSARY.md`.
+
+Contrato declarativo pra consumir o DS: `.impactx/system.md` + `.impactx/rules/` (indice em `.impactx/INDEX.md`).
 
 ## Skills (Claude Code)
 Em `.claude/skills/`. Outros agents podem ler como referencia:

@@ -4,8 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LayoutGrid, Component, FileText, ChevronRight } from "lucide-react"
-import { Avatar, Separator, cn, components } from "@impactx/ds-education"
-import type { RegistryItem } from "@impactx/ds-education"
+import { Avatar, Separator, cn, components } from "@impactxlabs/ui"
+import type { RegistryItem } from "@impactxlabs/ui"
 import { useMobileNav } from "@/app/shell/mobile-nav-context"
 
 type TopLevelItem = {
@@ -50,6 +50,8 @@ function groupByCategory(items: RegistryItem[]) {
 
 // TODO: extrair como molecule SidebarSection se padrão se repetir em outras shells
 
+// TODO(PR visual pass): migrar pra SidebarFromConfig do DS. Manter custom aqui só ate la.
+// eslint-disable-next-line @impactx/ui/no-duplicate-component
 export function Sidebar() {
   const pathname = usePathname()
   const grouped = groupByCategory(components)

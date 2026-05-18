@@ -10,13 +10,19 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
-    "registry:build": "node scripts/build-registry.mjs"
+    "registry:build": "node scripts/build-registry.mjs",
+    "tokens:build": "pnpm --filter @impactxlab/tokens build",
+    "tokens:check": "node scripts/check-tokens-parity.mjs",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish"
   },
   "devDependencies": {
-    "turbo": "^2.3.0",
-    "typescript": "^5.7.0",
+    "@changesets/cli": "^2.31.0",
     "@types/node": "^22.0.0",
-    "next": "16.2.4"
+    "next": "16.2.4",
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0"
   },
   "packageManager": "pnpm@9.15.0",
   "engines": {

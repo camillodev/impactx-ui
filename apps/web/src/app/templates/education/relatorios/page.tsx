@@ -12,16 +12,19 @@ import {
   CardTitle,
   type Column,
   DataTable,
+  Cluster,
   DonutChart,
+  Grid,
   HeroBanner,
   LineChart,
+  Stack,
   Stat,
   SubjectStatCard,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@impactx/ds-education"
+} from "@impactxlabs/ui"
 
 import {
   ALUNOS,
@@ -50,12 +53,12 @@ const COLUMNS: Column<Aluno>[] = [
     key: "nome",
     header: "Aluno",
     cell: (row) => (
-      <div className="flex flex-col">
+      <Stack direction="vertical">
         <span className="font-medium text-[var(--color-text)]">{row.nome}</span>
         <span className="text-xs text-[var(--color-text-muted)]">
           {row.orientadora}
         </span>
-      </div>
+      </Stack>
     ),
     sortable: true,
     sortAccessor: (row) => row.nome,
@@ -64,13 +67,13 @@ const COLUMNS: Column<Aluno>[] = [
     key: "disciplinas",
     header: "Disciplinas",
     cell: (row) => (
-      <div className="flex flex-wrap gap-1">
+      <Cluster gap="xs">
         {row.disciplinas.map((d) => (
           <Badge key={d.disciplina} variant="primary" size="sm">
             {d.disciplina} · {d.levelAtual}
           </Badge>
         ))}
-      </div>
+      </Cluster>
     ),
   },
   {
@@ -127,7 +130,7 @@ export default function RelatoriosTemplate() {
         description={`Visão geral da unidade ${STATS.unidadeNome} — alunos, folhas, sessões e evolução de levels.`}
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="md">
         <Stat
           asCard
           label="Alunos ativos"
@@ -154,7 +157,7 @@ export default function RelatoriosTemplate() {
           delta="+3 vs anterior"
           deltaTrend="up"
         />
-      </div>
+      </Grid>
 
       <Tabs defaultValue="geral">
         <TabsList>
@@ -164,7 +167,7 @@ export default function RelatoriosTemplate() {
         </TabsList>
 
         <TabsContent value="geral">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <Grid cols={{ base: 1, lg: 2 }} gap="md">
             <Card>
               <CardHeader>
                 <CardTitle>Distribuição por disciplina</CardTitle>
@@ -260,11 +263,11 @@ export default function RelatoriosTemplate() {
                 />
               </CardContent>
             </Card>
-          </div>
+          </Grid>
         </TabsContent>
 
         <TabsContent value="por-aluno">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <Grid cols={{ base: 1, md: 3 }} gap="md" className="mb-6">
             {TOP_PERFORMERS.map((aluno, idx) => {
               const Icon = TOP_PERFORMERS_ICONS[idx] ?? Trophy
               const media = Math.round(
@@ -282,7 +285,7 @@ export default function RelatoriosTemplate() {
                 />
               )
             })}
-          </div>
+          </Grid>
 
           <Card>
             <CardHeader>
@@ -299,7 +302,7 @@ export default function RelatoriosTemplate() {
         </TabsContent>
 
         <TabsContent value="por-disciplina">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Grid cols={{ base: 1, md: 3 }} gap="md">
             <SubjectStatCard
               subject="Matemática"
               mediaSerie="3A"
@@ -315,7 +318,7 @@ export default function RelatoriosTemplate() {
               mediaSerie="5A"
               mediaNacional="6A"
             />
-          </div>
+          </Grid>
         </TabsContent>
       </Tabs>
     </div>
