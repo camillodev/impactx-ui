@@ -13,7 +13,7 @@ import {
   Stack,
   Cluster,
   Grid,
-} from "@camillodev/ui"
+} from "@impactxlab/design-system"
 import { BarChart3, Share2 } from "lucide-react"
 
 interface StudentWithPendingLessons {

@@ -1,4 +1,4 @@
-import { Avatar } from "@camillodev/ui"
+import { Avatar } from "@impactxlab/design-system"
 
 const sizes = [
   { key: "sm", label: "sm — 24px" },

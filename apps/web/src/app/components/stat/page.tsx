@@ -1,4 +1,4 @@
-import { Stat, Grid } from "@camillodev/ui"
+import { Stat, Grid } from "@impactxlab/design-system"
 import { TrendingUp, Users } from "lucide-react"
 
 export default function StatPage() {

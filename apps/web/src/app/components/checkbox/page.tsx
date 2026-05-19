@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Checkbox } from "@camillodev/ui"
+import { Checkbox } from "@impactxlab/design-system"
 
 type CheckedState = boolean | "indeterminate"
 

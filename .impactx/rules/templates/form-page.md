@@ -5,7 +5,7 @@
 ## Import
 
 ```ts
-import { FormPageTemplate, Stack, Input, Button } from "@camillodev/ui"
+import { FormPageTemplate, Stack, Input, Button } from "@impactxlab/design-system"
 // Opcional:
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -63,7 +63,7 @@ interface BreadcrumbItem {
 ```tsx
 "use client"
 
-import { FormPageTemplate, Stack, Input, Button } from "@camillodev/ui"
+import { FormPageTemplate, Stack, Input, Button } from "@impactxlab/design-system"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -129,7 +129,7 @@ export default function NovoAluno() {
 
 ### Form settings com seções (FormSection)
 ```tsx
-import { FormPageTemplate, FormSection, Stack, Select, Toggle, Button } from "@camillodev/ui"
+import { FormPageTemplate, FormSection, Stack, Select, Toggle, Button } from "@impactxlab/design-system"
 import { useForm } from "react-hook-form"
 
 export default function ConfiguraçõesPerfil() {

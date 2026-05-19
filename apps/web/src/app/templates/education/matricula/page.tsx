@@ -17,7 +17,7 @@ import {
   toast,
   Grid,
   type Column,
-} from "@camillodev/ui"
+} from "@impactxlab/design-system"
 import {
   MatriculaModal,
   type MatriculaFormData,

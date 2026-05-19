@@ -32,7 +32,7 @@ import {
   // Config-driven wrapper
   SidebarFromConfig,
   type SidebarConfigGroup,
-} from "@camillodev/ui"
+} from "@impactxlab/design-system"
 
 // ─── Exemplo 1: API composta (primitives) ────────────────────────────────────
 

@@ -1,4 +1,4 @@
-// @camillodev/ui — public API
+// @impactxlab/design-system — public API
 
 // Components (primitives)
 export * from "./components/alert-dialog";

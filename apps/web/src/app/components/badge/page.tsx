@@ -1,4 +1,4 @@
-import { Badge, CodeBlock, Grid, Stack } from "@camillodev/ui"
+import { Badge, CodeBlock, Grid, Stack } from "@impactxlab/design-system"
 import { Check, AlertTriangle, X, Info, Star } from "lucide-react"
 
 const variants = [
@@ -63,7 +63,7 @@ export default function BadgePage() {
         <Stack direction="vertical" gap="md">
           <div>
             <p className="text-xs text-[var(--color-text-subtle)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Badge } from "@camillodev/ui"
+            <CodeBlock language="tsx">{`import { Badge } from "@impactxlab/design-system"
 
 <Badge variant="primary">Novo</Badge>`}</CodeBlock>
           </div>

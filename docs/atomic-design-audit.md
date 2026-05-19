@@ -1,4 +1,4 @@
-# Atomic Design Audit — `@camillodev/ui`
+# Atomic Design Audit — `@impactxlab/design-system`
 
 > Read-only audit. Goal: classify the current DS surface under Atomic Design,
 > identify dogfooding gaps in the showcases, and surface molecules that should
@@ -123,7 +123,7 @@ will confuse devs. Recommend rename: domain → `EducationCTABanner` or merge.
 
 Path: `apps/web/src/app/components/<slug>/page.tsx`. Inspected the 20 pages.
 
-| Showcase            | Imports `@camillodev/ui`? | Uses raw HTML for layout (`<main>`, `<h1>`, `<h2>`, `<div>`)? | Uses DS for page chrome (Card/Tabs/Badge)? |
+| Showcase            | Imports `@impactxlab/design-system`? | Uses raw HTML for layout (`<main>`, `<h1>`, `<h2>`, `<div>`)? | Uses DS for page chrome (Card/Tabs/Badge)? |
 |---------------------|----------------------------------|---------------------------------------------------------------|--------------------------------------------|
 | `assessment-card`   | yes (subject)                    | yes                                                            | no                                         |
 | `avatar`            | yes (subject)                    | yes                                                            | no                                         |

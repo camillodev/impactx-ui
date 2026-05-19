@@ -1,4 +1,4 @@
-# Chart Contract — @camillodev/ui
+# Chart Contract — @impactxlab/design-system
 
 > Status: estável. Engine: **ECharts 6** (não Recharts).
 > Componentes: `EChart`, `DonutChart`, `BarChart`, `LineChart`, `AreaChart`.

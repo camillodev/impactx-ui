@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Input, CodeBlock } from "@camillodev/ui"
+import { Input, CodeBlock } from "@impactxlab/design-system"
 import { Search, Mail, Lock, Eye } from "lucide-react"
 
 export default function InputPage() {
@@ -82,7 +82,7 @@ export default function InputPage() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-xs text-[var(--color-text-muted)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Input } from "@camillodev/ui"
+            <CodeBlock language="tsx">{`import { Input } from "@impactxlab/design-system"
 
 <Input label="Nome" placeholder="Digite seu nome" />`}</CodeBlock>
           </div>

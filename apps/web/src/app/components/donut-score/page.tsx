@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, DonutScore } from "@camillodev/ui"
+import { Card, CardContent, Badge, Separator, DonutScore } from "@impactxlab/design-system"
 
 export default function DonutScoreShowcase() {
   return (

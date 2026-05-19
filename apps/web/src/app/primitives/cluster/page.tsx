@@ -1,4 +1,4 @@
-import { Cluster, Badge, Button, Chip, CodeBlock } from "@camillodev/ui"
+import { Cluster, Badge, Button, Chip, CodeBlock } from "@impactxlab/design-system"
 
 export default function ClusterShowcase() {
   return (
@@ -67,7 +67,7 @@ export default function ClusterShowcase() {
 
       <section className="mb-10 max-w-3xl">
         <h2 className="text-base font-semibold text-[var(--color-text)] mb-3">Uso</h2>
-        <CodeBlock language="tsx">{`import { Cluster } from "@camillodev/ui"
+        <CodeBlock language="tsx">{`import { Cluster } from "@impactxlab/design-system"
 
 // Tags que podem quebrar
 <Cluster gap="xs">

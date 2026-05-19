@@ -3,7 +3,7 @@
 **Trigger**: Usar quando representar 1 avaliação/prova com nota, status e ações contextuais (ex.: provas Kumon, testes formativos, avaliações).
 
 ```typescript
-import { AssessmentCard } from "@camillodev/ui"
+import { AssessmentCard } from "@impactxlab/design-system"
 ```
 
 ## Props

@@ -1,4 +1,4 @@
-import { AssessmentCard, Grid } from "@camillodev/ui"
+import { AssessmentCard, Grid } from "@impactxlab/design-system"
 
 export default function AssessmentCardPage() {
   return (

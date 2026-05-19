@@ -5,7 +5,7 @@
 ## Import
 
 ```tsx
-import { ListPageTemplate, DataTableWithPagination, type Column, Button } from "@camillodev/ui"
+import { ListPageTemplate, DataTableWithPagination, type Column, Button } from "@impactxlab/design-system"
 ```
 
 ## Props

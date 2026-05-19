@@ -13,7 +13,7 @@ import {
   Separator,
   Stack,
   Grid,
-} from "@camillodev/ui"
+} from "@impactxlab/design-system"
 import { MoreHorizontal, GraduationCap, Calendar, BookOpen } from "lucide-react"
 
 // Reference: Figma Alfabeto Card 4156:291 — 5 states × layouts.

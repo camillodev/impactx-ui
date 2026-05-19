@@ -1,4 +1,4 @@
-import { Skeleton, CodeBlock, Grid } from "@camillodev/ui"
+import { Skeleton, CodeBlock, Grid } from "@impactxlab/design-system"
 
 export default function SkeletonPage() {
   return (
@@ -94,7 +94,7 @@ export default function SkeletonPage() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-xs text-[var(--color-text-subtle)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Skeleton } from "@camillodev/ui"
+            <CodeBlock language="tsx">{`import { Skeleton } from "@impactxlab/design-system"
 
 <Skeleton className="h-4 w-full" />`}</CodeBlock>
           </div>

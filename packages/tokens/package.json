@@ -1,8 +1,8 @@
 {
   "name": "@impactxlab/tokens",
-  "version": "0.1.0",
-  "description": "Impact X design tokens — 3-tier (primitive / semantic / component) via Style Dictionary",
-  "license": "UNLICENSED",
+  "version": "1.0.0",
+  "description": "Impact X design tokens \u2014 3-tier (primitive / semantic / component) via Style Dictionary",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/tokens.js",
   "types": "./dist/tokens.d.ts",
@@ -36,5 +36,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camillodev/impactx-ui.git",
+    "directory": "packages/tokens"
   }
 }

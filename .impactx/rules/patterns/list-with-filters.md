@@ -14,7 +14,7 @@
 ## Receita (15 linhas)
 
 ```tsx
-import { ListPageTemplate, DataTableWithPagination, Button, Input, Select } from "@camillodev/ui"
+import { ListPageTemplate, DataTableWithPagination, Button, Input, Select } from "@impactxlab/design-system"
 
 export default function AlunosPage() {
   const [search, setSearch] = useState("")

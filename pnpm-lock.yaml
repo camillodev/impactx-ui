@@ -26,9 +26,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@camillodev/ui':
-        specifier: workspace:*
-        version: link:../../packages/ds-education
       '@fontsource/ibm-plex-mono':
         specifier: ^5.2.7
         version: 5.2.7
@@ -41,6 +38,9 @@ importers:
       '@fontsource/roboto':
         specifier: ^5.2.10
         version: 5.2.10
+      '@impactxlab/design-system':
+        specifier: workspace:*
+        version: link:../../packages/ds-education
       '@impactxlab/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens

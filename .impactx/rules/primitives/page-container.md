@@ -5,7 +5,7 @@
 ## Import
 
 ```ts
-import { PageContainer } from "@camillodev/ui"
+import { PageContainer } from "@impactxlab/design-system"
 ```
 
 ## Props

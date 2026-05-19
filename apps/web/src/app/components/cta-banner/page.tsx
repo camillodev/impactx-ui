@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, CtaBanner } from "@camillodev/ui"
+import { Card, CardContent, Badge, Separator, CtaBanner } from "@impactxlab/design-system"
 
 export default function CtaBannerShowcase() {
   return (

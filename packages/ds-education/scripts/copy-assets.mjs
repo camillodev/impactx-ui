@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const pkgRoot = join(here, "..");
+const repoRoot = join(pkgRoot, "..", "..");
 const src = join(pkgRoot, "src");
 const dist = join(pkgRoot, "dist");
 
@@ -28,4 +29,13 @@ for (const rel of assets) {
   await mkdir(dirname(to), { recursive: true });
   await cp(from, to);
   process.stdout.write(`copied ${rel}\n`);
+}
+
+// Copy .impactx/ contract from repo root into package so agents
+// (Lovable, v0, Cursor, Aider) discover usage rules after npm install.
+const impactxSrc = join(repoRoot, ".impactx");
+const impactxDest = join(pkgRoot, ".impactx");
+if (existsSync(impactxSrc)) {
+  await cp(impactxSrc, impactxDest, { recursive: true });
+  process.stdout.write("copied .impactx/ contract for agents\n");
 }

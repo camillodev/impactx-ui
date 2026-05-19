@@ -21,7 +21,7 @@
 "use client"
 
 import { useState } from "react"
-import { FormPageTemplate, Stack, ProgressBar, Button, Cluster } from "@camillodev/ui"
+import { FormPageTemplate, Stack, ProgressBar, Button, Cluster } from "@impactxlab/design-system"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"

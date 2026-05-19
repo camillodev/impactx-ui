@@ -1,6 +1,6 @@
 "use client"
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@camillodev/ui"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@impactxlab/design-system"
 
 export default function TabsPlayground() {
   return (

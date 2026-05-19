@@ -1,4 +1,4 @@
-import { DonutScore, Grid, Stack } from "@camillodev/ui"
+import { DonutScore, Grid, Stack } from "@impactxlab/design-system"
 
 const sizes = [
   { value: 64, size: 80,  caption: "sm — 80px",  label: "" },

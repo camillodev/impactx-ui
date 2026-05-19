@@ -1,8 +1,8 @@
 {
-  "name": "@camillodev/ui",
-  "version": "1.0.0",
+  "name": "@impactxlab/design-system",
+  "version": "1.0.1",
   "description": "Impact X UI — React component library + tokens (Education / Kumon / Impact X themes)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,10 @@
     "./styles.css": "./dist/styles.css"
   },
   "files": [
-    "dist"
+    "dist",
+    ".impactx",
+    "AGENTS.md",
+    "README.md"
   ],
   "sideEffects": [
     "*.css"
@@ -31,8 +34,7 @@
     "test": "vitest run"
   },
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://npm.pkg.github.com"
+    "access": "public"
   },
   "repository": {
     "type": "git",

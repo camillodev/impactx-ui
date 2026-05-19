@@ -20,7 +20,7 @@
     "@fontsource/metropolis": "^5.2.5",
     "@fontsource/plus-jakarta-sans": "^5.2.8",
     "@fontsource/roboto": "^5.2.10",
-    "@camillodev/ui": "workspace:*",
+    "@impactxlab/design-system": "workspace:*",
     "@impactxlab/tokens": "workspace:*",
     "lucide-react": "^1.11.0",
     "next": "16.2.4",

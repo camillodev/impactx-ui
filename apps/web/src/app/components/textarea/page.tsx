@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Textarea, Label, CodeBlock } from "@camillodev/ui"
+import { Textarea, Label, CodeBlock } from "@impactxlab/design-system"
 
 export default function TextareaPage() {
   const [value, setValue] = React.useState("")
@@ -81,7 +81,7 @@ export default function TextareaPage() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-xs text-[var(--color-text-muted)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Textarea } from "@camillodev/ui"
+            <CodeBlock language="tsx">{`import { Textarea } from "@impactxlab/design-system"
 
 <Textarea label="Mensagem" placeholder="Digite uma mensagem…" />`}</CodeBlock>
           </div>
@@ -100,7 +100,7 @@ export default function TextareaPage() {
           </div>
           <div>
             <p className="text-xs text-[var(--color-text-muted)] mb-2">Com Label externo + rows</p>
-            <CodeBlock language="tsx">{`import { Label, Textarea } from "@camillodev/ui"
+            <CodeBlock language="tsx">{`import { Label, Textarea } from "@impactxlab/design-system"
 
 <Label htmlFor="obs">Observações</Label>
 <Textarea id="obs" rows={4} placeholder="Adicione observações…" />`}</CodeBlock>

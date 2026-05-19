@@ -4,8 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LayoutGrid, Component, FileText, ChevronRight } from "lucide-react"
-import { Avatar, Separator, cn, components } from "@camillodev/ui"
-import type { RegistryItem } from "@camillodev/ui"
+import { Avatar, Separator, cn, components } from "@impactxlab/design-system"
+import type { RegistryItem } from "@impactxlab/design-system"
 import { useMobileNav } from "@/app/shell/mobile-nav-context"
 
 type TopLevelItem = {

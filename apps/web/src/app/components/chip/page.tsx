@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { BarChart3, Grid, List } from "lucide-react"
-import { Chip, SegmentedControl } from "@camillodev/ui"
+import { Chip, SegmentedControl } from "@impactxlab/design-system"
 
 const initialRemovable = ["Algebra", "Geometry", "Calculus"]
 
