@@ -13,7 +13,7 @@ import {
   Button,
   Input,
   Grid,
-} from "@impactxlab/ds-education"
+} from "@impactxlab/design-system"
 
 export default function SheetPlayground() {
   const [name, setName] = React.useState("")

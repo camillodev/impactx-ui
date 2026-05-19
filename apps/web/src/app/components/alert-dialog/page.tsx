@@ -12,8 +12,8 @@ import {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-} from "@impactxlab/ds-education"
-import { Button } from "@impactxlab/ds-education"
+} from "@impactxlab/design-system"
+import { Button } from "@impactxlab/design-system"
 
 export default function AlertDialogPlayground() {
   const [deletedItem, setDeletedItem] = React.useState<string | null>(null)

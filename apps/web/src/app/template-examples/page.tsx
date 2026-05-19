@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Grid } from "@impactxlab/ds-education"
+import { Grid } from "@impactxlab/design-system"
 
 const TEMPLATES = [
   {

@@ -1,92 +1,195 @@
 # Impact X UI
 
-[![npm](https://img.shields.io/npm/v/@impactx/ui.svg)](https://www.npmjs.com/package/@impactx/ui)
+[![npm](https://img.shields.io/npm/v/@impactxlab/design-system.svg)](https://www.npmjs.com/package/@impactxlab/design-system)
+[![npm tokens](https://img.shields.io/npm/v/@impactxlab/tokens.svg?label=%40impactxlab%2Ftokens)](https://www.npmjs.com/package/@impactxlab/tokens)
 
-Multi-DS, multi-theme React component library da Impact X — distribuida via CLI shadcn-style. Voce nao instala um pacote, voce copia o codigo pro seu repo.
+Design system multi-DS, multi-theme da Impact X — React 19 + Tailwind v4. Publicado **público** no npm pra uso em Lovable, v0, StackBlitz, Next, Vite, qualquer projeto React.
 
-## Quickstart
+## Packages
+
+| Package | Versão | Descrição |
+|---|---|---|
+| [`@impactxlab/design-system`](https://www.npmjs.com/package/@impactxlab/design-system) | 1.0.1 | 50+ componentes prontos (atoms, molecules, organisms, templates) + tokens embutidos. **Caminho recomendado.** |
+| [`@impactxlab/tokens`](https://www.npmjs.com/package/@impactxlab/tokens) | 1.0.0 | Design tokens 3-tier (Style Dictionary). Já é dep do design-system, mas pode ser usado isolado. |
+| `@impactx/ui` | (não publicado) | CLI shadcn-style pra copiar source dos componentes pro seu repo (alternativa pra quem quer customizar). |
+
+---
+
+## Instalação (npm público, sem auth)
 
 ```bash
-# onboarding interativo
-npx @impactx/ui
-
-# instalar o DS education completo
-npx @impactx/ui add education
-
-# instalar componente especifico com theme
-npx @impactx/ui add education button --education
+npm install @impactxlab/design-system
+# ou
+pnpm add @impactxlab/design-system
+# ou
+yarn add @impactxlab/design-system
 ```
 
-Aplique o theme no root da sua app:
+Peer deps (instale se ainda não tiver):
 
-```html
-<html class="theme-education" data-mode="dark">
+```bash
+npm install react@^19 react-dom@^19
 ```
 
-## Design Systems disponiveis
+### Carregar tokens + estilos
 
-| DS | Componentes | Dominio |
-|----|-------------|---------|
-| `education` | 22 atoms/molecules + 10 organisms | Gestao educacional |
+No CSS global da app (`app/globals.css`, `src/index.css`, etc):
 
-## Themes
+```css
+/* tokens base (cores, espaçamentos, radius, tipografia) */
+@import "@impactxlab/design-system/tokens/base.css";
 
-| Theme | Primary | Secundario |
+/* escolha 1+ themes */
+@import "@impactxlab/design-system/tokens/themes/education.css";
+@import "@impactxlab/design-system/tokens/themes/kumon.css";
+@import "@impactxlab/design-system/tokens/themes/impactx.css";
+
+/* estilos compilados dos componentes */
+@import "@impactxlab/design-system/styles.css";
+```
+
+### Ativar theme + mode no `<html>`
+
+```tsx
+// app/layout.tsx (Next App Router)
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="pt-BR" className="theme-education" data-mode="dark">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+- **Theme** via classe: `theme-education` | `theme-kumon` | `theme-impactx`
+- **Mode** via atributo: `data-mode="dark"` (light é default, sem atributo)
+
+### Usar componentes
+
+```tsx
+import { Button, Card, Input, DataTable } from "@impactxlab/design-system";
+
+export default function Page() {
+  return (
+    <Card>
+      <Input placeholder="Buscar..." />
+      <Button variant="primary">Salvar</Button>
+    </Card>
+  );
+}
+```
+
+---
+
+## Themes disponíveis
+
+| Theme | Primary | Secundário |
 |-------|---------|------------|
-| `alfabeto` | `#0467DB` | — |
+| `education` (alfabeto) | `#0467DB` | — |
 | `kumon` | `#00A9E3` | — |
 | `impactx` | `#11C76F` | `#F5C400` |
+
+---
+
+## Para agents (Lovable, v0, Cursor, Codex, Aider, Claude)
+
+Quando você instala o package, ele inclui um diretório `.impactx/` com **contrato declarativo** do DS:
+
+```
+node_modules/@impactxlab/design-system/
+├── .impactx/
+│   ├── system.md                 # regras gerais (carregar primeiro)
+│   ├── INDEX.md                  # mapa de tudo
+│   └── rules/
+│       ├── components/           # 1 regra por componente
+│       ├── styling/tokens.md     # cores, anti-patterns
+│       ├── primitives/           # grid, stack, page-container
+│       ├── patterns/             # list-with-filters, dashboard, form-multistep…
+│       └── templates/            # list-page, detail-page, form-page, dashboard
+└── AGENTS.md                     # spec agentsmd.org
+```
+
+Agents descobrem automaticamente. Pode apontar no system prompt: _"Leia `.impactx/system.md` em `node_modules/@impactxlab/design-system/` antes de gerar código."_
+
+---
+
+## Desenvolvimento (contributors)
+
+```bash
+git clone git@github.com:camillodev/impactx-ui.git
+cd impactx-ui
+pnpm install
+pnpm dev                       # turbo, todos apps
+pnpm --filter web dev          # somente showcase (ui.impactx.com.br)
+pnpm build
+pnpm registry:build            # gera apps/web/public/r/*.json
+pnpm lint && pnpm typecheck && pnpm test
+```
+
+### Publicar nova versão
+
+Requer estar logado no npm como `impactxlab` (ou ter token granular com bypass 2FA pro scope `@impactxlab`).
+
+```bash
+# 1. Bump version
+cd packages/ds-education
+npm version patch   # ou minor / major
+
+# 2. Build + publish
+pnpm --filter @impactxlab/design-system build
+npm publish --access public
+
+# 3. Idem pra tokens se necessário
+cd ../tokens
+npm version patch
+pnpm --filter @impactxlab/tokens build
+npm publish --access public
+```
+
+---
 
 ## Estrutura monorepo
 
 ```
 impactx-ui/
   apps/
-    web/                       # Next 16 showcase + docs
+    web/                       # Next 16 showcase + docs (ui.impactx.com.br)
   packages/
-    cli/                       # @impactx/ui (npm)
-    ds-education/              # source canonico do DS
+    cli/                       # @impactx/ui (CLI shadcn-style)
+    ds-education/              # @impactxlab/design-system (package npm)
+    tokens/                    # @impactxlab/tokens (package npm)
+    eslint-plugin-ui/          # @impactx/eslint-plugin-ui
   scripts/                     # build-registry, check-cohesion
   pnpm-workspace.yaml
   turbo.json
 ```
 
-## Desenvolvimento
+---
 
-```bash
-pnpm install
-pnpm dev                       # turbo, todos apps
-pnpm --filter web dev          # somente showcase
-pnpm build
-pnpm registry:build            # gera apps/web/public/r/*.json
-pnpm lint && pnpm typecheck && pnpm test
-```
+## Gitflow
 
-## Como contribuir (Gitflow)
-
-Este repo usa gitflow com `develop` como branch default de integracao:
-
-| Branch | Funcao |
+| Branch | Função |
 |--------|--------|
-| `develop` | integracao continua (default) |
-| `main` | producao / releases |
+| `develop` | integração contínua (default) |
+| `main` | produção / releases |
 
-1. Atualize seu local: `git fetch origin`
-2. Branch a partir de `develop`: `git checkout -b feature/<nome> origin/develop` (ou `fix/`, `chore/`, `report/`)
-3. Commits na branch
-4. Push: `git push origin feature/<nome>`
-5. Abrir PR para `develop` — nunca merge local direto
-6. Merge de `develop` → `main` somente em releases
+1. `git fetch origin`
+2. `git checkout -b feature/<nome> origin/develop` (ou `fix/`, `chore/`, `report/`)
+3. Commits + push
+4. PR pra `develop` — nunca merge local direto
+5. Merge `develop` → `main` somente em releases
 
-> **Branches abertas no `main` antigo:** rebaser antes do proximo PR com `git rebase origin/develop`.
+---
 
-## Documentacao para agentes / LLMs
+## Documentação pra agentes / LLMs (repo local)
 
-- `CLAUDE.md` — instrucoes para Claude Code (skills, decisoes, comandos)
-- `AGENTS.md` — spec agentsmd.org para Cursor/Codex/Copilot/Aider
-- `llms.txt` — formato llmstxt.org pra contexto rapido
-- `.claude/skills/` — skills detalhadas (ix-frontend, ix-engineering, ix-code-guidelines, etc)
+- `CLAUDE.md` — instruções para Claude Code
+- `AGENTS.md` — spec agentsmd.org pra Cursor/Codex/Copilot/Aider
+- `.claude/skills/` — skills detalhadas (ix-design-system, ix-frontend, ix-engineering, etc)
+- `.impactx/` — contrato declarativo do DS pra LLMs (também enviado no tarball publicado)
 
-## Licenca
+---
 
-Propriedade de Rafael Camillo / Impact X.
+## Licença
+
+MIT — Rafael Camillo / Impact X.

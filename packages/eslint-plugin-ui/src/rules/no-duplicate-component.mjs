@@ -1,7 +1,7 @@
 /** @type {import("eslint").Rule.RuleModule} */
-// Lista de componentes que vivem em @impactxlab/ds-education.
+// Lista de componentes que vivem em @impactxlab/design-system.
 // Atualizar manualmente quando registry crescer.
-// (Idealmente lê de @impactxlab/ds-education/registry — fica como TODO pra próxima iteração.)
+// (Idealmente lê de @impactxlab/design-system/registry — fica como TODO pra próxima iteração.)
 const DS_COMPONENTS = new Set([
   "AlertDialog", "Avatar", "Badge", "Breadcrumb", "Button", "Card",
   "Checkbox", "Chip", "Cluster", "CodeBlock", "CommandPalette",
@@ -17,10 +17,10 @@ export default {
   meta: {
     type: "problem",
     docs: {
-      description: "Forbid defining a component with the same name as one in @impactxlab/ds-education.",
+      description: "Forbid defining a component with the same name as one in @impactxlab/design-system.",
     },
     messages: {
-      duplicate: "Componente '{{name}}' já existe em @impactxlab/ds-education. Importe em vez de criar.",
+      duplicate: "Componente '{{name}}' já existe em @impactxlab/design-system. Importe em vez de criar.",
     },
     schema: [],
   },

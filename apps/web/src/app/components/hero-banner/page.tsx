@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge, Separator, HeroBanner } from "@impactxlab/ds-education"
+import { Card, CardContent, Badge, Separator, HeroBanner } from "@impactxlab/design-system"
 
 export default function HeroBannerShowcase() {
   return (

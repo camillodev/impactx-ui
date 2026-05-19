@@ -32,6 +32,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build workspace packages (required for apps/web resolution)
+        run: |
+          pnpm tokens:build
+          pnpm --filter @impactxlabs/ui build
+
       - name: Install Playwright Chromium
         run: pnpm --filter @impactx/web exec playwright install chromium
 

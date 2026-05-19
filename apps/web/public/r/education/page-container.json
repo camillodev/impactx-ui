@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-container",
+  "type": "registry:ui",
+  "title": "PageContainer",
+  "description": "PageContainer — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "_responsive",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/page-container.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/page-container.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport {\n  resolveResponsive,\n  type ResponsiveValue,\n  type BreakpointClassMap,\n} from \"./_responsive\"\n\n/**\n * PageContainer — wrapper de página com max-width e padding responsivo.\n *\n * Props aceitam valor único OU objeto responsivo `{ base, sm, md, lg, xl }`.\n *\n * Decision tree:\n * - Página de lista/dashboard padrão? → maxWidth=\"lg\" (1280px)\n * - Página de form ou settings (conteúdo estreito)? → maxWidth=\"md\" (768px)\n * - Hero/landing full-bleed? → maxWidth=\"full\"\n * - Conteúdo de leitura (artigo, doc)? → maxWidth=\"prose\" (~65ch)\n */\n\nexport type PageContainerMaxWidth = \"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\" | \"prose\"\nexport type PageContainerPadding = \"none\" | \"sm\" | \"md\" | \"lg\"\n\nconst maxWidthMap: BreakpointClassMap<PageContainerMaxWidth> = {\n  base: { sm: \"max-w-2xl\", md: \"max-w-4xl\", lg: \"max-w-7xl\", xl: \"max-w-[1440px]\", full: \"max-w-none\", prose: \"max-w-prose\" },\n  sm:   { sm: \"sm:max-w-2xl\", md: \"sm:max-w-4xl\", lg: \"sm:max-w-7xl\", xl: \"sm:max-w-[1440px]\", full: \"sm:max-w-none\", prose: \"sm:max-w-prose\" },\n  md:   { sm: \"md:max-w-2xl\", md: \"md:max-w-4xl\", lg: \"md:max-w-7xl\", xl: \"md:max-w-[1440px]\", full: \"md:max-w-none\", prose: \"md:max-w-prose\" },\n  lg:   { sm: \"lg:max-w-2xl\", md: \"lg:max-w-4xl\", lg: \"lg:max-w-7xl\", xl: \"lg:max-w-[1440px]\", full: \"lg:max-w-none\", prose: \"lg:max-w-prose\" },\n  xl:   { sm: \"xl:max-w-2xl\", md: \"xl:max-w-4xl\", lg: \"xl:max-w-7xl\", xl: \"xl:max-w-[1440px]\", full: \"xl:max-w-none\", prose: \"xl:max-w-prose\" },\n}\n\n// Padding já é \"responsivo embutido\" (mobile-first dentro de cada size).\n// Pra responsive prop, cada size mantém seu par px/py.\nconst paddingMap: BreakpointClassMap<PageContainerPadding> = {\n  base: { none: \"px-0 py-0\", sm: \"px-4 py-4\", md: \"px-4 py-6\", lg: \"px-4 py-8\" },\n  sm:   { none: \"sm:px-0 sm:py-0\", sm: \"sm:px-4 sm:py-4\", md: \"sm:px-6 sm:py-6\", lg: \"sm:px-8 sm:py-8\" },\n  md:   { none: \"md:px-0 md:py-0\", sm: \"md:px-6 md:py-6\", md: \"md:px-8 md:py-8\", lg: \"md:px-12 md:py-12\" },\n  lg:   { none: \"lg:px-0 lg:py-0\", sm: \"lg:px-6 lg:py-6\", md: \"lg:px-10 lg:py-10\", lg: \"lg:px-16 lg:py-16\" },\n  xl:   { none: \"xl:px-0 xl:py-0\", sm: \"xl:px-8 xl:py-8\", md: \"xl:px-12 xl:py-12\", lg: \"xl:px-20 xl:py-20\" },\n}\n\nexport interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Max-width do container. Default: \"lg\" (1280px). Aceita objeto responsivo. */\n  maxWidth?: ResponsiveValue<PageContainerMaxWidth>\n  /** Padding. Default: \"md\". Aceita objeto responsivo. */\n  padding?: ResponsiveValue<PageContainerPadding>\n  /** Renderiza como outro elemento. Default: \"div\". Pra <main>, passar as=\"main\". */\n  as?: React.ElementType\n}\n\nexport const PageContainer = React.forwardRef<HTMLDivElement, PageContainerProps>(\n  (\n    {\n      className,\n      maxWidth = \"lg\",\n      padding = { base: \"sm\", md: \"md\" },\n      as: Comp = \"div\",\n      ...props\n    },\n    ref\n  ) => (\n    <Comp\n      ref={ref}\n      className={cn(\n        \"mx-auto w-full\",\n        resolveResponsive(maxWidth, maxWidthMap),\n        resolveResponsive(padding, paddingMap),\n        className\n      )}\n      {...props}\n    />\n  )\n)\nPageContainer.displayName = \"PageContainer\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "1.0.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

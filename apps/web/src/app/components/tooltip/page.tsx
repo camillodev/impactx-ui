@@ -1,6 +1,6 @@
 "use client"
 
-import { Tooltip, TooltipProvider, Grid } from "@impactxlab/ds-education"
+import { Tooltip, TooltipProvider, Grid } from "@impactxlab/design-system"
 
 export default function TooltipPage() {
   return (

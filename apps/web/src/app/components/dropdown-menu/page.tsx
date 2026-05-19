@@ -17,8 +17,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
   DropdownMenuGroup,
-} from "@impactxlab/ds-education"
-import { Button } from "@impactxlab/ds-education"
+} from "@impactxlab/design-system"
+import { Button } from "@impactxlab/design-system"
 
 export default function DropdownMenuPage() {
   const [showStatus, setShowStatus] = React.useState(true)

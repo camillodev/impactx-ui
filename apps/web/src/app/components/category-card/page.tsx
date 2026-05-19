@@ -11,7 +11,7 @@ import {
   CategoryCard,
   Grid,
   Stack,
-} from "@impactxlab/ds-education"
+} from "@impactxlab/design-system"
 import {
   GraduationCap,
   BookOpen,

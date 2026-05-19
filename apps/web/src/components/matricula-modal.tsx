@@ -14,7 +14,7 @@ import {
   Stack,
   Grid,
   cn,
-} from "@impactxlab/ds-education"
+} from "@impactxlab/design-system"
 
 // ─── Types ────────────────────────────────────────────────────────────────
 

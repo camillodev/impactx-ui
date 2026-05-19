@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cluster",
+  "type": "registry:ui",
+  "title": "Cluster",
+  "description": "Cluster — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "_responsive",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/cluster.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/cluster.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport {\n  resolveResponsive,\n  type ResponsiveValue,\n  type BreakpointClassMap,\n} from \"./_responsive\"\n\n/**\n * Cluster — flex horizontal com wrap automático.\n *\n * Pattern Every Layout (Heydon Pickering). Itens flutuam horizontalmente\n * com gap consistente; ao não caber, quebram pra linha de baixo.\n *\n * Props aceitam valor único OU objeto responsivo `{ base, sm, md, lg, xl }`.\n *\n * Decision tree:\n * - Botões em footer de modal → Cluster\n * - Tags/chips em meta de card → Cluster\n * - Filtros lado a lado que podem quebrar → Cluster\n * - Conteúdo vertical → Stack\n */\n\nexport type ClusterGap = \"none\" | \"xs\" | \"sm\" | \"md\" | \"lg\"\nexport type ClusterAlign = \"start\" | \"center\" | \"end\" | \"baseline\"\nexport type ClusterJustify = \"start\" | \"center\" | \"end\" | \"between\"\n\nconst gapMap: BreakpointClassMap<ClusterGap> = {\n  base: { none: \"gap-0\", xs: \"gap-1\", sm: \"gap-2\", md: \"gap-3\", lg: \"gap-4\" },\n  sm:   { none: \"sm:gap-0\", xs: \"sm:gap-1\", sm: \"sm:gap-2\", md: \"sm:gap-3\", lg: \"sm:gap-4\" },\n  md:   { none: \"md:gap-0\", xs: \"md:gap-1\", sm: \"md:gap-2\", md: \"md:gap-3\", lg: \"md:gap-4\" },\n  lg:   { none: \"lg:gap-0\", xs: \"lg:gap-1\", sm: \"lg:gap-2\", md: \"lg:gap-3\", lg: \"lg:gap-4\" },\n  xl:   { none: \"xl:gap-0\", xs: \"xl:gap-1\", sm: \"xl:gap-2\", md: \"xl:gap-3\", lg: \"xl:gap-4\" },\n}\n\nconst alignMap: BreakpointClassMap<ClusterAlign> = {\n  base: { start: \"items-start\", center: \"items-center\", end: \"items-end\", baseline: \"items-baseline\" },\n  sm:   { start: \"sm:items-start\", center: \"sm:items-center\", end: \"sm:items-end\", baseline: \"sm:items-baseline\" },\n  md:   { start: \"md:items-start\", center: \"md:items-center\", end: \"md:items-end\", baseline: \"md:items-baseline\" },\n  lg:   { start: \"lg:items-start\", center: \"lg:items-center\", end: \"lg:items-end\", baseline: \"lg:items-baseline\" },\n  xl:   { start: \"xl:items-start\", center: \"xl:items-center\", end: \"xl:items-end\", baseline: \"xl:items-baseline\" },\n}\n\nconst justifyMap: BreakpointClassMap<ClusterJustify> = {\n  base: { start: \"justify-start\", center: \"justify-center\", end: \"justify-end\", between: \"justify-between\" },\n  sm:   { start: \"sm:justify-start\", center: \"sm:justify-center\", end: \"sm:justify-end\", between: \"sm:justify-between\" },\n  md:   { start: \"md:justify-start\", center: \"md:justify-center\", end: \"md:justify-end\", between: \"md:justify-between\" },\n  lg:   { start: \"lg:justify-start\", center: \"lg:justify-center\", end: \"lg:justify-end\", between: \"lg:justify-between\" },\n  xl:   { start: \"xl:justify-start\", center: \"xl:justify-center\", end: \"xl:justify-end\", between: \"xl:justify-between\" },\n}\n\nexport interface ClusterProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Espaçamento entre itens. Default: \"md\" (12px). Aceita objeto responsivo. */\n  gap?: ResponsiveValue<ClusterGap>\n  /** Alinhamento vertical. Default: \"center\". Aceita objeto responsivo. */\n  align?: ResponsiveValue<ClusterAlign>\n  /** Distribuição horizontal. Default: \"start\". Aceita objeto responsivo. */\n  justify?: ResponsiveValue<ClusterJustify>\n  /** Renderiza como outro elemento. Default: \"div\". */\n  as?: React.ElementType\n}\n\nexport const Cluster = React.forwardRef<HTMLDivElement, ClusterProps>(\n  (\n    {\n      className,\n      gap = \"md\",\n      align = \"center\",\n      justify = \"start\",\n      as: Comp = \"div\",\n      ...props\n    },\n    ref\n  ) => (\n    <Comp\n      ref={ref}\n      className={cn(\n        \"flex flex-wrap\",\n        resolveResponsive(gap, gapMap),\n        resolveResponsive(align, alignMap),\n        resolveResponsive(justify, justifyMap),\n        className\n      )}\n      {...props}\n    />\n  )\n)\nCluster.displayName = \"Cluster\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "1.0.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}

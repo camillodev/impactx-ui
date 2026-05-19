@@ -29,7 +29,7 @@ import {
   ModalSplitFooter,
   ModalInfoList,
   ModalInfoItem,
-} from "@impactxlab/ds-education"
+} from "@impactxlab/design-system"
 ```
 
 ## Namespace (23 subcomponentes)

@@ -5,7 +5,7 @@
 ## Import
 
 ```ts
-import { PageContainer } from "@impactxlab/ds-education"
+import { PageContainer } from "@impactxlab/design-system"
 ```
 
 ## Props

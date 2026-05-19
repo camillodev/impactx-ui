@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Grid } from "@impactxlab/ds-education"
+import { Grid } from "@impactxlab/design-system"
 
 // TODO(Wave 2): rotas abaixo virão em PR separada — Kumon flows reais.
 // Links 404 até lá (placeholder intencional).

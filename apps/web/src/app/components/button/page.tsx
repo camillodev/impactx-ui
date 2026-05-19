@@ -1,4 +1,4 @@
-import { Button, CodeBlock } from "@impactxlab/ds-education"
+import { Button, CodeBlock } from "@impactxlab/design-system"
 import { ArrowRight, Plus } from "lucide-react"
 
 const variants = [
@@ -104,7 +104,7 @@ export default function ButtonPage() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-xs text-[var(--color-text-subtle)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Button } from "@impactxlab/ds-education"
+            <CodeBlock language="tsx">{`import { Button } from "@impactxlab/design-system"
 
 <Button variant="primary" size="md">Click me</Button>`}</CodeBlock>
           </div>

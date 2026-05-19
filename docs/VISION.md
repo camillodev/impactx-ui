@@ -22,7 +22,7 @@ Operacionalmente isso significa:
 |---|---|---|
 | F1 | Monorepo pnpm + turbo + Next 16 + Tailwind v4 estáveis | ✅ |
 | F2 | Tokens 3-tier (primitive → semantic → component) via Style Dictionary | 🚧 PR6 mergeado, falta wire em consumidores |
-| F3 | 22 atoms/molecules + 10 organisms publicados em `@impactxlab/ds-education` | ✅ |
+| F3 | 22 atoms/molecules + 10 organisms publicados em `@impactxlab/design-system` | ✅ |
 | F4 | ESLint plugin custom (no-tailwind-cru, no-dup-component) em modo `error` | 🚧 Flipado warn→error, falta zero violations no monorepo |
 | F5 | Rules declarativas em `.impactx/rules/` cobrindo ≥10 componentes + 8 patterns | ✅ 28 rules ativas |
 | F6 | A11y gate (axe + visual regression) no CI bloqueando regressões | 🚧 54 snapshots existem, falta apertar gates |

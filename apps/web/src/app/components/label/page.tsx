@@ -1,4 +1,4 @@
-import { Label, CodeBlock } from "@impactxlab/ds-education"
+import { Label, CodeBlock } from "@impactxlab/design-system"
 
 export default function LabelPage() {
   return (
@@ -143,7 +143,7 @@ export default function LabelPage() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-xs text-[var(--color-text-muted)] mb-2">Básico</p>
-            <CodeBlock language="tsx">{`import { Label } from "@impactxlab/ds-education"
+            <CodeBlock language="tsx">{`import { Label } from "@impactxlab/design-system"
 
 <Label>Nome completo</Label>`}</CodeBlock>
           </div>

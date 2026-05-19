@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent, Badge, Separator, BigCard, Grid } from "@impactxlab/ds-education"
+import { Card, CardContent, Badge, Separator, BigCard, Grid } from "@impactxlab/design-system"
 import { BookOpen, Target } from "lucide-react"
 
 export default function BigCardShowcase() {

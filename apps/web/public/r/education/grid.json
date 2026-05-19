@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid",
+  "type": "registry:ui",
+  "title": "Grid",
+  "description": "Grid — Impact X DS Education",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "_responsive",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/grid.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/grid.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport {\n  resolveResponsive,\n  type ResponsiveValue,\n  type BreakpointClassMap,\n} from \"./_responsive\"\n\n/**\n * Grid — grid responsivo declarativo.\n *\n * Substitui `<div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\">`\n * por API tipada. Bot não decide breakpoint em string — passa objeto.\n *\n *   cols={3}                                 → grid-cols-3 em todos breakpoints\n *   cols={{ base: 1, md: 2, lg: 3 }}         → mobile-first responsivo\n *\n * Decision tree:\n * - 2D layout (linhas × colunas) → Grid\n * - 1D vertical com gap → Stack\n * - 1D horizontal com wrap → Cluster\n */\n\nexport type GridGap = \"none\" | \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"\nexport type GridCols = 1 | 2 | 3 | 4 | 5 | 6 | 12\n\nconst gapMap: BreakpointClassMap<GridGap> = {\n  base: { none: \"gap-0\", xs: \"gap-1\", sm: \"gap-2\", md: \"gap-4\", lg: \"gap-6\", xl: \"gap-8\" },\n  sm:   { none: \"sm:gap-0\", xs: \"sm:gap-1\", sm: \"sm:gap-2\", md: \"sm:gap-4\", lg: \"sm:gap-6\", xl: \"sm:gap-8\" },\n  md:   { none: \"md:gap-0\", xs: \"md:gap-1\", sm: \"md:gap-2\", md: \"md:gap-4\", lg: \"md:gap-6\", xl: \"md:gap-8\" },\n  lg:   { none: \"lg:gap-0\", xs: \"lg:gap-1\", sm: \"lg:gap-2\", md: \"lg:gap-4\", lg: \"lg:gap-6\", xl: \"lg:gap-8\" },\n  xl:   { none: \"xl:gap-0\", xs: \"xl:gap-1\", sm: \"xl:gap-2\", md: \"xl:gap-4\", lg: \"xl:gap-6\", xl: \"xl:gap-8\" },\n}\n\nconst colsMap: BreakpointClassMap<GridCols> = {\n  base: { 1: \"grid-cols-1\", 2: \"grid-cols-2\", 3: \"grid-cols-3\", 4: \"grid-cols-4\", 5: \"grid-cols-5\", 6: \"grid-cols-6\", 12: \"grid-cols-12\" },\n  sm:   { 1: \"sm:grid-cols-1\", 2: \"sm:grid-cols-2\", 3: \"sm:grid-cols-3\", 4: \"sm:grid-cols-4\", 5: \"sm:grid-cols-5\", 6: \"sm:grid-cols-6\", 12: \"sm:grid-cols-12\" },\n  md:   { 1: \"md:grid-cols-1\", 2: \"md:grid-cols-2\", 3: \"md:grid-cols-3\", 4: \"md:grid-cols-4\", 5: \"md:grid-cols-5\", 6: \"md:grid-cols-6\", 12: \"md:grid-cols-12\" },\n  lg:   { 1: \"lg:grid-cols-1\", 2: \"lg:grid-cols-2\", 3: \"lg:grid-cols-3\", 4: \"lg:grid-cols-4\", 5: \"lg:grid-cols-5\", 6: \"lg:grid-cols-6\", 12: \"lg:grid-cols-12\" },\n  xl:   { 1: \"xl:grid-cols-1\", 2: \"xl:grid-cols-2\", 3: \"xl:grid-cols-3\", 4: \"xl:grid-cols-4\", 5: \"xl:grid-cols-5\", 6: \"xl:grid-cols-6\", 12: \"xl:grid-cols-12\" },\n}\n\nexport interface GridProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Número de colunas. Aceita 1|2|3|4|5|6|12 ou objeto responsivo. */\n  cols?: ResponsiveValue<GridCols>\n  /** Espaçamento entre células. Default: \"md\" (16px). Aceita objeto responsivo. */\n  gap?: ResponsiveValue<GridGap>\n  /** Renderiza como outro elemento. Default: \"div\". */\n  as?: React.ElementType\n}\n\nexport const Grid = React.forwardRef<HTMLDivElement, GridProps>(\n  (\n    {\n      className,\n      cols = { base: 1, md: 2, lg: 3 },\n      gap = \"md\",\n      as: Comp = \"div\",\n      ...props\n    },\n    ref\n  ) => (\n    <Comp\n      ref={ref}\n      className={cn(\n        \"grid\",\n        resolveResponsive(cols, colsMap),\n        resolveResponsive(gap, gapMap),\n        className\n      )}\n      {...props}\n    />\n  )\n)\nGrid.displayName = \"Grid\"\n\n// Backwards-compat type aliases (Grid já era usado externamente)\nexport type GridBreakpoint = \"base\" | \"sm\" | \"md\" | \"lg\" | \"xl\"\n"
+    }
+  ],
+  "meta": {
+    "impactx": {
+      "ds": "education",
+      "version": "1.0.0",
+      "themes": [
+        "alfabeto",
+        "kumon",
+        "impactx"
+      ],
+      "category": "atom"
+    }
+  }
+}
