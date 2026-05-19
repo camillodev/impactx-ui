@@ -1,5 +1,5 @@
 ---
-"@impactxlab/ds-education": patch
+"@impactxlab/design-system": patch
 ---
 
 Infra: Changesets release workflow + ESLint plugin custom contra Tailwind cru.

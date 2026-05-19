@@ -1,5 +1,5 @@
 ---
-"@impactxlab/ds-education": minor
+"@impactxlab/design-system": minor
 ---
 
 Add `.impactx/` declarative AI contract, layout primitives, and page templates.

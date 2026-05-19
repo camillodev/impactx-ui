@@ -1,8 +1,8 @@
 ---
-"@impactxlab/ds-education": minor
+"@impactxlab/design-system": minor
 ---
 
-Make `@impactxlab/ds-education` publishable to npm.
+Make `@impactxlab/design-system` publishable to npm.
 
 - Add `build` script (tsc + `scripts/copy-assets.mjs` for CSS tokens)
 - Emit `.d.ts` + `.js` + sourcemaps to `dist/`

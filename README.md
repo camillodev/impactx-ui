@@ -1,60 +1,45 @@
 # Impact X UI
 
-Design system multi-DS, multi-theme da Impact X — React + Tailwind v4. Distribuido como:
+[![npm](https://img.shields.io/npm/v/@impactxlab/design-system.svg)](https://www.npmjs.com/package/@impactxlab/design-system)
+[![npm tokens](https://img.shields.io/npm/v/@impactxlab/tokens.svg?label=%40impactxlab%2Ftokens)](https://www.npmjs.com/package/@impactxlab/tokens)
 
-- **`@impactxlab/design-system`** — package npm com 50+ componentes prontos (atoms, molecules, organisms, templates) + tokens. Instalavel via GitHub Packages. **Caminho recomendado.**
-- **`@impactx/ui`** — CLI shadcn-style pra copiar o codigo dos componentes pro seu repo (quando voce quer customizar).
+Design system multi-DS, multi-theme da Impact X — React 19 + Tailwind v4. Publicado **público** no npm pra uso em Lovable, v0, StackBlitz, Next, Vite, qualquer projeto React.
 
-> **Repo privado** — distribuido via GitHub Packages (`npm.pkg.github.com`), nao no npm publico.
+## Packages
+
+| Package | Versão | Descrição |
+|---|---|---|
+| [`@impactxlab/design-system`](https://www.npmjs.com/package/@impactxlab/design-system) | 1.0.1 | 50+ componentes prontos (atoms, molecules, organisms, templates) + tokens embutidos. **Caminho recomendado.** |
+| [`@impactxlab/tokens`](https://www.npmjs.com/package/@impactxlab/tokens) | 1.0.0 | Design tokens 3-tier (Style Dictionary). Já é dep do design-system, mas pode ser usado isolado. |
+| `@impactx/ui` | (não publicado) | CLI shadcn-style pra copiar source dos componentes pro seu repo (alternativa pra quem quer customizar). |
 
 ---
 
-## Instalacao do package (`@impactxlab/design-system`)
-
-### 1. Autenticar no GitHub Packages
-
-Crie um Personal Access Token classico em https://github.com/settings/tokens com escopo `read:packages`. Depois, configure o npm registry no seu projeto:
-
-**`.npmrc` (no root do projeto que vai consumir o DS):**
-
-```ini
-@camillodev:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
-```
-
-Exporte o token no shell (ou `.env` do projeto):
+## Instalação (npm público, sem auth)
 
 ```bash
-export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
-```
-
-> Em CI (GitHub Actions), use `${{ secrets.GITHUB_TOKEN }}` — ja vem com `read:packages`.
-
-### 2. Instalar
-
-```bash
-pnpm add @impactxlab/design-system
-# ou
 npm install @impactxlab/design-system
+# ou
+pnpm add @impactxlab/design-system
 # ou
 yarn add @impactxlab/design-system
 ```
 
-Peer deps necessarias (instale se ainda nao tiver):
+Peer deps (instale se ainda não tiver):
 
 ```bash
-pnpm add react@^19 react-dom@^19
+npm install react@^19 react-dom@^19
 ```
 
-### 3. Carregar tokens + estilos
+### Carregar tokens + estilos
 
-No entrypoint global da sua app (`app/globals.css`, `src/index.css`, etc):
+No CSS global da app (`app/globals.css`, `src/index.css`, etc):
 
 ```css
-/* tokens base (cores neutras, espacamentos, radius, tipografia) */
+/* tokens base (cores, espaçamentos, radius, tipografia) */
 @import "@impactxlab/design-system/tokens/base.css";
 
-/* escolha 1 ou mais themes */
+/* escolha 1+ themes */
 @import "@impactxlab/design-system/tokens/themes/education.css";
 @import "@impactxlab/design-system/tokens/themes/kumon.css";
 @import "@impactxlab/design-system/tokens/themes/impactx.css";
@@ -63,7 +48,7 @@ No entrypoint global da sua app (`app/globals.css`, `src/index.css`, etc):
 @import "@impactxlab/design-system/styles.css";
 ```
 
-### 4. Ativar theme + mode no `<html>`
+### Ativar theme + mode no `<html>`
 
 ```tsx
 // app/layout.tsx (Next App Router)
@@ -77,9 +62,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```
 
 - **Theme** via classe: `theme-education` | `theme-kumon` | `theme-impactx`
-- **Mode** via atributo: `data-mode="dark"` (light eh default, sem atributo)
+- **Mode** via atributo: `data-mode="dark"` (light é default, sem atributo)
 
-### 5. Usar componentes
+### Usar componentes
 
 ```tsx
 import { Button, Card, Input, DataTable } from "@impactxlab/design-system";
@@ -96,9 +81,9 @@ export default function Page() {
 
 ---
 
-## Themes disponiveis
+## Themes disponíveis
 
-| Theme | Primary | Secundario |
+| Theme | Primary | Secundário |
 |-------|---------|------------|
 | `education` (alfabeto) | `#0467DB` | — |
 | `kumon` | `#00A9E3` | — |
@@ -106,15 +91,25 @@ export default function Page() {
 
 ---
 
-## CLI alternativa (`@impactx/ui`)
+## Para agents (Lovable, v0, Cursor, Codex, Aider, Claude)
 
-Pra copiar o source dos componentes pro seu repo (shadcn-style), em vez de consumir o package:
+Quando você instala o package, ele inclui um diretório `.impactx/` com **contrato declarativo** do DS:
 
-```bash
-npx @impactx/ui                       # onboarding interativo
-npx @impactx/ui add education         # DS completo
-npx @impactx/ui add education button  # componente especifico
 ```
+node_modules/@impactxlab/design-system/
+├── .impactx/
+│   ├── system.md                 # regras gerais (carregar primeiro)
+│   ├── INDEX.md                  # mapa de tudo
+│   └── rules/
+│       ├── components/           # 1 regra por componente
+│       ├── styling/tokens.md     # cores, anti-patterns
+│       ├── primitives/           # grid, stack, page-container
+│       ├── patterns/             # list-with-filters, dashboard, form-multistep…
+│       └── templates/            # list-page, detail-page, form-page, dashboard
+└── AGENTS.md                     # spec agentsmd.org
+```
+
+Agents descobrem automaticamente. Pode apontar no system prompt: _"Leia `.impactx/system.md` em `node_modules/@impactxlab/design-system/` antes de gerar código."_
 
 ---
 
@@ -125,19 +120,30 @@ git clone git@github.com:camillodev/impactx-ui.git
 cd impactx-ui
 pnpm install
 pnpm dev                       # turbo, todos apps
-pnpm --filter web dev          # somente showcase
+pnpm --filter web dev          # somente showcase (ui.impactx.com.br)
 pnpm build
 pnpm registry:build            # gera apps/web/public/r/*.json
 pnpm lint && pnpm typecheck && pnpm test
 ```
 
-### Publicar nova versao
+### Publicar nova versão
+
+Requer estar logado no npm como `impactxlab` (ou ter token granular com bypass 2FA pro scope `@impactxlab`).
 
 ```bash
-pnpm --filter @impactxlab/design-system build
+# 1. Bump version
 cd packages/ds-education
 npm version patch   # ou minor / major
-npm publish         # usa publishConfig.registry => GitHub Packages
+
+# 2. Build + publish
+pnpm --filter @impactxlab/design-system build
+npm publish --access public
+
+# 3. Idem pra tokens se necessário
+cd ../tokens
+npm version patch
+pnpm --filter @impactxlab/tokens build
+npm publish --access public
 ```
 
 ---
@@ -151,7 +157,7 @@ impactx-ui/
   packages/
     cli/                       # @impactx/ui (CLI shadcn-style)
     ds-education/              # @impactxlab/design-system (package npm)
-    tokens/                    # @impactxlab/tokens
+    tokens/                    # @impactxlab/tokens (package npm)
     eslint-plugin-ui/          # @impactx/eslint-plugin-ui
   scripts/                     # build-registry, check-cohesion
   pnpm-workspace.yaml
@@ -162,10 +168,10 @@ impactx-ui/
 
 ## Gitflow
 
-| Branch | Funcao |
+| Branch | Função |
 |--------|--------|
-| `develop` | integracao continua (default) |
-| `main` | producao / releases |
+| `develop` | integração contínua (default) |
+| `main` | produção / releases |
 
 1. `git fetch origin`
 2. `git checkout -b feature/<nome> origin/develop` (ou `fix/`, `chore/`, `report/`)
@@ -175,15 +181,15 @@ impactx-ui/
 
 ---
 
-## Documentacao pra agentes / LLMs
+## Documentação pra agentes / LLMs (repo local)
 
-- `CLAUDE.md` — instrucoes para Claude Code
+- `CLAUDE.md` — instruções para Claude Code
 - `AGENTS.md` — spec agentsmd.org pra Cursor/Codex/Copilot/Aider
 - `.claude/skills/` — skills detalhadas (ix-design-system, ix-frontend, ix-engineering, etc)
-- `.impactx/` — contrato declarativo do DS pra LLMs
+- `.impactx/` — contrato declarativo do DS pra LLMs (também enviado no tarball publicado)
 
 ---
 
-## Licenca
+## Licença
 
-Propriedade de Rafael Camillo / Impact X. Distribuicao restrita.
+MIT — Rafael Camillo / Impact X.
