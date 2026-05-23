@@ -95,12 +95,17 @@ describe("StatusBadge — invalid value handling", () => {
     expect(screen.getByText("BOGUS")).toBeTruthy()
   })
 
-  it("throws in development", () => {
+  it("warns (does not throw) in development", () => {
     vi.stubEnv("NODE_ENV", "development")
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
     expect(() =>
       // @ts-expect-error — intentionally invalid value
       render(<StatusBadge domain="enrollment" value="BOGUS" />)
-    ).toThrow(/\[StatusBadge\] invalid value/)
+    ).not.toThrow()
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining("[StatusBadge] invalid value")
+    )
+    warnSpy.mockRestore()
   })
 })
 

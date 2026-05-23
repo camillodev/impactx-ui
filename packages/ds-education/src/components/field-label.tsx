@@ -36,7 +36,7 @@ export function FieldLabel(props: FieldLabelProps) {
               >
                 *
               </span>
-              <span className="sr-only"> obrigatório</span>
+              <span className="sr-only">{" obrigatório"}</span>
             </>
           )}
         </label>

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Check, ChevronDown } from "lucide-react"
 import { cn } from "../utils"
 import { Button } from "./button"
 import { Skeleton } from "./skeleton"
@@ -64,9 +65,7 @@ export function UnitPicker({
           className={className}
         >
           {triggerLabel}
-          <span aria-hidden="true" className="ml-2">
-            ▾
-          </span>
+          <ChevronDown aria-hidden="true" className="ml-2 size-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="min-w-[240px]">
@@ -115,9 +114,7 @@ export function UnitPicker({
               >
                 <span className="flex-1">{unit.name}</span>
                 {isActive && (
-                  <span aria-hidden="true" className="ml-2">
-                    ✓
-                  </span>
+                  <Check aria-hidden="true" className="ml-2 size-4" />
                 )}
               </DropdownMenuItem>
             )

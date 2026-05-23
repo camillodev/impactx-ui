@@ -123,7 +123,9 @@ export const MaskedInput = React.forwardRef<
               if (onRawChange) {
                 if (mask === "currency-brl") {
                   const typed = (maskRef?.typedValue as number) ?? 0
-                  onRawChange(Math.round(typed * 100))
+                  onRawChange(
+                    Number.isFinite(typed) ? Math.round(typed * 100) : 0
+                  )
                 } else {
                   onRawChange(String(maskRef?.unmaskedValue ?? ""))
                 }
@@ -138,7 +140,7 @@ export const MaskedInput = React.forwardRef<
             }}
             id={inputId}
             disabled={disabled}
-            inputMode="numeric"
+            inputMode={mask === "currency-brl" ? "decimal" : "numeric"}
             aria-invalid={error ? true : undefined}
             aria-describedby={describedById}
             className={cn(

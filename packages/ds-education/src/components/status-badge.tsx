@@ -50,8 +50,10 @@ function resolve(
 
   if (!entry) {
     if (process.env.NODE_ENV === "development") {
-      throw new Error(
-        `[StatusBadge] invalid value "${value}" for domain "${domain}"`
+      // warn instead of throw — never crash SSR/CSR over a bad enum value.
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[StatusBadge] invalid value "${value}" for domain "${domain}" — falling back to neutral`
       )
     }
     return {

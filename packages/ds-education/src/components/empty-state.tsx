@@ -49,8 +49,10 @@ export function EmptyState({
   ...props
 }: EmptyStateProps) {
   const v = variant ?? "default"
+  // When title is JSX (not string), aria-label must be passed explicitly via
+  // ariaLabel — otherwise screen readers announce only "status" with no context.
   const computedAriaLabel =
-    ariaLabel ?? (typeof title === "string" ? title : undefined)
+    ariaLabel ?? (typeof title === "string" ? title : "Estado vazio")
 
   return (
     <div
