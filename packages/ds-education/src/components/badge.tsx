@@ -12,6 +12,8 @@ const badgeVariants = cva(
         ink:     "bg-[var(--color-secondary-active)] text-[var(--color-secondary-fg)]",
         warning: "bg-[var(--badge-warning-bg)] text-[var(--badge-warning-fg)]",
         danger:  "bg-[var(--badge-danger-bg)] text-[var(--badge-danger-fg)]",
+        info:    "bg-[var(--badge-info-bg)] text-[var(--badge-info-fg)]",
+        neutral: "bg-[var(--badge-neutral-bg)] text-[var(--badge-neutral-fg)]",
       },
       size: {
         sm: "py-1 px-2.5 gap-1 text-[12px]",
