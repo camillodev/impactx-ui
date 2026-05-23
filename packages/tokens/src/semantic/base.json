@@ -180,6 +180,26 @@
         "$value": "{color.red.badge-fg}",
         "$type": "color"
       }
+    },
+    "info": {
+      "bg": {
+        "$value": "{color.info.bg-light}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.info.500}",
+        "$type": "color"
+      }
+    },
+    "neutral": {
+      "bg": {
+        "$value": "{color.gray.100}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.gray.700}",
+        "$type": "color"
+      }
     }
   },
   "_": {

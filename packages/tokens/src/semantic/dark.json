@@ -159,6 +159,26 @@
         "$value": "{color.red.200}",
         "$type": "color"
       }
+    },
+    "info": {
+      "bg": {
+        "$value": "{color.info.toast-bg-dark}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.blue.200}",
+        "$type": "color"
+      }
+    },
+    "neutral": {
+      "bg": {
+        "$value": "{color.slate.600}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{color.slate.200}",
+        "$type": "color"
+      }
     }
   },
   "_": {
