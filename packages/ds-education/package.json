@@ -1,6 +1,6 @@
 {
   "name": "@impactxlab/design-system",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Impact X UI — React component library + tokens (Education / Kumon / Impact X themes)",
   "license": "MIT",
   "type": "module",
@@ -42,7 +42,7 @@
     "directory": "packages/ds-education"
   },
   "peerDependencies": {
-    "@impactxlab/tokens": "^1.0.0",
+    "@impactxlab/tokens": "^1.1.0",
     "react": ">=18",
     "react-dom": ">=18"
   },
