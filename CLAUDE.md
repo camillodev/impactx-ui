@@ -18,6 +18,7 @@ Stack: pnpm + turbo, Next 16, React 19, Tailwind v4, TypeScript strict, ESM only
 - `pnpm registry:build` — gera `apps/web/public/r/*.json` a partir do source canonico
 - `pnpm lint` / `pnpm typecheck` — valida codigo
 - `pnpm test` — testes Vitest
+- **`pnpm rules:check` — guardrail DS (DS-001/003/004). OBRIGATORIO antes de PR.**
 
 ## Regras de codigo
 - TypeScript strict, ESM only (`import/export`, nunca `require`)
@@ -30,6 +31,15 @@ Stack: pnpm + turbo, Next 16, React 19, Tailwind v4, TypeScript strict, ESM only
 - NUNCA adicionar `Co-Authored-By` ou referencias a Claude/Anthropic em commits
 - NUNCA commitar direto no `main` — sempre branch `feature/`, `fix/`, `chore/` ou `report/`
 - Sempre PR pro main, nunca merge local
+
+## Guardrail de DS (obrigatorio antes de PR)
+
+Antes de declarar qualquer mudanca de codigo pronta, rodar:
+```
+pnpm rules:check
+```
+
+Valida DS-001 (sem hex hardcoded), DS-003 (export no index), DS-004 (max 500 linhas). Exit 1 = corrigir antes de abrir PR. NUNCA adicionar entrada na `ALLOWLIST` de `scripts/check-rules.mjs` sem aprovacao humana explicita. Detalhe em RULES.md (RULE-WF-004/005/006).
 
 ## Contrato declarativo `.impactx/` (LER PRIMEIRO)
 

@@ -22,6 +22,7 @@ Monorepo do design system multi-DS / multi-theme da Impact X.
 - `pnpm build` — build completo
 - `pnpm registry:build` — gera registry JSON em `apps/web/public/r/`
 - `pnpm lint` / `pnpm typecheck` / `pnpm test`
+- **`pnpm rules:check` — guardrail DS (obrigatório antes de PR)**
 
 ## Estrutura
 ```
@@ -55,6 +56,22 @@ scripts/                 # build-registry, check-cohesion
 - NUNCA `Co-Authored-By` em commits — historia eh 100% do owner humano
 - NUNCA push direto em `main` — sempre branch `feature/` / `fix/` / `chore/` / `report/` + PR
 - Mensagens curtas e diretas, em portugues ou ingles
+
+## Guardrail obrigatório antes de abrir PR (RULE-WF-004)
+
+Todo agent DEVE rodar `pnpm rules:check` antes de declarar uma mudança pronta. O script valida deterministicamente:
+
+- **DS-001**: nada de hex hardcoded (use `var(--color-*)` ou fallback via `readVar()`)
+- **DS-003**: todo componente em `packages/ds-education/src/components/` é exportado em `index.ts`
+- **DS-004**: arquivos de código aplicativo <= 500 linhas
+
+Se falhar:
+1. Ler o erro
+2. Corrigir o código
+3. Re-rodar `pnpm rules:check`
+4. Só abrir PR quando exit 0
+
+**Não silencie** via `ALLOWLIST` no script — isso requer aprovação humana explícita.
 
 ## Como contribuir como agent
 

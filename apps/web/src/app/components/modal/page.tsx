@@ -161,7 +161,7 @@ export default function ModalPlayground() {
             <ModalSplit>
               <ModalCarousel>
                 <ModalCarouselSlide>
-                  <ModalBanner height={200} bg="linear-gradient(135deg, #0467DB, #4B9EF5)">
+                  <ModalBanner height={200} bg="linear-gradient(135deg, var(--color-primary), var(--color-primary-soft))">
                     <h2 className="text-[28px] font-extrabold leading-tight">Tokens primeiro</h2>
                   </ModalBanner>
                   <ModalSplitBody className="pt-8">
@@ -174,7 +174,7 @@ export default function ModalPlayground() {
                   </ModalSplitBody>
                 </ModalCarouselSlide>
                 <ModalCarouselSlide>
-                  <ModalBanner height={200} bg="linear-gradient(135deg, #11C76F, #4BD494)">
+                  <ModalBanner height={200} bg="linear-gradient(135deg, var(--color-success), var(--color-success-bg))">
                     <h2 className="text-[28px] font-extrabold leading-tight">Multi-vertical</h2>
                   </ModalBanner>
                   <ModalSplitBody className="pt-8">
@@ -187,7 +187,7 @@ export default function ModalPlayground() {
                   </ModalSplitBody>
                 </ModalCarouselSlide>
                 <ModalCarouselSlide>
-                  <ModalBanner height={200} bg="linear-gradient(135deg, #0066B3, #4B9EF5)">
+                  <ModalBanner height={200} bg="linear-gradient(135deg, var(--color-primary-active), var(--color-primary-soft))">
                     <h2 className="text-[28px] font-extrabold leading-tight">Pronto pra publicar</h2>
                   </ModalBanner>
                   <ModalSplitBody className="pt-8">
