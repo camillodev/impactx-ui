@@ -37,3 +37,21 @@ Regras persistentes lidas em toda sessão. Valeam para agentes de IA e humanos.
 - **RULE-WF-003**: O CTO é o único aprovador final de merge em `develop` e `main`.
   PRs não podem ser mergeadas sem aprovação explícita do CTO.
   Aprovação de outros reviewers é bem-vinda mas não suficiente.
+
+## Enforcement automático (obrigatório pra agents)
+
+- **RULE-WF-004**: Antes de declarar qualquer mudança em código como pronta, agents (Claude Code, Cursor, Codex, Copilot, etc.) DEVEM rodar:
+  ```
+  pnpm rules:check
+  ```
+  O script (`scripts/check-rules.mjs`) valida determinísticamente DS-001, DS-003 e DS-004. Exit 0 = pronto pra PR. Exit 1 = corrigir antes de prosseguir.
+
+- **RULE-WF-005**: Agents NÃO podem adicionar entradas em `ALLOWLIST` de `scripts/check-rules.mjs` sem aprovação humana explícita + justificativa registrada como dívida técnica. Allowlist é exceção rara, não rota de escape.
+
+- **RULE-WF-006**: Se `pnpm rules:check` falhar, agents devem:
+  1. Ler a mensagem de erro completa
+  2. Corrigir o código (substituir hex por token, dividir arquivo grande, adicionar export ao index)
+  3. Re-rodar até passar
+  4. Só então abrir PR
+
+  Falsos positivos devem ser reportados ao humano — não silenciados via allowlist.

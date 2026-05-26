@@ -13,6 +13,7 @@
     "registry:build": "node scripts/build-registry.mjs",
     "tokens:build": "pnpm --filter @impactxlab/tokens build",
     "tokens:check": "node scripts/check-tokens-parity.mjs",
+    "rules:check": "node scripts/check-rules.mjs",
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish"
